@@ -24,6 +24,14 @@
 		612ABC8F2BF200370056F127 /* QuizHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC8E2BF200370056F127 /* QuizHeaderView.swift */; };
 		612ABC912BF2003E0056F127 /* QuizBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC902BF2003E0056F127 /* QuizBodyView.swift */; };
 		618E70572BF2039E007AEDFE /* LabelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E70562BF2039E007AEDFE /* LabelFactory.swift */; };
+		618E70602BF21970007AEDFE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E705F2BF21970007AEDFE /* Constants.swift */; };
+		618E70662BF229D1007AEDFE /* VocaQuizMainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E70652BF229D1007AEDFE /* VocaQuizMainCollectionViewCell.swift */; };
+		618E70682BF22A66007AEDFE /* CollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E70672BF22A66007AEDFE /* CollectionView+Extension.swift */; };
+		618E706A2BF24F2F007AEDFE /* GamePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E70692BF24F2F007AEDFE /* GamePageViewController.swift */; };
+		618E706D2BF25328007AEDFE /* GamePageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E706C2BF25328007AEDFE /* GamePageHeaderView.swift */; };
+		618E706F2BF25337007AEDFE /* GamePageBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E706E2BF25337007AEDFE /* GamePageBodyView.swift */; };
+		618E70712BF25354007AEDFE /* GamePageBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E70702BF25354007AEDFE /* GamePageBottomView.swift */; };
+		618E70732BF25F43007AEDFE /* GamePageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E70722BF25F43007AEDFE /* GamePageCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +53,14 @@
 		612ABC8E2BF200370056F127 /* QuizHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizHeaderView.swift; sourceTree = "<group>"; };
 		612ABC902BF2003E0056F127 /* QuizBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBodyView.swift; sourceTree = "<group>"; };
 		618E70562BF2039E007AEDFE /* LabelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFactory.swift; sourceTree = "<group>"; };
+		618E705F2BF21970007AEDFE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		618E70652BF229D1007AEDFE /* VocaQuizMainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaQuizMainCollectionViewCell.swift; sourceTree = "<group>"; };
+		618E70672BF22A66007AEDFE /* CollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionView+Extension.swift"; sourceTree = "<group>"; };
+		618E70692BF24F2F007AEDFE /* GamePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePageViewController.swift; sourceTree = "<group>"; };
+		618E706C2BF25328007AEDFE /* GamePageHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePageHeaderView.swift; sourceTree = "<group>"; };
+		618E706E2BF25337007AEDFE /* GamePageBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePageBodyView.swift; sourceTree = "<group>"; };
+		618E70702BF25354007AEDFE /* GamePageBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePageBottomView.swift; sourceTree = "<group>"; };
+		618E70722BF25F43007AEDFE /* GamePageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePageCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +94,8 @@
 		4D1791A52BF1D5BE00E645C9 /* Vocabulary */ = {
 			isa = PBXGroup;
 			children = (
+				618E70612BF21E5A007AEDFE /* Extension */,
+				618E70552BF20387007AEDFE /* Factory */,
 				4D1791A62BF1D5BE00E645C9 /* AppDelegate.swift */,
 				4D1791A82BF1D5BE00E645C9 /* SceneDelegate.swift */,
 				618E70552BF20387007AEDFE /* Factory */,
@@ -88,6 +106,7 @@
 				4D1791B42BF1D5BF00E645C9 /* LaunchScreen.storyboard */,
 				4D1791B72BF1D5BF00E645C9 /* Info.plist */,
 				4D1791AF2BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld */,
+				618E705F2BF21970007AEDFE /* Constants.swift */,
 			);
 			path = Vocabulary;
 			sourceTree = "<group>";
@@ -95,6 +114,7 @@
 		4D1791BE2BF1E15700E645C9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				618E706B2BF25316007AEDFE /* GamePage */,
 				612ABC8A2BF1FCF80056F127 /* VocaQuiz */,
 				612ABC862BF1EA3F0056F127 /* DummyView.swift */,
 				4D1791CB2BF20A3200E645C9 /* CalenderTableViewCell.swift */,
@@ -110,6 +130,7 @@
 				4D1791C22BF1E20F00E645C9 /* VocaQuizViewController.swift */,
 				4D1791C42BF1E27300E645C9 /* CalenderViewController.swift */,
 				4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */,
+				618E70692BF24F2F007AEDFE /* GamePageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -127,6 +148,7 @@
 			children = (
 				612ABC8E2BF200370056F127 /* QuizHeaderView.swift */,
 				612ABC902BF2003E0056F127 /* QuizBodyView.swift */,
+				618E70652BF229D1007AEDFE /* VocaQuizMainCollectionViewCell.swift */,
 			);
 			path = VocaQuiz;
 			sourceTree = "<group>";
@@ -137,6 +159,33 @@
 				618E70562BF2039E007AEDFE /* LabelFactory.swift */,
 			);
 			path = Factory;
+			sourceTree = "<group>";
+		};
+		618E70612BF21E5A007AEDFE /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				618E70622BF21E61007AEDFE /* VocaQuiz */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		618E70622BF21E61007AEDFE /* VocaQuiz */ = {
+			isa = PBXGroup;
+			children = (
+				618E70672BF22A66007AEDFE /* CollectionView+Extension.swift */,
+			);
+			path = VocaQuiz;
+			sourceTree = "<group>";
+		};
+		618E706B2BF25316007AEDFE /* GamePage */ = {
+			isa = PBXGroup;
+			children = (
+				618E706C2BF25328007AEDFE /* GamePageHeaderView.swift */,
+				618E706E2BF25337007AEDFE /* GamePageBodyView.swift */,
+				618E70702BF25354007AEDFE /* GamePageBottomView.swift */,
+				618E70722BF25F43007AEDFE /* GamePageCollectionViewCell.swift */,
+			);
+			path = GamePage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,16 +266,23 @@
 			files = (
 				4D1791AB2BF1D5BE00E645C9 /* AddVocaViewController.swift in Sources */,
 				4D1791A72BF1D5BE00E645C9 /* AppDelegate.swift in Sources */,
+				618E706D2BF25328007AEDFE /* GamePageHeaderView.swift in Sources */,
 				612ABC912BF2003E0056F127 /* QuizBodyView.swift in Sources */,
 				612ABC892BF1EA480056F127 /* DummyModel.swift in Sources */,
+				618E70602BF21970007AEDFE /* Constants.swift in Sources */,
+				618E70732BF25F43007AEDFE /* GamePageCollectionViewCell.swift in Sources */,
 				4D1791C32BF1E20F00E645C9 /* VocaQuizViewController.swift in Sources */,
 				4D1791A92BF1D5BE00E645C9 /* SceneDelegate.swift in Sources */,
-				612ABC872BF1EA3F0056F127 /* DummyView.swift in Sources */,
+				618E70662BF229D1007AEDFE /* VocaQuizMainCollectionViewCell.swift in Sources */,
+				618E706F2BF25337007AEDFE /* GamePageBodyView.swift in Sources */,
+				618E70682BF22A66007AEDFE /* CollectionView+Extension.swift in Sources */,
 				4D1791C52BF1E27300E645C9 /* CalenderViewController.swift in Sources */,
+				618E70712BF25354007AEDFE /* GamePageBottomView.swift in Sources */,
 				612ABC8F2BF200370056F127 /* QuizHeaderView.swift in Sources */,
 				4D1791C12BF1E1F700E645C9 /* AddBookCaseViewController.swift in Sources */,
 				4D1791CC2BF20A3200E645C9 /* CalenderTableViewCell.swift in Sources */,
 				4D1791B12BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld in Sources */,
+				618E706A2BF24F2F007AEDFE /* GamePageViewController.swift in Sources */,
 				618E70572BF2039E007AEDFE /* LabelFactory.swift in Sources */,
 				4D1791C72BF1E27F00E645C9 /* MyPageViewController.swift in Sources */,
 			);
