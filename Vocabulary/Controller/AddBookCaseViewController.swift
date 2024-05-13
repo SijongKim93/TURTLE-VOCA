@@ -6,24 +6,31 @@
 //
 
 import UIKit
+import SnapKit
 
 class AddBookCaseViewController: UIViewController {
+    
+    //headerView랑 BodyView 스택 뷰로 감싸기
+    let headerView = HeaderView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        setupConstraints()
+        configureUI()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setupConstraints(){
+        view.addSubview(headerView)
+        
+        headerView.snp.makeConstraints{
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+        }
     }
-    */
-
+    
+    private func configureUI(){
+        view.backgroundColor = .white
+    }
 }
