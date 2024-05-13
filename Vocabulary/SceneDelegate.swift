@@ -13,10 +13,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        self.window = UIWindow(windowScene: windowScene)
+        
+        let tabBarVC = UITabBarController()
+        
+        let addBookVC = AddBookCaseViewController()
+        addBookVC.tabBarItem = UITabBarItem(title: "단어장", image: UIImage(systemName: "book"), tag: 0)
+        let addVocaVC = AddVocaViewController()
+        addVocaVC.tabBarItem = UITabBarItem(title: "단어 추가", image: UIImage(systemName: "pencil"), tag: 1)
+        let vocaQuizVC = VocaQuizViewController()
+        vocaQuizVC.tabBarItem = UITabBarItem(title: "단어 퀴즈", image: UIImage(systemName: "gamecontroller"), tag: 2)
+        let calenderVC = CalenderViewController()
+        calenderVC.tabBarItem = UITabBarItem(title: "캘린더", image: UIImage(systemName: "calendar"), tag: 3)
+        let myPageVC = MyPageViewController()
+        myPageVC.tabBarItem = UITabBarItem(title: "마이페이지", image: UIImage(systemName: "person.circle"), tag: 4)
+        
+        tabBarVC.viewControllers = [addBookVC, addVocaVC, vocaQuizVC, calenderVC, myPageVC]
+        tabBarVC.tabBar.backgroundColor = .white
+        tabBarVC.tabBar.itemPositioning = .centered
+        
+        self.window?.rootViewController = tabBarVC
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

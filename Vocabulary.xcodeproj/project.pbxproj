@@ -9,23 +9,31 @@
 /* Begin PBXBuildFile section */
 		4D1791A72BF1D5BE00E645C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791A62BF1D5BE00E645C9 /* AppDelegate.swift */; };
 		4D1791A92BF1D5BE00E645C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791A82BF1D5BE00E645C9 /* SceneDelegate.swift */; };
-		4D1791AB2BF1D5BE00E645C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791AA2BF1D5BE00E645C9 /* ViewController.swift */; };
+		4D1791AB2BF1D5BE00E645C9 /* AddVocaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791AA2BF1D5BE00E645C9 /* AddVocaViewController.swift */; };
 		4D1791AE2BF1D5BE00E645C9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4D1791AD2BF1D5BE00E645C9 /* Base */; };
 		4D1791B12BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791AF2BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld */; };
 		4D1791B32BF1D5BF00E645C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D1791B22BF1D5BF00E645C9 /* Assets.xcassets */; };
 		4D1791B62BF1D5BF00E645C9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4D1791B52BF1D5BF00E645C9 /* Base */; };
+		4D1791C12BF1E1F700E645C9 /* AddBookCaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791C02BF1E1F700E645C9 /* AddBookCaseViewController.swift */; };
+		4D1791C32BF1E20F00E645C9 /* VocaQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791C22BF1E20F00E645C9 /* VocaQuizViewController.swift */; };
+		4D1791C52BF1E27300E645C9 /* CalenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791C42BF1E27300E645C9 /* CalenderViewController.swift */; };
+		4D1791C72BF1E27F00E645C9 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4D1791A32BF1D5BE00E645C9 /* Vocabulary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vocabulary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D1791A62BF1D5BE00E645C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D1791A82BF1D5BE00E645C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4D1791AA2BF1D5BE00E645C9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4D1791AA2BF1D5BE00E645C9 /* AddVocaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVocaViewController.swift; sourceTree = "<group>"; };
 		4D1791AD2BF1D5BE00E645C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4D1791B02BF1D5BE00E645C9 /* Vocabulary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Vocabulary.xcdatamodel; sourceTree = "<group>"; };
 		4D1791B22BF1D5BF00E645C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D1791B52BF1D5BF00E645C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D1791B72BF1D5BF00E645C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D1791C02BF1E1F700E645C9 /* AddBookCaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookCaseViewController.swift; sourceTree = "<group>"; };
+		4D1791C22BF1E20F00E645C9 /* VocaQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaQuizViewController.swift; sourceTree = "<group>"; };
+		4D1791C42BF1E27300E645C9 /* CalenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewController.swift; sourceTree = "<group>"; };
+		4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,14 +68,42 @@
 			children = (
 				4D1791A62BF1D5BE00E645C9 /* AppDelegate.swift */,
 				4D1791A82BF1D5BE00E645C9 /* SceneDelegate.swift */,
-				4D1791AA2BF1D5BE00E645C9 /* ViewController.swift */,
-				4D1791AC2BF1D5BE00E645C9 /* Main.storyboard */,
+				4D1791BD2BF1E14A00E645C9 /* Model */,
+				4D1791BE2BF1E15700E645C9 /* View */,
+				4D1791BF2BF1E15C00E645C9 /* Controller */,
 				4D1791B22BF1D5BF00E645C9 /* Assets.xcassets */,
 				4D1791B42BF1D5BF00E645C9 /* LaunchScreen.storyboard */,
 				4D1791B72BF1D5BF00E645C9 /* Info.plist */,
 				4D1791AF2BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld */,
 			);
 			path = Vocabulary;
+			sourceTree = "<group>";
+		};
+		4D1791BD2BF1E14A00E645C9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4D1791BE2BF1E15700E645C9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4D1791AC2BF1D5BE00E645C9 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4D1791BF2BF1E15C00E645C9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4D1791C02BF1E1F700E645C9 /* AddBookCaseViewController.swift */,
+				4D1791AA2BF1D5BE00E645C9 /* AddVocaViewController.swift */,
+				4D1791C22BF1E20F00E645C9 /* VocaQuizViewController.swift */,
+				4D1791C42BF1E27300E645C9 /* CalenderViewController.swift */,
+				4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,10 +177,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D1791AB2BF1D5BE00E645C9 /* ViewController.swift in Sources */,
+				4D1791AB2BF1D5BE00E645C9 /* AddVocaViewController.swift in Sources */,
 				4D1791A72BF1D5BE00E645C9 /* AppDelegate.swift in Sources */,
+				4D1791C32BF1E20F00E645C9 /* VocaQuizViewController.swift in Sources */,
 				4D1791A92BF1D5BE00E645C9 /* SceneDelegate.swift in Sources */,
+				4D1791C52BF1E27300E645C9 /* CalenderViewController.swift in Sources */,
+				4D1791C12BF1E1F700E645C9 /* AddBookCaseViewController.swift in Sources */,
 				4D1791B12BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld in Sources */,
+				4D1791C72BF1E27F00E645C9 /* MyPageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +336,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Vocabulary/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -324,6 +365,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Vocabulary/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
