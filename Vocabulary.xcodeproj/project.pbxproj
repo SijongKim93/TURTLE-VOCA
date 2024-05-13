@@ -19,6 +19,10 @@
 		4D1791C72BF1E27F00E645C9 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */; };
 		612ABC872BF1EA3F0056F127 /* DummyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC862BF1EA3F0056F127 /* DummyView.swift */; };
 		612ABC892BF1EA480056F127 /* DummyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC882BF1EA480056F127 /* DummyModel.swift */; };
+		612ABC8D2BF200060056F127 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 612ABC8C2BF200060056F127 /* SnapKit */; };
+		612ABC8F2BF200370056F127 /* QuizHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC8E2BF200370056F127 /* QuizHeaderView.swift */; };
+		612ABC912BF2003E0056F127 /* QuizBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC902BF2003E0056F127 /* QuizBodyView.swift */; };
+		618E70572BF2039E007AEDFE /* LabelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E70562BF2039E007AEDFE /* LabelFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,9 @@
 		4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		612ABC862BF1EA3F0056F127 /* DummyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyView.swift; sourceTree = "<group>"; };
 		612ABC882BF1EA480056F127 /* DummyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyModel.swift; sourceTree = "<group>"; };
+		612ABC8E2BF200370056F127 /* QuizHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizHeaderView.swift; sourceTree = "<group>"; };
+		612ABC902BF2003E0056F127 /* QuizBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBodyView.swift; sourceTree = "<group>"; };
+		618E70562BF2039E007AEDFE /* LabelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				612ABC8D2BF200060056F127 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +76,7 @@
 		4D1791A52BF1D5BE00E645C9 /* Vocabulary */ = {
 			isa = PBXGroup;
 			children = (
+				618E70552BF20387007AEDFE /* Factory */,
 				4D1791A62BF1D5BE00E645C9 /* AppDelegate.swift */,
 				4D1791A82BF1D5BE00E645C9 /* SceneDelegate.swift */,
 				612ABC852BF1E9B70056F127 /* Model */,
@@ -84,6 +93,7 @@
 		4D1791BE2BF1E15700E645C9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				612ABC8A2BF1FCF80056F127 /* VocaQuiz */,
 				612ABC862BF1EA3F0056F127 /* DummyView.swift */,
 			);
 			path = View;
@@ -109,6 +119,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		612ABC8A2BF1FCF80056F127 /* VocaQuiz */ = {
+			isa = PBXGroup;
+			children = (
+				612ABC8E2BF200370056F127 /* QuizHeaderView.swift */,
+				612ABC902BF2003E0056F127 /* QuizBodyView.swift */,
+			);
+			path = VocaQuiz;
+			sourceTree = "<group>";
+		};
+		618E70552BF20387007AEDFE /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				618E70562BF2039E007AEDFE /* LabelFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -125,6 +152,9 @@
 			dependencies = (
 			);
 			name = Vocabulary;
+			packageProductDependencies = (
+				612ABC8C2BF200060056F127 /* SnapKit */,
+			);
 			productName = Vocabulary;
 			productReference = 4D1791A32BF1D5BE00E645C9 /* Vocabulary.app */;
 			productType = "com.apple.product-type.application";
@@ -153,6 +183,9 @@
 				Base,
 			);
 			mainGroup = 4D17919A2BF1D5BE00E645C9;
+			packageReferences = (
+				612ABC8B2BF200060056F127 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 4D1791A42BF1D5BE00E645C9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -181,13 +214,16 @@
 			files = (
 				4D1791AB2BF1D5BE00E645C9 /* AddVocaViewController.swift in Sources */,
 				4D1791A72BF1D5BE00E645C9 /* AppDelegate.swift in Sources */,
+				612ABC912BF2003E0056F127 /* QuizBodyView.swift in Sources */,
 				612ABC892BF1EA480056F127 /* DummyModel.swift in Sources */,
 				4D1791C32BF1E20F00E645C9 /* VocaQuizViewController.swift in Sources */,
 				4D1791A92BF1D5BE00E645C9 /* SceneDelegate.swift in Sources */,
 				612ABC872BF1EA3F0056F127 /* DummyView.swift in Sources */,
 				4D1791C52BF1E27300E645C9 /* CalenderViewController.swift in Sources */,
+				612ABC8F2BF200370056F127 /* QuizHeaderView.swift in Sources */,
 				4D1791C12BF1E1F700E645C9 /* AddBookCaseViewController.swift in Sources */,
 				4D1791B12BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld in Sources */,
+				618E70572BF2039E007AEDFE /* LabelFactory.swift in Sources */,
 				4D1791C72BF1E27F00E645C9 /* MyPageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,7 +376,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -369,7 +405,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -405,6 +441,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		612ABC8B2BF200060056F127 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		612ABC8C2BF200060056F127 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 612ABC8B2BF200060056F127 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		4D1791AF2BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld */ = {
