@@ -19,7 +19,6 @@
 		4D1791C72BF1E27F00E645C9 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */; };
 		4D1791CC2BF20A3200E645C9 /* CalenderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791CB2BF20A3200E645C9 /* CalenderTableViewCell.swift */; };
 		4D1791CF2BF2142100E645C9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4D1791CE2BF2142100E645C9 /* SnapKit */; };
-		612ABC872BF1EA3F0056F127 /* DummyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC862BF1EA3F0056F127 /* DummyView.swift */; };
 		612ABC892BF1EA480056F127 /* DummyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC882BF1EA480056F127 /* DummyModel.swift */; };
 		612ABC8F2BF200370056F127 /* QuizHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC8E2BF200370056F127 /* QuizHeaderView.swift */; };
 		612ABC912BF2003E0056F127 /* QuizBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC902BF2003E0056F127 /* QuizBodyView.swift */; };
@@ -31,7 +30,9 @@
 		618E706D2BF25328007AEDFE /* GamePageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E706C2BF25328007AEDFE /* GamePageHeaderView.swift */; };
 		618E706F2BF25337007AEDFE /* GamePageBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E706E2BF25337007AEDFE /* GamePageBodyView.swift */; };
 		618E70712BF25354007AEDFE /* GamePageBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E70702BF25354007AEDFE /* GamePageBottomView.swift */; };
-		618E70732BF25F43007AEDFE /* GamePageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E70722BF25F43007AEDFE /* GamePageCollectionViewCell.swift */; };
+		61BCB0542BF2F4B600CF73E4 /* DummyGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0532BF2F4B600CF73E4 /* DummyGenerator.swift */; };
+		61BCB0562BF337B100CF73E4 /* VocaQuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0552BF337B100CF73E4 /* VocaQuizModel.swift */; };
+		61BCB0592BF3597C00CF73E4 /* UIResponder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0582BF3597C00CF73E4 /* UIResponder+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,7 +49,6 @@
 		4D1791C42BF1E27300E645C9 /* CalenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewController.swift; sourceTree = "<group>"; };
 		4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		4D1791CB2BF20A3200E645C9 /* CalenderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderTableViewCell.swift; sourceTree = "<group>"; };
-		612ABC862BF1EA3F0056F127 /* DummyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyView.swift; sourceTree = "<group>"; };
 		612ABC882BF1EA480056F127 /* DummyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyModel.swift; sourceTree = "<group>"; };
 		612ABC8E2BF200370056F127 /* QuizHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizHeaderView.swift; sourceTree = "<group>"; };
 		612ABC902BF2003E0056F127 /* QuizBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBodyView.swift; sourceTree = "<group>"; };
@@ -60,7 +60,9 @@
 		618E706C2BF25328007AEDFE /* GamePageHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePageHeaderView.swift; sourceTree = "<group>"; };
 		618E706E2BF25337007AEDFE /* GamePageBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePageBodyView.swift; sourceTree = "<group>"; };
 		618E70702BF25354007AEDFE /* GamePageBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePageBottomView.swift; sourceTree = "<group>"; };
-		618E70722BF25F43007AEDFE /* GamePageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePageCollectionViewCell.swift; sourceTree = "<group>"; };
+		61BCB0532BF2F4B600CF73E4 /* DummyGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyGenerator.swift; sourceTree = "<group>"; };
+		61BCB0552BF337B100CF73E4 /* VocaQuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaQuizModel.swift; sourceTree = "<group>"; };
+		61BCB0582BF3597C00CF73E4 /* UIResponder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +96,8 @@
 		4D1791A52BF1D5BE00E645C9 /* Vocabulary */ = {
 			isa = PBXGroup;
 			children = (
+				61BCB0522BF2F4A900CF73E4 /* Service */,
 				618E70612BF21E5A007AEDFE /* Extension */,
-				618E70552BF20387007AEDFE /* Factory */,
 				4D1791A62BF1D5BE00E645C9 /* AppDelegate.swift */,
 				4D1791A82BF1D5BE00E645C9 /* SceneDelegate.swift */,
 				618E70552BF20387007AEDFE /* Factory */,
@@ -116,7 +118,6 @@
 			children = (
 				618E706B2BF25316007AEDFE /* GamePage */,
 				612ABC8A2BF1FCF80056F127 /* VocaQuiz */,
-				612ABC862BF1EA3F0056F127 /* DummyView.swift */,
 				4D1791CB2BF20A3200E645C9 /* CalenderTableViewCell.swift */,
 			);
 			path = View;
@@ -139,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				612ABC882BF1EA480056F127 /* DummyModel.swift */,
+				61BCB0552BF337B100CF73E4 /* VocaQuizModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -164,6 +166,7 @@
 		618E70612BF21E5A007AEDFE /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				61BCB0572BF3597000CF73E4 /* General */,
 				618E70622BF21E61007AEDFE /* VocaQuiz */,
 			);
 			path = Extension;
@@ -183,9 +186,24 @@
 				618E706C2BF25328007AEDFE /* GamePageHeaderView.swift */,
 				618E706E2BF25337007AEDFE /* GamePageBodyView.swift */,
 				618E70702BF25354007AEDFE /* GamePageBottomView.swift */,
-				618E70722BF25F43007AEDFE /* GamePageCollectionViewCell.swift */,
 			);
 			path = GamePage;
+			sourceTree = "<group>";
+		};
+		61BCB0522BF2F4A900CF73E4 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				61BCB0532BF2F4B600CF73E4 /* DummyGenerator.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		61BCB0572BF3597000CF73E4 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				61BCB0582BF3597C00CF73E4 /* UIResponder+Extension.swift */,
+			);
+			path = General;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,17 +286,19 @@
 				4D1791A72BF1D5BE00E645C9 /* AppDelegate.swift in Sources */,
 				618E706D2BF25328007AEDFE /* GamePageHeaderView.swift in Sources */,
 				612ABC912BF2003E0056F127 /* QuizBodyView.swift in Sources */,
+				61BCB0542BF2F4B600CF73E4 /* DummyGenerator.swift in Sources */,
 				612ABC892BF1EA480056F127 /* DummyModel.swift in Sources */,
 				618E70602BF21970007AEDFE /* Constants.swift in Sources */,
-				618E70732BF25F43007AEDFE /* GamePageCollectionViewCell.swift in Sources */,
 				4D1791C32BF1E20F00E645C9 /* VocaQuizViewController.swift in Sources */,
 				4D1791A92BF1D5BE00E645C9 /* SceneDelegate.swift in Sources */,
 				618E70662BF229D1007AEDFE /* VocaQuizMainCollectionViewCell.swift in Sources */,
+				61BCB0592BF3597C00CF73E4 /* UIResponder+Extension.swift in Sources */,
 				618E706F2BF25337007AEDFE /* GamePageBodyView.swift in Sources */,
 				618E70682BF22A66007AEDFE /* CollectionView+Extension.swift in Sources */,
 				4D1791C52BF1E27300E645C9 /* CalenderViewController.swift in Sources */,
 				618E70712BF25354007AEDFE /* GamePageBottomView.swift in Sources */,
 				612ABC8F2BF200370056F127 /* QuizHeaderView.swift in Sources */,
+				61BCB0562BF337B100CF73E4 /* VocaQuizModel.swift in Sources */,
 				4D1791C12BF1E1F700E645C9 /* AddBookCaseViewController.swift in Sources */,
 				4D1791CC2BF20A3200E645C9 /* CalenderTableViewCell.swift in Sources */,
 				4D1791B12BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld in Sources */,
