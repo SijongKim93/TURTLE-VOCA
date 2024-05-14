@@ -78,6 +78,10 @@ class GamePageViewController: UIViewController {
     func gameStart () {
         if currentNumber > quizData.count - 1 {
             gamePageBodyView.gameTitle.text = "게임이 종료 되었습니다."
+            gamePageHeaderView.scoreLabel.text = "Score: \(score) 점"
+            [gamePageBottomView.firstButton, gamePageBottomView.secondButton, gamePageBottomView.thirdButton, gamePageBottomView.forthButton].forEach { button in
+                button.isEnabled = false
+            }
         } else {
             update()
             var answerList = [quizData[currentNumber].answer, quizData[currentNumber].incorrectFirst, quizData[currentNumber].incorrectSecond, quizData[currentNumber].incorrectThird]
