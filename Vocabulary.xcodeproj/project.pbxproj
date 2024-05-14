@@ -132,12 +132,11 @@
 		4D1791BF2BF1E15C00E645C9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				610130D62BF3D9E400CE8183 /* VocaQuiz */,
 				4D1791C02BF1E1F700E645C9 /* AddBookCaseViewController.swift */,
 				4D1791AA2BF1D5BE00E645C9 /* AddVocaViewController.swift */,
-				4D1791C22BF1E20F00E645C9 /* VocaQuizViewController.swift */,
 				4D1791D52BF3422900E645C9 /* Calender */,
 				4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */,
-				618E70692BF24F2F007AEDFE /* GamePageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -158,6 +157,15 @@
 				4D1791D82BF35FFE00E645C9 /* PresentationController.swift */,
 			);
 			path = Calender;
+			sourceTree = "<group>";
+		};
+		610130D62BF3D9E400CE8183 /* VocaQuiz */ = {
+			isa = PBXGroup;
+			children = (
+				4D1791C22BF1E20F00E645C9 /* VocaQuizViewController.swift */,
+				618E70692BF24F2F007AEDFE /* GamePageViewController.swift */,
+			);
+			path = VocaQuiz;
 			sourceTree = "<group>";
 		};
 		612ABC852BF1E9B70056F127 /* Model */ = {

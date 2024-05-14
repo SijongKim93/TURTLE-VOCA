@@ -17,9 +17,16 @@ class GamePageBottomView: UIView {
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 15
         button.layer.borderWidth = 0.5
-        button.addAction(UIAction(handler: { [weak self] _ in
+        button.addAction(UIAction(handler: { _ in
             guard let title = button.titleLabel?.text else { return }
-           self?.checkAnswer(title: title)
+            if self.checkAnswer(title: title) == true {
+                button.backgroundColor = .green
+                Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
+            } else {
+                button.backgroundColor = .red
+                Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
+            }
+            
         }), for: .touchUpInside)
         return button
     }()
@@ -31,9 +38,16 @@ class GamePageBottomView: UIView {
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 15
         button.layer.borderWidth = 0.5
-        button.addAction(UIAction(handler: { [weak self] _ in
+        button.addAction(UIAction(handler: { _ in
             guard let title = button.titleLabel?.text else { return }
-           self?.checkAnswer(title: title)
+            if self.checkAnswer(title: title) == true {
+                button.backgroundColor = .green
+                Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
+            } else {
+                button.backgroundColor = .red
+                Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
+            }
+            
         }), for: .touchUpInside)
         return button
     }()
@@ -45,9 +59,16 @@ class GamePageBottomView: UIView {
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 15
         button.layer.borderWidth = 0.5
-        button.addAction(UIAction(handler: { [weak self] _ in
+        button.addAction(UIAction(handler: { _ in
             guard let title = button.titleLabel?.text else { return }
-           self?.checkAnswer(title: title)
+            if self.checkAnswer(title: title) == true {
+                button.backgroundColor = .green
+                Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
+            } else {
+                button.backgroundColor = .red
+                Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
+            }
+            
         }), for: .touchUpInside)
         return button
     }()
@@ -59,15 +80,29 @@ class GamePageBottomView: UIView {
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 15
         button.layer.borderWidth = 0.5
-        button.addAction(UIAction(handler: { [weak self] _ in
+        button.addAction(UIAction(handler: { _ in
             guard let title = button.titleLabel?.text else { return }
-           self?.checkAnswer(title: title)
+            if self.checkAnswer(title: title) == true {
+                button.backgroundColor = .green
+                Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
+            } else {
+                button.backgroundColor = .red
+                Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
+            }
+            
         }), for: .touchUpInside)
         return button
     }()
     
-    func checkAnswer(title: String) {
-        guard let currentVC = currentViewController as? GamePageViewController else { return }
+    @objc func updateBackground () {
+        [firstButton, secondButton, thirdButton, forthButton].forEach { button in
+            button.backgroundColor = .lightGray
+        }
+    }
+    
+    func checkAnswer(title: String) -> Bool {
+        var flag = false
+        guard let currentVC = currentViewController as? GamePageViewController else { return flag }
         let currentQuestion = currentVC.gamePageBodyView.gameTitle.text
         let gameArray = currentVC.quizData
         let answer = gameArray.filter{$0.question == currentQuestion}.map{ $0.answer }.joined()
@@ -76,10 +111,12 @@ class GamePageBottomView: UIView {
             currentVC.currentNumber += 1
             currentVC.score += 1
             currentVC.gameStart()
+            flag = true
         } else {
             currentVC.currentNumber += 1
             currentVC.gameStart()
         }
+        return flag
     }
     
     private lazy var vStackView: UIStackView = {
