@@ -10,11 +10,16 @@ import SnapKit
 
 class AddBookCaseViewController: UIViewController {
     
-    //headerView랑 BodyView 스택 뷰로 감싸기
-    let headerView = HeaderView()
-    
-    let bodyView = BodyView()
-
+    let wholeStackView: UIStackView = {
+        let headerView = HeaderView()
+        let bodyView = BodyView()
+        
+        let stackView = UIStackView(arrangedSubviews: [headerView, bodyView])
+        stackView.axis = .vertical
+        stackView.spacing = 50
+        return stackView
+    }()
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,17 +29,10 @@ class AddBookCaseViewController: UIViewController {
     
     private func setupConstraints(){
         
-        view.addSubview(headerView)
-        view.addSubview(bodyView)
+        view.addSubview(wholeStackView)
         
-        headerView.snp.makeConstraints{
+        wholeStackView.snp.makeConstraints{
             $0.top.equalTo(view.safeAreaLayoutGuide)
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
-        }
-        
-        bodyView.snp.makeConstraints{
-            $0.top.equalTo(headerView.snp.bottom).offset(50)
             $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
