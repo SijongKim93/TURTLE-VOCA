@@ -9,34 +9,56 @@ import UIKit
 import SnapKit
 
 class VocaQuizViewController: UIViewController {
-
-    let headerView = QuizHeaderView()
-    let bodyView = QuizBodyView()
     
-    let testTitle = LabelFactory().makeLabel(title: "normal", size: 40, textAlignment: .center, isBold: false)
-    let testTitle1 = LabelFactory().makeLabel(title: "bold", size: 40, textAlignment: .left, isBold: true)
+    let quizHeaderView = QuizHeaderView()
+    let quizBodyView = QuizBodyView()
+    
+    private lazy var vStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [
+            UIView(),
+            quizHeaderView,
+            UIView(),
+            quizBodyView,
+            UIView()
+        ])
+        stackView.axis = .vertical
+        stackView.spacing = 50
+        return stackView
+    }()
+    
+    let buttonList = ["시작하기", "기록보기"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .systemBackground
         
-        view.addSubview(testTitle)
-        view.addSubview(testTitle1)
+        setUp()
+        layout()
         
-        testTitle.snp.makeConstraints {
-            $0.top.trailing.leading.equalToSuperview()
+    }
+    
+    private func layout () {
+        view.addSubview(vStackView)
+        
+        vStackView.snp.makeConstraints {
+            $0.top.bottom.leading.trailing.equalToSuperview()
         }
         
-        testTitle1.snp.makeConstraints {
-            $0.top.equalTo(testTitle.snp.bottom).offset(10)
-            $0.trailing.leading.equalToSuperview()
-            $0.bottom.equalToSuperview().offset(-200)
+        quizHeaderView.snp.makeConstraints {
+            $0.top.equalTo(vStackView.snp.top).offset(50)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(100)
         }
-        // Do any additional setup after loading the view.
+        
+        quizBodyView.snp.makeConstraints {
+            $0.top.equalTo(quizHeaderView.snp.bottom).offset(180)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview().offset(-100)
+        }
     }
     
     
-
-
 }
