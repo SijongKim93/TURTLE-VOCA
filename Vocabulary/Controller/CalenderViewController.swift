@@ -13,7 +13,7 @@ class CalenderViewController: UIViewController {
     var selectedDate: DateComponents? = nil
     
     let dateView: UICalendarView = {
-       var view = UICalendarView()
+        var view = UICalendarView()
         view.wantsDateDecorations = true
         return view
     }()
@@ -23,8 +23,8 @@ class CalenderViewController: UIViewController {
         view.backgroundColor = .gray
         return view
     }()
-
-    let dayTableView = UITableView()
+    
+    let dayCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,12 +35,12 @@ class CalenderViewController: UIViewController {
     func setupUI() {
         view.addSubview(dateView)
         view.addSubview(viewLine)
-        view.addSubview(dayTableView)
+        view.addSubview(dayCollectionView)
         
-        dayTableView.delegate = self
-        dayTableView.dataSource = self
-        dayTableView.register(CalenderTableViewCell.self, forCellReuseIdentifier: CalenderTableViewCell.identifier)
-        dayTableView.showsVerticalScrollIndicator = false
+        dayCollectionView.delegate = self
+        dayCollectionView.dataSource = self
+        dayCollectionView.collectionViewLayout = createCollectionViewFlowLayout(for: dayCollectionView)
+        dayCollectionView.register(CalenderCollectionViewCell.self, forCellWithReuseIdentifier: CalenderCollectionViewCell.identifier)
         
         dateView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
@@ -53,31 +53,35 @@ class CalenderViewController: UIViewController {
             $0.height.equalTo(1)
         }
         
-        dayTableView.snp.makeConstraints {
-            $0.top.equalTo(viewLine.snp.bottom).offset(20)
-            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(20)
+        dayCollectionView.snp.makeConstraints {
+            $0.top.equalTo(viewLine.snp.bottom)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
+    func createCollectionViewFlowLayout(for collectionView: UICollectionView) -> UICollectionViewFlowLayout {
+        let layout = UICollectionViewFlowLayout()
+        collectionView.collectionViewLayout = layout
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 20
+        layout.minimumInteritemSpacing = 0
+        layout.itemSize = CGSize(width: 330, height: 120)
+        return layout
+    }
 }
 
 
-extension CalenderViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension CalenderViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         10
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CalenderTableViewCell.identifier, for: indexPath) as? CalenderTableViewCell else { fatalError("테이블 뷰 에러") }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CalenderCollectionViewCell.identifier, for: indexPath) as? CalenderCollectionViewCell else { fatalError("컬렉션 뷰 오류") }
         
-        cell.layer.cornerRadius = 10
-        cell.layer.borderWidth = 1.0
-        cell.layer.borderColor = UIColor.gray.cgColor
-        cell.selectionStyle = .none
+        cell.backgroundColor = .blue
         
         return cell
     }
-    
 }
