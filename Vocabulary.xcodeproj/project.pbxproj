@@ -25,6 +25,7 @@
 		FB653F712BF220B00041450F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FB653F702BF220B00041450F /* SnapKit */; };
 		FB653F742BF225110041450F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB653F732BF225110041450F /* HeaderView.swift */; };
 		FB653F762BF225190041450F /* BodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB653F752BF225190041450F /* BodyView.swift */; };
+		FB653F792BF26A530041450F /* BodyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB653F782BF26A530041450F /* BodyCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		618E70562BF2039E007AEDFE /* LabelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFactory.swift; sourceTree = "<group>"; };
 		FB653F732BF225110041450F /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		FB653F752BF225190041450F /* BodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyView.swift; sourceTree = "<group>"; };
+		FB653F782BF26A530041450F /* BodyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 			children = (
 				FB653F732BF225110041450F /* HeaderView.swift */,
 				FB653F752BF225190041450F /* BodyView.swift */,
+				FB653F782BF26A530041450F /* BodyCollectionViewCell.swift */,
 			);
 			path = VocabularyBook;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				612ABC912BF2003E0056F127 /* QuizBodyView.swift in Sources */,
 				612ABC892BF1EA480056F127 /* DummyModel.swift in Sources */,
 				4D1791C32BF1E20F00E645C9 /* VocaQuizViewController.swift in Sources */,
+				FB653F792BF26A530041450F /* BodyCollectionViewCell.swift in Sources */,
 				4D1791A92BF1D5BE00E645C9 /* SceneDelegate.swift in Sources */,
 				612ABC872BF1EA3F0056F127 /* DummyView.swift in Sources */,
 				4D1791C52BF1E27300E645C9 /* CalenderViewController.swift in Sources */,

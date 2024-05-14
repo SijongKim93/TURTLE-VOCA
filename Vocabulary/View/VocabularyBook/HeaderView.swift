@@ -33,6 +33,7 @@ class HeaderView: UIView {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupConstraints()
+        
     }
         
     required init?(coder: NSCoder) {
