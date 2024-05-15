@@ -22,6 +22,9 @@
 		4D1791D72BF35E0B00E645C9 /* DetailModelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791D62BF35E0B00E645C9 /* DetailModelViewController.swift */; };
 		4D1791D92BF35FFE00E645C9 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791D82BF35FFE00E645C9 /* PresentationController.swift */; };
 		4D1791DB2BF390DF00E645C9 /* ButtonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791DA2BF390DF00E645C9 /* ButtonFactory.swift */; };
+		611186EF2BF4DCB6009C2FE9 /* FlashCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611186EE2BF4DCB6009C2FE9 /* FlashCardViewController.swift */; };
+		611186F22BF4DD5E009C2FE9 /* FlashHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611186F12BF4DD5E009C2FE9 /* FlashHeaderView.swift */; };
+		611186F42BF4DE09009C2FE9 /* FlashBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611186F32BF4DE09009C2FE9 /* FlashBodyView.swift */; };
 		612ABC892BF1EA480056F127 /* DummyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC882BF1EA480056F127 /* DummyModel.swift */; };
 		612ABC8F2BF200370056F127 /* QuizHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC8E2BF200370056F127 /* QuizHeaderView.swift */; };
 		612ABC912BF2003E0056F127 /* QuizBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC902BF2003E0056F127 /* QuizBodyView.swift */; };
@@ -36,6 +39,8 @@
 		61BCB0542BF2F4B600CF73E4 /* DummyGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0532BF2F4B600CF73E4 /* DummyGenerator.swift */; };
 		61BCB0562BF337B100CF73E4 /* VocaQuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0552BF337B100CF73E4 /* VocaQuizModel.swift */; };
 		61BCB0592BF3597C00CF73E4 /* UIResponder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0582BF3597C00CF73E4 /* UIResponder+Extension.swift */; };
+		61F75F5D2BF4ED2500FCC731 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F75F5C2BF4ED2500FCC731 /* UIColor+Extension.swift */; };
+		61F75F5F2BF4F9E800FCC731 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F75F5E2BF4F9E800FCC731 /* AlertController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +60,9 @@
 		4D1791D62BF35E0B00E645C9 /* DetailModelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModelViewController.swift; sourceTree = "<group>"; };
 		4D1791D82BF35FFE00E645C9 /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
 		4D1791DA2BF390DF00E645C9 /* ButtonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFactory.swift; sourceTree = "<group>"; };
+		611186EE2BF4DCB6009C2FE9 /* FlashCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardViewController.swift; sourceTree = "<group>"; };
+		611186F12BF4DD5E009C2FE9 /* FlashHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashHeaderView.swift; sourceTree = "<group>"; };
+		611186F32BF4DE09009C2FE9 /* FlashBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashBodyView.swift; sourceTree = "<group>"; };
 		612ABC882BF1EA480056F127 /* DummyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyModel.swift; sourceTree = "<group>"; };
 		612ABC8E2BF200370056F127 /* QuizHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizHeaderView.swift; sourceTree = "<group>"; };
 		612ABC902BF2003E0056F127 /* QuizBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBodyView.swift; sourceTree = "<group>"; };
@@ -69,6 +77,8 @@
 		61BCB0532BF2F4B600CF73E4 /* DummyGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyGenerator.swift; sourceTree = "<group>"; };
 		61BCB0552BF337B100CF73E4 /* VocaQuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaQuizModel.swift; sourceTree = "<group>"; };
 		61BCB0582BF3597C00CF73E4 /* UIResponder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Extension.swift"; sourceTree = "<group>"; };
+		61F75F5C2BF4ED2500FCC731 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		61F75F5E2BF4F9E800FCC731 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +132,7 @@
 		4D1791BE2BF1E15700E645C9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				611186F02BF4DD4F009C2FE9 /* FlashCard */,
 				618E706B2BF25316007AEDFE /* GamePage */,
 				612ABC8A2BF1FCF80056F127 /* VocaQuiz */,
 				4D1791D22BF2F70700E645C9 /* Calender */,
@@ -132,6 +143,7 @@
 		4D1791BF2BF1E15C00E645C9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				611186ED2BF4DBD3009C2FE9 /* FlashCard */,
 				610130D62BF3D9E400CE8183 /* VocaQuiz */,
 				4D1791C02BF1E1F700E645C9 /* AddBookCaseViewController.swift */,
 				4D1791AA2BF1D5BE00E645C9 /* AddVocaViewController.swift */,
@@ -166,6 +178,23 @@
 				618E70692BF24F2F007AEDFE /* GamePageViewController.swift */,
 			);
 			path = VocaQuiz;
+			sourceTree = "<group>";
+		};
+		611186ED2BF4DBD3009C2FE9 /* FlashCard */ = {
+			isa = PBXGroup;
+			children = (
+				611186EE2BF4DCB6009C2FE9 /* FlashCardViewController.swift */,
+			);
+			path = FlashCard;
+			sourceTree = "<group>";
+		};
+		611186F02BF4DD4F009C2FE9 /* FlashCard */ = {
+			isa = PBXGroup;
+			children = (
+				611186F12BF4DD5E009C2FE9 /* FlashHeaderView.swift */,
+				611186F32BF4DE09009C2FE9 /* FlashBodyView.swift */,
+			);
+			path = FlashCard;
 			sourceTree = "<group>";
 		};
 		612ABC852BF1E9B70056F127 /* Model */ = {
@@ -227,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				61BCB0532BF2F4B600CF73E4 /* DummyGenerator.swift */,
+				61F75F5E2BF4F9E800FCC731 /* AlertController.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -235,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				61BCB0582BF3597C00CF73E4 /* UIResponder+Extension.swift */,
+				61F75F5C2BF4ED2500FCC731 /* UIColor+Extension.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -318,12 +349,16 @@
 				4D1791AB2BF1D5BE00E645C9 /* AddVocaViewController.swift in Sources */,
 				4D1791A72BF1D5BE00E645C9 /* AppDelegate.swift in Sources */,
 				618E706D2BF25328007AEDFE /* GamePageHeaderView.swift in Sources */,
+				611186EF2BF4DCB6009C2FE9 /* FlashCardViewController.swift in Sources */,
 				612ABC912BF2003E0056F127 /* QuizBodyView.swift in Sources */,
 				61BCB0542BF2F4B600CF73E4 /* DummyGenerator.swift in Sources */,
 				612ABC892BF1EA480056F127 /* DummyModel.swift in Sources */,
 				618E70602BF21970007AEDFE /* Constants.swift in Sources */,
 				4D1791C32BF1E20F00E645C9 /* VocaQuizViewController.swift in Sources */,
+				61F75F5F2BF4F9E800FCC731 /* AlertController.swift in Sources */,
+				61F75F5D2BF4ED2500FCC731 /* UIColor+Extension.swift in Sources */,
 				4D1791A92BF1D5BE00E645C9 /* SceneDelegate.swift in Sources */,
+				611186F22BF4DD5E009C2FE9 /* FlashHeaderView.swift in Sources */,
 				4D1791D12BF23F0300E645C9 /* CalenderCollectionViewCell.swift in Sources */,
 				618E70662BF229D1007AEDFE /* VocaQuizMainCollectionViewCell.swift in Sources */,
 				61BCB0592BF3597C00CF73E4 /* UIResponder+Extension.swift in Sources */,
@@ -338,6 +373,7 @@
 				4D1791DB2BF390DF00E645C9 /* ButtonFactory.swift in Sources */,
 				4D1791C12BF1E1F700E645C9 /* AddBookCaseViewController.swift in Sources */,
 				4D1791B12BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld in Sources */,
+				611186F42BF4DE09009C2FE9 /* FlashBodyView.swift in Sources */,
 				618E706A2BF24F2F007AEDFE /* GamePageViewController.swift in Sources */,
 				618E70572BF2039E007AEDFE /* LabelFactory.swift in Sources */,
 				4D1791C72BF1E27F00E645C9 /* MyPageViewController.swift in Sources */,

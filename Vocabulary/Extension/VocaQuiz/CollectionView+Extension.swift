@@ -41,6 +41,10 @@ extension VocaQuizViewController: UICollectionViewDelegate, UICollectionViewData
             self.present(gamePageVC, animated: true)
         case 1 :
             print("1")
+        case 2 :
+            let flashVC = FlashCardViewController()
+            
+            self.present(flashVC, animated: true)
         default :
             return
         }

@@ -38,7 +38,7 @@ class GamePageBottomView: UIView {
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 15
         button.layer.borderWidth = 0.5
-        button.addAction(UIAction(handler: { _ in
+        button.addAction(UIAction(handler: { action in
             guard let title = button.titleLabel?.text else { return }
             if self.checkAnswer(title: title) == true {
                 button.backgroundColor = .green
@@ -105,7 +105,7 @@ class GamePageBottomView: UIView {
         guard let currentVC = currentViewController as? GamePageViewController else { return flag }
         let currentQuestion = currentVC.gamePageBodyView.gameTitle.text
         let gameArray = currentVC.quizData
-        let answer = gameArray.filter{$0.question == currentQuestion}.map{ $0.answer }.joined()
+        let answer = gameArray.filter{ $0.question == currentQuestion }.map{ $0.answer }.joined()
         
         if title == answer {
             currentVC.currentNumber += 1
