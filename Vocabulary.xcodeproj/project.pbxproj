@@ -13,7 +13,7 @@
 		4D1791B12BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791AF2BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld */; };
 		4D1791B32BF1D5BF00E645C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D1791B22BF1D5BF00E645C9 /* Assets.xcassets */; };
 		4D1791B62BF1D5BF00E645C9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4D1791B52BF1D5BF00E645C9 /* Base */; };
-		4D1791C12BF1E1F700E645C9 /* AddBookCaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791C02BF1E1F700E645C9 /* AddBookCaseViewController.swift */; };
+		4D1791C12BF1E1F700E645C9 /* BookCaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791C02BF1E1F700E645C9 /* BookCaseViewController.swift */; };
 		4D1791C32BF1E20F00E645C9 /* VocaQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791C22BF1E20F00E645C9 /* VocaQuizViewController.swift */; };
 		4D1791C52BF1E27300E645C9 /* CalenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791C42BF1E27300E645C9 /* CalenderViewController.swift */; };
 		4D1791C72BF1E27F00E645C9 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */; };
@@ -23,9 +23,13 @@
 		612ABC912BF2003E0056F127 /* QuizBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC902BF2003E0056F127 /* QuizBodyView.swift */; };
 		618E70572BF2039E007AEDFE /* LabelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E70562BF2039E007AEDFE /* LabelFactory.swift */; };
 		FB653F712BF220B00041450F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FB653F702BF220B00041450F /* SnapKit */; };
-		FB653F742BF225110041450F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB653F732BF225110041450F /* HeaderView.swift */; };
-		FB653F762BF225190041450F /* BodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB653F752BF225190041450F /* BodyView.swift */; };
-		FB653F792BF26A530041450F /* BodyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB653F782BF26A530041450F /* BodyCollectionViewCell.swift */; };
+		FB653F742BF225110041450F /* BookCaseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB653F732BF225110041450F /* BookCaseHeaderView.swift */; };
+		FB653F762BF225190041450F /* BookCaseBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB653F752BF225190041450F /* BookCaseBodyView.swift */; };
+		FB653F792BF26A530041450F /* BookCaseBodyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB653F782BF26A530041450F /* BookCaseBodyCell.swift */; };
+		FB90037E2BF337530018692D /* AddBookCaseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90037D2BF337530018692D /* AddBookCaseHeaderView.swift */; };
+		FB9003802BF3487D0018692D /* AddBookCaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90037F2BF3487D0018692D /* AddBookCaseViewController.swift */; };
+		FB9003832BF38F320018692D /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = FB9003822BF38F320018692D /* CombineCocoa */; };
+		FBDCC3F62BF3C478006F067D /* AddBookCaseBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDCC3F52BF3C478006F067D /* AddBookCaseBodyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +41,7 @@
 		4D1791B22BF1D5BF00E645C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D1791B52BF1D5BF00E645C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D1791B72BF1D5BF00E645C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4D1791C02BF1E1F700E645C9 /* AddBookCaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookCaseViewController.swift; sourceTree = "<group>"; };
+		4D1791C02BF1E1F700E645C9 /* BookCaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCaseViewController.swift; sourceTree = "<group>"; };
 		4D1791C22BF1E20F00E645C9 /* VocaQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaQuizViewController.swift; sourceTree = "<group>"; };
 		4D1791C42BF1E27300E645C9 /* CalenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewController.swift; sourceTree = "<group>"; };
 		4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
@@ -46,9 +50,12 @@
 		612ABC8E2BF200370056F127 /* QuizHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizHeaderView.swift; sourceTree = "<group>"; };
 		612ABC902BF2003E0056F127 /* QuizBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBodyView.swift; sourceTree = "<group>"; };
 		618E70562BF2039E007AEDFE /* LabelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFactory.swift; sourceTree = "<group>"; };
-		FB653F732BF225110041450F /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
-		FB653F752BF225190041450F /* BodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyView.swift; sourceTree = "<group>"; };
-		FB653F782BF26A530041450F /* BodyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyCollectionViewCell.swift; sourceTree = "<group>"; };
+		FB653F732BF225110041450F /* BookCaseHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCaseHeaderView.swift; sourceTree = "<group>"; };
+		FB653F752BF225190041450F /* BookCaseBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCaseBodyView.swift; sourceTree = "<group>"; };
+		FB653F782BF26A530041450F /* BookCaseBodyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCaseBodyCell.swift; sourceTree = "<group>"; };
+		FB90037D2BF337530018692D /* AddBookCaseHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookCaseHeaderView.swift; sourceTree = "<group>"; };
+		FB90037F2BF3487D0018692D /* AddBookCaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookCaseViewController.swift; sourceTree = "<group>"; };
+		FBDCC3F52BF3C478006F067D /* AddBookCaseBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookCaseBodyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB9003832BF38F320018692D /* CombineCocoa in Frameworks */,
 				FB653F712BF220B00041450F /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -99,7 +107,8 @@
 		4D1791BE2BF1E15700E645C9 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FB653F722BF224FB0041450F /* VocabularyBook */,
+				FB90037C2BF3346F0018692D /* AddBookCase */,
+				FB653F722BF224FB0041450F /* BookCase */,
 				612ABC8A2BF1FCF80056F127 /* VocaQuiz */,
 				612ABC862BF1EA3F0056F127 /* DummyView.swift */,
 			);
@@ -109,7 +118,8 @@
 		4D1791BF2BF1E15C00E645C9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				4D1791C02BF1E1F700E645C9 /* AddBookCaseViewController.swift */,
+				4D1791C02BF1E1F700E645C9 /* BookCaseViewController.swift */,
+				FB90037F2BF3487D0018692D /* AddBookCaseViewController.swift */,
 				4D1791AA2BF1D5BE00E645C9 /* AddVocaViewController.swift */,
 				4D1791C22BF1E20F00E645C9 /* VocaQuizViewController.swift */,
 				4D1791C42BF1E27300E645C9 /* CalenderViewController.swift */,
@@ -143,14 +153,23 @@
 			path = Factory;
 			sourceTree = "<group>";
 		};
-		FB653F722BF224FB0041450F /* VocabularyBook */ = {
+		FB653F722BF224FB0041450F /* BookCase */ = {
 			isa = PBXGroup;
 			children = (
-				FB653F732BF225110041450F /* HeaderView.swift */,
-				FB653F752BF225190041450F /* BodyView.swift */,
-				FB653F782BF26A530041450F /* BodyCollectionViewCell.swift */,
+				FB653F732BF225110041450F /* BookCaseHeaderView.swift */,
+				FB653F752BF225190041450F /* BookCaseBodyView.swift */,
+				FB653F782BF26A530041450F /* BookCaseBodyCell.swift */,
 			);
-			path = VocabularyBook;
+			path = BookCase;
+			sourceTree = "<group>";
+		};
+		FB90037C2BF3346F0018692D /* AddBookCase */ = {
+			isa = PBXGroup;
+			children = (
+				FB90037D2BF337530018692D /* AddBookCaseHeaderView.swift */,
+				FBDCC3F52BF3C478006F067D /* AddBookCaseBodyView.swift */,
+			);
+			path = AddBookCase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,6 +190,7 @@
 			name = Vocabulary;
 			packageProductDependencies = (
 				FB653F702BF220B00041450F /* SnapKit */,
+				FB9003822BF38F320018692D /* CombineCocoa */,
 			);
 			productName = Vocabulary;
 			productReference = 4D1791A32BF1D5BE00E645C9 /* Vocabulary.app */;
@@ -202,6 +222,7 @@
 			mainGroup = 4D17919A2BF1D5BE00E645C9;
 			packageReferences = (
 				FB653F6F2BF220B00041450F /* XCRemoteSwiftPackageReference "SnapKit" */,
+				FB9003812BF38F320018692D /* XCRemoteSwiftPackageReference "CombineCocoa" */,
 			);
 			productRefGroup = 4D1791A42BF1D5BE00E645C9 /* Products */;
 			projectDirPath = "";
@@ -231,20 +252,23 @@
 			files = (
 				4D1791AB2BF1D5BE00E645C9 /* AddVocaViewController.swift in Sources */,
 				4D1791A72BF1D5BE00E645C9 /* AppDelegate.swift in Sources */,
-				FB653F762BF225190041450F /* BodyView.swift in Sources */,
+				FB653F762BF225190041450F /* BookCaseBodyView.swift in Sources */,
 				612ABC912BF2003E0056F127 /* QuizBodyView.swift in Sources */,
 				612ABC892BF1EA480056F127 /* DummyModel.swift in Sources */,
 				4D1791C32BF1E20F00E645C9 /* VocaQuizViewController.swift in Sources */,
-				FB653F792BF26A530041450F /* BodyCollectionViewCell.swift in Sources */,
+				FB90037E2BF337530018692D /* AddBookCaseHeaderView.swift in Sources */,
+				FB653F792BF26A530041450F /* BookCaseBodyCell.swift in Sources */,
 				4D1791A92BF1D5BE00E645C9 /* SceneDelegate.swift in Sources */,
 				612ABC872BF1EA3F0056F127 /* DummyView.swift in Sources */,
 				4D1791C52BF1E27300E645C9 /* CalenderViewController.swift in Sources */,
+				FBDCC3F62BF3C478006F067D /* AddBookCaseBodyView.swift in Sources */,
 				612ABC8F2BF200370056F127 /* QuizHeaderView.swift in Sources */,
-				4D1791C12BF1E1F700E645C9 /* AddBookCaseViewController.swift in Sources */,
+				4D1791C12BF1E1F700E645C9 /* BookCaseViewController.swift in Sources */,
 				4D1791B12BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld in Sources */,
 				618E70572BF2039E007AEDFE /* LabelFactory.swift in Sources */,
 				4D1791C72BF1E27F00E645C9 /* MyPageViewController.swift in Sources */,
-				FB653F742BF225110041450F /* HeaderView.swift in Sources */,
+				FB9003802BF3487D0018692D /* AddBookCaseViewController.swift in Sources */,
+				FB653F742BF225110041450F /* BookCaseHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,6 +495,14 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		FB9003812BF38F320018692D /* XCRemoteSwiftPackageReference "CombineCocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CombineCommunity/CombineCocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -478,6 +510,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FB653F6F2BF220B00041450F /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		FB9003822BF38F320018692D /* CombineCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FB9003812BF38F320018692D /* XCRemoteSwiftPackageReference "CombineCocoa" */;
+			productName = CombineCocoa;
 		};
 /* End XCSwiftPackageProductDependency section */
 

@@ -1,5 +1,5 @@
 //
-//  BodyView.swift
+//  BookCaseBodyView.swift
 //  Vocabulary
 //
 //  Created by 김한빛 on 5/13/24.
@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import SnapKit
 
-class BodyView: UIView {
+class BookCaseBodyView: UIView {
     
     let vocaBookCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -59,17 +59,17 @@ class BodyView: UIView {
         vocaBookCollectionView.delegate = self
         vocaBookCollectionView.dataSource = self
         
-        vocaBookCollectionView.register(BodyCollectionViewCell.self, forCellWithReuseIdentifier: BodyCollectionViewCell.identifier)
+        vocaBookCollectionView.register(BookCaseBodyCell.self, forCellWithReuseIdentifier: BookCaseBodyCell.identifier)
     }
 }
 
-extension BodyView: UICollectionViewDataSource, UICollectionViewDelegate {
+extension BookCaseBodyView: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = vocaBookCollectionView.dequeueReusableCell(withReuseIdentifier: BodyCollectionViewCell.identifier, for: indexPath) as! BodyCollectionViewCell
+        let cell = vocaBookCollectionView.dequeueReusableCell(withReuseIdentifier: BookCaseBodyCell.identifier, for: indexPath) as! BookCaseBodyCell
         return cell
     }
 }

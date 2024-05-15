@@ -8,9 +8,9 @@
 import UIKit
 import SnapKit
 
-class BodyCollectionViewCell: UICollectionViewCell {
+class BookCaseBodyCell: UICollectionViewCell {
     
-    static let identifier = String(describing: BodyCollectionViewCell.self)
+    static let identifier = String(describing: BookCaseBodyCell.self)
     
     let cellView: UIView = {
         let view = UIView()
