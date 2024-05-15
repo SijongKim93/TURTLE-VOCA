@@ -59,6 +59,7 @@ class FlashCardViewController: UIViewController {
             let alert = alertController.makeAlertWithCompletion(title: "마지막 단어입니다.", message: "다시 시작하시겠습니까?\n단어는 랜덤으로 다시 만들어집니다.") { [weak self] _ in
                 self?.generate()
                 self?.currentNumber = 0
+                self?.flashBodyView.wordLabel.text = self?.wordList[self!.currentNumber].words
             }
             self.present(alert, animated: true)
         } else {
