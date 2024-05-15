@@ -26,6 +26,12 @@ class BookCaseBodyView: UIView {
     //응원 문구 ( 랜덤으로 들어가게 하고싶다 )
     let motivationLabel = LabelFactory().makeLabel(title: "응원 문구 !", size: 15, isBold: false)
     
+    lazy var wholeStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [vocaBookCollectionView, motivationLabel])
+        stackView.axis = .vertical
+        return stackView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupConstraints()
@@ -37,25 +43,34 @@ class BookCaseBodyView: UIView {
     }
     
     private func setupConstraints(){
-        [vocaBookCollectionView, motivationLabel].forEach {
-            addSubview($0)
+//        [vocaBookCollectionView, motivationLabel].forEach {
+//            addSubview($0)
+//        }
+//        
+//        vocaBookCollectionView.snp.makeConstraints{
+//            $0.top.equalToSuperview()
+//            $0.horizontalEdges.equalToSuperview()
+//            $0.height.equalTo(520)
+//        }
+//        
+//        motivationLabel.snp.makeConstraints{
+//            $0.top.equalTo(vocaBookCollectionView.snp.bottom).offset(40)
+//            $0.centerX.equalToSuperview()
+//            $0.bottom.equalTo(safeAreaInsets)
+//        }
+        
+        addSubview(wholeStackView)
+        
+        wholeStackView.snp.makeConstraints{
+            $0.edges.equalToSuperview()
         }
         
         vocaBookCollectionView.snp.makeConstraints{
-            $0.top.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(520)
-        }
-        
-        motivationLabel.snp.makeConstraints{
-            $0.top.equalTo(vocaBookCollectionView.snp.bottom).offset(40)
-            $0.horizontalEdges.equalToSuperview().inset(30)
-            $0.bottom.equalToSuperview().inset(40)
         }
     }
     
     func configureUI(){
-        
         vocaBookCollectionView.delegate = self
         vocaBookCollectionView.dataSource = self
         

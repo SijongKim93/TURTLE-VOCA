@@ -28,8 +28,7 @@ class BookCaseHeaderView: UIView {
         let stackView = UIStackView(arrangedSubviews: [headerLabel, plusButton])
         stackView.axis = .horizontal
         stackView.distribution = .fill
-        stackView.spacing = 150 
-        
+        stackView.spacing = 150
         return stackView
     }()
     
@@ -47,7 +46,7 @@ class BookCaseHeaderView: UIView {
         addSubview(headerStackView)
         
         headerStackView.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(30)
+            $0.verticalEdges.equalToSuperview().inset(30)
             $0.horizontalEdges.equalToSuperview().inset(30)
         }
     }
