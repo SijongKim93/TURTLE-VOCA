@@ -74,7 +74,6 @@ class CalenderViewController: UIViewController {
         view.addSubview(viewLine)
         view.addSubview(dayCollectionView)
         
-        
         dayCollectionView.delegate = self
         dayCollectionView.dataSource = self
         dayCollectionView.collectionViewLayout = createCollectionViewFlowLayout(for: dayCollectionView)
@@ -133,7 +132,7 @@ class CalenderViewController: UIViewController {
     }
     
     @objc func filterButtonTapped() {
-        let filterModalVC = CalenderDetailModelViewController()
+        let filterModalVC = DetailModelViewController()
         filterModalVC.modalPresentationStyle = .custom
         filterModalVC.transitioningDelegate = self
         present(filterModalVC, animated: true, completion: nil)

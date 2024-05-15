@@ -8,8 +8,10 @@
 import UIKit
 import SnapKit
 
-class CalenderDetailModelViewController: UIViewController {
-
+class DetailModelViewController: UIViewController {
+    
+    let labels = ["최근 저장 순", "나중 저장 순", "외운 단어 순", "못 외운 단어 순", "랜덤"]
+    var selectedButton: UIButton?
     
     let filterMainLabel = LabelFactory().makeLabel(title: "단어 정렬 설정", size: 23, textAlignment: .left, isBold: true)
     
@@ -35,49 +37,24 @@ class CalenderDetailModelViewController: UIViewController {
         return view
     }()
     
-    let recentAdd = LabelFactory().makeLabel(title: "최근 저장 순", color: .black, size: 20, textAlignment: .left, isBold: false)
-    let lastAdd = LabelFactory().makeLabel(title: "나중 저장 순", color: .black, size: 20, textAlignment: .left, isBold: false)
-    let memoryVoca = LabelFactory().makeLabel(title: "외운 단어 순", color: .black, size: 20, textAlignment: .left, isBold: false)
-    let unmemoryVoca = LabelFactory().makeLabel(title: "못 외운 단어 순", color: .black, size: 20, textAlignment: .left, isBold: false)
-    let randomVoca = LabelFactory().makeLabel(title: "랜덤", color: .black, size: 20, textAlignment: .left, isBold: false)
-    
-    lazy var bodyLabelStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.distribution = .fill
-        stackView.spacing = 40
-        
-        stackView.addArrangedSubview(recentAdd)
-        stackView.addArrangedSubview(lastAdd)
-        stackView.addArrangedSubview(memoryVoca)
-        stackView.addArrangedSubview(unmemoryVoca)
-        stackView.addArrangedSubview(randomVoca)
-        return stackView
-    }()
-    
-    let recentAddButton = ButtonFactory().makeButton(normalImageName: "circle", selectedImageName: "circle.circle", tintColor: .black)
-    let lastAddButton = ButtonFactory().makeButton(normalImageName: "circle", selectedImageName: "circle.circle", tintColor: .black)
-    let memoryVocaButton = ButtonFactory().makeButton(normalImageName: "circle", selectedImageName: "circle.circle", tintColor: .black)
-    let unmemoryVocaButton = ButtonFactory().makeButton(normalImageName: "circle", selectedImageName: "circle.circle", tintColor: .black)
-    let randomVocaButton = ButtonFactory().makeButton(normalImageName: "circle", selectedImageName: "circle.circle", tintColor: .black)
-    
-    lazy var bodyButtonStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.distribution = .fill
-        stackView.spacing = 40
-        
-        stackView.addArrangedSubview(recentAddButton)
-        stackView.addArrangedSubview(lastAddButton)
-        stackView.addArrangedSubview(memoryVocaButton)
-        stackView.addArrangedSubview(unmemoryVocaButton)
-        stackView.addArrangedSubview(randomVocaButton)
-        return stackView
+    let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(FilterTableViewCell.self, forCellReuseIdentifier: FilterTableViewCell.identifier)
+        tableView.separatorStyle = .none
+        return tableView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        xButton.addTarget(self, action: #selector(dismissViewController), for: .touchUpInside)
+    }
+    
+    @objc func dismissViewController() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     func setupUI() {
@@ -86,8 +63,7 @@ class CalenderDetailModelViewController: UIViewController {
         
         view.addSubview(topStackView)
         view.addSubview(viewLine)
-        view.addSubview(bodyLabelStackView)
-        view.addSubview(bodyButtonStackView)
+        view.addSubview(tableView)
         
         topStackView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(15)
@@ -96,6 +72,7 @@ class CalenderDetailModelViewController: UIViewController {
         
         xButton.snp.makeConstraints {
             $0.width.equalTo(50)
+            $0.height.equalTo(30)
         }
         
         viewLine.snp.makeConstraints {
@@ -104,14 +81,44 @@ class CalenderDetailModelViewController: UIViewController {
             $0.height.equalTo(1)
         }
         
-        bodyLabelStackView.snp.makeConstraints {
-            $0.top.equalTo(viewLine.snp.bottom).offset(20)
-            $0.leading.equalToSuperview().inset(20)
+        tableView.snp.makeConstraints {
+            $0.top.equalTo(viewLine.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview().inset(10)
+        }
+    }
+}
+
+extension DetailModelViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        labels.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: FilterTableViewCell.identifier, for: indexPath) as? FilterTableViewCell else { fatalError("테이블 뷰 에러") }
+        
+        cell.label.text = labels[indexPath.row]
+        cell.selectionStyle = .none
+        
+        cell.buttonAction = { [weak cell] in
+            cell?.toggleButtonSelection()
         }
         
-        bodyButtonStackView.snp.makeConstraints {
-            $0.top.equalTo(viewLine.snp.bottom).offset(20)
-            $0.trailing.equalToSuperview().inset(20)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        60
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? FilterTableViewCell else { fatalError("테이블 뷰 셀 선택 에러") }
+        
+        if let selectedButton = selectedButton {
+            selectedButton.isSelected = false
         }
+        
+        selectedButton = cell.button
+        
+        cell.toggleButtonSelection()
     }
 }
