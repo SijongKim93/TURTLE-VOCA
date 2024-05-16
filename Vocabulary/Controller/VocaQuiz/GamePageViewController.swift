@@ -31,6 +31,7 @@ class GamePageViewController: UIViewController {
     }()
     
     let dummyGenerator = DummyGenerator()
+    let alertController = AlertController()
     
     var dummyData = [DummyModel]()
     var quizData = [VocaQuizModel]()
