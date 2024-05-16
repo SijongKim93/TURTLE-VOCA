@@ -19,9 +19,15 @@
 		4D1791C72BF1E27F00E645C9 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */; };
 		4D1791CF2BF2142100E645C9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4D1791CE2BF2142100E645C9 /* SnapKit */; };
 		4D1791D12BF23F0300E645C9 /* CalenderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791D02BF23F0300E645C9 /* CalenderCollectionViewCell.swift */; };
-		4D1791D72BF35E0B00E645C9 /* DetailModelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791D62BF35E0B00E645C9 /* DetailModelViewController.swift */; };
-		4D1791D92BF35FFE00E645C9 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791D82BF35FFE00E645C9 /* PresentationController.swift */; };
+		4D1791D72BF35E0B00E645C9 /* FilterDetailModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791D62BF35E0B00E645C9 /* FilterDetailModalViewController.swift */; };
+		4D1791D92BF35FFE00E645C9 /* FilterPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791D82BF35FFE00E645C9 /* FilterPresentationController.swift */; };
 		4D1791DD2BF45AD500E645C9 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791DC2BF45AD500E645C9 /* FilterTableViewCell.swift */; };
+		4D1791E12BF5C4F900E645C9 /* MyPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791E02BF5C4F900E645C9 /* MyPageTableViewCell.swift */; };
+		4D1791E32BF5CF8600E645C9 /* MyPageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791E22BF5CF8600E645C9 /* MyPageData.swift */; };
+		4D1791E52BF5DE0500E645C9 /* DummyEnglish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791E42BF5DE0500E645C9 /* DummyEnglish.swift */; };
+		4D1791E72BF618A300E645C9 /* MenuDetailModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791E62BF618A300E645C9 /* MenuDetailModalViewController.swift */; };
+		4D1791E92BF61A0100E645C9 /* MenuDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791E82BF61A0100E645C9 /* MenuDetailTableViewCell.swift */; };
+		4D1791EB2BF621D600E645C9 /* MenuDetailPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791EA2BF621D600E645C9 /* MenuDetailPresentationController.swift */; };
 		612ABC892BF1EA480056F127 /* DummyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC882BF1EA480056F127 /* DummyModel.swift */; };
 		612ABC8F2BF200370056F127 /* QuizHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC8E2BF200370056F127 /* QuizHeaderView.swift */; };
 		612ABC912BF2003E0056F127 /* QuizBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC902BF2003E0056F127 /* QuizBodyView.swift */; };
@@ -50,9 +56,15 @@
 		4D1791C42BF1E27300E645C9 /* CalenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewController.swift; sourceTree = "<group>"; };
 		4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		4D1791D02BF23F0300E645C9 /* CalenderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderCollectionViewCell.swift; sourceTree = "<group>"; };
-		4D1791D62BF35E0B00E645C9 /* DetailModelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModelViewController.swift; sourceTree = "<group>"; };
-		4D1791D82BF35FFE00E645C9 /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
+		4D1791D62BF35E0B00E645C9 /* FilterDetailModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDetailModalViewController.swift; sourceTree = "<group>"; };
+		4D1791D82BF35FFE00E645C9 /* FilterPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPresentationController.swift; sourceTree = "<group>"; };
 		4D1791DC2BF45AD500E645C9 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
+		4D1791E02BF5C4F900E645C9 /* MyPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTableViewCell.swift; sourceTree = "<group>"; };
+		4D1791E22BF5CF8600E645C9 /* MyPageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageData.swift; sourceTree = "<group>"; };
+		4D1791E42BF5DE0500E645C9 /* DummyEnglish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyEnglish.swift; sourceTree = "<group>"; };
+		4D1791E62BF618A300E645C9 /* MenuDetailModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailModalViewController.swift; sourceTree = "<group>"; };
+		4D1791E82BF61A0100E645C9 /* MenuDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailTableViewCell.swift; sourceTree = "<group>"; };
+		4D1791EA2BF621D600E645C9 /* MenuDetailPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailPresentationController.swift; sourceTree = "<group>"; };
 		612ABC882BF1EA480056F127 /* DummyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyModel.swift; sourceTree = "<group>"; };
 		612ABC8E2BF200370056F127 /* QuizHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizHeaderView.swift; sourceTree = "<group>"; };
 		612ABC902BF2003E0056F127 /* QuizBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBodyView.swift; sourceTree = "<group>"; };
@@ -120,6 +132,7 @@
 				618E706B2BF25316007AEDFE /* GamePage */,
 				612ABC8A2BF1FCF80056F127 /* VocaQuiz */,
 				4D1791D22BF2F70700E645C9 /* Calender */,
+				4D1791DF2BF5C4E200E645C9 /* MyPage */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -142,6 +155,7 @@
 			children = (
 				4D1791D02BF23F0300E645C9 /* CalenderCollectionViewCell.swift */,
 				4D1791DC2BF45AD500E645C9 /* FilterTableViewCell.swift */,
+				4D1791E82BF61A0100E645C9 /* MenuDetailTableViewCell.swift */,
 			);
 			path = Calender;
 			sourceTree = "<group>";
@@ -150,16 +164,28 @@
 			isa = PBXGroup;
 			children = (
 				4D1791C42BF1E27300E645C9 /* CalenderViewController.swift */,
-				4D1791D62BF35E0B00E645C9 /* DetailModelViewController.swift */,
-				4D1791D82BF35FFE00E645C9 /* PresentationController.swift */,
+				4D1791D62BF35E0B00E645C9 /* FilterDetailModalViewController.swift */,
+				4D1791E62BF618A300E645C9 /* MenuDetailModalViewController.swift */,
+				4D1791D82BF35FFE00E645C9 /* FilterPresentationController.swift */,
+				4D1791EA2BF621D600E645C9 /* MenuDetailPresentationController.swift */,
 			);
 			path = Calender;
+			sourceTree = "<group>";
+		};
+		4D1791DF2BF5C4E200E645C9 /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				4D1791E02BF5C4F900E645C9 /* MyPageTableViewCell.swift */,
+			);
+			path = MyPage;
 			sourceTree = "<group>";
 		};
 		612ABC852BF1E9B70056F127 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				612ABC882BF1EA480056F127 /* DummyModel.swift */,
+				4D1791E22BF5CF8600E645C9 /* MyPageData.swift */,
+				4D1791E42BF5DE0500E645C9 /* DummyEnglish.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -287,25 +313,31 @@
 			files = (
 				4D1791AB2BF1D5BE00E645C9 /* AddVocaViewController.swift in Sources */,
 				4D1791A72BF1D5BE00E645C9 /* AppDelegate.swift in Sources */,
+				4D1791E92BF61A0100E645C9 /* MenuDetailTableViewCell.swift in Sources */,
 				618E706D2BF25328007AEDFE /* GamePageHeaderView.swift in Sources */,
 				612ABC912BF2003E0056F127 /* QuizBodyView.swift in Sources */,
 				612ABC892BF1EA480056F127 /* DummyModel.swift in Sources */,
 				618E70602BF21970007AEDFE /* Constants.swift in Sources */,
+				4D1791EB2BF621D600E645C9 /* MenuDetailPresentationController.swift in Sources */,
 				618E70732BF25F43007AEDFE /* GamePageCollectionViewCell.swift in Sources */,
 				4D1791C32BF1E20F00E645C9 /* VocaQuizViewController.swift in Sources */,
 				4D1791A92BF1D5BE00E645C9 /* SceneDelegate.swift in Sources */,
+				4D1791E52BF5DE0500E645C9 /* DummyEnglish.swift in Sources */,
 				4D1791D12BF23F0300E645C9 /* CalenderCollectionViewCell.swift in Sources */,
 				618E70662BF229D1007AEDFE /* VocaQuizMainCollectionViewCell.swift in Sources */,
-				4D1791D92BF35FFE00E645C9 /* PresentationController.swift in Sources */,
+				4D1791E72BF618A300E645C9 /* MenuDetailModalViewController.swift in Sources */,
+				4D1791D92BF35FFE00E645C9 /* FilterPresentationController.swift in Sources */,
+				4D1791E32BF5CF8600E645C9 /* MyPageData.swift in Sources */,
 				618E706F2BF25337007AEDFE /* GamePageBodyView.swift in Sources */,
 				618E70682BF22A66007AEDFE /* CollectionView+Extension.swift in Sources */,
-				4D1791D72BF35E0B00E645C9 /* DetailModelViewController.swift in Sources */,
+				4D1791D72BF35E0B00E645C9 /* FilterDetailModalViewController.swift in Sources */,
 				4D1791C52BF1E27300E645C9 /* CalenderViewController.swift in Sources */,
 				618E70712BF25354007AEDFE /* GamePageBottomView.swift in Sources */,
 				612ABC8F2BF200370056F127 /* QuizHeaderView.swift in Sources */,
 				4D1791DD2BF45AD500E645C9 /* FilterTableViewCell.swift in Sources */,
 				4D1791C12BF1E1F700E645C9 /* AddBookCaseViewController.swift in Sources */,
 				4D1791B12BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld in Sources */,
+				4D1791E12BF5C4F900E645C9 /* MyPageTableViewCell.swift in Sources */,
 				618E706A2BF24F2F007AEDFE /* GamePageViewController.swift in Sources */,
 				618E70572BF2039E007AEDFE /* LabelFactory.swift in Sources */,
 				4D1791C72BF1E27F00E645C9 /* MyPageViewController.swift in Sources */,

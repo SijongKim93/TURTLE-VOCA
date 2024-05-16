@@ -1,20 +1,22 @@
 //
-//  CalenderPresentationController.swift
+//  MenuDetailPresentationController.swift
 //  Vocabulary
 //
-//  Created by 김시종 on 5/14/24.
+//  Created by 김시종 on 5/16/24.
 //
 
 import UIKit
 
-
-class PresentationController: UIPresentationController {
+class MenuPresentationController: UIPresentationController {
     
     private let dimmingView = UIView()
     
     override var frameOfPresentedViewInContainerView: CGRect {
         guard let containerView = containerView else { return CGRect.zero }
-        return CGRect(x: 0, y: containerView.bounds.height / 2, width: containerView.bounds.width, height: containerView.bounds.height / 2)
+        
+        let presentedHeight = containerView.bounds.height * 0.3
+        let presentedY = containerView.bounds.height - presentedHeight
+        return CGRect(x: 0, y: presentedY, width: containerView.bounds.width, height: presentedHeight)
     }
     
     
@@ -22,7 +24,7 @@ class PresentationController: UIPresentationController {
         guard let containerView = containerView, let presentedView = presentedView else { return }
         
         dimmingView.frame = containerView.bounds
-        dimmingView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        dimmingView.backgroundColor = UIColor.black.withAlphaComponent(0.7)
         dimmingView.alpha = 0
         containerView.insertSubview(dimmingView, at: 0)
         
@@ -56,4 +58,3 @@ class PresentationController: UIPresentationController {
     }
     
 }
-
