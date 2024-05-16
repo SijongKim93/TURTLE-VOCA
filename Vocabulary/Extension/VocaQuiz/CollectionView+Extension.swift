@@ -45,6 +45,10 @@ extension VocaQuizViewController: UICollectionViewDelegate, UICollectionViewData
             let flashVC = FlashCardViewController()
             
             self.present(flashVC, animated: true)
+        case 3 :
+            let hangVC = HangManGameViewController()
+            
+            self.present(hangVC, animated: true)
         default :
             return
         }

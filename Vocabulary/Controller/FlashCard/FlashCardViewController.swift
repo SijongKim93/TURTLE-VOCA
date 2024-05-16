@@ -67,7 +67,6 @@ class FlashCardViewController: UIViewController {
             flashBodyView.answerLabel.isHidden = true
             flashBodyView.answerLabel.text = wordList[currentNumber].meaning
         }
-        
     }
     
     private func layout() {

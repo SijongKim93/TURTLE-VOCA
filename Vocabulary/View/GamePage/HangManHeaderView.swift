@@ -1,25 +1,29 @@
 //
-//  FlashHeaderView.swift
+//  HangManHeaderView.swift
 //  Vocabulary
 //
-//  Created by Dongik Song on 5/15/24.
+//  Created by Dongik Song on 5/16/24.
 //
 
 import UIKit
-import SnapKit
 
-class FlashHeaderView: UIView {
+class HangManHeaderView: UIView {
     
     private lazy var titleLabel = LabelFactory().makeLabel(title: "거북이의 단어장", size: 25, textAlignment: .left, isBold: true)
-    private lazy var subLabel = LabelFactory().makeLabel(title: "FlashCard", size: 15, textAlignment: .left, isBold: false)
+    private lazy var subLabel = LabelFactory().makeLabel(title: "HangMan",color: .gray, size: 15, textAlignment: .left, isBold: false)
+    
+    lazy var scoreLabel = LabelFactory().makeLabel(title: "Score:", color: .gray, size: 15, textAlignment: .right, isBold: false)
+    
     
     private lazy var vStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [
             titleLabel,
-            subLabel
+            subLabel,
+            scoreLabel
         ])
         stackView.axis = .vertical
         stackView.spacing = -30
+        stackView.distribution = .fillEqually
         return stackView
     }()
     
@@ -42,17 +46,6 @@ class FlashHeaderView: UIView {
             $0.trailing.equalToSuperview().offset(-20)
         }
         
-        titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
-        }
-        
-        subLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview()
-        }
     }
     
 }
