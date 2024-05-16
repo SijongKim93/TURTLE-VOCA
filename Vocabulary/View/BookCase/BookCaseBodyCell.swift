@@ -7,10 +7,13 @@
 
 import UIKit
 import SnapKit
+import CoreData
 
 class BookCaseBodyCell: UICollectionViewCell {
     
     static let identifier = String(describing: BookCaseBodyCell.self)
+    
+    var bookCaseData: NSManagedObject?
     
     let cellView: UIView = {
         let view = UIView()
@@ -26,34 +29,36 @@ class BookCaseBodyCell: UICollectionViewCell {
         return button
     }()
     
-    let imageView: UIImageView = {
-        let img = UIImageView()
-        img.image = UIImage(systemName: "photo")
-        img.contentMode = .center
-        img.tintColor = .systemGray2
-        img.backgroundColor = .white
-        return img
+    lazy var imageView: UIImageView = {
+        let imgView = UIImageView()
+        imgView.contentMode = .center
+        imgView.tintColor = .systemGray2
+        imgView.backgroundColor = .white
+        if let imageData = bookCaseData?.value(forKey: "image") as? Data {
+            imgView.image = UIImage(data: imageData)
+        } else {
+            imgView.image = UIImage(systemName: "photo")
+        }
+        return imgView
     }()
     
-    let nameStackView: UIStackView = {
-        let nameLabel = LabelFactory().makeLabel(title: "코딩 단어장", size: 20, textAlignment: .left, isBold: true)
-        let detailLabel = LabelFactory().makeLabel(title: "간단 설명", size: 15, textAlignment: .left, isBold: false)
-        
+    lazy var nameLabel = LabelFactory().makeLabel(title: bookCaseData?.value(forKey: "name") as? String ?? "", size: 20, textAlignment: .left, isBold: true)
+    lazy var detailLabel = LabelFactory().makeLabel(title: bookCaseData?.value(forKey: "explain") as? String ?? "", size: 15, textAlignment: .left, isBold: false)
+    
+    lazy var nameStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [nameLabel, detailLabel])
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
-        
         return stackView
     }()
     
-    let wordStackView: UIStackView = {
-        let languageLabel = LabelFactory().makeLabel(title: "단어/의미", size: 15, textAlignment: .left, isBold: false)
-        let countLabel = LabelFactory().makeLabel(title: "단어 개수", size: 15, textAlignment: .right, isBold: false)
-        
+    lazy var languageLabel = LabelFactory().makeLabel(title: "\(bookCaseData?.value(forKey: "word") as? String ?? "")/\(bookCaseData?.value(forKey: "meaning") as? String ?? "")", size: 15, textAlignment: .left, isBold: false)
+    let countLabel = LabelFactory().makeLabel(title: "단어 개수", size: 15, textAlignment: .right, isBold: false)
+    
+    lazy var wordStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [languageLabel, countLabel])
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
-        
         return stackView
     }()
     
@@ -98,8 +103,6 @@ class BookCaseBodyCell: UICollectionViewCell {
             $0.top.equalTo(nameStackView.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview().inset(25)
             $0.bottom.equalToSuperview().inset(20)
-            
         }
-        
     }
 }

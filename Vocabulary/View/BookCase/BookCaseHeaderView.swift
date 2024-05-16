@@ -14,7 +14,7 @@ class BookCaseHeaderView: UIView {
     weak var delegate: BookCaseHeaderViewDelegate?
     
     let headerLabel = LabelFactory().makeLabel(title: "거북이의 단어장", size: 23, isBold: true)
-        
+    
     let plusButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "plus.circle"), for: .normal)
@@ -36,7 +36,7 @@ class BookCaseHeaderView: UIView {
         super.init(frame: .zero)
         setupConstraints()
     }
-        
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

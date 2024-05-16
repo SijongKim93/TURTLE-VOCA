@@ -8,8 +8,11 @@
 import Foundation
 import UIKit
 import SnapKit
+import CoreData
 
 class BookCaseBodyView: UIView {
+    
+    var bookCaseData: [NSManagedObject] = []
     
     let vocaBookCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -43,21 +46,6 @@ class BookCaseBodyView: UIView {
     }
     
     private func setupConstraints(){
-//        [vocaBookCollectionView, motivationLabel].forEach {
-//            addSubview($0)
-//        }
-//        
-//        vocaBookCollectionView.snp.makeConstraints{
-//            $0.top.equalToSuperview()
-//            $0.horizontalEdges.equalToSuperview()
-//            $0.height.equalTo(520)
-//        }
-//        
-//        motivationLabel.snp.makeConstraints{
-//            $0.top.equalTo(vocaBookCollectionView.snp.bottom).offset(40)
-//            $0.centerX.equalToSuperview()
-//            $0.bottom.equalTo(safeAreaInsets)
-//        }
         
         addSubview(wholeStackView)
         
@@ -71,6 +59,9 @@ class BookCaseBodyView: UIView {
     }
     
     func configureUI(){
+        
+        bookCaseData = CoreDataManager.shared.fetchBookCase()
+        
         vocaBookCollectionView.delegate = self
         vocaBookCollectionView.dataSource = self
         
@@ -80,11 +71,14 @@ class BookCaseBodyView: UIView {
 
 extension BookCaseBodyView: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return bookCaseData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = vocaBookCollectionView.dequeueReusableCell(withReuseIdentifier: BookCaseBodyCell.identifier, for: indexPath) as! BookCaseBodyCell
+        let bookCaseData = bookCaseData[indexPath.item]
+        cell.bookCaseData = bookCaseData
+        
         return cell
     }
 }
