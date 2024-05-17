@@ -46,6 +46,10 @@
 		61EEE6982BF5EDD900803AA1 /* ButtonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EEE6972BF5EDD900803AA1 /* ButtonFactory.swift */; };
 		61F75F5D2BF4ED2500FCC731 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F75F5C2BF4ED2500FCC731 /* UIColor+Extension.swift */; };
 		61F75F5F2BF4F9E800FCC731 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F75F5E2BF4F9E800FCC731 /* AlertController.swift */; };
+		6B02ADED2BF6E88F006E0964 /* InsertVocaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02ADEC2BF6E88F006E0964 /* InsertVocaView.swift */; };
+		6B02ADEF2BF6E8B6006E0964 /* TextFieldFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02ADEE2BF6E8B6006E0964 /* TextFieldFactory.swift */; };
+		6B02ADF62BF6EB37006E0964 /* WordEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02ADF42BF6EB37006E0964 /* WordEntity+CoreDataClass.swift */; };
+		6B02ADF72BF6EB37006E0964 /* WordEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02ADF52BF6EB37006E0964 /* WordEntity+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +93,10 @@
 		61EEE6972BF5EDD900803AA1 /* ButtonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFactory.swift; sourceTree = "<group>"; };
 		61F75F5C2BF4ED2500FCC731 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		61F75F5E2BF4F9E800FCC731 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		6B02ADEC2BF6E88F006E0964 /* InsertVocaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertVocaView.swift; sourceTree = "<group>"; };
+		6B02ADEE2BF6E8B6006E0964 /* TextFieldFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldFactory.swift; sourceTree = "<group>"; };
+		6B02ADF42BF6EB37006E0964 /* WordEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WordEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		6B02ADF52BF6EB37006E0964 /* WordEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WordEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +165,7 @@
 				610130D62BF3D9E400CE8183 /* VocaQuiz */,
 				4D1791C02BF1E1F700E645C9 /* AddBookCaseViewController.swift */,
 				4D1791AA2BF1D5BE00E645C9 /* AddVocaViewController.swift */,
+				6B02ADEC2BF6E88F006E0964 /* InsertVocaView.swift */,
 				4D1791D52BF3422900E645C9 /* Calender */,
 				4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */,
 			);
@@ -212,6 +221,8 @@
 		612ABC852BF1E9B70056F127 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6B02ADF42BF6EB37006E0964 /* WordEntity+CoreDataClass.swift */,
+				6B02ADF52BF6EB37006E0964 /* WordEntity+CoreDataProperties.swift */,
 				612ABC882BF1EA480056F127 /* DummyModel.swift */,
 				61BCB0552BF337B100CF73E4 /* VocaQuizModel.swift */,
 			);
@@ -233,6 +244,7 @@
 			children = (
 				618E70562BF2039E007AEDFE /* LabelFactory.swift */,
 				61EEE6972BF5EDD900803AA1 /* ButtonFactory.swift */,
+				6B02ADEE2BF6E8B6006E0964 /* TextFieldFactory.swift */,
 			);
 			path = Factory;
 			sourceTree = "<group>";
@@ -375,7 +387,10 @@
 				61F75F5F2BF4F9E800FCC731 /* AlertController.swift in Sources */,
 				61F75F5D2BF4ED2500FCC731 /* UIColor+Extension.swift in Sources */,
 				4D1791A92BF1D5BE00E645C9 /* SceneDelegate.swift in Sources */,
+				6B02ADED2BF6E88F006E0964 /* InsertVocaView.swift in Sources */,
 				611186F22BF4DD5E009C2FE9 /* FlashHeaderView.swift in Sources */,
+				6B02ADF62BF6EB37006E0964 /* WordEntity+CoreDataClass.swift in Sources */,
+				6B02ADF72BF6EB37006E0964 /* WordEntity+CoreDataProperties.swift in Sources */,
 				61EEE6902BF5E66E00803AA1 /* HangManGameViewController.swift in Sources */,
 				4D1791D12BF23F0300E645C9 /* CalenderCollectionViewCell.swift in Sources */,
 				618E70662BF229D1007AEDFE /* VocaQuizMainCollectionViewCell.swift in Sources */,
@@ -386,6 +401,7 @@
 				618E70682BF22A66007AEDFE /* CollectionView+Extension.swift in Sources */,
 				4D1791D72BF35E0B00E645C9 /* DetailModelViewController.swift in Sources */,
 				4D1791C52BF1E27300E645C9 /* CalenderViewController.swift in Sources */,
+				6B02ADEF2BF6E8B6006E0964 /* TextFieldFactory.swift in Sources */,
 				618E70712BF25354007AEDFE /* GamePageBottomView.swift in Sources */,
 				612ABC8F2BF200370056F127 /* QuizHeaderView.swift in Sources */,
 				4D1791DD2BF45AD500E645C9 /* FilterTableViewCell.swift in Sources */,
