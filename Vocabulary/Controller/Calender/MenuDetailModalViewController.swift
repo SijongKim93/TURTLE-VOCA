@@ -1,19 +1,17 @@
 //
-//  CalenderDetailModelViewController.swift
+//  MenuDetailViewController.swift
 //  Vocabulary
 //
-//  Created by 김시종 on 5/14/24.
+//  Created by 김시종 on 5/16/24.
 //
 
 import UIKit
-import SnapKit
 
-class DetailModelViewController: UIViewController {
+class MenuDetailModalViewController: UIViewController {
     
-    let labels = ["최근 저장 순", "나중 저장 순", "외운 단어 순", "못 외운 단어 순", "랜덤"]
-    var selectedButton: UIButton?
+    let labels = ["날짜 변경", "다 외웠어요", "전체 삭제"]
     
-    let filterMainLabel = LabelFactory().makeLabel(title: "단어 정렬 설정", size: 23, textAlignment: .left, isBold: true)
+    let filterMainLabel = LabelFactory().makeLabel(title: "단어 상태 설정", size: 23, textAlignment: .left, isBold: true)
     
     let xButton: UIButton = {
         var button = UIButton()
@@ -37,33 +35,33 @@ class DetailModelViewController: UIViewController {
         return view
     }()
     
-    let tableView: UITableView = {
+    let menuTableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(FilterTableViewCell.self, forCellReuseIdentifier: FilterTableViewCell.identifier)
+        tableView.register(MenuDetailTableViewCell.self, forCellReuseIdentifier: MenuDetailTableViewCell.identifier)
         tableView.separatorStyle = .none
         return tableView
     }()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        xButton.addTarget(self, action: #selector(dismissViewController), for: .touchUpInside)
-    }
-    
-    @objc func dismissViewController() {
-        self.dismiss(animated: true, completion: nil)
+        setupUI()
+
     }
     
     func setupUI() {
+        menuTableView.delegate = self
+        menuTableView.dataSource = self
+        
         view.backgroundColor = .white
         view.layer.cornerRadius = 16
         
         view.addSubview(topStackView)
         view.addSubview(viewLine)
-        view.addSubview(tableView)
+        view.addSubview(menuTableView)
+        
+        xButton.addTarget(self, action: #selector(dismissViewController), for: .touchUpInside)
         
         topStackView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(15)
@@ -71,7 +69,7 @@ class DetailModelViewController: UIViewController {
         }
         
         xButton.snp.makeConstraints {
-            $0.width.equalTo(50)
+            $0.width.equalTo(30)
             $0.height.equalTo(30)
         }
         
@@ -81,27 +79,28 @@ class DetailModelViewController: UIViewController {
             $0.height.equalTo(1)
         }
         
-        tableView.snp.makeConstraints {
+        menuTableView.snp.makeConstraints {
             $0.top.equalTo(viewLine.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview().inset(10)
         }
     }
+    
+    @objc func dismissViewController() {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
-extension DetailModelViewController: UITableViewDelegate, UITableViewDataSource {
+
+extension MenuDetailModalViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        labels.count
+        return labels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: FilterTableViewCell.identifier, for: indexPath) as? FilterTableViewCell else { fatalError("테이블 뷰 에러") }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MenuDetailTableViewCell.identifier, for: indexPath) as? MenuDetailTableViewCell else { fatalError("테이블 뷰 오류")}
         
         cell.label.text = labels[indexPath.row]
         cell.selectionStyle = .none
-        
-        cell.buttonAction = { [weak cell] in
-            cell?.toggleButtonSelection()
-        }
         
         return cell
     }
@@ -110,15 +109,5 @@ extension DetailModelViewController: UITableViewDelegate, UITableViewDataSource 
         60
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? FilterTableViewCell else { fatalError("테이블 뷰 셀 선택 에러") }
-        
-        if let selectedButton = selectedButton {
-            selectedButton.isSelected = false
-        }
-        
-        selectedButton = cell.button
-        
-        cell.toggleButtonSelection()
-    }
+    
 }

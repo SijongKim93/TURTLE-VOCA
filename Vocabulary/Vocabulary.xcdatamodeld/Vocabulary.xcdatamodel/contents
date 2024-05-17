@@ -5,6 +5,15 @@
         <attribute name="image" optional="YES" attributeType="Binary"/>
         <attribute name="meaning" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23E224" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="WordEntity" representedClassName="WordEntity" syncable="YES">
+        <attribute name="antonym" optional="YES" attributeType="String"/>
+        <attribute name="category" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="definition" optional="YES" attributeType="String"/>
+        <attribute name="detail" optional="YES" attributeType="String"/>
+        <attribute name="pronunciation" optional="YES" attributeType="String"/>
+        <attribute name="synonym" optional="YES" attributeType="String"/>
         <attribute name="word" optional="YES" attributeType="String"/>
     </entity>
 </model>
