@@ -7,11 +7,13 @@
 
 import UIKit
 import SnapKit
+import CoreData
 
 class CalenderViewController: UIViewController {
     
     var selectedDate: DateComponents? = nil
-    var dummyEnglish = DummyEnglish().dummyWords
+    var filteredWords: [WordEntity] = []
+    let coreDataManager = CoreDataManager.shared
     
     let dateView: UICalendarView = {
         var view = UICalendarView()
@@ -26,6 +28,7 @@ class CalenderViewController: UIViewController {
         var view = UIView()
         view.backgroundColor = .gray
         return view
+        
     }()
     
     let upButton: UIButton = {
@@ -68,6 +71,12 @@ class CalenderViewController: UIViewController {
         setupUI()
         buttonAction()
         view.backgroundColor = .white
+        fetchWordListAndUpdateCollectionView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        dayCollectionView.reloadData()
     }
     
     func setupUI() {
@@ -161,19 +170,24 @@ class CalenderViewController: UIViewController {
         layout.itemSize = CGSize(width: view.frame.size.width - 20, height: 120)
         return layout
     }
+    
+    func fetchWordListAndUpdateCollectionView() {
+        filteredWords = coreDataManager.getWordListFromCoreData()
+        dayCollectionView.reloadData()
+    }
 }
-
 
 extension CalenderViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dummyEnglish.count
+        return filteredWords.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CalenderCollectionViewCell.identifier, for: indexPath) as? CalenderCollectionViewCell else { fatalError("컬렉션 뷰 오류") }
         
-        let word = dummyEnglish[indexPath.row]
-        cell.configure(with: word)
+        let word = filteredWords[indexPath.row]
+        cell.englishLabel.text = word.word
+        cell.meaningLabel.text = word.definition
         
         return cell
     }
@@ -181,16 +195,21 @@ extension CalenderViewController: UICollectionViewDelegate, UICollectionViewData
 
 extension CalenderViewController: UICalendarViewDelegate, UICalendarSelectionSingleDateDelegate {
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
-        if let date = dateComponents?.day {
-            print(date)
+        selection.setSelected(dateComponents, animated: true)
+        selectedDate = dateComponents
+        
+        if let selectedDate = selectedDate {
+            let date = Calendar.current.date(from: selectedDate)!
         }
+        
+        dayCollectionView.reloadData()
     }
     
     func calendarView(_ calendarView: UICalendarView, didSelect dateComponents: DateComponents?) {
         selectedDate = dateComponents
+        dayCollectionView.reloadData()
     }
 }
-
 
 extension CalenderViewController: UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
