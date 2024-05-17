@@ -12,6 +12,8 @@ class FilterTableViewCell: UITableViewCell {
     
     static let identifier = "FilterTableViewCell"
     
+    var buttonAction: (() -> Void)?
+    
     let label: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20)
@@ -28,8 +30,6 @@ class FilterTableViewCell: UITableViewCell {
         return button
     }()
     
-    var buttonAction: (() -> Void)?
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
@@ -43,6 +43,8 @@ class FilterTableViewCell: UITableViewCell {
         contentView.addSubview(label)
         contentView.addSubview(button)
         
+        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        
         label.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview()
@@ -51,11 +53,9 @@ class FilterTableViewCell: UITableViewCell {
         button.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview()
-            $0.width.equalTo(50)
+            $0.width.equalTo(30)
             $0.height.equalTo(30)
         }
-        
-        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
     
     func toggleButtonSelection() {
@@ -67,5 +67,4 @@ class FilterTableViewCell: UITableViewCell {
             tableView.delegate?.tableView?(tableView, didSelectRowAt: indexPath)
         }
     }
-    
 }
