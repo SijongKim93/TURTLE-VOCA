@@ -6,9 +6,22 @@
 //
 
 import UIKit
+import SnapKit
 
 class QuizBodyView: UIView {
     
+    
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 15
+        layout.itemSize = .init(width: 350, height: 60)
+        var view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        view.register(VocaQuizMainCollectionViewCell.self, forCellWithReuseIdentifier: "VocaQuizMainCollectionViewCell")
+        return view
+    }()
+    
+   
     override init(frame: CGRect) {
         super.init(frame: .zero)
         layout()
@@ -19,8 +32,12 @@ class QuizBodyView: UIView {
     }
     
     private func layout() {
+        self.addSubview(collectionView)
         
-        self.backgroundColor = .brown
+        collectionView.snp.makeConstraints {
+            $0.top.leading.equalToSuperview().offset(20)
+            $0.trailing.bottom.equalToSuperview().offset(-20)
+        }
     }
     
 }

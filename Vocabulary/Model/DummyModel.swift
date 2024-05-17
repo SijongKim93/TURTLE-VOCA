@@ -8,6 +8,7 @@
 import Foundation
 
 
-class DummyModel {
-    
+struct DummyModel {
+    var words: String
+    var meaning: String
 }
