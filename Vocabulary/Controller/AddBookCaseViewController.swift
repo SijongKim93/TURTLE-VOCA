@@ -13,8 +13,6 @@ class AddBookCaseViewController: UIViewController, AddBookCaseBodyViewDelegate, 
     let headerView = AddBookCaseHeaderView()
     let bodyView = AddBookCaseBodyView()
     
-    weak var delegate: AddBookCaseViewControllerDelegate?
-    
     lazy var wholeStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [headerView, bodyView])
         stackView.axis = .vertical
@@ -33,9 +31,7 @@ class AddBookCaseViewController: UIViewController, AddBookCaseBodyViewDelegate, 
     }
     
     private func setupConstraints(){
-        [wholeStackView].forEach{
-            view.addSubview($0)
-        }
+        view.addSubview(wholeStackView)
         
         wholeStackView.snp.makeConstraints{
             $0.verticalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
@@ -59,13 +55,9 @@ class AddBookCaseViewController: UIViewController, AddBookCaseBodyViewDelegate, 
     
     func addButtonTapped() {
         let alertController = AlertController().makeAlertWithCompletion(title: "저장 완료", message: "단어장이 저장되었습니다.") { _ in
-            self.delegate?.didAddBookCase()
+            NotificationCenter.default.post(name: NSNotification.Name("didAddBookCase"), object: nil)
             self.dismiss(animated: true, completion: nil)
         }
         present(alertController, animated: true, completion: nil)
     }
-}
-
-protocol AddBookCaseViewControllerDelegate: AnyObject {
-    func didAddBookCase()
 }

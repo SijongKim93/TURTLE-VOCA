@@ -34,9 +34,15 @@ final class CoreDataManager {
             print("Error: managedContext is nil")
             return
         }
-        
         let entity = NSEntityDescription.entity(forEntityName: "BookCase", in: context)!
         let bookCase = NSManagedObject(entity: entity, insertInto: context)
+        
+        bookCase.setValue(name, forKey: "name")
+        bookCase.setValue(explain, forKey: "explain")
+        bookCase.setValue(word, forKey: "word")
+        bookCase.setValue(meaning, forKey: "meaning")
+        bookCase.setValue(image, forKey: "image")
+        
         do {
             try context.save()
             print("코어데이터가 저장되었습니다.")
