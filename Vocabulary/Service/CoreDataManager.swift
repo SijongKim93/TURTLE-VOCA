@@ -47,6 +47,7 @@ final class CoreDataManager {
             print("Could not save. \(error), \(error.userInfo)")
         }
     }
+    
     func fetchBookCase() -> [NSManagedObject] {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "BookCase")
 
