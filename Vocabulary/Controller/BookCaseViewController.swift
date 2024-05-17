@@ -29,7 +29,7 @@ class BookCaseViewController: UIViewController{
         NotificationCenter.default.addObserver(self, selector: #selector(didAddBookCase), name: NSNotification.Name("didAddBookCase"), object: nil)
     }
     
-    private func setupConstraints(){
+    private func setupConstraints() {
         view.addSubview(wholeStackView)
         
         wholeStackView.snp.makeConstraints{
