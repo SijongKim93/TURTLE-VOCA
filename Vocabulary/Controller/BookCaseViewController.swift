@@ -27,7 +27,7 @@ class BookCaseViewController: UIViewController {
         setupConstraints()
     }
     
-    private func setupConstraints(){
+    private func setupConstraints() {
         view.addSubview(wholeStackView)
         
         wholeStackView.snp.makeConstraints{

@@ -88,10 +88,4 @@ class CalenderCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func configure(with word: DummyEnglish.Word) {
-        englishLabel.text = word.english
-        pronunciationLabel.text = word.pronunciation
-        meaningLabel.text = word.meaning
-    }
 }
