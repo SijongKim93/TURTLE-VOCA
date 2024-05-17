@@ -25,6 +25,9 @@
 		FB653F742BF225110041450F /* BookCaseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB653F732BF225110041450F /* BookCaseHeaderView.swift */; };
 		FB653F762BF225190041450F /* BookCaseBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB653F752BF225190041450F /* BookCaseBodyView.swift */; };
 		FB653F792BF26A530041450F /* BookCaseBodyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB653F782BF26A530041450F /* BookCaseBodyCell.swift */; };
+		FB72B9222BF6FF6000FD0338 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FB72B9212BF6FF6000FD0338 /* SnapKit */; };
+		FB72B9292BF7059F00FD0338 /* BookCase+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB72B9272BF7059F00FD0338 /* BookCase+CoreDataClass.swift */; };
+		FB72B92A2BF7059F00FD0338 /* BookCase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB72B9282BF7059F00FD0338 /* BookCase+CoreDataProperties.swift */; };
 		FB90037E2BF337530018692D /* AddBookCaseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90037D2BF337530018692D /* AddBookCaseHeaderView.swift */; };
 		FB9003802BF3487D0018692D /* AddBookCaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90037F2BF3487D0018692D /* AddBookCaseViewController.swift */; };
 		FBDCC3F62BF3C478006F067D /* AddBookCaseBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDCC3F52BF3C478006F067D /* AddBookCaseBodyView.swift */; };
@@ -53,6 +56,8 @@
 		FB653F732BF225110041450F /* BookCaseHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCaseHeaderView.swift; sourceTree = "<group>"; };
 		FB653F752BF225190041450F /* BookCaseBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCaseBodyView.swift; sourceTree = "<group>"; };
 		FB653F782BF26A530041450F /* BookCaseBodyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCaseBodyCell.swift; sourceTree = "<group>"; };
+		FB72B9272BF7059F00FD0338 /* BookCase+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookCase+CoreDataClass.swift"; sourceTree = "<group>"; };
+		FB72B9282BF7059F00FD0338 /* BookCase+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookCase+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FB90037D2BF337530018692D /* AddBookCaseHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookCaseHeaderView.swift; sourceTree = "<group>"; };
 		FB90037F2BF3487D0018692D /* AddBookCaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookCaseViewController.swift; sourceTree = "<group>"; };
 		FBDCC3F52BF3C478006F067D /* AddBookCaseBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookCaseBodyView.swift; sourceTree = "<group>"; };
@@ -65,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB72B9222BF6FF6000FD0338 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +184,8 @@
 			isa = PBXGroup;
 			children = (
 				FBECC3652BF5ACE60088322F /* CoreDataManager.swift */,
+				FB72B9282BF7059F00FD0338 /* BookCase+CoreDataProperties.swift */,
+				FB72B9272BF7059F00FD0338 /* BookCase+CoreDataClass.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -207,6 +215,7 @@
 			);
 			name = Vocabulary;
 			packageProductDependencies = (
+				FB72B9212BF6FF6000FD0338 /* SnapKit */,
 			);
 			productName = Vocabulary;
 			productReference = 4D1791A32BF1D5BE00E645C9 /* Vocabulary.app */;
@@ -237,6 +246,7 @@
 			);
 			mainGroup = 4D17919A2BF1D5BE00E645C9;
 			packageReferences = (
+				FB72B9202BF6FF6000FD0338 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 4D1791A42BF1D5BE00E645C9 /* Products */;
 			projectDirPath = "";
@@ -272,9 +282,11 @@
 				612ABC892BF1EA480056F127 /* DummyModel.swift in Sources */,
 				4D1791C32BF1E20F00E645C9 /* VocaQuizViewController.swift in Sources */,
 				FB90037E2BF337530018692D /* AddBookCaseHeaderView.swift in Sources */,
+				FB72B9292BF7059F00FD0338 /* BookCase+CoreDataClass.swift in Sources */,
 				FB653F792BF26A530041450F /* BookCaseBodyCell.swift in Sources */,
 				4D1791A92BF1D5BE00E645C9 /* SceneDelegate.swift in Sources */,
 				FBECC3662BF5ACE60088322F /* CoreDataManager.swift in Sources */,
+				FB72B92A2BF7059F00FD0338 /* BookCase+CoreDataProperties.swift in Sources */,
 				612ABC872BF1EA3F0056F127 /* DummyView.swift in Sources */,
 				4D1791C52BF1E27300E645C9 /* CalenderViewController.swift in Sources */,
 				FBDCC3F62BF3C478006F067D /* AddBookCaseBodyView.swift in Sources */,
@@ -501,6 +513,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FB72B9202BF6FF6000FD0338 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FB72B9212BF6FF6000FD0338 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FB72B9202BF6FF6000FD0338 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		4D1791AF2BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld */ = {

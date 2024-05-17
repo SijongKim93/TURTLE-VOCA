@@ -12,7 +12,7 @@ import CoreData
 
 class BookCaseBodyView: UIView {
     
-    var bookCaseData: [NSManagedObject] = []
+    var bookCases: [NSManagedObject] = []
     
     let vocaBookCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -56,8 +56,8 @@ class BookCaseBodyView: UIView {
     }
     
     func configureUI(){
-        
-        bookCaseData = CoreDataManager.shared.fetchBookCase()
+        bookCases = CoreDataManager.shared.fetchBookCase()
+        vocaBookCollectionView.reloadData()
         
         vocaBookCollectionView.delegate = self
         vocaBookCollectionView.dataSource = self
@@ -68,13 +68,13 @@ class BookCaseBodyView: UIView {
 
 extension BookCaseBodyView: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return bookCaseData.count
+        return bookCases.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = vocaBookCollectionView.dequeueReusableCell(withReuseIdentifier: BookCaseBodyCell.identifier, for: indexPath) as! BookCaseBodyCell
-        let bookCaseData = bookCaseData[indexPath.item]
-        cell.bookCaseData = bookCaseData
+        let bookCaseData = bookCases[indexPath.item]
+        cell.configure(with: bookCaseData)
         
         return cell
     }
