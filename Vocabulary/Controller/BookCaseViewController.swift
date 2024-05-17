@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class BookCaseViewController: UIViewController {
+class BookCaseViewController: UIViewController{
     
     let headerView = BookCaseHeaderView()
     let bodyView = BookCaseBodyView()
@@ -25,6 +25,8 @@ class BookCaseViewController: UIViewController {
         
         view.backgroundColor = .white
         setupConstraints()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didAddBookCase), name: NSNotification.Name("didAddBookCase"), object: nil)
     }
     
     private func setupConstraints(){
@@ -35,5 +37,9 @@ class BookCaseViewController: UIViewController {
             $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
+    }
+    
+    @objc func didAddBookCase() {
+        bodyView.configureUI()
     }
 }

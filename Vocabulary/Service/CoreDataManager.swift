@@ -33,6 +33,13 @@ final class CoreDataManager {
     func saveBookCase(name: String, explain: String, word: String, meaning: String, image: Data) {
         let entity = NSEntityDescription.entity(forEntityName: "BookCase", in: managedContext)!
         let bookCase = NSManagedObject(entity: entity, insertInto: managedContext)
+
+        bookCase.setValue(name, forKey: "name")
+        bookCase.setValue(explain, forKey: "explain")
+        bookCase.setValue(word, forKey: "word")
+        bookCase.setValue(meaning, forKey: "meaning")
+        bookCase.setValue(image, forKey: "image")
+        
         do {
             try managedContext.save()
             print("코어데이터가 저장되었습니다.")
@@ -40,9 +47,9 @@ final class CoreDataManager {
             print("Could not save. \(error), \(error.userInfo)")
         }
     }
-    
     func fetchBookCase() -> [NSManagedObject] {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "BookCase")
+
         do {
             let bookCases = try managedContext.fetch(fetchRequest)
             return bookCases
