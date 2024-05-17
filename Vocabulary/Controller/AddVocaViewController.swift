@@ -15,7 +15,7 @@ class AddVocaViewController: UIViewController {
     var addVocaButton = UIButton()
     var searchBar = UISearchBar()
     var countLabel = LabelFactory().makeLabel(title: "", size: 15, textAlignment: .left, isBold: false)
-    
+    var tableView = UITableView()
     
     // 단어 추가 버튼 눌렸을 때 단어입력페이지로 이동
    

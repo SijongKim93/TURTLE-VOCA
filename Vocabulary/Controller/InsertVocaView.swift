@@ -64,30 +64,32 @@ class InsertVocaViewController: UIViewController {
     // 단어 추가 버튼 눌렸을 때 코어데이터에 저장 -> 단어와 단어뜻은 둘 다 입력되어야 저장되도록
     @objc func saveVocaButtonPressed() {
         
-        guard let word = wordTextField.text, !word.isEmpty,
-              let definition = definitionTextField.text, !definition.isEmpty else {
+       if let word = wordTextField.text, let definition = definitionTextField.text,
+          word.isEmpty == false, definition.isEmpty == false {
+           
+           saveWordToCoreData(word: word, definition: definition, detail: detailTextField.text ?? "", pronunciation: pronunciationTextField.text ?? "", synonym: synonymTextField.text ?? "", antonym: antonymTextField.text ?? "")
+           
+       } else {
             
-         let alert = AlertController().makeNormalAlert(title: "저장 불가", message: "단어와 단어의 뜻은 모두 입력해야 저장이 가능합니다.")
-            self.present(alert, animated: true)
-            
-            print("단어와 단어의 뜻은 모두 입력해야 저장이 가능합니다.")
-            return
+           let alert = AlertController().makeNormalAlert(title: "저장 불가", message: "단어와 단어의 뜻은 모두 입력해야 저장이 가능합니다.")
+           self.present(alert, animated: true)
+           print("단어와 단어의 뜻은 모두 입력해야 저장이 가능합니다.")
+         
         }
-        
-        saveWordToCoreData(word: "단어", definition: "정의", detail: "상세설명", pronuncitation: "발음", synonym: "유의어", antonym: "반의어")
         
     }
     
-    func saveWordToCoreData(word: String, definition: String, detail: String, pronuncitation: String, synonym: String, antonym: String) {
+    func saveWordToCoreData(word: String, definition: String, detail: String, pronunciation: String, synonym: String, antonym: String) {
         let context = persistentContainer.viewContext
         let newWord = WordEntity(context: context)
         newWord.word = word
         newWord.definition = definition
         newWord.detail = detail
-        newWord.pronunciation = pronuncitation
+        newWord.pronunciation = pronunciation
         newWord.synonym = synonym
         newWord.antonym = antonym
-        
+        newWord.date = Date()
+//        newWord.category =
 
        
             do {
@@ -120,7 +122,9 @@ class InsertVocaViewController: UIViewController {
         saveVocaButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
         saveVocaButton.addTarget(self, action: #selector(saveVocaButtonPressed), for: .touchUpInside)
 
-        
+        if let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last {
+            print("Documents Directory: \(documentsDirectoryURL)")
+        }
         
         self.configureUI()
         self.makeConstraints()
