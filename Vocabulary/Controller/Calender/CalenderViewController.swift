@@ -71,11 +71,11 @@ class CalenderViewController: UIViewController {
         setupUI()
         buttonAction()
         view.backgroundColor = .white
-        fetchWordListAndUpdateCollectionView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        fetchWordListAndUpdateCollectionView()
         dayCollectionView.reloadData()
     }
     
@@ -222,5 +222,3 @@ extension CalenderViewController: UIViewControllerTransitioningDelegate {
         }
     }
 }
-
-
