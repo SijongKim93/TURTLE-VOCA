@@ -34,6 +34,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         tabBarVC.tabBar.backgroundColor = .white
         tabBarVC.tabBar.itemPositioning = .centered
         
+        tabBarVC.tabBar.tintColor = UIColor(red: 48/255, green: 140/255, blue: 74/255, alpha: 1.0)
+        
         self.window?.rootViewController = tabBarVC
         window?.makeKeyAndVisible()
     }

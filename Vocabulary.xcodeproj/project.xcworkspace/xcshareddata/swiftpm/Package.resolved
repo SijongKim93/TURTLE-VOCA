@@ -1,4 +1,8 @@
 {
+<<<<<<< HEAD
+=======
+  "originHash" : "4cdad746817ac9ed37e44dbe90a2ff25fc018954899b7d513e41a4bfc70f065a",
+>>>>>>> 581167d47b23a5cee9f14a79be38665b1ed234d4
   "pins" : [
     {
       "identity" : "snapkit",
@@ -10,5 +14,9 @@
       }
     }
   ],
+<<<<<<< HEAD
   "version" : 2
+=======
+  "version" : 3
+>>>>>>> 581167d47b23a5cee9f14a79be38665b1ed234d4
 }

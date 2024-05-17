@@ -53,9 +53,3 @@ class AddBookCaseHeaderView: UIView{
         currentViewController?.dismiss(animated: true)
     }
 }
-
-extension UIResponder{
-    var currentViewController: UIViewController? {
-        return next as? UIViewController ?? next?.currentViewController
-    }
-}

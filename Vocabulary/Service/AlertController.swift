@@ -15,10 +15,11 @@ class AlertController {
         alert.addAction(UIAlertAction(title: "취소", style: .cancel))
         return alert
     }
-        
+  
     func makeNormalAlert(title: String, message: String) -> UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "확인", style: .default))
         return alert
     }
+
 }
