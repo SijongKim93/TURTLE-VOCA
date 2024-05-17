@@ -48,6 +48,7 @@
 		618E706D2BF25328007AEDFE /* GamePageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E706C2BF25328007AEDFE /* GamePageHeaderView.swift */; };
 		618E706F2BF25337007AEDFE /* GamePageBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E706E2BF25337007AEDFE /* GamePageBodyView.swift */; };
 		618E70712BF25354007AEDFE /* GamePageBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E70702BF25354007AEDFE /* GamePageBottomView.swift */; };
+		61AAEBC92BF724AE0032961C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 61AAEBC82BF724AE0032961C /* SnapKit */; };
 		61BCB0542BF2F4B600CF73E4 /* DummyGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0532BF2F4B600CF73E4 /* DummyGenerator.swift */; };
 		61BCB0562BF337B100CF73E4 /* VocaQuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0552BF337B100CF73E4 /* VocaQuizModel.swift */; };
 		61BCB0592BF3597C00CF73E4 /* UIResponder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0582BF3597C00CF73E4 /* UIResponder+Extension.swift */; };
@@ -62,8 +63,6 @@
 		6B02ADEF2BF6E8B6006E0964 /* TextFieldFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02ADEE2BF6E8B6006E0964 /* TextFieldFactory.swift */; };
 		6B02ADF62BF6EB37006E0964 /* WordEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02ADF42BF6EB37006E0964 /* WordEntity+CoreDataClass.swift */; };
 		6B02ADF72BF6EB37006E0964 /* WordEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02ADF52BF6EB37006E0964 /* WordEntity+CoreDataProperties.swift */; };
-		FB72B9292BF7059F00FD0338 /* BookCase+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB72B9272BF7059F00FD0338 /* BookCase+CoreDataClass.swift */; };
-		FB72B92A2BF7059F00FD0338 /* BookCase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB72B9282BF7059F00FD0338 /* BookCase+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,8 +123,6 @@
 		6B02ADEE2BF6E8B6006E0964 /* TextFieldFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldFactory.swift; sourceTree = "<group>"; };
 		6B02ADF42BF6EB37006E0964 /* WordEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WordEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		6B02ADF52BF6EB37006E0964 /* WordEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WordEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		FB72B9272BF7059F00FD0338 /* BookCase+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookCase+CoreDataClass.swift"; sourceTree = "<group>"; };
-		FB72B9282BF7059F00FD0338 /* BookCase+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookCase+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61AAEBC92BF724AE0032961C /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,8 +340,6 @@
 		618E706B2BF25316007AEDFE /* GamePage */ = {
 			isa = PBXGroup;
 			children = (
-				FB72B9282BF7059F00FD0338 /* BookCase+CoreDataProperties.swift */,
-				FB72B9272BF7059F00FD0338 /* BookCase+CoreDataClass.swift */,
 				618E706C2BF25328007AEDFE /* GamePageHeaderView.swift */,
 				618E706E2BF25337007AEDFE /* GamePageBodyView.swift */,
 				618E70702BF25354007AEDFE /* GamePageBottomView.swift */,
@@ -389,6 +385,7 @@
 			);
 			name = Vocabulary;
 			packageProductDependencies = (
+				61AAEBC82BF724AE0032961C /* SnapKit */,
 			);
 			productName = Vocabulary;
 			productReference = 4D1791A32BF1D5BE00E645C9 /* Vocabulary.app */;
@@ -419,6 +416,7 @@
 			);
 			mainGroup = 4D17919A2BF1D5BE00E645C9;
 			packageReferences = (
+				61AAEBC72BF724AE0032961C /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 4D1791A42BF1D5BE00E645C9 /* Products */;
 			projectDirPath = "";
@@ -463,8 +461,6 @@
 				612ABC892BF1EA480056F127 /* DummyModel.swift in Sources */,
 				618E70602BF21970007AEDFE /* Constants.swift in Sources */,
 				4D1791C32BF1E20F00E645C9 /* VocaQuizViewController.swift in Sources */,
-				FB72B9292BF7059F00FD0338 /* BookCase+CoreDataClass.swift in Sources */,
-				FB72B92A2BF7059F00FD0338 /* BookCase+CoreDataProperties.swift in Sources */,
 				61F75F5F2BF4F9E800FCC731 /* AlertController.swift in Sources */,
 				61F75F5D2BF4ED2500FCC731 /* UIColor+Extension.swift in Sources */,
 				4D1791A92BF1D5BE00E645C9 /* SceneDelegate.swift in Sources */,
@@ -717,6 +713,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		61AAEBC72BF724AE0032961C /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		61AAEBC82BF724AE0032961C /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 61AAEBC72BF724AE0032961C /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		4D1791AF2BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld */ = {
