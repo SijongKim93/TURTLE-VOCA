@@ -16,9 +16,8 @@ class BookCaseBodyView: UIView {
     
     let vocaBookCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 13
-        layout.sectionInset = .init(top: 0, left: 25, bottom: 0, right: 25)
-        layout.itemSize = .init(width: 300, height: 520)
+        layout.minimumLineSpacing = 16
+        layout.sectionInset = .init(top: 0, left: 36, bottom: 0, right: 36)
         layout.scrollDirection = .horizontal
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -28,12 +27,6 @@ class BookCaseBodyView: UIView {
     
     //응원 문구 ( 랜덤으로 들어가게 하고싶다 )
     let motivationLabel = LabelFactory().makeLabel(title: "응원 문구 !", size: 15, isBold: false)
-    
-    lazy var wholeStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [vocaBookCollectionView, motivationLabel])
-        stackView.axis = .vertical
-        return stackView
-    }()
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -47,14 +40,18 @@ class BookCaseBodyView: UIView {
     
     private func setupConstraints(){
         
-        addSubview(wholeStackView)
-        
-        wholeStackView.snp.makeConstraints{
-            $0.edges.equalToSuperview()
-        }
+        addSubview(vocaBookCollectionView)
+        addSubview(motivationLabel)
         
         vocaBookCollectionView.snp.makeConstraints{
-            $0.height.equalTo(520)
+            $0.top.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview()
+            $0.bottom.equalTo(motivationLabel.snp.top).offset(-20)
+        }
+        
+        motivationLabel.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.bottom.equalToSuperview().inset(40)
         }
     }
     
@@ -69,7 +66,7 @@ class BookCaseBodyView: UIView {
     }
 }
 
-extension BookCaseBodyView: UICollectionViewDataSource, UICollectionViewDelegate {
+extension BookCaseBodyView: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return bookCaseData.count
     }
@@ -80,5 +77,13 @@ extension BookCaseBodyView: UICollectionViewDataSource, UICollectionViewDelegate
         cell.bookCaseData = bookCaseData
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let availableWidth = collectionView.frame.width - collectionView.contentInset.left - collectionView.contentInset.right - 80
+        let aspectRatio: CGFloat = 520.0 / 300.0
+        let itemWidth = availableWidth
+        let itemHeight = itemWidth * aspectRatio
+        return CGSize(width: itemWidth, height: itemHeight)
     }
 }

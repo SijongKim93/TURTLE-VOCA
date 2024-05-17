@@ -42,8 +42,8 @@ class BookCaseBodyCell: UICollectionViewCell {
         return imgView
     }()
     
-    lazy var nameLabel = LabelFactory().makeLabel(title: bookCaseData?.value(forKey: "name") as? String ?? "", size: 20, textAlignment: .left, isBold: true)
-    lazy var detailLabel = LabelFactory().makeLabel(title: bookCaseData?.value(forKey: "explain") as? String ?? "", size: 15, textAlignment: .left, isBold: false)
+    lazy var nameLabel = LabelFactory().makeLabel(title: bookCaseData?.value(forKey: "name") as? String ?? "코딩 단어장", size: 20, textAlignment: .left, isBold: true)
+    lazy var detailLabel = LabelFactory().makeLabel(title: bookCaseData?.value(forKey: "explain") as? String ?? "Swift 공부", size: 15, textAlignment: .left, isBold: false)
     
     lazy var nameStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [nameLabel, detailLabel])
@@ -52,7 +52,7 @@ class BookCaseBodyCell: UICollectionViewCell {
         return stackView
     }()
     
-    lazy var languageLabel = LabelFactory().makeLabel(title: "\(bookCaseData?.value(forKey: "word") as? String ?? "")/\(bookCaseData?.value(forKey: "meaning") as? String ?? "")", size: 15, textAlignment: .left, isBold: false)
+    lazy var languageLabel = LabelFactory().makeLabel(title: "\(bookCaseData?.value(forKey: "word") as? String ?? "Swift") / \(bookCaseData?.value(forKey: "meaning") as? String ?? "한국어")", size: 15, textAlignment: .left, isBold: false)
     let countLabel = LabelFactory().makeLabel(title: "단어 개수", size: 15, textAlignment: .right, isBold: false)
     
     lazy var wordStackView: UIStackView = {
@@ -91,7 +91,7 @@ class BookCaseBodyCell: UICollectionViewCell {
         imageView.snp.makeConstraints{
             $0.top.equalTo(menuButton.snp.bottom).offset(5)
             $0.horizontalEdges.equalToSuperview().inset(25)
-            $0.height.equalTo(350)
+            $0.height.equalTo(imageView.snp.width).multipliedBy(1.4)
         }
         
         nameStackView.snp.makeConstraints{
