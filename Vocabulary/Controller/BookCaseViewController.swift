@@ -25,7 +25,6 @@ class BookCaseViewController: UIViewController {
         
         view.backgroundColor = .white
         setupConstraints()
-        
     }
     
     private func setupConstraints(){
