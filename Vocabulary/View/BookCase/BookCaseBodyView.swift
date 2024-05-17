@@ -75,7 +75,7 @@ extension BookCaseBodyView: UICollectionViewDataSource, UICollectionViewDelegate
         let cell = vocaBookCollectionView.dequeueReusableCell(withReuseIdentifier: BookCaseBodyCell.identifier, for: indexPath) as! BookCaseBodyCell
         let bookCaseData = bookCases[indexPath.item]
         cell.configure(with: bookCaseData)
-        
+        cell.delegate = self
         return cell
     }
     
@@ -85,5 +85,14 @@ extension BookCaseBodyView: UICollectionViewDataSource, UICollectionViewDelegate
         let itemWidth = availableWidth
         let itemHeight = itemWidth * aspectRatio
         return CGSize(width: itemWidth, height: itemHeight)
+    }
+}
+
+extension BookCaseBodyView: BookCaseBodyCellDelegate {
+    func didTapDeleteButton(on cell: BookCaseBodyCell) {
+        guard let indexPath = vocaBookCollectionView.indexPath(for: cell) else { return }
+        let bookCaseToDelete = bookCases[indexPath.item]
+        CoreDataManager.shared.deleteBookCase(bookCase: bookCaseToDelete)
+        self.configureUI()
     }
 }
