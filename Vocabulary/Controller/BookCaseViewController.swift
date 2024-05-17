@@ -39,6 +39,7 @@ class BookCaseViewController: UIViewController{
         }
     }
     
+    // 단어장 추가 시 컬렉션 뷰 reload
     @objc func didAddBookCase() {
         bodyView.configureUI()
     }
