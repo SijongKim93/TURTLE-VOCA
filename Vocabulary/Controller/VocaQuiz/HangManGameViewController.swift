@@ -61,7 +61,7 @@ class HangManGameViewController: UIViewController {
     
     func monitorScore() {
         if score == answer.count {
-            let alert = alertController.makeAlertWithCancelCompletion(title: "축하합니다.", message: "정답을 맞추셨습니다\n다시 시작하시겠습니까?") { [weak self] _ in
+            let alert = alertController.makeAlertWithCompletion(title: "축하합니다.", message: "정답을 맞추셨습니다\n다시 시작하시겠습니까?") { [weak self] _ in
                 self?.hangManBottomView?.removeFromSuperview()
                 self?.resetLabel()
                 self?.gameStart()

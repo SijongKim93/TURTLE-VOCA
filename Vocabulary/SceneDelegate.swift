@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let tabBarVC = UITabBarController()
         
-        let addBookVC = AddBookCaseViewController()
+        let addBookVC = BookCaseViewController()
         addBookVC.tabBarItem = UITabBarItem(title: "단어장", image: UIImage(systemName: "book"), tag: 0)
         let addVocaVC = AddVocaViewController()
         addVocaVC.tabBarItem = UITabBarItem(title: "단어 추가", image: UIImage(systemName: "pencil"), tag: 1)
