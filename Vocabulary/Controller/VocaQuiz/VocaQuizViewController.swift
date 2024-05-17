@@ -26,7 +26,7 @@ class VocaQuizViewController: UIViewController {
         return stackView
     }()
     
-    let buttonList = ["시작하기", "기록보기"]
+    let buttonList = ["시작하기", "기록보기", "FlashCard", "Hangman"]
     
     
     override func viewDidLoad() {
