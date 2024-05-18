@@ -1,17 +1,19 @@
 //
-//  MenuDetailViewController.swift
+//  LoginViewController.swift
 //  Vocabulary
 //
-//  Created by 김시종 on 5/16/24.
+//  Created by 김시종 on 5/18/24.
 //
 
 import UIKit
 
-class MenuDetailModalViewController: UIViewController {
+class LoginModalViewController: UIViewController {
     
-    let labels = ["다 외웠어요", "전체 삭제"]
     
-    let filterMainLabel = LabelFactory().makeLabel(title: "단어 상태 설정", size: 23, textAlignment: .left, isBold: true)
+    
+    let labels = ["애플 로그인", "카카오 로그인"]
+    
+    let filterMainLabel = LabelFactory().makeLabel(title: "소셜 로그인", size: 23, textAlignment: .left, isBold: true)
     
     let xButton: UIButton = {
         var button = UIButton()
@@ -37,7 +39,7 @@ class MenuDetailModalViewController: UIViewController {
     
     let menuTableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(MenuDetailTableViewCell.self, forCellReuseIdentifier: MenuDetailTableViewCell.identifier)
+        tableView.register(LoginDetailTableViewCell.self, forCellReuseIdentifier: LoginDetailTableViewCell.identifier)
         tableView.separatorStyle = .none
         return tableView
     }()
@@ -91,13 +93,13 @@ class MenuDetailModalViewController: UIViewController {
 }
 
 
-extension MenuDetailModalViewController: UITableViewDelegate, UITableViewDataSource {
+extension LoginModalViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return labels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MenuDetailTableViewCell.identifier, for: indexPath) as? MenuDetailTableViewCell else { fatalError("테이블 뷰 오류")}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: LoginDetailTableViewCell.identifier, for: indexPath) as? LoginDetailTableViewCell else { fatalError("테이블 뷰 오류")}
         
         cell.label.text = labels[indexPath.row]
         cell.selectionStyle = .none
@@ -109,3 +111,4 @@ extension MenuDetailModalViewController: UITableViewDelegate, UITableViewDataSou
         60
     }
 }
+
