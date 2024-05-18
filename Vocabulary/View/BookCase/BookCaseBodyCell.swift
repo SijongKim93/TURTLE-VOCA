@@ -11,7 +11,8 @@ import CoreData
 
 class BookCaseBodyCell: UICollectionViewCell {
     
-    weak var delegate: BookCaseBodyCellDelegate?
+    weak var delegateDelete: DeleteBookCaseBodyCellDelegate?
+    weak var delagateEdit: EditBookCaseBodyCellDelegate?
     
     var bookCaseData: NSManagedObject?
     
@@ -106,9 +107,12 @@ class BookCaseBodyCell: UICollectionViewCell {
     }
     
     func configure(with bookCaseData: NSManagedObject) {
+        self.bookCaseData = bookCaseData
         if let imageData = bookCaseData.value(forKey: "image") as? Data {
             imageView.image = UIImage(data: imageData)
             imageView.contentMode = .scaleToFill
+        } else {
+            imageView.image = UIImage(systemName: "photo")
         }
         nameLabel.text = bookCaseData.value(forKey: "name") as? String ?? "코딩 단어장"
         detailLabel.text = bookCaseData.value(forKey: "explain") as? String ?? "Swift 공부"
@@ -118,16 +122,20 @@ class BookCaseBodyCell: UICollectionViewCell {
     }
     
     private func createMenu() -> UIMenu {
-        let editAction = UIAction(title: "수정", image: UIImage(systemName: "square.and.pencil")) { _ in
-            // 수정 작업 처리
+        let editAction = UIAction(title: "수정", image: UIImage(systemName: "square.and.pencil")) { [self] _ in
+            self.delagateEdit?.didTapEditButton(on: self, with: bookCaseData!)
         }
         let deleteAction = UIAction(title: "삭제", image: UIImage(systemName: "trash"), attributes: .destructive) { _ in
-            self.delegate?.didTapDeleteButton(on: self)
+            self.delegateDelete?.didTapDeleteButton(on: self)
         }
         return UIMenu(title: "", children: [editAction, deleteAction])
     }
 }
 
-protocol BookCaseBodyCellDelegate: AnyObject {
+protocol DeleteBookCaseBodyCellDelegate: AnyObject {
     func didTapDeleteButton(on cell: BookCaseBodyCell)
+}
+
+protocol EditBookCaseBodyCellDelegate: AnyObject {
+    func didTapEditButton(on cell: BookCaseBodyCell, with bookCaseData: NSManagedObject)
 }

@@ -12,7 +12,11 @@ import CoreData
 
 class BookCaseBodyView: UIView {
     
+    var bookCaseData: NSManagedObject?
+
     var bookCases: [NSManagedObject] = []
+    
+    weak var delagateEdit: EditBookCaseBodyCellDelegate?
     
     let vocaBookCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -75,7 +79,8 @@ extension BookCaseBodyView: UICollectionViewDataSource, UICollectionViewDelegate
         let cell = vocaBookCollectionView.dequeueReusableCell(withReuseIdentifier: BookCaseBodyCell.identifier, for: indexPath) as! BookCaseBodyCell
         let bookCaseData = bookCases[indexPath.item]
         cell.configure(with: bookCaseData)
-        cell.delegate = self
+        cell.delegateDelete = self
+        cell.delagateEdit = self
         return cell
     }
     
@@ -88,11 +93,17 @@ extension BookCaseBodyView: UICollectionViewDataSource, UICollectionViewDelegate
     }
 }
 
-extension BookCaseBodyView: BookCaseBodyCellDelegate {
+extension BookCaseBodyView: DeleteBookCaseBodyCellDelegate {
     func didTapDeleteButton(on cell: BookCaseBodyCell) {
         guard let indexPath = vocaBookCollectionView.indexPath(for: cell) else { return }
         let bookCaseToDelete = bookCases[indexPath.item]
         CoreDataManager.shared.deleteBookCase(bookCase: bookCaseToDelete)
         self.configureUI()
+    }
+}
+
+extension BookCaseBodyView: EditBookCaseBodyCellDelegate {
+    func didTapEditButton(on cell: BookCaseBodyCell, with bookCaseData: NSManagedObject) {
+        delagateEdit?.didTapEditButton(on: cell, with: bookCaseData)
     }
 }

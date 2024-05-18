@@ -1,18 +1,25 @@
 //
-//  AddBookCaseBodyView.swift
+//  EditBookCaseBodyView.swift
 //  Vocabulary
 //
-//  Created by 김한빛 on 5/15/24.
+//  Created by Luz on 5/18/24.
 //
 
 import UIKit
 import SnapKit
+import CoreData
 
-class AddBookCaseBodyView: UIView {
+class EditBookCaseBodyView: UIView {
     
     let coreDataManager = CoreDataManager.shared
     
-    weak var delegate: AddBookCaseBodyViewDelegate?
+    var bookCaseData: NSManagedObject? {
+        didSet {
+            setupTextFieldData()
+        }
+    }
+    
+    weak var delegate: EditBookCaseBodyViewDelegate?
     
     //imageStackView
     let backImgLabel = LabelFactory().makeLabel(title: "배경 이미지", size: 20, textAlignment: .left, isBold: true)
@@ -113,13 +120,13 @@ class AddBookCaseBodyView: UIView {
         return stackView
     }()
     
-    //addButton
-    let addButton: UIButton = {
+    //editButton
+    let editButton: UIButton = {
         let button = UIButton()
-        button.setTitle("단어장 생성", for: .normal)
+        button.setTitle("단어장 수정", for: .normal)
         button.backgroundColor = .black
         button.layer.cornerRadius = 8
-        button.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -127,6 +134,7 @@ class AddBookCaseBodyView: UIView {
         super.init(frame: .zero)
         setupConstraints()
         setupImageViewGesture()
+        setupTextFieldData()
     }
         
     required init?(coder: NSCoder) {
@@ -134,7 +142,7 @@ class AddBookCaseBodyView: UIView {
     }
     
     func setupConstraints() {
-        [imageStackView, nameStackView, explainStackView, languageStackView, addButton].forEach{
+        [imageStackView, nameStackView, explainStackView, languageStackView, editButton].forEach{
             addSubview($0)
         }
         
@@ -159,7 +167,7 @@ class AddBookCaseBodyView: UIView {
             $0.horizontalEdges.equalToSuperview().inset(30)
         }
         
-        addButton.snp.makeConstraints{
+        editButton.snp.makeConstraints{
             $0.bottom.equalToSuperview()
             $0.horizontalEdges.equalToSuperview().inset(30)
         }
@@ -175,7 +183,7 @@ class AddBookCaseBodyView: UIView {
         }
         
         //버튼 크기 늘리기
-        addButton.snp.makeConstraints{
+        editButton.snp.makeConstraints{
             $0.height.equalTo(50)
         }
     }
@@ -196,21 +204,39 @@ class AddBookCaseBodyView: UIView {
         delegate?.didSelectImage()
     }
     
-    @objc func addButtonTapped(_ sender: UIButton) {
-        guard let name = nameTextField.text,
-              let explain = explainTextField.text,
-              let word = wordTextField.text,
-              let meaning = meaningTextField.text,
-              let image = backImgView.image?.jpegData(compressionQuality: 1.0) else {
+    func setupTextFieldData() {
+        guard let data = bookCaseData else {
+            print("Error: No data")
             return
         }
-        coreDataManager.saveBookCase(name: name, explain: explain, word: word, meaning: meaning, image: image)
-        
-        delegate?.addButtonTapped()
+        nameTextField.text = data.value(forKey: "name") as? String ?? ""
+        explainTextField.text = data.value(forKey: "explain") as? String ?? ""
+        wordTextField.text = data.value(forKey: "word") as? String ?? ""
+        meaningTextField.text = data.value(forKey: "meaning") as? String ?? ""
+        if let imageData = data.value(forKey: "image") as? Data {
+            print("Image data loaded successfully")
+            let image = UIImage(data: imageData)
+            setImage(image ?? UIImage(systemName: "photo")!)
+        } else {
+            print("Error: Failed to load image data")
+        }
     }
+    
+    @objc func editButtonTapped(_ sender: UIButton) {
+            guard let name = nameTextField.text,
+                  let explain = explainTextField.text,
+                  let word = wordTextField.text,
+                  let meaning = meaningTextField.text,
+                  let image = backImgView.image?.jpegData(compressionQuality: 1.0),
+                  let data = bookCaseData else {
+                return
+            }
+            coreDataManager.updateBookCase(data, name: name, explain: explain, word: word, meaning: meaning, image: image)
+            delegate?.editButtonTapped()
+        }
 }
 
-protocol AddBookCaseBodyViewDelegate: AnyObject {
-    func addButtonTapped()
+protocol EditBookCaseBodyViewDelegate: AnyObject {
+    func editButtonTapped()
     func didSelectImage()
 }

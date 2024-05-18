@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import CoreData
 
 class BookCaseViewController: UIViewController{
     
@@ -26,7 +27,9 @@ class BookCaseViewController: UIViewController{
         view.backgroundColor = .white
         setupConstraints()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(didAddBookCase), name: NSNotification.Name("didAddBookCase"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didBookCase), name: NSNotification.Name("didBookCase"), object: nil)
+        
+        bodyView.delagateEdit = self
     }
     
     private func setupConstraints() {
@@ -40,7 +43,15 @@ class BookCaseViewController: UIViewController{
     }
     
     // 단어장 추가 시 컬렉션 뷰 reload
-    @objc func didAddBookCase() {
+    @objc func didBookCase() {
         bodyView.configureUI()
+    }
+}
+
+extension BookCaseViewController: EditBookCaseBodyCellDelegate {
+    func didTapEditButton(on cell: BookCaseBodyCell, with bookCaseData: NSManagedObject) {
+        let editBookCaseVC = EditBookCaseViewController()
+        editBookCaseVC.bookCaseData = bookCaseData
+        present(editBookCaseVC, animated: true, completion: nil)
     }
 }
