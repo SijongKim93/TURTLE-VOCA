@@ -1,8 +1,8 @@
 //
-//  AddBookCaseViewController.swift
+//  EditBookCaseViewController.swift
 //  Vocabulary
 //
-//  Created by 김한빛 on 5/14/24.
+//  Created by 김한빛 on 5/18/24.
 //
 
 import UIKit
@@ -10,12 +10,20 @@ import SnapKit
 import CoreData
 import PhotosUI
 
-class AddBookCaseViewController: UIViewController, AddBookCaseBodyViewDelegate {
+class EditBookCaseViewController: UIViewController, EditBookCaseBodyViewDelegate {
+    
+    func editButtonTapped() {
+        let alertController = AlertController().makeAlertWithCompletion(title: "수정 완료", message: "단어장이 수정되었습니다.") { _ in
+            NotificationCenter.default.post(name: NSNotification.Name("didBookCase"), object: nil)
+            self.dismiss(animated: true, completion: nil)
+        }
+        present(alertController, animated: true, completion: nil)
+    }
     
     var bookCaseData: NSManagedObject?
 
-    let headerView = AddBookCaseHeaderView()
-    let bodyView = AddBookCaseBodyView()
+    let headerView = EditBookCaseHeaderView()
+    let bodyView = EditBookCaseBodyView()
     
     lazy var wholeStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [headerView, bodyView])
@@ -32,6 +40,7 @@ class AddBookCaseViewController: UIViewController, AddBookCaseBodyViewDelegate {
         
         setupConstraints()
         bodyView.delegate = self
+        bodyView.bookCaseData = bookCaseData
     }
     
     private func setupConstraints(){
@@ -52,17 +61,9 @@ class AddBookCaseViewController: UIViewController, AddBookCaseBodyViewDelegate {
         picker.delegate = self
         present(picker, animated: true, completion: nil)
     }
-    
-    func addButtonTapped() {
-        let alertController = AlertController().makeAlertWithCompletion(title: "저장 완료", message: "단어장이 저장되었습니다.") { _ in
-            NotificationCenter.default.post(name: NSNotification.Name("didBookCase"), object: nil)
-            self.dismiss(animated: true, completion: nil)
-        }
-        present(alertController, animated: true, completion: nil)
-    }
 }
 
-extension AddBookCaseViewController: PHPickerViewControllerDelegate {
+extension EditBookCaseViewController: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true, completion: nil)
         

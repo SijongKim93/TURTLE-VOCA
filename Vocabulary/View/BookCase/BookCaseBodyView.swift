@@ -12,8 +12,20 @@ import CoreData
 
 class BookCaseBodyView: UIView {
     
+    let motivations = [
+        "“성적이나 결과는 행동이 아니라 습관입니다.” \n – 아리스토텔레스",
+        "“끝날 때까지 항상 불가능해 보인다” \n – 넬슨 만델라",
+        "“열심히 하면 할수록 행운도 더 많이 옵니다.” \n – 토마스 제퍼슨",
+        "“산을 옮기는 사람은 작은 돌부터 옮기기 시작한다.” \n – 공자",
+    ]
+    
+    var bookCaseData: NSManagedObject?
+
     var bookCases: [NSManagedObject] = []
     
+    weak var delagateEdit: EditBookCaseBodyCellDelegate?
+    
+    //컬렉션 뷰
     let vocaBookCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 16
@@ -25,8 +37,16 @@ class BookCaseBodyView: UIView {
         return collectionView
     }()
     
-    //응원 문구 ( 랜덤으로 들어가게 하고싶다 )
-    let motivationLabel = LabelFactory().makeLabel(title: "응원 문구 !", size: 15, isBold: false)
+    //응원 문구
+    let motivationLabel = LabelFactory().makeLabel(title: "", color: .systemGray, size: 16, isBold: false)
+    
+    //셀이 없을 때
+    let backgroundImage: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "mainturtle"))
+        imageView.contentMode = .scaleAspectFill
+        imageView.isHidden = false
+        return imageView
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -40,8 +60,9 @@ class BookCaseBodyView: UIView {
     
     private func setupConstraints(){
         
-        addSubview(vocaBookCollectionView)
-        addSubview(motivationLabel)
+        [vocaBookCollectionView, motivationLabel, backgroundImage].forEach{
+            addSubview($0)
+        }
         
         vocaBookCollectionView.snp.makeConstraints{
             $0.top.equalToSuperview()
@@ -51,7 +72,11 @@ class BookCaseBodyView: UIView {
         
         motivationLabel.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.bottom.equalToSuperview().inset(40)
+            $0.bottom.equalToSuperview().inset(30)
+        }
+        
+        backgroundImage.snp.makeConstraints {
+            $0.edges.equalTo(vocaBookCollectionView).inset(100)
         }
     }
     
@@ -61,6 +86,17 @@ class BookCaseBodyView: UIView {
         
         vocaBookCollectionView.delegate = self
         vocaBookCollectionView.dataSource = self
+        
+        let randomIndex = Int.random(in: 0..<motivations.count)
+            motivationLabel.text = motivations[randomIndex]
+        
+        if bookCases.isEmpty {
+            backgroundImage.isHidden = false
+            motivationLabel.isHidden = true
+        } else {
+            backgroundImage.isHidden = true
+            motivationLabel.isHidden = false
+        }
         
         vocaBookCollectionView.register(BookCaseBodyCell.self, forCellWithReuseIdentifier: BookCaseBodyCell.identifier)
     }
@@ -75,7 +111,8 @@ extension BookCaseBodyView: UICollectionViewDataSource, UICollectionViewDelegate
         let cell = vocaBookCollectionView.dequeueReusableCell(withReuseIdentifier: BookCaseBodyCell.identifier, for: indexPath) as! BookCaseBodyCell
         let bookCaseData = bookCases[indexPath.item]
         cell.configure(with: bookCaseData)
-        cell.delegate = self
+        cell.delegateDelete = self
+        cell.delagateEdit = self
         return cell
     }
     
@@ -88,11 +125,17 @@ extension BookCaseBodyView: UICollectionViewDataSource, UICollectionViewDelegate
     }
 }
 
-extension BookCaseBodyView: BookCaseBodyCellDelegate {
+extension BookCaseBodyView: DeleteBookCaseBodyCellDelegate {
     func didTapDeleteButton(on cell: BookCaseBodyCell) {
         guard let indexPath = vocaBookCollectionView.indexPath(for: cell) else { return }
         let bookCaseToDelete = bookCases[indexPath.item]
         CoreDataManager.shared.deleteBookCase(bookCase: bookCaseToDelete)
         self.configureUI()
+    }
+}
+
+extension BookCaseBodyView: EditBookCaseBodyCellDelegate {
+    func didTapEditButton(on cell: BookCaseBodyCell, with bookCaseData: NSManagedObject) {
+        delagateEdit?.didTapEditButton(on: cell, with: bookCaseData)
     }
 }

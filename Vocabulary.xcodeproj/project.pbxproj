@@ -69,6 +69,9 @@
 		6B02ADF72BF6EB37006E0964 /* WordEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02ADF52BF6EB37006E0964 /* WordEntity+CoreDataProperties.swift */; };
 		FB475D812BF75324007A6FFF /* BookCase+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB475D7F2BF75324007A6FFF /* BookCase+CoreDataClass.swift */; };
 		FB475D822BF75324007A6FFF /* BookCase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB475D802BF75324007A6FFF /* BookCase+CoreDataProperties.swift */; };
+		FBE7EA412BF8778F00BE86E5 /* EditBookCaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7EA402BF8778F00BE86E5 /* EditBookCaseViewController.swift */; };
+		FBE7EA432BF877D200BE86E5 /* EditBookCaseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7EA422BF877D200BE86E5 /* EditBookCaseHeaderView.swift */; };
+		FBE7EA452BF8785700BE86E5 /* EditBookCaseBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7EA442BF8785700BE86E5 /* EditBookCaseBodyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -135,6 +138,9 @@
 		6B02ADF52BF6EB37006E0964 /* WordEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WordEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FB475D7F2BF75324007A6FFF /* BookCase+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookCase+CoreDataClass.swift"; sourceTree = "<group>"; };
 		FB475D802BF75324007A6FFF /* BookCase+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookCase+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		FBE7EA402BF8778F00BE86E5 /* EditBookCaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookCaseViewController.swift; sourceTree = "<group>"; };
+		FBE7EA422BF877D200BE86E5 /* EditBookCaseHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookCaseHeaderView.swift; sourceTree = "<group>"; };
+		FBE7EA442BF8785700BE86E5 /* EditBookCaseBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookCaseBodyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +197,7 @@
 		4D1791BE2BF1E15700E645C9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FBE7EA3F2BF8776100BE86E5 /* EditBookCase */,
 				612D10EF2BF71B6D0097EDBA /* BookCase */,
 				612D10E52BF71AE30097EDBA /* AddBookCase */,
 				611186F02BF4DD4F009C2FE9 /* FlashCard */,
@@ -208,6 +215,7 @@
 				6B02ADEC2BF6E88F006E0964 /* InsertVocaViewController.swift */,
 				612D10DF2BF719D20097EDBA /* BookCaseViewController.swift */,
 				4D1791C02BF1E1F700E645C9 /* AddBookCaseViewController.swift */,
+				FBE7EA402BF8778F00BE86E5 /* EditBookCaseViewController.swift */,
 				4D1791AA2BF1D5BE00E645C9 /* AddVocaViewController.swift */,
 				611186ED2BF4DBD3009C2FE9 /* FlashCard */,
 				610130D62BF3D9E400CE8183 /* VocaQuiz */,
@@ -303,8 +311,8 @@
 		612D10E52BF71AE30097EDBA /* AddBookCase */ = {
 			isa = PBXGroup;
 			children = (
-				612D10E72BF71B130097EDBA /* AddBookCaseBodyView.swift */,
 				612D10E62BF71B130097EDBA /* AddBookCaseHeaderView.swift */,
+				612D10E72BF71B130097EDBA /* AddBookCaseBodyView.swift */,
 			);
 			path = AddBookCase;
 			sourceTree = "<group>";
@@ -385,6 +393,15 @@
 				61F75F5C2BF4ED2500FCC731 /* UIColor+Extension.swift */,
 			);
 			path = General;
+			sourceTree = "<group>";
+		};
+		FBE7EA3F2BF8776100BE86E5 /* EditBookCase */ = {
+			isa = PBXGroup;
+			children = (
+				FBE7EA422BF877D200BE86E5 /* EditBookCaseHeaderView.swift */,
+				FBE7EA442BF8785700BE86E5 /* EditBookCaseBodyView.swift */,
+			);
+			path = EditBookCase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -506,6 +523,8 @@
 				4D9E8FA92BF8CCE3003F05D3 /* LoginPresentationController.swift in Sources */,
 				612D10D82BF719610097EDBA /* MenuDetailTableViewCell.swift in Sources */,
 				618E70712BF25354007AEDFE /* GamePageBottomView.swift in Sources */,
+				FBE7EA412BF8778F00BE86E5 /* EditBookCaseViewController.swift in Sources */,
+				FBE7EA432BF877D200BE86E5 /* EditBookCaseHeaderView.swift in Sources */,
 				612D10CF2BF718DD0097EDBA /* FilterDetailModalViewController.swift in Sources */,
 				4D9E8FAB2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift in Sources */,
 				612ABC8F2BF200370056F127 /* QuizHeaderView.swift in Sources */,
@@ -520,6 +539,7 @@
 				612D10E82BF71B130097EDBA /* AddBookCaseHeaderView.swift in Sources */,
 				618E706A2BF24F2F007AEDFE /* GamePageViewController.swift in Sources */,
 				618E70572BF2039E007AEDFE /* LabelFactory.swift in Sources */,
+				FBE7EA452BF8785700BE86E5 /* EditBookCaseBodyView.swift in Sources */,
 				612D10E92BF71B130097EDBA /* AddBookCaseBodyView.swift in Sources */,
 				4D1791C72BF1E27F00E645C9 /* MyPageViewController.swift in Sources */,
 				612D10E02BF719D20097EDBA /* BookCaseViewController.swift in Sources */,

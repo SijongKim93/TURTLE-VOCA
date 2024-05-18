@@ -1,18 +1,25 @@
 //
-//  AddBookCaseBodyView.swift
+//  EditBookCaseBodyView.swift
 //  Vocabulary
 //
-//  Created by 김한빛 on 5/15/24.
+//  Created by Luz on 5/18/24.
 //
 
 import UIKit
 import SnapKit
+import CoreData
 
-class AddBookCaseBodyView: UIView {
+class EditBookCaseBodyView: UIView {
     
     let coreDataManager = CoreDataManager.shared
     
-    weak var delegate: AddBookCaseBodyViewDelegate?
+    var bookCaseData: NSManagedObject? {
+        didSet {
+            setupTextFieldData()
+        }
+    }
+    
+    weak var delegate: EditBookCaseBodyViewDelegate?
     
     //imageStackView
     let backImgLabel = LabelFactory().makeLabel(title: "배경 이미지", size: 20, textAlignment: .left, isBold: true)
@@ -113,13 +120,13 @@ class AddBookCaseBodyView: UIView {
         return stackView
     }()
     
-    //addButton
-    let addButton: UIButton = {
+    //editButton
+    let editButton: UIButton = {
         let button = UIButton()
-        button.setTitle("단어장 생성", for: .normal)
+        button.setTitle("단어장 수정", for: .normal)
         button.backgroundColor = .black
         button.layer.cornerRadius = 8
-        button.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -128,12 +135,7 @@ class AddBookCaseBodyView: UIView {
         setupConstraints()
         configureUI()
         setupImageViewGesture()
-        
-        // 텍스트필드 델리게이트 설정
-        nameTextField.delegate = self
-        explainTextField.delegate = self
-        wordTextField.delegate = self
-        meaningTextField.delegate = self
+        setupTextFieldData()
     }
         
     required init?(coder: NSCoder) {
@@ -141,7 +143,7 @@ class AddBookCaseBodyView: UIView {
     }
     
     func setupConstraints() {
-        [imageStackView, nameStackView, explainStackView, languageStackView, addButton].forEach{
+        [imageStackView, nameStackView, explainStackView, languageStackView, editButton].forEach{
             addSubview($0)
         }
         
@@ -166,7 +168,7 @@ class AddBookCaseBodyView: UIView {
             $0.horizontalEdges.equalToSuperview().inset(30)
         }
         
-        addButton.snp.makeConstraints{
+        editButton.snp.makeConstraints{
             $0.bottom.equalToSuperview()
             $0.horizontalEdges.equalToSuperview().inset(30)
         }
@@ -182,7 +184,7 @@ class AddBookCaseBodyView: UIView {
         }
         
         //버튼 크기 늘리기
-        addButton.snp.makeConstraints{
+        editButton.snp.makeConstraints{
             $0.height.equalTo(50)
         }
     }
@@ -201,13 +203,32 @@ class AddBookCaseBodyView: UIView {
     func setImage(_ image: UIImage) {
         backImgView.image = image
         backImgView.contentMode = .scaleToFill
+        backImgView.layer.cornerRadius = 10 // 이건 왜 안 되지.. ㅠ
     }
     
     @objc private func imageViewTapped(_ gestureRecognizer: UITapGestureRecognizer) {
         delegate?.didSelectImage()
     }
     
-    @objc func addButtonTapped(_ sender: UIButton) {
+    func setupTextFieldData() {
+        guard let data = bookCaseData else {
+            print("Error: No data")
+            return
+        }
+        nameTextField.text = data.value(forKey: "name") as? String ?? ""
+        explainTextField.text = data.value(forKey: "explain") as? String ?? ""
+        wordTextField.text = data.value(forKey: "word") as? String ?? ""
+        meaningTextField.text = data.value(forKey: "meaning") as? String ?? ""
+        if let imageData = data.value(forKey: "image") as? Data {
+            print("Image data loaded successfully")
+            let image = UIImage(data: imageData)
+            setImage(image ?? UIImage(systemName: "photo")!)
+        } else {
+            print("Error: Failed to load image data")
+        }
+    }
+    
+    @objc func editButtonTapped(_ sender: UIButton) {
         var isValid = true // 텍스트 필드가 채워져 있는지 확인하는 변수
         if nameTextField.text?.isEmpty ?? true {
             shakeTextField(nameTextField)
@@ -221,23 +242,18 @@ class AddBookCaseBodyView: UIView {
             shakeTextField(meaningTextField)
             isValid = false
         }
-
+        
         if isValid {
             guard let name = nameTextField.text,
                   let explain = explainTextField.text,
                   let word = wordTextField.text,
                   let meaning = meaningTextField.text,
-                  let image = backImgView.image else {
+                  let image = backImgView.image?.jpegData(compressionQuality: 1.0),
+                  let data = bookCaseData else {
                 return
             }
-            var imageData: Data?
-            if image == UIImage(systemName: "plus") { // 이미지 선택 안 해서 plus일 경우, 다른 기본 사진으로 저장
-                imageData = UIImage(named: "mainturtle")?.jpegData(compressionQuality: 1.0)
-            } else {
-                imageData = image.jpegData(compressionQuality: 1.0)
-            }
-            coreDataManager.saveBookCase(name: name, explain: explain, word: word, meaning: meaning, image: imageData!)
-            delegate?.addButtonTapped()
+            coreDataManager.updateBookCase(data, name: name, explain: explain, word: word, meaning: meaning, image: image)
+            delegate?.editButtonTapped()
         }
     }
     
@@ -255,28 +271,7 @@ class AddBookCaseBodyView: UIView {
     }
 }
 
-protocol AddBookCaseBodyViewDelegate: AnyObject {
-    func addButtonTapped()
+protocol EditBookCaseBodyViewDelegate: AnyObject {
+    func editButtonTapped()
     func didSelectImage()
-}
-
-extension AddBookCaseBodyView: UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        // 백스페이스 실행 가능하게 하기
-        if let char = string.cString(using: String.Encoding.utf8) {
-            let isBackSpace = strcmp(char, "\\b")
-            if isBackSpace == -92 {
-                return true
-            }
-        }
-        let currentText = textField.text ?? ""
-        let prospectiveText = (currentText as NSString).replacingCharacters(in: range, with: string)
-        
-        // 글자 수 제한
-        if textField == nameTextField { return prospectiveText.count <= 10 }
-        if textField == explainTextField { return prospectiveText.count <= 15 }
-        if textField == wordTextField { return prospectiveText.count <= 8 }
-        if textField == meaningTextField { return prospectiveText.count <= 8 }
-        return true
-    }
 }

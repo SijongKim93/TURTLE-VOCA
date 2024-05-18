@@ -11,7 +11,8 @@ import CoreData
 
 class BookCaseBodyCell: UICollectionViewCell {
     
-    weak var delegate: BookCaseBodyCellDelegate?
+    weak var delegateDelete: DeleteBookCaseBodyCellDelegate?
+    weak var delagateEdit: EditBookCaseBodyCellDelegate?
     
     var bookCaseData: NSManagedObject?
     
@@ -35,10 +36,7 @@ class BookCaseBodyCell: UICollectionViewCell {
     
     private let imageView: UIImageView = {
         let imgView = UIImageView()
-        imgView.contentMode = .center
-        imgView.tintColor = .systemGray2
-        imgView.backgroundColor = .white
-        imgView.image = UIImage(systemName: "photo") // 기본 이미지 설정
+        imgView.image = UIImage(systemName: "") // 기본 이미지 설정
         return imgView
     }()
     
@@ -53,14 +51,6 @@ class BookCaseBodyCell: UICollectionViewCell {
     }()
     
     private let languageLabel = LabelFactory().makeLabel(title: "", size: 15, textAlignment: .left, isBold: false)
-    private let countLabel = LabelFactory().makeLabel(title: "", size: 15, textAlignment: .right, isBold: false)
-    
-    private lazy var wordStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [languageLabel, countLabel])
-        stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
-        return stackView
-    }()
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -74,7 +64,7 @@ class BookCaseBodyCell: UICollectionViewCell {
     private func setupConstraints() {
         contentView.addSubview(cellView)
         
-        [menuButton, imageView, nameStackView, wordStackView].forEach {
+        [menuButton, imageView, nameStackView, languageLabel].forEach {
             cellView.addSubview($0)
         }
         
@@ -98,7 +88,7 @@ class BookCaseBodyCell: UICollectionViewCell {
             $0.horizontalEdges.equalToSuperview().inset(25)
         }
         
-        wordStackView.snp.makeConstraints {
+        languageLabel.snp.makeConstraints {
             $0.top.equalTo(nameStackView.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview().inset(25)
             $0.bottom.equalToSuperview().inset(20)
@@ -106,28 +96,35 @@ class BookCaseBodyCell: UICollectionViewCell {
     }
     
     func configure(with bookCaseData: NSManagedObject) {
+        self.bookCaseData = bookCaseData
         if let imageData = bookCaseData.value(forKey: "image") as? Data {
             imageView.image = UIImage(data: imageData)
+            imageView.layer.cornerRadius = 20
+            imageView.layer.masksToBounds = true
             imageView.contentMode = .scaleToFill
         }
-        nameLabel.text = bookCaseData.value(forKey: "name") as? String ?? "코딩 단어장"
-        detailLabel.text = bookCaseData.value(forKey: "explain") as? String ?? "Swift 공부"
-        let word = bookCaseData.value(forKey: "word") as? String ?? "Swift"
-        let meaning = bookCaseData.value(forKey: "meaning") as? String ?? "한국어"
+        nameLabel.text = bookCaseData.value(forKey: "name") as? String ?? ""
+        detailLabel.text = bookCaseData.value(forKey: "explain") as? String ?? ""
+        let word = bookCaseData.value(forKey: "word") as? String ?? ""
+        let meaning = bookCaseData.value(forKey: "meaning") as? String ?? ""
         languageLabel.text = "\(word) / \(meaning)"
     }
     
     private func createMenu() -> UIMenu {
-        let editAction = UIAction(title: "수정", image: UIImage(systemName: "square.and.pencil")) { _ in
-            // 수정 작업 처리
+        let editAction = UIAction(title: "수정", image: UIImage(systemName: "square.and.pencil")) { [self] _ in
+            self.delagateEdit?.didTapEditButton(on: self, with: bookCaseData!)
         }
         let deleteAction = UIAction(title: "삭제", image: UIImage(systemName: "trash"), attributes: .destructive) { _ in
-            self.delegate?.didTapDeleteButton(on: self)
+            self.delegateDelete?.didTapDeleteButton(on: self)
         }
         return UIMenu(title: "", children: [editAction, deleteAction])
     }
 }
 
-protocol BookCaseBodyCellDelegate: AnyObject {
+protocol DeleteBookCaseBodyCellDelegate: AnyObject {
     func didTapDeleteButton(on cell: BookCaseBodyCell)
+}
+
+protocol EditBookCaseBodyCellDelegate: AnyObject {
+    func didTapEditButton(on cell: BookCaseBodyCell, with bookCaseData: NSManagedObject)
 }
