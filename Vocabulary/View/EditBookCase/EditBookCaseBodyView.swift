@@ -53,7 +53,7 @@ class EditBookCaseBodyView: UIView {
         return textField
     }()
     
-    let nameCountLabel = LabelFactory().makeLabel(title: "0/20", size: 13, textAlignment: .right, isBold: false)
+    let nameCountLabel = LabelFactory().makeLabel(title: "0/10", size: 13, textAlignment: .right, isBold: false)
     
     lazy var nameStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [nameLabel, nameTextField, nameCountLabel])
@@ -74,7 +74,7 @@ class EditBookCaseBodyView: UIView {
         return textField
     }()
     
-    let explainCountLabel = LabelFactory().makeLabel(title: "0/40", size: 13, textAlignment: .right, isBold: false)
+    let explainCountLabel = LabelFactory().makeLabel(title: "0/15", size: 13, textAlignment: .right, isBold: false)
     
     lazy var explainStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [explainLabel, explainTextField, explainCountLabel])

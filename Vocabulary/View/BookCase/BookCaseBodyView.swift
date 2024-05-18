@@ -13,17 +13,10 @@ import CoreData
 class BookCaseBodyView: UIView {
     
     let motivations = [
-        "한 걸음 한 걸음 나아가자",
-        "포기하지 말고 꿈을 향해 나아가자",
-        "피할수 없으면 즐겨라",
-        "계단을 밟아야 계단 위에 올라설 수 있다",
-        "행복은 습관이다,그것을 몸에 지니라",
-        "1퍼센트의 가능성, 그것이 나의 길이다",
-        "겨울이 오면 봄이 멀지 않으리",
-        "인생에 뜻을 세우는데 있어 늦은 때라곤 없다",
-        "꿈을 계속 간직하고 있으면 반드시 실현할 때가 온다",
-        "내일 죽을 것처럼 오늘을 살아라",
-        "현재에 집중할수 있다면 행복할 것이다"
+        "“성적이나 결과는 행동이 아니라 습관입니다.” \n – 아리스토텔레스",
+        "“끝날 때까지 항상 불가능해 보인다” \n – 넬슨 만델라",
+        "“열심히 하면 할수록 행운도 더 많이 옵니다.” \n – 토마스 제퍼슨",
+        "“산을 옮기는 사람은 작은 돌부터 옮기기 시작한다.” \n – 공자",
     ]
     
     var bookCaseData: NSManagedObject?
@@ -45,7 +38,7 @@ class BookCaseBodyView: UIView {
     }()
     
     //응원 문구
-    let motivationLabel = LabelFactory().makeLabel(title: "", color: .darkGray, size: 16, isBold: false)
+    let motivationLabel = LabelFactory().makeLabel(title: "", color: .systemGray, size: 16, isBold: false)
     
     //셀이 없을 때
     let backgroundImage: UIImageView = {
@@ -79,7 +72,7 @@ class BookCaseBodyView: UIView {
         
         motivationLabel.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.bottom.equalToSuperview().inset(36)
+            $0.bottom.equalToSuperview().inset(30)
         }
         
         backgroundImage.snp.makeConstraints {

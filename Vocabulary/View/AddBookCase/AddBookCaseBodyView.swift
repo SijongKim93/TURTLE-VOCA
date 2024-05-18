@@ -46,7 +46,7 @@ class AddBookCaseBodyView: UIView {
         return textField
     }()
     
-    let nameCountLabel = LabelFactory().makeLabel(title: "0/20", size: 13, textAlignment: .right, isBold: false)
+    let nameCountLabel = LabelFactory().makeLabel(title: "0/10", size: 13, textAlignment: .right, isBold: false)
     
     lazy var nameStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [nameLabel, nameTextField, nameCountLabel])
@@ -67,7 +67,7 @@ class AddBookCaseBodyView: UIView {
         return textField
     }()
     
-    let explainCountLabel = LabelFactory().makeLabel(title: "0/40", size: 13, textAlignment: .right, isBold: false)
+    let explainCountLabel = LabelFactory().makeLabel(title: "0/15", size: 13, textAlignment: .right, isBold: false)
     
     lazy var explainStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [explainLabel, explainTextField, explainCountLabel])
@@ -127,6 +127,12 @@ class AddBookCaseBodyView: UIView {
         super.init(frame: .zero)
         setupConstraints()
         setupImageViewGesture()
+        
+        // 텍스트필드 델리게이트 설정
+        nameTextField.delegate = self
+        explainTextField.delegate = self
+        wordTextField.delegate = self
+        meaningTextField.delegate = self
     }
         
     required init?(coder: NSCoder) {
@@ -201,11 +207,16 @@ class AddBookCaseBodyView: UIView {
               let explain = explainTextField.text,
               let word = wordTextField.text,
               let meaning = meaningTextField.text,
-              let image = backImgView.image?.jpegData(compressionQuality: 1.0) else {
+              let image = backImgView.image else {
             return
         }
-        coreDataManager.saveBookCase(name: name, explain: explain, word: word, meaning: meaning, image: image)
-        
+        var imageData: Data?
+        if image == UIImage(systemName: "plus") { //선택을 안해서 plus일 경우, 다른 기본 사진으로 저장
+            imageData = UIImage(named: "mainturtle")?.jpegData(compressionQuality: 1.0)
+        } else {
+            imageData = image.jpegData(compressionQuality: 1.0)
+        }
+        coreDataManager.saveBookCase(name: name, explain: explain, word: word, meaning: meaning, image: imageData!)
         delegate?.addButtonTapped()
     }
 }
@@ -213,4 +224,25 @@ class AddBookCaseBodyView: UIView {
 protocol AddBookCaseBodyViewDelegate: AnyObject {
     func addButtonTapped()
     func didSelectImage()
+}
+
+extension AddBookCaseBodyView: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // 백스페이스 실행 가능하게 하기
+        if let char = string.cString(using: String.Encoding.utf8) {
+            let isBackSpace = strcmp(char, "\\b")
+            if isBackSpace == -92 {
+                return true
+            }
+        }
+        let currentText = textField.text ?? ""
+        let prospectiveText = (currentText as NSString).replacingCharacters(in: range, with: string)
+        
+        // 글자 수 제한
+        if textField == nameTextField { return prospectiveText.count <= 10 }
+        if textField == explainTextField { return prospectiveText.count <= 15 }
+        if textField == wordTextField { return prospectiveText.count <= 8 }
+        if textField == meaningTextField { return prospectiveText.count <= 8 }
+        return true
+    }
 }

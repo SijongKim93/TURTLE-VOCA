@@ -54,14 +54,6 @@ class BookCaseBodyCell: UICollectionViewCell {
     }()
     
     private let languageLabel = LabelFactory().makeLabel(title: "", size: 15, textAlignment: .left, isBold: false)
-    private let countLabel = LabelFactory().makeLabel(title: "", size: 15, textAlignment: .right, isBold: false)
-    
-    private lazy var wordStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [languageLabel, countLabel])
-        stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
-        return stackView
-    }()
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -75,7 +67,7 @@ class BookCaseBodyCell: UICollectionViewCell {
     private func setupConstraints() {
         contentView.addSubview(cellView)
         
-        [menuButton, imageView, nameStackView, wordStackView].forEach {
+        [menuButton, imageView, nameStackView, languageLabel].forEach {
             cellView.addSubview($0)
         }
         
@@ -99,7 +91,7 @@ class BookCaseBodyCell: UICollectionViewCell {
             $0.horizontalEdges.equalToSuperview().inset(25)
         }
         
-        wordStackView.snp.makeConstraints {
+        languageLabel.snp.makeConstraints {
             $0.top.equalTo(nameStackView.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview().inset(25)
             $0.bottom.equalToSuperview().inset(20)
