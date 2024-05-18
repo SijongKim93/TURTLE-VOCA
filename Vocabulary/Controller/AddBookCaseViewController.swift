@@ -8,8 +8,9 @@
 import UIKit
 import SnapKit
 import CoreData
+import PhotosUI
 
-class AddBookCaseViewController: UIViewController, AddBookCaseBodyViewDelegate, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+class AddBookCaseViewController: UIViewController, AddBookCaseBodyViewDelegate {
     
     var bookCaseData: NSManagedObject?
 
@@ -43,17 +44,13 @@ class AddBookCaseViewController: UIViewController, AddBookCaseBodyViewDelegate, 
     }
     
     func didSelectImage() {
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self
-        imagePickerController.sourceType = .photoLibrary
-        present(imagePickerController, animated: true, completion: nil)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let selectedImage = info[.originalImage] as? UIImage {
-            bodyView.setImage(selectedImage)
-        }
-        picker.dismiss(animated: true, completion: nil)
+        var configuration = PHPickerConfiguration()
+        configuration.filter = .images
+        configuration.selectionLimit = 1
+        
+        let picker = PHPickerViewController(configuration: configuration)
+        picker.delegate = self
+        present(picker, animated: true, completion: nil)
     }
     
     func addButtonTapped() {
@@ -62,5 +59,23 @@ class AddBookCaseViewController: UIViewController, AddBookCaseBodyViewDelegate, 
             self.dismiss(animated: true, completion: nil)
         }
         present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension AddBookCaseViewController: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true, completion: nil)
+        
+        guard let result = results.first else { return }
+        
+        if result.itemProvider.canLoadObject(ofClass: UIImage.self) {
+            result.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] (object, error) in
+                DispatchQueue.main.async {
+                    if let image = object as? UIImage {
+                        self?.bodyView.setImage(image)
+                    }
+                }
+            }
+        }
     }
 }

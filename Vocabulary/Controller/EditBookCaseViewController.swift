@@ -8,8 +8,9 @@
 import UIKit
 import SnapKit
 import CoreData
+import PhotosUI
 
-class EditBookCaseViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate, EditBookCaseBodyViewDelegate {
+class EditBookCaseViewController: UIViewController, EditBookCaseBodyViewDelegate {
     
     func editButtonTapped() {
         let alertController = AlertController().makeAlertWithCompletion(title: "수정 완료", message: "단어장이 수정되었습니다.") { _ in
@@ -52,16 +53,30 @@ class EditBookCaseViewController: UIViewController, UIImagePickerControllerDeleg
     }
     
     func didSelectImage() {
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self
-        imagePickerController.sourceType = .photoLibrary
-        present(imagePickerController, animated: true, completion: nil)
+        var configuration = PHPickerConfiguration()
+        configuration.filter = .images
+        configuration.selectionLimit = 1
+        
+        let picker = PHPickerViewController(configuration: configuration)
+        picker.delegate = self
+        present(picker, animated: true, completion: nil)
     }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let selectedImage = info[.originalImage] as? UIImage {
-            bodyView.setImage(selectedImage)
-        }
+}
+
+extension EditBookCaseViewController: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true, completion: nil)
+        
+        guard let result = results.first else { return }
+        
+        if result.itemProvider.canLoadObject(ofClass: UIImage.self) {
+            result.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] (object, error) in
+                DispatchQueue.main.async {
+                    if let image = object as? UIImage {
+                        self?.bodyView.setImage(image)
+                    }
+                }
+            }
+        }
     }
 }
