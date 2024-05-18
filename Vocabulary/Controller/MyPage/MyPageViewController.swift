@@ -154,7 +154,7 @@ class MyPageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateWordCounts()
-        
+        getUserData()
     }
     
     func setupUI() {
