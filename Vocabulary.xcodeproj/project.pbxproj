@@ -14,7 +14,7 @@
 		4D1791B32BF1D5BF00E645C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D1791B22BF1D5BF00E645C9 /* Assets.xcassets */; };
 		4D1791B62BF1D5BF00E645C9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4D1791B52BF1D5BF00E645C9 /* Base */; };
 		4D1791C12BF1E1F700E645C9 /* AddBookCaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791C02BF1E1F700E645C9 /* AddBookCaseViewController.swift */; };
-		4D1791C32BF1E20F00E645C9 /* VocaQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791C22BF1E20F00E645C9 /* VocaQuizViewController.swift */; };
+		4D1791C32BF1E20F00E645C9 /* GameMainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791C22BF1E20F00E645C9 /* GameMainPageViewController.swift */; };
 		4D1791C52BF1E27300E645C9 /* CalenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791C42BF1E27300E645C9 /* CalenderViewController.swift */; };
 		4D1791C72BF1E27F00E645C9 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */; };
 		4D1791D12BF23F0300E645C9 /* CalenderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791D02BF23F0300E645C9 /* CalenderCollectionViewCell.swift */; };
@@ -26,8 +26,8 @@
 		611186F22BF4DD5E009C2FE9 /* FlashHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611186F12BF4DD5E009C2FE9 /* FlashHeaderView.swift */; };
 		611186F42BF4DE09009C2FE9 /* FlashBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611186F32BF4DE09009C2FE9 /* FlashBodyView.swift */; };
 		612ABC892BF1EA480056F127 /* DummyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC882BF1EA480056F127 /* DummyModel.swift */; };
-		612ABC8F2BF200370056F127 /* QuizHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC8E2BF200370056F127 /* QuizHeaderView.swift */; };
-		612ABC912BF2003E0056F127 /* QuizBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC902BF2003E0056F127 /* QuizBodyView.swift */; };
+		612ABC8F2BF200370056F127 /* GameMainHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC8E2BF200370056F127 /* GameMainHeaderView.swift */; };
+		612ABC912BF2003E0056F127 /* GameMainBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC902BF2003E0056F127 /* GameMainBodyView.swift */; };
 		612D10CD2BF718DD0097EDBA /* FilterPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D10C92BF718DD0097EDBA /* FilterPresentationController.swift */; };
 		612D10CE2BF718DD0097EDBA /* MenuDetailModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D10CA2BF718DD0097EDBA /* MenuDetailModalViewController.swift */; };
 		612D10CF2BF718DD0097EDBA /* FilterDetailModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D10CB2BF718DD0097EDBA /* FilterDetailModalViewController.swift */; };
@@ -46,16 +46,20 @@
 		618E70602BF21970007AEDFE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E705F2BF21970007AEDFE /* Constants.swift */; };
 		618E70662BF229D1007AEDFE /* VocaQuizMainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E70652BF229D1007AEDFE /* VocaQuizMainCollectionViewCell.swift */; };
 		618E70682BF22A66007AEDFE /* CollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E70672BF22A66007AEDFE /* CollectionView+Extension.swift */; };
-		618E706A2BF24F2F007AEDFE /* GamePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E70692BF24F2F007AEDFE /* GamePageViewController.swift */; };
-		618E706D2BF25328007AEDFE /* GamePageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E706C2BF25328007AEDFE /* GamePageHeaderView.swift */; };
-		618E706F2BF25337007AEDFE /* GamePageBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E706E2BF25337007AEDFE /* GamePageBodyView.swift */; };
-		618E70712BF25354007AEDFE /* GamePageBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E70702BF25354007AEDFE /* GamePageBottomView.swift */; };
+		618E706A2BF24F2F007AEDFE /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E70692BF24F2F007AEDFE /* QuizViewController.swift */; };
+		618E706D2BF25328007AEDFE /* QuizHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E706C2BF25328007AEDFE /* QuizHeaderView.swift */; };
+		618E706F2BF25337007AEDFE /* QuizBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E706E2BF25337007AEDFE /* QuizBodyView.swift */; };
+		618E70712BF25354007AEDFE /* QuizBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E70702BF25354007AEDFE /* QuizBottomView.swift */; };
 		61AAEBC92BF724AE0032961C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 61AAEBC82BF724AE0032961C /* SnapKit */; };
 		61B32CEF2BF8D613000FED5C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 61B32CEE2BF8D613000FED5C /* FirebaseAuth */; };
 		61B32CF12BF8DA05000FED5C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61B32CF02BF8DA05000FED5C /* GoogleService-Info.plist */; };
 		61BCB0542BF2F4B600CF73E4 /* DummyGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0532BF2F4B600CF73E4 /* DummyGenerator.swift */; };
 		61BCB0562BF337B100CF73E4 /* VocaQuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0552BF337B100CF73E4 /* VocaQuizModel.swift */; };
 		61BCB0592BF3597C00CF73E4 /* UIResponder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0582BF3597C00CF73E4 /* UIResponder+Extension.swift */; };
+		61EE0BF22BF9775100FD2F32 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EE0BF12BF9775100FD2F32 /* RecordViewController.swift */; };
+		61EE0BF62BF9777600FD2F32 /* RecordHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EE0BF32BF9777600FD2F32 /* RecordHeaderView.swift */; };
+		61EE0BF72BF9777600FD2F32 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EE0BF42BF9777600FD2F32 /* RecordTableViewCell.swift */; };
+		61EE0BF82BF9777600FD2F32 /* RecordBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EE0BF52BF9777600FD2F32 /* RecordBodyView.swift */; };
 		61EEE6902BF5E66E00803AA1 /* HangManGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EEE68F2BF5E66E00803AA1 /* HangManGameViewController.swift */; };
 		61EEE6922BF5E69C00803AA1 /* HangManHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EEE6912BF5E69C00803AA1 /* HangManHeaderView.swift */; };
 		61EEE6942BF5E70300803AA1 /* HangManBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EEE6932BF5E70300803AA1 /* HangManBodyView.swift */; };
@@ -84,7 +88,7 @@
 		4D1791B52BF1D5BF00E645C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D1791B72BF1D5BF00E645C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D1791C02BF1E1F700E645C9 /* AddBookCaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookCaseViewController.swift; sourceTree = "<group>"; };
-		4D1791C22BF1E20F00E645C9 /* VocaQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaQuizViewController.swift; sourceTree = "<group>"; };
+		4D1791C22BF1E20F00E645C9 /* GameMainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMainPageViewController.swift; sourceTree = "<group>"; };
 		4D1791C42BF1E27300E645C9 /* CalenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewController.swift; sourceTree = "<group>"; };
 		4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		4D1791D02BF23F0300E645C9 /* CalenderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -96,8 +100,8 @@
 		611186F12BF4DD5E009C2FE9 /* FlashHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashHeaderView.swift; sourceTree = "<group>"; };
 		611186F32BF4DE09009C2FE9 /* FlashBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashBodyView.swift; sourceTree = "<group>"; };
 		612ABC882BF1EA480056F127 /* DummyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyModel.swift; sourceTree = "<group>"; };
-		612ABC8E2BF200370056F127 /* QuizHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizHeaderView.swift; sourceTree = "<group>"; };
-		612ABC902BF2003E0056F127 /* QuizBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBodyView.swift; sourceTree = "<group>"; };
+		612ABC8E2BF200370056F127 /* GameMainHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMainHeaderView.swift; sourceTree = "<group>"; };
+		612ABC902BF2003E0056F127 /* GameMainBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMainBodyView.swift; sourceTree = "<group>"; };
 		612D10C92BF718DD0097EDBA /* FilterPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterPresentationController.swift; sourceTree = "<group>"; };
 		612D10CA2BF718DD0097EDBA /* MenuDetailModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDetailModalViewController.swift; sourceTree = "<group>"; };
 		612D10CB2BF718DD0097EDBA /* FilterDetailModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterDetailModalViewController.swift; sourceTree = "<group>"; };
@@ -117,14 +121,18 @@
 		618E705F2BF21970007AEDFE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		618E70652BF229D1007AEDFE /* VocaQuizMainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaQuizMainCollectionViewCell.swift; sourceTree = "<group>"; };
 		618E70672BF22A66007AEDFE /* CollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionView+Extension.swift"; sourceTree = "<group>"; };
-		618E70692BF24F2F007AEDFE /* GamePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePageViewController.swift; sourceTree = "<group>"; };
-		618E706C2BF25328007AEDFE /* GamePageHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePageHeaderView.swift; sourceTree = "<group>"; };
-		618E706E2BF25337007AEDFE /* GamePageBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePageBodyView.swift; sourceTree = "<group>"; };
-		618E70702BF25354007AEDFE /* GamePageBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePageBottomView.swift; sourceTree = "<group>"; };
+		618E70692BF24F2F007AEDFE /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
+		618E706C2BF25328007AEDFE /* QuizHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizHeaderView.swift; sourceTree = "<group>"; };
+		618E706E2BF25337007AEDFE /* QuizBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBodyView.swift; sourceTree = "<group>"; };
+		618E70702BF25354007AEDFE /* QuizBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBottomView.swift; sourceTree = "<group>"; };
 		61B32CF02BF8DA05000FED5C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		61BCB0532BF2F4B600CF73E4 /* DummyGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyGenerator.swift; sourceTree = "<group>"; };
 		61BCB0552BF337B100CF73E4 /* VocaQuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaQuizModel.swift; sourceTree = "<group>"; };
 		61BCB0582BF3597C00CF73E4 /* UIResponder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Extension.swift"; sourceTree = "<group>"; };
+		61EE0BF12BF9775100FD2F32 /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		61EE0BF32BF9777600FD2F32 /* RecordHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordHeaderView.swift; sourceTree = "<group>"; };
+		61EE0BF42BF9777600FD2F32 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
+		61EE0BF52BF9777600FD2F32 /* RecordBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordBodyView.swift; sourceTree = "<group>"; };
 		61EEE68F2BF5E66E00803AA1 /* HangManGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangManGameViewController.swift; sourceTree = "<group>"; };
 		61EEE6912BF5E69C00803AA1 /* HangManHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangManHeaderView.swift; sourceTree = "<group>"; };
 		61EEE6932BF5E70300803AA1 /* HangManBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangManBodyView.swift; sourceTree = "<group>"; };
@@ -200,8 +208,6 @@
 				FBE7EA3F2BF8776100BE86E5 /* EditBookCase */,
 				612D10EF2BF71B6D0097EDBA /* BookCase */,
 				612D10E52BF71AE30097EDBA /* AddBookCase */,
-				611186F02BF4DD4F009C2FE9 /* FlashCard */,
-				618E706B2BF25316007AEDFE /* GamePage */,
 				612ABC8A2BF1FCF80056F127 /* VocaQuiz */,
 				4D1791D22BF2F70700E645C9 /* Calender */,
 				612D10F62BF71BAA0097EDBA /* MyPage */,
@@ -217,7 +223,6 @@
 				4D1791C02BF1E1F700E645C9 /* AddBookCaseViewController.swift */,
 				FBE7EA402BF8778F00BE86E5 /* EditBookCaseViewController.swift */,
 				4D1791AA2BF1D5BE00E645C9 /* AddVocaViewController.swift */,
-				611186ED2BF4DBD3009C2FE9 /* FlashCard */,
 				610130D62BF3D9E400CE8183 /* VocaQuiz */,
 				4D1791D52BF3422900E645C9 /* Calender */,
 				4D1791EF2BF7550000E645C9 /* MyPage */,
@@ -260,28 +265,13 @@
 		610130D62BF3D9E400CE8183 /* VocaQuiz */ = {
 			isa = PBXGroup;
 			children = (
-				4D1791C22BF1E20F00E645C9 /* VocaQuizViewController.swift */,
-				618E70692BF24F2F007AEDFE /* GamePageViewController.swift */,
+				4D1791C22BF1E20F00E645C9 /* GameMainPageViewController.swift */,
+				618E70692BF24F2F007AEDFE /* QuizViewController.swift */,
+				611186EE2BF4DCB6009C2FE9 /* FlashCardViewController.swift */,
 				61EEE68F2BF5E66E00803AA1 /* HangManGameViewController.swift */,
+				61EE0BF12BF9775100FD2F32 /* RecordViewController.swift */,
 			);
 			path = VocaQuiz;
-			sourceTree = "<group>";
-		};
-		611186ED2BF4DBD3009C2FE9 /* FlashCard */ = {
-			isa = PBXGroup;
-			children = (
-				611186EE2BF4DCB6009C2FE9 /* FlashCardViewController.swift */,
-			);
-			path = FlashCard;
-			sourceTree = "<group>";
-		};
-		611186F02BF4DD4F009C2FE9 /* FlashCard */ = {
-			isa = PBXGroup;
-			children = (
-				611186F12BF4DD5E009C2FE9 /* FlashHeaderView.swift */,
-				611186F32BF4DE09009C2FE9 /* FlashBodyView.swift */,
-			);
-			path = FlashCard;
 			sourceTree = "<group>";
 		};
 		612ABC852BF1E9B70056F127 /* Model */ = {
@@ -301,8 +291,19 @@
 		612ABC8A2BF1FCF80056F127 /* VocaQuiz */ = {
 			isa = PBXGroup;
 			children = (
-				612ABC8E2BF200370056F127 /* QuizHeaderView.swift */,
-				612ABC902BF2003E0056F127 /* QuizBodyView.swift */,
+				611186F12BF4DD5E009C2FE9 /* FlashHeaderView.swift */,
+				611186F32BF4DE09009C2FE9 /* FlashBodyView.swift */,
+				618E706C2BF25328007AEDFE /* QuizHeaderView.swift */,
+				618E706E2BF25337007AEDFE /* QuizBodyView.swift */,
+				618E70702BF25354007AEDFE /* QuizBottomView.swift */,
+				61EEE6912BF5E69C00803AA1 /* HangManHeaderView.swift */,
+				61EEE6932BF5E70300803AA1 /* HangManBodyView.swift */,
+				61EEE6952BF5E74700803AA1 /* HangManBottomView.swift */,
+				612ABC8E2BF200370056F127 /* GameMainHeaderView.swift */,
+				612ABC902BF2003E0056F127 /* GameMainBodyView.swift */,
+				61EE0BF52BF9777600FD2F32 /* RecordBodyView.swift */,
+				61EE0BF32BF9777600FD2F32 /* RecordHeaderView.swift */,
+				61EE0BF42BF9777600FD2F32 /* RecordTableViewCell.swift */,
 				618E70652BF229D1007AEDFE /* VocaQuizMainCollectionViewCell.swift */,
 			);
 			path = VocaQuiz;
@@ -361,19 +362,6 @@
 				618E70672BF22A66007AEDFE /* CollectionView+Extension.swift */,
 			);
 			path = VocaQuiz;
-			sourceTree = "<group>";
-		};
-		618E706B2BF25316007AEDFE /* GamePage */ = {
-			isa = PBXGroup;
-			children = (
-				618E706C2BF25328007AEDFE /* GamePageHeaderView.swift */,
-				618E706E2BF25337007AEDFE /* GamePageBodyView.swift */,
-				618E70702BF25354007AEDFE /* GamePageBottomView.swift */,
-				61EEE6912BF5E69C00803AA1 /* HangManHeaderView.swift */,
-				61EEE6932BF5E70300803AA1 /* HangManBodyView.swift */,
-				61EEE6952BF5E74700803AA1 /* HangManBottomView.swift */,
-			);
-			path = GamePage;
 			sourceTree = "<group>";
 		};
 		61BCB0522BF2F4A900CF73E4 /* Service */ = {
@@ -485,20 +473,21 @@
 			files = (
 				4D1791AB2BF1D5BE00E645C9 /* AddVocaViewController.swift in Sources */,
 				4D1791A72BF1D5BE00E645C9 /* AppDelegate.swift in Sources */,
+				61EE0BF72BF9777600FD2F32 /* RecordTableViewCell.swift in Sources */,
 				612D10CE2BF718DD0097EDBA /* MenuDetailModalViewController.swift in Sources */,
 				612D10F82BF71BC40097EDBA /* MyPageTableViewCell.swift in Sources */,
 				612D10F32BF71B9B0097EDBA /* BookCaseBodyCell.swift in Sources */,
-				618E706D2BF25328007AEDFE /* GamePageHeaderView.swift in Sources */,
+				618E706D2BF25328007AEDFE /* QuizHeaderView.swift in Sources */,
 				61EEE6942BF5E70300803AA1 /* HangManBodyView.swift in Sources */,
 				611186EF2BF4DCB6009C2FE9 /* FlashCardViewController.swift in Sources */,
-				612ABC912BF2003E0056F127 /* QuizBodyView.swift in Sources */,
+				612ABC912BF2003E0056F127 /* GameMainBodyView.swift in Sources */,
 				612D10D02BF718DD0097EDBA /* MenuDetailPresentationController.swift in Sources */,
 				61EEE6922BF5E69C00803AA1 /* HangManHeaderView.swift in Sources */,
 				612D10D22BF719030097EDBA /* MyPageData.swift in Sources */,
 				61BCB0542BF2F4B600CF73E4 /* DummyGenerator.swift in Sources */,
 				612ABC892BF1EA480056F127 /* DummyModel.swift in Sources */,
 				618E70602BF21970007AEDFE /* Constants.swift in Sources */,
-				4D1791C32BF1E20F00E645C9 /* VocaQuizViewController.swift in Sources */,
+				4D1791C32BF1E20F00E645C9 /* GameMainPageViewController.swift in Sources */,
 				61F75F5F2BF4F9E800FCC731 /* AlertController.swift in Sources */,
 				61F75F5D2BF4ED2500FCC731 /* UIColor+Extension.swift in Sources */,
 				4D1791A92BF1D5BE00E645C9 /* SceneDelegate.swift in Sources */,
@@ -515,29 +504,32 @@
 				618E70662BF229D1007AEDFE /* VocaQuizMainCollectionViewCell.swift in Sources */,
 				61EEE6982BF5EDD900803AA1 /* ButtonFactory.swift in Sources */,
 				61BCB0592BF3597C00CF73E4 /* UIResponder+Extension.swift in Sources */,
-				618E706F2BF25337007AEDFE /* GamePageBodyView.swift in Sources */,
+				618E706F2BF25337007AEDFE /* QuizBodyView.swift in Sources */,
 				618E70682BF22A66007AEDFE /* CollectionView+Extension.swift in Sources */,
 				612D10CD2BF718DD0097EDBA /* FilterPresentationController.swift in Sources */,
 				4D1791C52BF1E27300E645C9 /* CalenderViewController.swift in Sources */,
 				6B02ADEF2BF6E8B6006E0964 /* TextFieldFactory.swift in Sources */,
 				4D9E8FA92BF8CCE3003F05D3 /* LoginPresentationController.swift in Sources */,
 				612D10D82BF719610097EDBA /* MenuDetailTableViewCell.swift in Sources */,
-				618E70712BF25354007AEDFE /* GamePageBottomView.swift in Sources */,
+				618E70712BF25354007AEDFE /* QuizBottomView.swift in Sources */,
 				FBE7EA412BF8778F00BE86E5 /* EditBookCaseViewController.swift in Sources */,
 				FBE7EA432BF877D200BE86E5 /* EditBookCaseHeaderView.swift in Sources */,
 				612D10CF2BF718DD0097EDBA /* FilterDetailModalViewController.swift in Sources */,
 				4D9E8FAB2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift in Sources */,
-				612ABC8F2BF200370056F127 /* QuizHeaderView.swift in Sources */,
+				61EE0BF62BF9777600FD2F32 /* RecordHeaderView.swift in Sources */,
+				612ABC8F2BF200370056F127 /* GameMainHeaderView.swift in Sources */,
 				4D1791DD2BF45AD500E645C9 /* FilterTableViewCell.swift in Sources */,
 				61BCB0562BF337B100CF73E4 /* VocaQuizModel.swift in Sources */,
 				4D9E8FA72BF8CCB2003F05D3 /* LoginModalViewController.swift in Sources */,
 				61EEE6962BF5E74700803AA1 /* HangManBottomView.swift in Sources */,
 				612D10F42BF71B9B0097EDBA /* BookCaseBodyView.swift in Sources */,
 				4D1791C12BF1E1F700E645C9 /* AddBookCaseViewController.swift in Sources */,
+				61EE0BF22BF9775100FD2F32 /* RecordViewController.swift in Sources */,
 				4D1791B12BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld in Sources */,
+				61EE0BF82BF9777600FD2F32 /* RecordBodyView.swift in Sources */,
 				611186F42BF4DE09009C2FE9 /* FlashBodyView.swift in Sources */,
 				612D10E82BF71B130097EDBA /* AddBookCaseHeaderView.swift in Sources */,
-				618E706A2BF24F2F007AEDFE /* GamePageViewController.swift in Sources */,
+				618E706A2BF24F2F007AEDFE /* QuizViewController.swift in Sources */,
 				618E70572BF2039E007AEDFE /* LabelFactory.swift in Sources */,
 				FBE7EA452BF8785700BE86E5 /* EditBookCaseBodyView.swift in Sources */,
 				612D10E92BF71B130097EDBA /* AddBookCaseBodyView.swift in Sources */,

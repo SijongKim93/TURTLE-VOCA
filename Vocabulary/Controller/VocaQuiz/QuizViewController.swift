@@ -10,19 +10,19 @@ import SnapKit
 import CoreData
 
 
-class GamePageViewController: UIViewController {
+class QuizViewController: UIViewController {
     
-    lazy var gamePageHeaderView = GamePageHeaderView()
-    lazy var gamePageBodyView = GamePageBodyView()
-    lazy var gamePageBottomView = GamePageBottomView()
+    lazy var quizHeaderView = QuizHeaderView()
+    lazy var quizBodyView = QuizBodyView()
+    lazy var quizBottomView = QuizBottomView()
     
     private lazy var vStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [
             UIView(),
-            gamePageHeaderView,
-            gamePageBodyView,
+            quizHeaderView,
+            quizBodyView,
             UIView(),
-            gamePageBottomView,
+            quizBottomView,
             UIView()
         ])
         stackView.axis = .vertical
@@ -78,9 +78,9 @@ class GamePageViewController: UIViewController {
     
     func gameStart () {
         if currentNumber > quizData.count - 1 {
-            gamePageBodyView.gameTitle.text = "게임이 종료 되었습니다."
-            gamePageHeaderView.scoreLabel.text = "Score: \(score) 점"
-            [gamePageBottomView.firstButton, gamePageBottomView.secondButton, gamePageBottomView.thirdButton, gamePageBottomView.forthButton].forEach { button in
+            quizBodyView.gameTitle.text = "게임이 종료 되었습니다."
+            quizHeaderView.scoreLabel.text = "Score: \(score) 점"
+            [quizBottomView.firstButton, quizBottomView.secondButton, quizBottomView.thirdButton, quizBottomView.forthButton].forEach { button in
                 button.isEnabled = false
             }
         } else {
@@ -88,16 +88,16 @@ class GamePageViewController: UIViewController {
             var answerList = [quizData[currentNumber].answer, quizData[currentNumber].incorrectFirst, quizData[currentNumber].incorrectSecond, quizData[currentNumber].incorrectThird]
             answerList.shuffle()
             
-            gamePageBottomView.firstButton.setTitle(answerList[0], for: .normal)
-            gamePageBottomView.secondButton.setTitle(answerList[1], for: .normal)
-            gamePageBottomView.thirdButton.setTitle(answerList[2], for: .normal)
-            gamePageBottomView.forthButton.setTitle(answerList[3], for: .normal)
+            quizBottomView.firstButton.setTitle(answerList[0], for: .normal)
+            quizBottomView.secondButton.setTitle(answerList[1], for: .normal)
+            quizBottomView.thirdButton.setTitle(answerList[2], for: .normal)
+            quizBottomView.forthButton.setTitle(answerList[3], for: .normal)
         }
     }
     
     func update() {
-        gamePageBodyView.gameTitle.text = quizData[currentNumber].question
-        gamePageHeaderView.scoreLabel.text = "Score: \(score) 점"
+        quizBodyView.gameTitle.text = quizData[currentNumber].question
+        quizHeaderView.scoreLabel.text = "Score: \(score) 점"
         
     }
     
@@ -108,19 +108,19 @@ class GamePageViewController: UIViewController {
             $0.edges.equalToSuperview()
         }
         
-        gamePageHeaderView.snp.makeConstraints {
+        quizHeaderView.snp.makeConstraints {
             $0.top.equalTo(vStackView.snp.top).offset(50)
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(150)
         }
         
-        gamePageBodyView.snp.makeConstraints {
-            $0.top.equalTo(gamePageHeaderView.snp.bottom)
+        quizBodyView.snp.makeConstraints {
+            $0.top.equalTo(quizHeaderView.snp.bottom)
             $0.leading.trailing.equalToSuperview()
         }
         
-        gamePageBottomView.snp.makeConstraints {
-            $0.top.equalTo(gamePageBodyView.snp.bottom).offset(50)
+        quizBottomView.snp.makeConstraints {
+            $0.top.equalTo(quizBodyView.snp.bottom).offset(50)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().offset(-100)
         }

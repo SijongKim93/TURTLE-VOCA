@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class GamePageBottomView: UIView {
+class QuizBottomView: UIView {
     
     lazy var firstButton: UIButton = {
         let button = UIButton()
@@ -102,8 +102,8 @@ class GamePageBottomView: UIView {
     
     func checkAnswer(title: String) -> Bool {
         var flag = false
-        guard let currentVC = currentViewController as? GamePageViewController else { return flag }
-        let currentQuestion = currentVC.gamePageBodyView.gameTitle.text
+        guard let currentVC = currentViewController as? QuizViewController else { return flag }
+        let currentQuestion = currentVC.quizBodyView.gameTitle.text
         let gameArray = currentVC.quizData
         let answer = gameArray.filter{ $0.question == currentQuestion }.map{ $0.answer }.joined()
         

@@ -11,4 +11,5 @@ class Constants {
     
     static let vocaQuizMainCell = "VocaQuizMainCollectionViewCell"
     static let gameCell = "GamePageCollectionViewCell"
+    static let recordCell = "RecordTableViewCell"
 }

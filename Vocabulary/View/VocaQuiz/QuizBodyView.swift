@@ -1,5 +1,5 @@
 //
-//  BodyView.swift
+//  GamePageBodyView.swift
 //  Vocabulary
 //
 //  Created by Dongik Song on 5/13/24.
@@ -10,18 +10,8 @@ import SnapKit
 
 class QuizBodyView: UIView {
     
+    lazy var gameTitle = LabelFactory().makeLabel(title: "문제", color: .black, size: 40, textAlignment: .center, isBold: true)
     
-    lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 15
-        layout.itemSize = .init(width: 350, height: 60)
-        var view = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        view.register(VocaQuizMainCollectionViewCell.self, forCellWithReuseIdentifier: "VocaQuizMainCollectionViewCell")
-        return view
-    }()
-    
-   
     override init(frame: CGRect) {
         super.init(frame: .zero)
         layout()
@@ -31,13 +21,12 @@ class QuizBodyView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func layout() {
-        self.addSubview(collectionView)
+    private func layout () {
+        self.addSubview(gameTitle)
         
-        collectionView.snp.makeConstraints {
-            $0.top.leading.equalToSuperview().offset(20)
-            $0.trailing.bottom.equalToSuperview().offset(-20)
+        gameTitle.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
+        
     }
-    
 }
