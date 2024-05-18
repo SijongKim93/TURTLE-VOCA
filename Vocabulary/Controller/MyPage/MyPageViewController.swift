@@ -8,6 +8,8 @@
 import UIKit
 import SnapKit
 import PhotosUI
+import AuthenticationServices
+import FirebaseAuth
 
 class MyPageViewController: UIViewController {
     
@@ -35,7 +37,7 @@ class MyPageViewController: UIViewController {
         return button
     }()
     
-    let mailLabel = LabelFactory().makeLabel(title: "rlatlwhd456@naver.com", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 17, textAlignment: .center, isBold: false)
+    var mailLabel = LabelFactory().makeLabel(title: "rlatlwhd456@naver.com", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 17, textAlignment: .center, isBold: false)
     let subLabel = LabelFactory().makeLabel(title: "김시종", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 17, textAlignment: .center, isBold: false)
     
     lazy var profileStackView: UIStackView = {
@@ -139,18 +141,22 @@ class MyPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
+        
         coreDataManager = CoreDataManager.shared
         setupUI()
         setupTableView()
         updateSaveVocaCount()
         updateMemoryVocaCount()
+        getUserData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateWordCounts()
-    }
         
+    }
+    
     func setupUI() {
         view.addSubview(profileContainer)
         view.addSubview(profileImage)
@@ -158,7 +164,7 @@ class MyPageViewController: UIViewController {
         view.addSubview(profileStackView)
         view.addSubview(memoryContainer)
         view.addSubview(allCountStackView)
-
+        
         profileContainer.layer.cornerRadius = 16
         profileContainer.clipsToBounds = true
         
@@ -312,6 +318,22 @@ extension MyPageViewController: UIViewControllerTransitioningDelegate {
             return LoginPresentationController(presentedViewController: loginPresentationController, presenting: presenting)
         } else {
             return nil
+        }
+    }
+}
+
+extension MyPageViewController {
+    
+    func getUserData() {
+        if let user = Auth.auth().currentUser {
+            let uid = user.uid
+            let email = user.email
+            
+            DispatchQueue.main.async{ [weak self] in
+                self?.subLabel.text = uid
+                self?.mailLabel.text = email
+            }
+            
         }
     }
 }
