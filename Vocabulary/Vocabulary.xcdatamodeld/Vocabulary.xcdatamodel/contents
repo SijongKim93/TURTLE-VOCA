@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22757" systemVersion="23E224" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="BookCase" representedClassName="BookCase" syncable="YES" codeGenerationType="class">
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="23D60" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="BookCase" representedClassName=".BookCase" syncable="YES">
         <attribute name="explain" optional="YES" attributeType="String"/>
@@ -13,6 +16,7 @@
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="definition" optional="YES" attributeType="String"/>
         <attribute name="detail" optional="YES" attributeType="String"/>
+        <attribute name="memory" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="pronunciation" optional="YES" attributeType="String"/>
         <attribute name="synonym" optional="YES" attributeType="String"/>
         <attribute name="word" optional="YES" attributeType="String"/>
