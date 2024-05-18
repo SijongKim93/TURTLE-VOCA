@@ -113,5 +113,5 @@ iOSInjectionProject/
 # End of https://www.toptal.com/developers/gitignore/api/swift,xcode,cocoapods
 
 # protect API Key
-/Vocabulary/GoogleService-Info.plist
+Vocabulary/GoogleService-Info.plist
 
