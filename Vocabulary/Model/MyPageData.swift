@@ -14,6 +14,6 @@ class MyPageData {
         ("앱 추천하기", "square.and.arrow.up"),
         ("문의하기", "teletype.answer"),
         ("로그인", "lock"),
-        ("iCloud에 단어 저장하기", "folder")
+        ("iCloud에 단어 저장하기", "externaldrive.badge.icloud")
     ]
 }

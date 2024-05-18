@@ -9,7 +9,7 @@ import UIKit
 
 class MenuDetailModalViewController: UIViewController {
     
-    let labels = ["날짜 변경", "다 외웠어요", "전체 삭제"]
+    let labels = ["다 외웠어요", "전체 삭제"]
     
     let filterMainLabel = LabelFactory().makeLabel(title: "단어 상태 설정", size: 23, textAlignment: .left, isBold: true)
     
@@ -108,6 +108,4 @@ extension MenuDetailModalViewController: UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         60
     }
-    
-    
 }

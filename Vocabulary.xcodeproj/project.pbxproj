@@ -19,6 +19,9 @@
 		4D1791C72BF1E27F00E645C9 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */; };
 		4D1791D12BF23F0300E645C9 /* CalenderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791D02BF23F0300E645C9 /* CalenderCollectionViewCell.swift */; };
 		4D1791DD2BF45AD500E645C9 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791DC2BF45AD500E645C9 /* FilterTableViewCell.swift */; };
+		4D9E8FA72BF8CCB2003F05D3 /* LoginModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E8FA62BF8CCB2003F05D3 /* LoginModalViewController.swift */; };
+		4D9E8FA92BF8CCE3003F05D3 /* LoginPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E8FA82BF8CCE3003F05D3 /* LoginPresentationController.swift */; };
+		4D9E8FAB2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E8FAA2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift */; };
 		611186EF2BF4DCB6009C2FE9 /* FlashCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611186EE2BF4DCB6009C2FE9 /* FlashCardViewController.swift */; };
 		611186F22BF4DD5E009C2FE9 /* FlashHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611186F12BF4DD5E009C2FE9 /* FlashHeaderView.swift */; };
 		611186F42BF4DE09009C2FE9 /* FlashBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611186F32BF4DE09009C2FE9 /* FlashBodyView.swift */; };
@@ -48,6 +51,8 @@
 		618E706F2BF25337007AEDFE /* GamePageBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E706E2BF25337007AEDFE /* GamePageBodyView.swift */; };
 		618E70712BF25354007AEDFE /* GamePageBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E70702BF25354007AEDFE /* GamePageBottomView.swift */; };
 		61AAEBC92BF724AE0032961C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 61AAEBC82BF724AE0032961C /* SnapKit */; };
+		61B32CEF2BF8D613000FED5C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 61B32CEE2BF8D613000FED5C /* FirebaseAuth */; };
+		61B32CF12BF8DA05000FED5C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61B32CF02BF8DA05000FED5C /* GoogleService-Info.plist */; };
 		61BCB0542BF2F4B600CF73E4 /* DummyGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0532BF2F4B600CF73E4 /* DummyGenerator.swift */; };
 		61BCB0562BF337B100CF73E4 /* VocaQuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0552BF337B100CF73E4 /* VocaQuizModel.swift */; };
 		61BCB0592BF3597C00CF73E4 /* UIResponder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0582BF3597C00CF73E4 /* UIResponder+Extension.swift */; };
@@ -84,6 +89,9 @@
 		4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		4D1791D02BF23F0300E645C9 /* CalenderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderCollectionViewCell.swift; sourceTree = "<group>"; };
 		4D1791DC2BF45AD500E645C9 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
+		4D9E8FA62BF8CCB2003F05D3 /* LoginModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModalViewController.swift; sourceTree = "<group>"; };
+		4D9E8FA82BF8CCE3003F05D3 /* LoginPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresentationController.swift; sourceTree = "<group>"; };
+		4D9E8FAA2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDetailTableViewCell.swift; sourceTree = "<group>"; };
 		611186EE2BF4DCB6009C2FE9 /* FlashCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardViewController.swift; sourceTree = "<group>"; };
 		611186F12BF4DD5E009C2FE9 /* FlashHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashHeaderView.swift; sourceTree = "<group>"; };
 		611186F32BF4DE09009C2FE9 /* FlashBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashBodyView.swift; sourceTree = "<group>"; };
@@ -104,6 +112,7 @@
 		612D10F12BF71B9B0097EDBA /* BookCaseBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCaseBodyView.swift; sourceTree = "<group>"; };
 		612D10F22BF71B9B0097EDBA /* BookCaseHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCaseHeaderView.swift; sourceTree = "<group>"; };
 		612D10F72BF71BC40097EDBA /* MyPageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageTableViewCell.swift; sourceTree = "<group>"; };
+		618862552BF8E0A000399DBD /* Vocabulary.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Vocabulary.entitlements; sourceTree = "<group>"; };
 		618E70562BF2039E007AEDFE /* LabelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFactory.swift; sourceTree = "<group>"; };
 		618E705F2BF21970007AEDFE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		618E70652BF229D1007AEDFE /* VocaQuizMainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaQuizMainCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -112,6 +121,7 @@
 		618E706C2BF25328007AEDFE /* GamePageHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePageHeaderView.swift; sourceTree = "<group>"; };
 		618E706E2BF25337007AEDFE /* GamePageBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePageBodyView.swift; sourceTree = "<group>"; };
 		618E70702BF25354007AEDFE /* GamePageBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePageBottomView.swift; sourceTree = "<group>"; };
+		61B32CF02BF8DA05000FED5C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		61BCB0532BF2F4B600CF73E4 /* DummyGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyGenerator.swift; sourceTree = "<group>"; };
 		61BCB0552BF337B100CF73E4 /* VocaQuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaQuizModel.swift; sourceTree = "<group>"; };
 		61BCB0582BF3597C00CF73E4 /* UIResponder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Extension.swift"; sourceTree = "<group>"; };
@@ -139,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				61AAEBC92BF724AE0032961C /* SnapKit in Frameworks */,
+				61B32CEF2BF8D613000FED5C /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +175,7 @@
 		4D1791A52BF1D5BE00E645C9 /* Vocabulary */ = {
 			isa = PBXGroup;
 			children = (
+				618862552BF8E0A000399DBD /* Vocabulary.entitlements */,
 				61BCB0522BF2F4A900CF73E4 /* Service */,
 				618E70612BF21E5A007AEDFE /* Extension */,
 				618E70552BF20387007AEDFE /* Factory */,
@@ -177,6 +189,7 @@
 				4D1791B72BF1D5BF00E645C9 /* Info.plist */,
 				4D1791AF2BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld */,
 				618E705F2BF21970007AEDFE /* Constants.swift */,
+				61B32CF02BF8DA05000FED5C /* GoogleService-Info.plist */,
 			);
 			path = Vocabulary;
 			sourceTree = "<group>";
@@ -238,6 +251,8 @@
 			isa = PBXGroup;
 			children = (
 				4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */,
+				4D9E8FA62BF8CCB2003F05D3 /* LoginModalViewController.swift */,
+				4D9E8FA82BF8CCE3003F05D3 /* LoginPresentationController.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -316,6 +331,7 @@
 			isa = PBXGroup;
 			children = (
 				612D10F72BF71BC40097EDBA /* MyPageTableViewCell.swift */,
+				4D9E8FAA2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -406,6 +422,7 @@
 			name = Vocabulary;
 			packageProductDependencies = (
 				61AAEBC82BF724AE0032961C /* SnapKit */,
+				61B32CEE2BF8D613000FED5C /* FirebaseAuth */,
 			);
 			productName = Vocabulary;
 			productReference = 4D1791A32BF1D5BE00E645C9 /* Vocabulary.app */;
@@ -437,6 +454,7 @@
 			mainGroup = 4D17919A2BF1D5BE00E645C9;
 			packageReferences = (
 				61AAEBC72BF724AE0032961C /* XCRemoteSwiftPackageReference "SnapKit" */,
+				61B32CED2BF8D613000FED5C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 4D1791A42BF1D5BE00E645C9 /* Products */;
 			projectDirPath = "";
@@ -453,6 +471,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D1791B32BF1D5BF00E645C9 /* Assets.xcassets in Resources */,
+				61B32CF12BF8DA05000FED5C /* GoogleService-Info.plist in Resources */,
 				4D1791B62BF1D5BF00E645C9 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -501,14 +520,17 @@
 				612D10CD2BF718DD0097EDBA /* FilterPresentationController.swift in Sources */,
 				4D1791C52BF1E27300E645C9 /* CalenderViewController.swift in Sources */,
 				6B02ADEF2BF6E8B6006E0964 /* TextFieldFactory.swift in Sources */,
+				4D9E8FA92BF8CCE3003F05D3 /* LoginPresentationController.swift in Sources */,
 				612D10D82BF719610097EDBA /* MenuDetailTableViewCell.swift in Sources */,
 				618E70712BF25354007AEDFE /* GamePageBottomView.swift in Sources */,
 				FBE7EA412BF8778F00BE86E5 /* EditBookCaseViewController.swift in Sources */,
 				FBE7EA432BF877D200BE86E5 /* EditBookCaseHeaderView.swift in Sources */,
 				612D10CF2BF718DD0097EDBA /* FilterDetailModalViewController.swift in Sources */,
+				4D9E8FAB2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift in Sources */,
 				612ABC8F2BF200370056F127 /* QuizHeaderView.swift in Sources */,
 				4D1791DD2BF45AD500E645C9 /* FilterTableViewCell.swift in Sources */,
 				61BCB0562BF337B100CF73E4 /* VocaQuizModel.swift in Sources */,
+				4D9E8FA72BF8CCB2003F05D3 /* LoginModalViewController.swift in Sources */,
 				61EEE6962BF5E74700803AA1 /* HangManBottomView.swift in Sources */,
 				612D10F42BF71B9B0097EDBA /* BookCaseBodyView.swift in Sources */,
 				4D1791C12BF1E1F700E645C9 /* AddBookCaseViewController.swift in Sources */,
@@ -662,6 +684,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Vocabulary/Vocabulary.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LA95MXQ3R5;
@@ -678,8 +702,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sj.Vocabulary;
+				PRODUCT_BUNDLE_IDENTIFIER = com.teamproject.Vocabulary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -691,6 +716,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Vocabulary/Vocabulary.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LA95MXQ3R5;
@@ -707,8 +734,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sj.Vocabulary;
+				PRODUCT_BUNDLE_IDENTIFIER = com.teamproject.Vocabulary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -747,6 +775,14 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		61B32CED2BF8D613000FED5C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.26.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -754,6 +790,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 61AAEBC72BF724AE0032961C /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		61B32CEE2BF8D613000FED5C /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 61B32CED2BF8D613000FED5C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
 		};
 /* End XCSwiftPackageProductDependency section */
 

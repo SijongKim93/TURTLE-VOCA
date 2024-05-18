@@ -8,10 +8,13 @@
 import UIKit
 import SnapKit
 import PhotosUI
+import AuthenticationServices
+import FirebaseAuth
 
 class MyPageViewController: UIViewController {
     
     let myPageData = MyPageData()
+    var coreDataManager: CoreDataManager?
     
     let profileContainer: UIView = {
         let view = UIView()
@@ -34,7 +37,7 @@ class MyPageViewController: UIViewController {
         return button
     }()
     
-    let mailLabel = LabelFactory().makeLabel(title: "rlatlwhd456@naver.com", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 17, textAlignment: .center, isBold: false)
+    var mailLabel = LabelFactory().makeLabel(title: "rlatlwhd456@naver.com", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 17, textAlignment: .center, isBold: false)
     let subLabel = LabelFactory().makeLabel(title: "김시종", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 17, textAlignment: .center, isBold: false)
     
     lazy var profileStackView: UIStackView = {
@@ -73,9 +76,9 @@ class MyPageViewController: UIViewController {
     }()
     
     let saveVocaLabel = LabelFactory().makeLabel(title: "저장 된 단어", size: 17, textAlignment: .center, isBold: true)
-    let saveVocaCount = LabelFactory().makeLabel(title: "12개", size: 25, textAlignment: .center, isBold: true)
+    let saveVocaCount = LabelFactory().makeLabel(title: "\(String(describing: updateSaveVocaCount))개", size: 25, textAlignment: .center, isBold: true)
     let memoryVocaLabel = LabelFactory().makeLabel(title: "외운 단어", size: 17, textAlignment: .center, isBold: true)
-    let memoryVocaCount = LabelFactory().makeLabel(title: "20개", size: 25, textAlignment: .center, isBold: true)
+    let memoryVocaCount = LabelFactory().makeLabel(title: "\(String(describing: updateMemoryVocaCount))", size: 25, textAlignment: .center, isBold: true)
     let gamePlayLabel = LabelFactory().makeLabel(title: "게임 진행 수", size: 17, textAlignment: .center, isBold: true)
     let gamePlayCount = LabelFactory().makeLabel(title: "3회", size: 25, textAlignment: .center, isBold: true)
     
@@ -138,10 +141,22 @@ class MyPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
+        
+        coreDataManager = CoreDataManager.shared
         setupUI()
         setupTableView()
+        updateSaveVocaCount()
+        updateMemoryVocaCount()
+        getUserData()
     }
-        
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateWordCounts()
+        getUserData()
+    }
+    
     func setupUI() {
         view.addSubview(profileContainer)
         view.addSubview(profileImage)
@@ -149,7 +164,7 @@ class MyPageViewController: UIViewController {
         view.addSubview(profileStackView)
         view.addSubview(memoryContainer)
         view.addSubview(allCountStackView)
-
+        
         profileContainer.layer.cornerRadius = 16
         profileContainer.clipsToBounds = true
         
@@ -219,6 +234,34 @@ class MyPageViewController: UIViewController {
         picker.delegate = self
         present(picker, animated: true, completion: nil)
     }
+    
+    func updateSaveVocaCount() {
+        if let count = coreDataManager?.getSavedWordCount() {
+            saveVocaCount.text = "\(count)개"
+        } else {
+            saveVocaCount.text = "0개" // 만약 coreDataManager가 nil이면 기본값으로 0개 설정
+        }
+    }
+    
+    func updateMemoryVocaCount() {
+        if let count = coreDataManager?.getLearnedWordCount() {
+            memoryVocaCount.text = "\(count)개"
+        } else {
+            memoryVocaCount.text = "0개" // 만약 coreDataManager가 nil이면 기본값으로 0개 설정
+        }
+    }
+    
+    func updateWordCounts() {
+        if let coreDataManager = coreDataManager {
+            let savedWordCount = coreDataManager.getSavedWordCount()
+            let learnedWordCount = coreDataManager.getLearnedWordCount()
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.saveVocaCount.text = "\(savedWordCount)개"
+                self?.memoryVocaCount.text = "\(learnedWordCount)개"
+            }
+        }
+    }
 }
 
 extension MyPageViewController: PHPickerViewControllerDelegate {
@@ -258,5 +301,39 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 3 { // Assuming "로그인" is the first item in the data source
+            let loginModelVC = LoginModalViewController()
+            loginModelVC.modalPresentationStyle = .custom
+            loginModelVC.transitioningDelegate = self
+            present(loginModelVC, animated: true, completion: nil)
+        }
+    }
 }
 
+extension MyPageViewController: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        if let loginPresentationController = presented as? LoginModalViewController {
+            return LoginPresentationController(presentedViewController: loginPresentationController, presenting: presenting)
+        } else {
+            return nil
+        }
+    }
+}
+
+extension MyPageViewController {
+    
+    func getUserData() {
+        if let user = Auth.auth().currentUser {
+            let uid = user.uid
+            let email = user.email
+            
+            DispatchQueue.main.async{ [weak self] in
+                self?.subLabel.text = uid
+                self?.mailLabel.text = email
+            }
+            
+        }
+    }
+}

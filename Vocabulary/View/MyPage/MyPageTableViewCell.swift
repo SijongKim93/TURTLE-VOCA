@@ -54,4 +54,5 @@ class MyPageTableViewCell: UITableViewCell {
         titleLabel.text = title
         iconImageView.image = UIImage(systemName: systemImageName)
     }
+    
 }
