@@ -11,6 +11,10 @@ import CoreData
 
 class BookCaseBodyCell: UICollectionViewCell {
     
+    weak var delegate: BookCaseBodyCellDelegate?
+    
+    var bookCaseData: NSManagedObject?
+    
     static let identifier = String(describing: BookCaseBodyCell.self)
     
     private let cellView: UIView = {
@@ -20,10 +24,12 @@ class BookCaseBodyCell: UICollectionViewCell {
         return view
     }()
     
-    private let menuButton: UIButton = {
+    private lazy var menuButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
         button.tintColor = .black
+        button.menu = createMenu()
+        button.showsMenuAsPrimaryAction = true
         return button
     }()
     
@@ -110,4 +116,18 @@ class BookCaseBodyCell: UICollectionViewCell {
         let meaning = bookCaseData.value(forKey: "meaning") as? String ?? "한국어"
         languageLabel.text = "\(word) / \(meaning)"
     }
+    
+    private func createMenu() -> UIMenu {
+        let editAction = UIAction(title: "수정", image: UIImage(systemName: "square.and.pencil")) { _ in
+            // 수정 작업 처리
+        }
+        let deleteAction = UIAction(title: "삭제", image: UIImage(systemName: "trash"), attributes: .destructive) { _ in
+            self.delegate?.didTapDeleteButton(on: self)
+        }
+        return UIMenu(title: "", children: [editAction, deleteAction])
+    }
+}
+
+protocol BookCaseBodyCellDelegate: AnyObject {
+    func didTapDeleteButton(on cell: BookCaseBodyCell)
 }

@@ -29,14 +29,21 @@ final class CoreDataManager {
     
     // MARK: - methods
     
+    //단어장 추가
     func saveBookCase(name: String, explain: String, word: String, meaning: String, image: Data) {
         guard let context = managedContext else {
             print("Error: managedContext is nil")
             return
         }
-        
         let entity = NSEntityDescription.entity(forEntityName: "BookCase", in: context)!
         let bookCase = NSManagedObject(entity: entity, insertInto: context)
+        
+        bookCase.setValue(name, forKey: "name")
+        bookCase.setValue(explain, forKey: "explain")
+        bookCase.setValue(word, forKey: "word")
+        bookCase.setValue(meaning, forKey: "meaning")
+        bookCase.setValue(image, forKey: "image")
+        
         do {
             try context.save()
             print("코어데이터가 저장되었습니다.")
@@ -45,6 +52,7 @@ final class CoreDataManager {
         }
     }
     
+    //단어장 가져오기
     func fetchBookCase() -> [NSManagedObject] {
         guard let context = managedContext else {
             print("Error: managedContext is nil")
@@ -58,6 +66,16 @@ final class CoreDataManager {
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
             return []
+        }
+    }
+    
+    //단어장 삭제
+    func deleteBookCase(bookCase: NSManagedObject) {
+        managedContext?.delete(bookCase)
+        do {
+            try managedContext?.save()
+        } catch let error as NSError {
+            print("Could not delete: \(error.localizedDescription)")
         }
     }
     
