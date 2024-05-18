@@ -295,5 +295,23 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 3 { // Assuming "로그인" is the first item in the data source
+            let loginModelVC = LoginModalViewController()
+            loginModelVC.modalPresentationStyle = .custom
+            loginModelVC.transitioningDelegate = self
+            present(loginModelVC, animated: true, completion: nil)
+        }
+    }
 }
 
+extension MyPageViewController: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        if let loginPresentationController = presented as? LoginModalViewController {
+            return LoginPresentationController(presentedViewController: loginPresentationController, presenting: presenting)
+        } else {
+            return nil
+        }
+    }
+}
