@@ -12,12 +12,27 @@ import CoreData
 
 class BookCaseBodyView: UIView {
     
+    let motivations = [
+        "한 걸음 한 걸음 나아가자",
+        "포기하지 말고 꿈을 향해 나아가자",
+        "피할수 없으면 즐겨라",
+        "계단을 밟아야 계단 위에 올라설 수 있다",
+        "행복은 습관이다,그것을 몸에 지니라",
+        "1퍼센트의 가능성, 그것이 나의 길이다",
+        "겨울이 오면 봄이 멀지 않으리",
+        "인생에 뜻을 세우는데 있어 늦은 때라곤 없다",
+        "꿈을 계속 간직하고 있으면 반드시 실현할 때가 온다",
+        "내일 죽을 것처럼 오늘을 살아라",
+        "현재에 집중할수 있다면 행복할 것이다"
+    ]
+    
     var bookCaseData: NSManagedObject?
 
     var bookCases: [NSManagedObject] = []
     
     weak var delagateEdit: EditBookCaseBodyCellDelegate?
     
+    //컬렉션 뷰
     let vocaBookCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 16
@@ -29,8 +44,8 @@ class BookCaseBodyView: UIView {
         return collectionView
     }()
     
-    //응원 문구 ( 랜덤으로 들어가게 하고싶다 )
-    let motivationLabel = LabelFactory().makeLabel(title: "응원 문구 !", size: 15, isBold: false)
+    //응원 문구
+    let motivationLabel = LabelFactory().makeLabel(title: "", color: .darkGray, size: 16, isBold: false)
     
     //셀이 없을 때
     let backgroundImage: UIImageView = {
@@ -64,7 +79,7 @@ class BookCaseBodyView: UIView {
         
         motivationLabel.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.bottom.equalToSuperview().inset(40)
+            $0.bottom.equalToSuperview().inset(36)
         }
         
         backgroundImage.snp.makeConstraints {
@@ -79,10 +94,15 @@ class BookCaseBodyView: UIView {
         vocaBookCollectionView.delegate = self
         vocaBookCollectionView.dataSource = self
         
+        let randomIndex = Int.random(in: 0..<motivations.count)
+            motivationLabel.text = motivations[randomIndex]
+        
         if bookCases.isEmpty {
             backgroundImage.isHidden = false
+            motivationLabel.isHidden = true
         } else {
             backgroundImage.isHidden = true
+            motivationLabel.isHidden = false
         }
         
         vocaBookCollectionView.register(BookCaseBodyCell.self, forCellWithReuseIdentifier: BookCaseBodyCell.identifier)
