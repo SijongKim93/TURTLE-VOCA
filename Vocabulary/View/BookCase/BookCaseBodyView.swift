@@ -32,6 +32,14 @@ class BookCaseBodyView: UIView {
     //응원 문구 ( 랜덤으로 들어가게 하고싶다 )
     let motivationLabel = LabelFactory().makeLabel(title: "응원 문구 !", size: 15, isBold: false)
     
+    //셀이 없을 때
+    let backgroundImage: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "mainturtle"))
+        imageView.contentMode = .scaleAspectFill
+        imageView.isHidden = false
+        return imageView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupConstraints()
@@ -44,8 +52,9 @@ class BookCaseBodyView: UIView {
     
     private func setupConstraints(){
         
-        addSubview(vocaBookCollectionView)
-        addSubview(motivationLabel)
+        [vocaBookCollectionView, motivationLabel, backgroundImage].forEach{
+            addSubview($0)
+        }
         
         vocaBookCollectionView.snp.makeConstraints{
             $0.top.equalToSuperview()
@@ -57,6 +66,10 @@ class BookCaseBodyView: UIView {
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.bottom.equalToSuperview().inset(40)
         }
+        
+        backgroundImage.snp.makeConstraints {
+            $0.edges.equalTo(vocaBookCollectionView).inset(100)
+        }
     }
     
     func configureUI(){
@@ -65,6 +78,12 @@ class BookCaseBodyView: UIView {
         
         vocaBookCollectionView.delegate = self
         vocaBookCollectionView.dataSource = self
+        
+        if bookCases.isEmpty {
+            backgroundImage.isHidden = false
+        } else {
+            backgroundImage.isHidden = true
+        }
         
         vocaBookCollectionView.register(BookCaseBodyCell.self, forCellWithReuseIdentifier: BookCaseBodyCell.identifier)
     }
