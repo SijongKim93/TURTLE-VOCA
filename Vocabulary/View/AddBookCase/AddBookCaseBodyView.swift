@@ -201,7 +201,6 @@ class AddBookCaseBodyView: UIView {
     func setImage(_ image: UIImage) {
         backImgView.image = image
         backImgView.contentMode = .scaleToFill
-        backImgView.layer.cornerRadius = 10 // 이건 왜 안 되지.. ㅠ
     }
     
     @objc private func imageViewTapped(_ gestureRecognizer: UITapGestureRecognizer) {

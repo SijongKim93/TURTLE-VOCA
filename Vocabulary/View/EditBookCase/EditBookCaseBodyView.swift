@@ -133,6 +133,7 @@ class EditBookCaseBodyView: UIView {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupConstraints()
+        configureUI()
         setupImageViewGesture()
         setupTextFieldData()
     }
@@ -186,6 +187,11 @@ class EditBookCaseBodyView: UIView {
         editButton.snp.makeConstraints{
             $0.height.equalTo(50)
         }
+    }
+    
+    func configureUI(){
+        backImgView.layer.cornerRadius = 10
+        backImgView.layer.masksToBounds = true
     }
     
     private func setupImageViewGesture(){

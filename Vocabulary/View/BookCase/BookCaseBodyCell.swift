@@ -36,10 +36,7 @@ class BookCaseBodyCell: UICollectionViewCell {
     
     private let imageView: UIImageView = {
         let imgView = UIImageView()
-        imgView.contentMode = .center
-        imgView.tintColor = .systemGray2
-        imgView.backgroundColor = .white
-        imgView.image = UIImage(systemName: "photo") // 기본 이미지 설정
+        imgView.image = UIImage(systemName: "") // 기본 이미지 설정
         return imgView
     }()
     
@@ -102,6 +99,8 @@ class BookCaseBodyCell: UICollectionViewCell {
         self.bookCaseData = bookCaseData
         if let imageData = bookCaseData.value(forKey: "image") as? Data {
             imageView.image = UIImage(data: imageData)
+            imageView.layer.cornerRadius = 20
+            imageView.layer.masksToBounds = true
             imageView.contentMode = .scaleToFill
         }
         nameLabel.text = bookCaseData.value(forKey: "name") as? String ?? ""
