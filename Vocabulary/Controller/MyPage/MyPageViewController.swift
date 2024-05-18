@@ -12,6 +12,7 @@ import PhotosUI
 class MyPageViewController: UIViewController {
     
     let myPageData = MyPageData()
+    var coreDataManager: CoreDataManager?
     
     let profileContainer: UIView = {
         let view = UIView()
@@ -73,9 +74,9 @@ class MyPageViewController: UIViewController {
     }()
     
     let saveVocaLabel = LabelFactory().makeLabel(title: "저장 된 단어", size: 17, textAlignment: .center, isBold: true)
-    let saveVocaCount = LabelFactory().makeLabel(title: "12개", size: 25, textAlignment: .center, isBold: true)
+    let saveVocaCount = LabelFactory().makeLabel(title: "\(String(describing: updateSaveVocaCount))개", size: 25, textAlignment: .center, isBold: true)
     let memoryVocaLabel = LabelFactory().makeLabel(title: "외운 단어", size: 17, textAlignment: .center, isBold: true)
-    let memoryVocaCount = LabelFactory().makeLabel(title: "20개", size: 25, textAlignment: .center, isBold: true)
+    let memoryVocaCount = LabelFactory().makeLabel(title: "\(String(describing: updateMemoryVocaCount))", size: 25, textAlignment: .center, isBold: true)
     let gamePlayLabel = LabelFactory().makeLabel(title: "게임 진행 수", size: 17, textAlignment: .center, isBold: true)
     let gamePlayCount = LabelFactory().makeLabel(title: "3회", size: 25, textAlignment: .center, isBold: true)
     
@@ -138,8 +139,16 @@ class MyPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        coreDataManager = CoreDataManager.shared
         setupUI()
         setupTableView()
+        updateSaveVocaCount()
+        updateMemoryVocaCount()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateWordCounts()
     }
         
     func setupUI() {
@@ -218,6 +227,34 @@ class MyPageViewController: UIViewController {
         let picker = PHPickerViewController(configuration: configuration)
         picker.delegate = self
         present(picker, animated: true, completion: nil)
+    }
+    
+    func updateSaveVocaCount() {
+        if let count = coreDataManager?.getSavedWordCount() {
+            saveVocaCount.text = "\(count)개"
+        } else {
+            saveVocaCount.text = "0개" // 만약 coreDataManager가 nil이면 기본값으로 0개 설정
+        }
+    }
+    
+    func updateMemoryVocaCount() {
+        if let count = coreDataManager?.getLearnedWordCount() {
+            memoryVocaCount.text = "\(count)개"
+        } else {
+            memoryVocaCount.text = "0개" // 만약 coreDataManager가 nil이면 기본값으로 0개 설정
+        }
+    }
+    
+    func updateWordCounts() {
+        if let coreDataManager = coreDataManager {
+            let savedWordCount = coreDataManager.getSavedWordCount()
+            let learnedWordCount = coreDataManager.getLearnedWordCount()
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.saveVocaCount.text = "\(savedWordCount)개"
+                self?.memoryVocaCount.text = "\(learnedWordCount)개"
+            }
+        }
     }
 }
 

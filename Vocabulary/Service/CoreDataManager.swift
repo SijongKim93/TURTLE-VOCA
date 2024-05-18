@@ -75,6 +75,7 @@ final class CoreDataManager {
         newWord.synonym = synonym
         newWord.antonym = antonym
         newWord.date = Date()
+        newWord.memory = false
         
         do {
             try context.save()
@@ -84,7 +85,7 @@ final class CoreDataManager {
         }
     }
     
-    func getWordListFromCoreData() -> [WordEntity] {
+    func getWordListFromCoreData(for date: Date) -> [WordEntity] {
         var wordList: [WordEntity] = []
         
         guard let context = managedContext else {
@@ -92,9 +93,14 @@ final class CoreDataManager {
             return wordList
         }
         
+        let calendar = Calendar.current
+        let startOfDay = calendar.startOfDay(for: date)
+        let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay)!
+        
+        let predicate = NSPredicate(format: "(date >= %@) AND (date < %@)", argumentArray: [startOfDay, endOfDay])
+        
         let request: NSFetchRequest<WordEntity> = WordEntity.fetchRequest()
-        let dateOrder = NSSortDescriptor(key: "date", ascending: true)
-        request.sortDescriptors = [dateOrder]
+        request.predicate = predicate
         
         do {
             wordList = try context.fetch(request)
@@ -102,5 +108,55 @@ final class CoreDataManager {
             print("Failed to fetch word entities:", error)
         }
         return wordList
+    }
+    
+    func updateWordMemoryStatus(word: WordEntity, memory: Bool) {
+        guard let context = managedContext else {
+            print("Error: managedContext is nil")
+            return
+        }
+        word.memory = memory
+        
+        do {
+            try context.save()
+            print("단어의 외운 상태가 업데이트되었습니다.")
+        } catch {
+            print("단어의 외운 상태를 업데이트하지 못했습니다. 다시 시도해주세요. 오류: \(error)")
+        }
+    }
+    
+    func getSavedWordCount() -> Int {
+        guard let context = managedContext else {
+            print("Error: managedContext is nil")
+            return 0
+        }
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "WordEntity")
+        
+        do {
+            let savedWordCount = try context.count(for: fetchRequest)
+            return savedWordCount
+        } catch {
+            print("Failed to fetch saved word count:", error)
+            return 0
+        }
+    }
+    
+    func getLearnedWordCount() -> Int {
+        guard let context = managedContext else {
+            print("Error: managedContext is nil")
+            return 0
+        }
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "WordEntity")
+        fetchRequest.predicate = NSPredicate(format: "memory == true")
+        
+        do {
+            let learnedWordCount = try context.count(for: fetchRequest)
+            return learnedWordCount
+        } catch {
+            print("Failed to fetch learned word count:", error)
+            return 0
+        }
     }
 }

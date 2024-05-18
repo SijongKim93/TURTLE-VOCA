@@ -24,7 +24,8 @@ extension WordEntity {
     @NSManaged public var antonym: String?
     @NSManaged public var date: Date?
     @NSManaged public var category: String?
-
+    @NSManaged public var memory: Bool
+    
 }
 
 extension WordEntity : Identifiable {

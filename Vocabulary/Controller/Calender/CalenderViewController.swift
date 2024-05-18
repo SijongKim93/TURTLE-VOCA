@@ -28,7 +28,6 @@ class CalenderViewController: UIViewController {
         var view = UIView()
         view.backgroundColor = .gray
         return view
-        
     }()
     
     let upButton: UIButton = {
@@ -172,8 +171,21 @@ class CalenderViewController: UIViewController {
     }
     
     func fetchWordListAndUpdateCollectionView() {
-        filteredWords = coreDataManager.getWordListFromCoreData()
+        guard let selectedDate = selectedDate?.date else { return }
+        
+        filteredWords = coreDataManager.getWordListFromCoreData(for: selectedDate)
+        
         dayCollectionView.reloadData()
+    }
+    
+    func showTurtleIconOnDate(_ date: Date) {
+        let turtleIcon = UILabel()
+        turtleIcon.text = "🐢"
+        turtleIcon.textAlignment = .center
+        dateView.addSubview(turtleIcon)
+        turtleIcon.snp.makeConstraints {
+            $0.centerX.centerY.equalToSuperview()
+        }
     }
 }
 
@@ -186,28 +198,40 @@ extension CalenderViewController: UICollectionViewDelegate, UICollectionViewData
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CalenderCollectionViewCell.identifier, for: indexPath) as? CalenderCollectionViewCell else { fatalError("컬렉션 뷰 오류") }
         
         let word = filteredWords[indexPath.row]
-        cell.englishLabel.text = word.word
-        cell.meaningLabel.text = word.definition
+        cell.configure(with: word)
+        cell.learnedButton.tag = indexPath.row
+        cell.learnedButton.addTarget(self, action: #selector(learnedButtonTapped(_:)), for: .touchUpInside)
         
         return cell
     }
+    
+    @objc func learnedButtonTapped(_ sender: UIButton) {
+        let index = sender.tag
+        let word = filteredWords[index]
+        let newLearnStatus = !word.memory
+        coreDataManager.updateWordMemoryStatus(word: word, memory: newLearnStatus)
+        
+        sender.isSelected = newLearnStatus
+    }
+    
 }
 
 extension CalenderViewController: UICalendarViewDelegate, UICalendarSelectionSingleDateDelegate {
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
-        selection.setSelected(dateComponents, animated: true)
-        selectedDate = dateComponents
-        
-        if let selectedDate = selectedDate {
-            let date = Calendar.current.date(from: selectedDate)!
+        if let selectedDate = dateComponents?.date {
+            filteredWords = coreDataManager.getWordListFromCoreData(for: selectedDate)
+            dayCollectionView.reloadData()
+            
+            if !filteredWords.isEmpty {
+                showTurtleIconOnDate(selectedDate)
+            }
         }
-        
-        dayCollectionView.reloadData()
     }
     
     func calendarView(_ calendarView: UICalendarView, didSelect dateComponents: DateComponents?) {
         selectedDate = dateComponents
-        dayCollectionView.reloadData()
+        
+        fetchWordListAndUpdateCollectionView()
     }
 }
 
@@ -222,3 +246,4 @@ extension CalenderViewController: UIViewControllerTransitioningDelegate {
         }
     }
 }
+
