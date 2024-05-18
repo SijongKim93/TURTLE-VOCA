@@ -103,13 +103,11 @@ class BookCaseBodyCell: UICollectionViewCell {
         if let imageData = bookCaseData.value(forKey: "image") as? Data {
             imageView.image = UIImage(data: imageData)
             imageView.contentMode = .scaleToFill
-        } else {
-            imageView.image = UIImage(systemName: "photo")
         }
-        nameLabel.text = bookCaseData.value(forKey: "name") as? String ?? "코딩 단어장"
-        detailLabel.text = bookCaseData.value(forKey: "explain") as? String ?? "Swift 공부"
-        let word = bookCaseData.value(forKey: "word") as? String ?? "Swift"
-        let meaning = bookCaseData.value(forKey: "meaning") as? String ?? "한국어"
+        nameLabel.text = bookCaseData.value(forKey: "name") as? String ?? ""
+        detailLabel.text = bookCaseData.value(forKey: "explain") as? String ?? ""
+        let word = bookCaseData.value(forKey: "word") as? String ?? ""
+        let meaning = bookCaseData.value(forKey: "meaning") as? String ?? ""
         languageLabel.text = "\(word) / \(meaning)"
     }
     

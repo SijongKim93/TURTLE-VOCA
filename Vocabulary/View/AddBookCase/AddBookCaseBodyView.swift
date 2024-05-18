@@ -126,6 +126,7 @@ class AddBookCaseBodyView: UIView {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupConstraints()
+        configureUI()
         setupImageViewGesture()
         
         // 텍스트필드 델리게이트 설정
@@ -186,6 +187,11 @@ class AddBookCaseBodyView: UIView {
         }
     }
     
+    func configureUI(){
+        backImgView.layer.cornerRadius = 10
+        backImgView.layer.masksToBounds = true
+    }
+    
     private func setupImageViewGesture(){
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageViewTapped))
         backImgView.isUserInteractionEnabled = true
@@ -203,21 +209,50 @@ class AddBookCaseBodyView: UIView {
     }
     
     @objc func addButtonTapped(_ sender: UIButton) {
-        guard let name = nameTextField.text,
-              let explain = explainTextField.text,
-              let word = wordTextField.text,
-              let meaning = meaningTextField.text,
-              let image = backImgView.image else {
-            return
+        var isValid = true // 텍스트 필드가 채워져 있는지 확인하는 변수
+        if nameTextField.text?.isEmpty ?? true {
+            shakeTextField(nameTextField)
+            isValid = false
         }
-        var imageData: Data?
-        if image == UIImage(systemName: "plus") { //선택을 안해서 plus일 경우, 다른 기본 사진으로 저장
-            imageData = UIImage(named: "mainturtle")?.jpegData(compressionQuality: 1.0)
-        } else {
-            imageData = image.jpegData(compressionQuality: 1.0)
+        if wordTextField.text?.isEmpty ?? true {
+            shakeTextField(wordTextField)
+            isValid = false
         }
-        coreDataManager.saveBookCase(name: name, explain: explain, word: word, meaning: meaning, image: imageData!)
-        delegate?.addButtonTapped()
+        if meaningTextField.text?.isEmpty ?? true {
+            shakeTextField(meaningTextField)
+            isValid = false
+        }
+
+        if isValid {
+            guard let name = nameTextField.text,
+                  let explain = explainTextField.text,
+                  let word = wordTextField.text,
+                  let meaning = meaningTextField.text,
+                  let image = backImgView.image else {
+                return
+            }
+            var imageData: Data?
+            if image == UIImage(systemName: "plus") { // 이미지 선택 안 해서 plus일 경우, 다른 기본 사진으로 저장
+                imageData = UIImage(named: "mainturtle")?.jpegData(compressionQuality: 1.0)
+            } else {
+                imageData = image.jpegData(compressionQuality: 1.0)
+            }
+            coreDataManager.saveBookCase(name: name, explain: explain, word: word, meaning: meaning, image: imageData!)
+            delegate?.addButtonTapped()
+        }
+    }
+    
+    func shakeTextField(_ textField: UITextField) {
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = 0.07
+        animation.repeatCount = 4
+        animation.autoreverses = true
+        animation.fromValue = NSValue(cgPoint: CGPoint(x: textField.center.x - 10, y: textField.center.y))
+        animation.toValue = NSValue(cgPoint: CGPoint(x: textField.center.x + 10, y: textField.center.y))
+        textField.layer.add(animation, forKey: "position")
+        textField.layer.borderColor = UIColor.systemRed.cgColor
+        textField.layer.borderWidth = 1.0
+        textField.layer.cornerRadius = 5.0
     }
 }
 

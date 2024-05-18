@@ -223,6 +223,21 @@ class EditBookCaseBodyView: UIView {
     }
     
     @objc func editButtonTapped(_ sender: UIButton) {
+        var isValid = true // 텍스트 필드가 채워져 있는지 확인하는 변수
+        if nameTextField.text?.isEmpty ?? true {
+            shakeTextField(nameTextField)
+            isValid = false
+        }
+        if wordTextField.text?.isEmpty ?? true {
+            shakeTextField(wordTextField)
+            isValid = false
+        }
+        if meaningTextField.text?.isEmpty ?? true {
+            shakeTextField(meaningTextField)
+            isValid = false
+        }
+        
+        if isValid {
             guard let name = nameTextField.text,
                   let explain = explainTextField.text,
                   let word = wordTextField.text,
@@ -234,6 +249,20 @@ class EditBookCaseBodyView: UIView {
             coreDataManager.updateBookCase(data, name: name, explain: explain, word: word, meaning: meaning, image: image)
             delegate?.editButtonTapped()
         }
+    }
+    
+    func shakeTextField(_ textField: UITextField) {
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = 0.07
+        animation.repeatCount = 4
+        animation.autoreverses = true
+        animation.fromValue = NSValue(cgPoint: CGPoint(x: textField.center.x - 10, y: textField.center.y))
+        animation.toValue = NSValue(cgPoint: CGPoint(x: textField.center.x + 10, y: textField.center.y))
+        textField.layer.add(animation, forKey: "position")
+        textField.layer.borderColor = UIColor.systemRed.cgColor
+        textField.layer.borderWidth = 1.0
+        textField.layer.cornerRadius = 5.0
+    }
 }
 
 protocol EditBookCaseBodyViewDelegate: AnyObject {
