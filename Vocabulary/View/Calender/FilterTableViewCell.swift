@@ -63,8 +63,6 @@ class FilterTableViewCell: UITableViewCell {
     }
     
     @objc func buttonTapped() {
-        if let tableView = self.superview as? UITableView, let indexPath = tableView.indexPath(for: self) {
-            tableView.delegate?.tableView?(tableView, didSelectRowAt: indexPath)
-        }
+        buttonAction?()
     }
 }
