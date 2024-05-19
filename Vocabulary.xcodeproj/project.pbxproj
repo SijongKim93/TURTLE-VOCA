@@ -52,7 +52,6 @@
 		618E70712BF25354007AEDFE /* QuizBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E70702BF25354007AEDFE /* QuizBottomView.swift */; };
 		61AAEBC92BF724AE0032961C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 61AAEBC82BF724AE0032961C /* SnapKit */; };
 		61B32CEF2BF8D613000FED5C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 61B32CEE2BF8D613000FED5C /* FirebaseAuth */; };
-		61B32CF12BF8DA05000FED5C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61B32CF02BF8DA05000FED5C /* GoogleService-Info.plist */; };
 		61BCB0542BF2F4B600CF73E4 /* DummyGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0532BF2F4B600CF73E4 /* DummyGenerator.swift */; };
 		61BCB0562BF337B100CF73E4 /* VocaQuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0552BF337B100CF73E4 /* VocaQuizModel.swift */; };
 		61BCB0592BF3597C00CF73E4 /* UIResponder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0582BF3597C00CF73E4 /* UIResponder+Extension.swift */; };
@@ -73,6 +72,7 @@
 		6B02ADF72BF6EB37006E0964 /* WordEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02ADF52BF6EB37006E0964 /* WordEntity+CoreDataProperties.swift */; };
 		FB475D812BF75324007A6FFF /* BookCase+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB475D7F2BF75324007A6FFF /* BookCase+CoreDataClass.swift */; };
 		FB475D822BF75324007A6FFF /* BookCase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB475D802BF75324007A6FFF /* BookCase+CoreDataProperties.swift */; };
+		FBA5CB8D2BF99BB300753D1A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBA5CB8C2BF99BB300753D1A /* GoogleService-Info.plist */; };
 		FBE7EA412BF8778F00BE86E5 /* EditBookCaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7EA402BF8778F00BE86E5 /* EditBookCaseViewController.swift */; };
 		FBE7EA432BF877D200BE86E5 /* EditBookCaseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7EA422BF877D200BE86E5 /* EditBookCaseHeaderView.swift */; };
 		FBE7EA452BF8785700BE86E5 /* EditBookCaseBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7EA442BF8785700BE86E5 /* EditBookCaseBodyView.swift */; };
@@ -125,7 +125,6 @@
 		618E706C2BF25328007AEDFE /* QuizHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizHeaderView.swift; sourceTree = "<group>"; };
 		618E706E2BF25337007AEDFE /* QuizBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBodyView.swift; sourceTree = "<group>"; };
 		618E70702BF25354007AEDFE /* QuizBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBottomView.swift; sourceTree = "<group>"; };
-		61B32CF02BF8DA05000FED5C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		61BCB0532BF2F4B600CF73E4 /* DummyGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyGenerator.swift; sourceTree = "<group>"; };
 		61BCB0552BF337B100CF73E4 /* VocaQuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaQuizModel.swift; sourceTree = "<group>"; };
 		61BCB0582BF3597C00CF73E4 /* UIResponder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Extension.swift"; sourceTree = "<group>"; };
@@ -146,6 +145,7 @@
 		6B02ADF52BF6EB37006E0964 /* WordEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WordEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FB475D7F2BF75324007A6FFF /* BookCase+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookCase+CoreDataClass.swift"; sourceTree = "<group>"; };
 		FB475D802BF75324007A6FFF /* BookCase+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookCase+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		FBA5CB8C2BF99BB300753D1A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FBE7EA402BF8778F00BE86E5 /* EditBookCaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookCaseViewController.swift; sourceTree = "<group>"; };
 		FBE7EA422BF877D200BE86E5 /* EditBookCaseHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookCaseHeaderView.swift; sourceTree = "<group>"; };
 		FBE7EA442BF8785700BE86E5 /* EditBookCaseBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookCaseBodyView.swift; sourceTree = "<group>"; };
@@ -197,7 +197,7 @@
 				4D1791B72BF1D5BF00E645C9 /* Info.plist */,
 				4D1791AF2BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld */,
 				618E705F2BF21970007AEDFE /* Constants.swift */,
-				61B32CF02BF8DA05000FED5C /* GoogleService-Info.plist */,
+				FBA5CB8C2BF99BB300753D1A /* GoogleService-Info.plist */,
 			);
 			path = Vocabulary;
 			sourceTree = "<group>";
@@ -459,8 +459,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D1791B32BF1D5BF00E645C9 /* Assets.xcassets in Resources */,
-				61B32CF12BF8DA05000FED5C /* GoogleService-Info.plist in Resources */,
 				4D1791B62BF1D5BF00E645C9 /* Base in Resources */,
+				FBA5CB8D2BF99BB300753D1A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
