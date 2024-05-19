@@ -23,14 +23,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         addBookVC.tabBarItem = UITabBarItem(title: "단어장", image: UIImage(systemName: "book"), tag: 0)
         let addVocaVC = AddVocaViewController()
         addVocaVC.tabBarItem = UITabBarItem(title: "단어 추가", image: UIImage(systemName: "pencil"), tag: 1)
-        let vocaQuizVC = VocaQuizViewController()
-        vocaQuizVC.tabBarItem = UITabBarItem(title: "단어 퀴즈", image: UIImage(systemName: "gamecontroller"), tag: 2)
+        let gameMainPageVC = GameMainPageViewController()
+        gameMainPageVC.tabBarItem = UITabBarItem(title: "단어 퀴즈", image: UIImage(systemName: "gamecontroller"), tag: 2)
         let calenderVC = CalenderViewController()
         calenderVC.tabBarItem = UITabBarItem(title: "캘린더", image: UIImage(systemName: "calendar"), tag: 3)
         let myPageVC = MyPageViewController()
         myPageVC.tabBarItem = UITabBarItem(title: "마이페이지", image: UIImage(systemName: "person.circle"), tag: 4)
         
-        tabBarVC.viewControllers = [addBookVC, addVocaVC, vocaQuizVC, calenderVC, myPageVC]
+        tabBarVC.viewControllers = [addBookVC, addVocaVC, gameMainPageVC, calenderVC, myPageVC]
         tabBarVC.tabBar.backgroundColor = .white
         tabBarVC.tabBar.itemPositioning = .centered
         

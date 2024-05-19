@@ -7,11 +7,11 @@
 
 import UIKit
 
-extension VocaQuizViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension GameMainPageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func setUp (){
-        quizBodyView.collectionView.delegate = self
-        quizBodyView.collectionView.dataSource = self
+        gameMainBodyView.collectionView.delegate = self
+        gameMainBodyView.collectionView.dataSource = self
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -20,7 +20,7 @@ extension VocaQuizViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = quizBodyView.collectionView.dequeueReusableCell(withReuseIdentifier: Constants.vocaQuizMainCell, for: indexPath) as? VocaQuizMainCollectionViewCell else {
+        guard let cell = gameMainBodyView.collectionView.dequeueReusableCell(withReuseIdentifier: Constants.vocaQuizMainCell, for: indexPath) as? VocaQuizMainCollectionViewCell else {
             return UICollectionViewCell()
         }
         
@@ -36,19 +36,21 @@ extension VocaQuizViewController: UICollectionViewDelegate, UICollectionViewData
         
         switch indexPath.row {
         case 0 :
-            let gamePageVC = GamePageViewController()
-            
-            self.present(gamePageVC, animated: true)
-        case 1 :
-            print("1")
-        case 2 :
             let flashVC = FlashCardViewController()
             
             self.present(flashVC, animated: true)
-        case 3 :
+        case 1 :
+            let quizVC = QuizViewController()
+            
+            self.present(quizVC, animated: true)
+        case 2 :
             let hangVC = HangManGameViewController()
             
             self.present(hangVC, animated: true)
+        case 3 :
+            let recordVC = RecordViewController()
+            
+            self.present(recordVC, animated: true)
         default :
             return
         }

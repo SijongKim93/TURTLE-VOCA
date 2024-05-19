@@ -8,17 +8,17 @@
 import UIKit
 import SnapKit
 
-class VocaQuizViewController: UIViewController {
+class GameMainPageViewController: UIViewController {
     
-    let quizHeaderView = QuizHeaderView()
-    let quizBodyView = QuizBodyView()
+    let gameMainHeaderView = GameMainHeaderView()
+    let gameMainBodyView = GameMainBodyView()
     
     private lazy var vStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [
             UIView(),
-            quizHeaderView,
+            gameMainHeaderView,
             UIView(),
-            quizBodyView,
+            gameMainBodyView,
             UIView()
         ])
         stackView.axis = .vertical
@@ -26,7 +26,7 @@ class VocaQuizViewController: UIViewController {
         return stackView
     }()
     
-    let buttonList = ["시작하기", "기록보기", "FlashCard", "Hangman"]
+    let buttonList = ["FlashCard", "Quiz", "Hangman", "기록보기"]
     
     
     override func viewDidLoad() {
@@ -46,14 +46,14 @@ class VocaQuizViewController: UIViewController {
             $0.top.bottom.leading.trailing.equalToSuperview()
         }
         
-        quizHeaderView.snp.makeConstraints {
+        gameMainHeaderView.snp.makeConstraints {
             $0.top.equalTo(vStackView.snp.top).offset(50)
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(100)
         }
         
-        quizBodyView.snp.makeConstraints {
-            $0.top.equalTo(quizHeaderView.snp.bottom).offset(180)
+        gameMainBodyView.snp.makeConstraints {
+            $0.top.equalTo(gameMainHeaderView.snp.bottom).offset(180)
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().offset(-100)
