@@ -11,7 +11,7 @@ import SnapKit
 class FilterDetailModalViewController: UIViewController {
     
     let labels = ["최근 저장 순", "나중 저장 순", "외운 단어 순", "못 외운 단어 순", "랜덤"]
-    var selectedButton: UIButton?
+    var selectedButtonIndex: Int?
     
     let filterMainLabel = LabelFactory().makeLabel(title: "단어 정렬 설정", size: 23, textAlignment: .left, isBold: true)
     
@@ -51,6 +51,8 @@ class FilterDetailModalViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         xButton.addTarget(self, action: #selector(dismissViewController), for: .touchUpInside)
+        
+        loadFilterSettings()
     }
     
     @objc func dismissViewController() {
@@ -87,6 +89,25 @@ class FilterDetailModalViewController: UIViewController {
             $0.leading.trailing.bottom.equalToSuperview().inset(10)
         }
     }
+    
+    func saveFilterSettings() {
+        guard let selectedButtonIndex = selectedButtonIndex else { return }
+        UserDefaults.standard.set(selectedButtonIndex, forKey: "SelectedFilterIndex")
+        UserDefaults.standard.synchronize() // 즉시 동기화
+        print("Saved selected filter index: \(selectedButtonIndex)")
+    }
+    
+    func loadFilterSettings() {
+        let savedIndex = UserDefaults.standard.integer(forKey: "SelectedFilterIndex")
+        if savedIndex < labels.count {
+            selectedButtonIndex = savedIndex
+        } else {
+            selectedButtonIndex = 0
+        }
+        print("Loaded selected filter index: \(savedIndex)")
+        tableView.reloadData()
+    }
+    
 }
 
 extension FilterDetailModalViewController: UITableViewDelegate, UITableViewDataSource {
@@ -100,10 +121,13 @@ extension FilterDetailModalViewController: UITableViewDelegate, UITableViewDataS
         cell.label.text = labels[indexPath.row]
         cell.selectionStyle = .none
         
-        cell.buttonAction = { [weak cell] in
-            cell?.toggleButtonSelection()
-        }
+        cell.button.isSelected = (indexPath.row == selectedButtonIndex)
         
+        cell.buttonAction = { [weak self] in
+            guard let self = self else { return }
+            self.updateSelectedButton(at: indexPath.row)
+        }
+
         return cell
     }
     
@@ -112,14 +136,29 @@ extension FilterDetailModalViewController: UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? FilterTableViewCell else { fatalError("테이블 뷰 셀 선택 에러") }
+        guard tableView.cellForRow(at: indexPath) is FilterTableViewCell else { fatalError("테이블 뷰 셀 선택 에러") }
+        updateSelectedButton(at: indexPath.row)
         
-        
-        if let selectedButton = selectedButton {
-            selectedButton.isSelected = false
+    }
+    
+    func updateSelectedButton(at index: Int) {
+        if let selectedButtonIndex = selectedButtonIndex {
+            // 이전에 선택된 버튼의 상태를 해제
+            let previousIndexPath = IndexPath(row: selectedButtonIndex, section: 0)
+            if let previousCell = tableView.cellForRow(at: previousIndexPath) as? FilterTableViewCell {
+                previousCell.button.isSelected = false
+            }
         }
         
-        selectedButton = cell.button
-        cell.toggleButtonSelection()
+        // 새로 선택된 버튼의 상태를 설정
+        selectedButtonIndex = index
+        let currentIndexPath = IndexPath(row: index, section: 0)
+        if let currentCell = tableView.cellForRow(at: currentIndexPath) as? FilterTableViewCell {
+            currentCell.button.isSelected = true
+        }
+        
+        // UserDefaults에 상태 저장
+        saveFilterSettings()
     }
+    
 }

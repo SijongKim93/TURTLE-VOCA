@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 import AuthenticationServices
 import CryptoKit
-import FirebaseAuth
 
 class LoginModalViewController: UIViewController {
     
@@ -148,40 +147,40 @@ extension LoginModalViewController: ASAuthorizationControllerDelegate {
         self.present(alert, animated: true)
     }
     
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
-            
-            guard let nonce = currentNonce else {
-                fatalError("Invalid state: A login callback was received, but no login request was sent.")
-                return
-            }
-            
-            guard let token = appleIDCredential.identityToken else {
-                print("Unable to fetch identity token")
-                return
-            }
-            
-            guard let tokenString = String(data: token, encoding:  .utf8) else {
-                print("Unable to serialize token string from data: \(token.debugDescription)")
-                return
-            }
-            
-            let oAuthCredential = OAuthProvider.credential(withProviderID: "apple.com", idToken: tokenString, rawNonce: nonce)
-            
-            Auth.auth().signIn(with: oAuthCredential) { [weak self] (result, error) in
-                
-                if let error = error {
-                    print(error.localizedDescription)
-                    return
-                }
-                
-                self?.dismiss(animated: true)
-                
-            }
-        }
-        
-        
-    }
+//    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+//        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+//            
+//            guard let nonce = currentNonce else {
+//                fatalError("Invalid state: A login callback was received, but no login request was sent.")
+//                return
+//            }
+//            
+//            guard let token = appleIDCredential.identityToken else {
+//                print("Unable to fetch identity token")
+//                return
+//            }
+//            
+//            guard let tokenString = String(data: token, encoding:  .utf8) else {
+//                print("Unable to serialize token string from data: \(token.debugDescription)")
+//                return
+//            }
+//            
+//            let oAuthCredential = OAuthProvider.credential(withProviderID: "apple.com", idToken: tokenString, rawNonce: nonce)
+//            
+//            Auth.auth().signIn(with: oAuthCredential) { [weak self] (result, error) in
+//                
+//                if let error = error {
+//                    print(error.localizedDescription)
+//                    return
+//                }
+//                
+//                self?.dismiss(animated: true)
+//                
+//            }
+//        }
+//        
+//        
+//    }
     
     
     // MARK: - from Firebase Docs

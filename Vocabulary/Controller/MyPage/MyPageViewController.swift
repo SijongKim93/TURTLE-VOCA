@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 import PhotosUI
 import AuthenticationServices
-import FirebaseAuth
 
 class MyPageViewController: UIViewController {
     
@@ -148,13 +147,13 @@ class MyPageViewController: UIViewController {
         setupTableView()
         updateSaveVocaCount()
         updateMemoryVocaCount()
-        getUserData()
+        //getUserData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateWordCounts()
-        getUserData()
+        //getUserData()
     }
     
     func setupUI() {
@@ -322,18 +321,18 @@ extension MyPageViewController: UIViewControllerTransitioningDelegate {
     }
 }
 
-extension MyPageViewController {
-    
-    func getUserData() {
-        if let user = Auth.auth().currentUser {
-            let uid = user.uid
-            let email = user.email
-            
-            DispatchQueue.main.async{ [weak self] in
-                self?.subLabel.text = uid
-                self?.mailLabel.text = email
-            }
-            
-        }
-    }
-}
+//extension MyPageViewController {
+//    
+//    func getUserData() {
+//        if let user = Auth.auth().currentUser {
+//            let uid = user.uid
+//            let email = user.email
+//            
+//            DispatchQueue.main.async{ [weak self] in
+//                self?.subLabel.text = uid
+//                self?.mailLabel.text = email
+//            }
+//            
+//        }
+//    }
+//}

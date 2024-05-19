@@ -75,7 +75,6 @@ class CalenderViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchWordListAndUpdateCollectionView()
-        dayCollectionView.reloadData()
     }
     
     func setupUI() {
@@ -131,7 +130,6 @@ class CalenderViewController: UIViewController {
                     }
                 }
                 self.upButton.setImage(UIImage(systemName: "arrow.up"), for: .normal)
-                
             } else {
                 self.dateView.constraints.forEach {
                     if $0.firstAttribute == .height {
@@ -171,20 +169,39 @@ class CalenderViewController: UIViewController {
     }
     
     func fetchWordListAndUpdateCollectionView() {
-        guard let selectedDate = selectedDate?.date else { return }
+        let currentDate = Calendar.current.dateComponents([.year, .month, .day], from: Date())
+        let dateToFetch = selectedDate?.date ?? Calendar.current.date(from: currentDate)!
         
-        filteredWords = coreDataManager.getWordListFromCoreData(for: selectedDate)
+        filteredWords = coreDataManager.getWordListFromCoreData(for: dateToFetch)
+        
+        let filterIndex = UserDefaults.standard.integer(forKey: "filterIndex")
+        filteredWords = sortWords(filteredWords, by: filterIndex)
         
         dayCollectionView.reloadData()
     }
     
-    func showTurtleIconOnDate(_ date: Date) {
-        let turtleIcon = UILabel()
-        turtleIcon.text = "🐢"
-        turtleIcon.textAlignment = .center
-        dateView.addSubview(turtleIcon)
-        turtleIcon.snp.makeConstraints {
-            $0.centerX.centerY.equalToSuperview()
+    func sortWords(_ words: [WordEntity], by filterIndex: Int) -> [WordEntity] {
+        switch filterIndex {
+        case 0:
+            return words.sorted { (word1: WordEntity, word2: WordEntity) -> Bool in
+                return word1.date ?? Date() > word2.date ?? Date()
+            }
+        case 1:
+            return words.sorted { (word1: WordEntity, word2: WordEntity) -> Bool in
+                return word1.date ?? Date() < word2.date ?? Date()
+            }
+        case 2:
+            return words.sorted { (word1: WordEntity, word2: WordEntity) -> Bool in
+                return word1.memory && !word2.memory
+            }
+        case 3:
+            return words.sorted { (word1: WordEntity, word2: WordEntity) -> Bool in
+                return !word1.memory && word2.memory
+            }
+        case 4:
+            return words.shuffled()
+        default:
+            return words
         }
     }
 }
@@ -220,14 +237,12 @@ extension CalenderViewController: UICalendarViewDelegate, UICalendarSelectionSin
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
         if let selectedDate = dateComponents?.date {
             filteredWords = coreDataManager.getWordListFromCoreData(for: selectedDate)
+            let filterIndex = UserDefaults.standard.integer(forKey: "filterIndex")
+            filteredWords = sortWords(filteredWords, by: filterIndex)
             dayCollectionView.reloadData()
-            
-            if !filteredWords.isEmpty {
-                showTurtleIconOnDate(selectedDate)
-            }
         }
     }
-    
+        
     func calendarView(_ calendarView: UICalendarView, didSelect dateComponents: DateComponents?) {
         selectedDate = dateComponents
         

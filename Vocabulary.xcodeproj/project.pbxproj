@@ -51,8 +51,6 @@
 		618E706F2BF25337007AEDFE /* QuizBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E706E2BF25337007AEDFE /* QuizBodyView.swift */; };
 		618E70712BF25354007AEDFE /* QuizBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E70702BF25354007AEDFE /* QuizBottomView.swift */; };
 		61AAEBC92BF724AE0032961C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 61AAEBC82BF724AE0032961C /* SnapKit */; };
-		61B32CEF2BF8D613000FED5C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 61B32CEE2BF8D613000FED5C /* FirebaseAuth */; };
-		61B32CF12BF8DA05000FED5C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61B32CF02BF8DA05000FED5C /* GoogleService-Info.plist */; };
 		61BCB0542BF2F4B600CF73E4 /* DummyGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0532BF2F4B600CF73E4 /* DummyGenerator.swift */; };
 		61BCB0562BF337B100CF73E4 /* VocaQuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0552BF337B100CF73E4 /* VocaQuizModel.swift */; };
 		61BCB0592BF3597C00CF73E4 /* UIResponder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0582BF3597C00CF73E4 /* UIResponder+Extension.swift */; };
@@ -125,7 +123,6 @@
 		618E706C2BF25328007AEDFE /* QuizHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizHeaderView.swift; sourceTree = "<group>"; };
 		618E706E2BF25337007AEDFE /* QuizBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBodyView.swift; sourceTree = "<group>"; };
 		618E70702BF25354007AEDFE /* QuizBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBottomView.swift; sourceTree = "<group>"; };
-		61B32CF02BF8DA05000FED5C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		61BCB0532BF2F4B600CF73E4 /* DummyGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyGenerator.swift; sourceTree = "<group>"; };
 		61BCB0552BF337B100CF73E4 /* VocaQuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaQuizModel.swift; sourceTree = "<group>"; };
 		61BCB0582BF3597C00CF73E4 /* UIResponder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Extension.swift"; sourceTree = "<group>"; };
@@ -157,7 +154,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				61AAEBC92BF724AE0032961C /* SnapKit in Frameworks */,
-				61B32CEF2BF8D613000FED5C /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,7 +193,6 @@
 				4D1791B72BF1D5BF00E645C9 /* Info.plist */,
 				4D1791AF2BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld */,
 				618E705F2BF21970007AEDFE /* Constants.swift */,
-				61B32CF02BF8DA05000FED5C /* GoogleService-Info.plist */,
 			);
 			path = Vocabulary;
 			sourceTree = "<group>";
@@ -410,7 +405,6 @@
 			name = Vocabulary;
 			packageProductDependencies = (
 				61AAEBC82BF724AE0032961C /* SnapKit */,
-				61B32CEE2BF8D613000FED5C /* FirebaseAuth */,
 			);
 			productName = Vocabulary;
 			productReference = 4D1791A32BF1D5BE00E645C9 /* Vocabulary.app */;
@@ -442,7 +436,6 @@
 			mainGroup = 4D17919A2BF1D5BE00E645C9;
 			packageReferences = (
 				61AAEBC72BF724AE0032961C /* XCRemoteSwiftPackageReference "SnapKit" */,
-				61B32CED2BF8D613000FED5C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 4D1791A42BF1D5BE00E645C9 /* Products */;
 			projectDirPath = "";
@@ -459,7 +452,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D1791B32BF1D5BF00E645C9 /* Assets.xcassets in Resources */,
-				61B32CF12BF8DA05000FED5C /* GoogleService-Info.plist in Resources */,
 				4D1791B62BF1D5BF00E645C9 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -767,14 +759,6 @@
 				minimumVersion = 5.7.1;
 			};
 		};
-		61B32CED2BF8D613000FED5C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.26.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -782,11 +766,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 61AAEBC72BF724AE0032961C /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		61B32CEE2BF8D613000FED5C /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 61B32CED2BF8D613000FED5C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
 		};
 /* End XCSwiftPackageProductDependency section */
 
