@@ -32,6 +32,11 @@ class BookCaseViewController: UIViewController{
         bodyView.delagateEdit = self
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        bodyView.selectInitialCell()
+    }
+    
     private func setupConstraints() {
         view.addSubview(wholeStackView)
         

@@ -12,6 +12,10 @@ import CoreData
 
 class BookCaseBodyView: UIView {
     
+    var itemWidth: CGFloat = 0.0
+    let minimumLineSpacing: CGFloat = 16
+    var previousIndex: Int = 0
+    
     let motivations = [
         "“성적이나 결과는 행동이 아니라 습관입니다.” \n – 아리스토텔레스",
         "“끝날 때까지 항상 불가능해 보인다” \n – 넬슨 만델라",
@@ -20,7 +24,7 @@ class BookCaseBodyView: UIView {
     ]
     
     var bookCaseData: NSManagedObject?
-
+    
     var bookCases: [NSManagedObject] = []
     
     weak var delagateEdit: EditBookCaseBodyCellDelegate?
@@ -53,13 +57,18 @@ class BookCaseBodyView: UIView {
         setupConstraints()
         configureUI()
     }
-        
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        itemWidth = calculateItemWidth()
+        vocaBookCollectionView.reloadData()
+    }
+    
     private func setupConstraints(){
-        
         [vocaBookCollectionView, motivationLabel, backgroundImage].forEach{
             addSubview($0)
         }
@@ -88,7 +97,7 @@ class BookCaseBodyView: UIView {
         vocaBookCollectionView.dataSource = self
         
         let randomIndex = Int.random(in: 0..<motivations.count)
-            motivationLabel.text = motivations[randomIndex]
+        motivationLabel.text = motivations[randomIndex]
         
         if bookCases.isEmpty {
             backgroundImage.isHidden = false
@@ -97,8 +106,54 @@ class BookCaseBodyView: UIView {
             backgroundImage.isHidden = true
             motivationLabel.isHidden = false
         }
-        
         vocaBookCollectionView.register(BookCaseBodyCell.self, forCellWithReuseIdentifier: BookCaseBodyCell.identifier)
+    }
+    
+    private func calculateItemWidth() -> CGFloat {
+        let collectionViewWidth = vocaBookCollectionView.frame.width
+        let availableWidth = collectionViewWidth - vocaBookCollectionView.contentInset.left - vocaBookCollectionView.contentInset.right - 80
+        return availableWidth
+    }
+    
+    func selectInitialCell() {
+        guard bookCases.count > 1 else { return }
+        let indexPath = IndexPath(item: 1, section: 0)
+        if let cell = vocaBookCollectionView.cellForItem(at: indexPath) {
+            animateZoomforCellremove(zoomCell: cell)
+        }
+    }
+    
+    //페이징 기능
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let cellWidthIncludeSpacing = itemWidth + minimumLineSpacing
+        
+        var offset = targetContentOffset.pointee
+        let index = (offset.x + scrollView.contentInset.left) / cellWidthIncludeSpacing
+        let roundedIndex: CGFloat = round(index)
+        
+        offset = CGPoint(x: roundedIndex * cellWidthIncludeSpacing - scrollView.contentInset.left, y: scrollView.contentInset.top)
+        targetContentOffset.pointee = offset
+    }
+    
+    //컬렉션 뷰 애니메이션 ( Carousel Effect )
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let cellWidthIncludeSpacing = itemWidth + minimumLineSpacing
+        let offsetX = vocaBookCollectionView.contentOffset.x
+        let index = (offsetX + vocaBookCollectionView.contentInset.left) / cellWidthIncludeSpacing
+        let roundedIndex = round(index)
+        let indexPath = IndexPath(item: Int(roundedIndex), section: 0)
+        if let cell = vocaBookCollectionView.cellForItem(at: indexPath) {
+            animateZoomforCell(zoomCell: cell)
+        }
+        
+        if Int(roundedIndex) != previousIndex {
+            let preIndexPath = IndexPath(item: previousIndex, section: 0)
+            if let preCell = vocaBookCollectionView.cellForItem(at: preIndexPath) {
+                animateZoomforCellremove(zoomCell: preCell)
+            }
+            previousIndex = indexPath.item
+        }
     }
 }
 
@@ -118,7 +173,7 @@ extension BookCaseBodyView: UICollectionViewDataSource, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let availableWidth = collectionView.frame.width - collectionView.contentInset.left - collectionView.contentInset.right - 80
-        let aspectRatio: CGFloat = 520.0 / 300.0
+        let aspectRatio: CGFloat = 5.0 / 3.0
         let itemWidth = availableWidth
         let itemHeight = itemWidth * aspectRatio
         return CGSize(width: itemWidth, height: itemHeight)
@@ -137,5 +192,30 @@ extension BookCaseBodyView: DeleteBookCaseBodyCellDelegate {
 extension BookCaseBodyView: EditBookCaseBodyCellDelegate {
     func didTapEditButton(on cell: BookCaseBodyCell, with bookCaseData: NSManagedObject) {
         delagateEdit?.didTapEditButton(on: cell, with: bookCaseData)
+    }
+}
+
+//애니메이션 메서드
+extension BookCaseBodyView {
+    func animateZoomforCell(zoomCell: UICollectionViewCell) {
+        UIView.animate(
+            withDuration: 0.2,
+            delay: 0,
+            options: .curveEaseOut,
+            animations: {
+                zoomCell.transform = .identity
+            },
+            completion: nil)
+    }
+    
+    func animateZoomforCellremove(zoomCell: UICollectionViewCell) {
+        UIView.animate(
+            withDuration: 0.2,
+            delay: 0,
+            options: .curveEaseOut,
+            animations: {
+                zoomCell.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+            },
+            completion: nil)
     }
 }
