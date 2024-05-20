@@ -58,7 +58,6 @@
 		61EE0BF62BF9777600FD2F32 /* RecordHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EE0BF32BF9777600FD2F32 /* RecordHeaderView.swift */; };
 		61EE0BF72BF9777600FD2F32 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EE0BF42BF9777600FD2F32 /* RecordTableViewCell.swift */; };
 		61EE0BF82BF9777600FD2F32 /* RecordBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EE0BF52BF9777600FD2F32 /* RecordBodyView.swift */; };
-		61EE0BFA2BF9C06700FD2F32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61EE0BF92BF9C06700FD2F32 /* GoogleService-Info.plist */; };
 		61EE0BFD2BF9C0E000FD2F32 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 61EE0BFC2BF9C0E000FD2F32 /* FirebaseAuth */; };
 		61EEE6902BF5E66E00803AA1 /* HangManGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EEE68F2BF5E66E00803AA1 /* HangManGameViewController.swift */; };
 		61EEE6922BF5E69C00803AA1 /* HangManHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EEE6912BF5E69C00803AA1 /* HangManHeaderView.swift */; };
@@ -71,6 +70,8 @@
 		6B02ADEF2BF6E8B6006E0964 /* TextFieldFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02ADEE2BF6E8B6006E0964 /* TextFieldFactory.swift */; };
 		6B02ADF62BF6EB37006E0964 /* WordEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02ADF42BF6EB37006E0964 /* WordEntity+CoreDataClass.swift */; };
 		6B02ADF72BF6EB37006E0964 /* WordEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02ADF52BF6EB37006E0964 /* WordEntity+CoreDataProperties.swift */; };
+		6BBB36202BFAF54B0088A8CB /* VocaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBB361E2BFAF54B0088A8CB /* VocaTableViewCell.swift */; };
+		6BBB36222BFAF6050088A8CB /* VocaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBB36212BFAF6050088A8CB /* VocaDetailViewController.swift */; };
 		FB475D812BF75324007A6FFF /* BookCase+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB475D7F2BF75324007A6FFF /* BookCase+CoreDataClass.swift */; };
 		FB475D822BF75324007A6FFF /* BookCase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB475D802BF75324007A6FFF /* BookCase+CoreDataProperties.swift */; };
 		FBE7EA412BF8778F00BE86E5 /* EditBookCaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7EA402BF8778F00BE86E5 /* EditBookCaseViewController.swift */; };
@@ -132,7 +133,6 @@
 		61EE0BF32BF9777600FD2F32 /* RecordHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordHeaderView.swift; sourceTree = "<group>"; };
 		61EE0BF42BF9777600FD2F32 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
 		61EE0BF52BF9777600FD2F32 /* RecordBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordBodyView.swift; sourceTree = "<group>"; };
-		61EE0BF92BF9C06700FD2F32 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		61EEE68F2BF5E66E00803AA1 /* HangManGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangManGameViewController.swift; sourceTree = "<group>"; };
 		61EEE6912BF5E69C00803AA1 /* HangManHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangManHeaderView.swift; sourceTree = "<group>"; };
 		61EEE6932BF5E70300803AA1 /* HangManBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangManBodyView.swift; sourceTree = "<group>"; };
@@ -144,6 +144,8 @@
 		6B02ADEE2BF6E8B6006E0964 /* TextFieldFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldFactory.swift; sourceTree = "<group>"; };
 		6B02ADF42BF6EB37006E0964 /* WordEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WordEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		6B02ADF52BF6EB37006E0964 /* WordEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WordEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		6BBB361E2BFAF54B0088A8CB /* VocaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocaTableViewCell.swift; sourceTree = "<group>"; };
+		6BBB36212BFAF6050088A8CB /* VocaDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocaDetailViewController.swift; sourceTree = "<group>"; };
 		FB475D7F2BF75324007A6FFF /* BookCase+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookCase+CoreDataClass.swift"; sourceTree = "<group>"; };
 		FB475D802BF75324007A6FFF /* BookCase+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookCase+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FBE7EA402BF8778F00BE86E5 /* EditBookCaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookCaseViewController.swift; sourceTree = "<group>"; };
@@ -197,7 +199,6 @@
 				4D1791B72BF1D5BF00E645C9 /* Info.plist */,
 				4D1791AF2BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld */,
 				618E705F2BF21970007AEDFE /* Constants.swift */,
-				61EE0BF92BF9C06700FD2F32 /* GoogleService-Info.plist */,
 			);
 			path = Vocabulary;
 			sourceTree = "<group>";
@@ -208,6 +209,7 @@
 				FBE7EA3F2BF8776100BE86E5 /* EditBookCase */,
 				612D10EF2BF71B6D0097EDBA /* BookCase */,
 				612D10E52BF71AE30097EDBA /* AddBookCase */,
+				6BBB361F2BFAF54B0088A8CB /* AddVoca */,
 				612ABC8A2BF1FCF80056F127 /* VocaQuiz */,
 				4D1791D22BF2F70700E645C9 /* Calender */,
 				612D10F62BF71BAA0097EDBA /* MyPage */,
@@ -223,6 +225,7 @@
 				4D1791C02BF1E1F700E645C9 /* AddBookCaseViewController.swift */,
 				FBE7EA402BF8778F00BE86E5 /* EditBookCaseViewController.swift */,
 				4D1791AA2BF1D5BE00E645C9 /* AddVocaViewController.swift */,
+				6BBB36212BFAF6050088A8CB /* VocaDetailViewController.swift */,
 				610130D62BF3D9E400CE8183 /* VocaQuiz */,
 				4D1791D52BF3422900E645C9 /* Calender */,
 				4D1791EF2BF7550000E645C9 /* MyPage */,
@@ -383,6 +386,14 @@
 			path = General;
 			sourceTree = "<group>";
 		};
+		6BBB361F2BFAF54B0088A8CB /* AddVoca */ = {
+			isa = PBXGroup;
+			children = (
+				6BBB361E2BFAF54B0088A8CB /* VocaTableViewCell.swift */,
+			);
+			path = AddVoca;
+			sourceTree = "<group>";
+		};
 		FBE7EA3F2BF8776100BE86E5 /* EditBookCase */ = {
 			isa = PBXGroup;
 			children = (
@@ -460,7 +471,6 @@
 			files = (
 				4D1791B32BF1D5BF00E645C9 /* Assets.xcassets in Resources */,
 				4D1791B62BF1D5BF00E645C9 /* Base in Resources */,
-				61EE0BFA2BF9C06700FD2F32 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,6 +528,7 @@
 				4D9E8FAB2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift in Sources */,
 				61EE0BF62BF9777600FD2F32 /* RecordHeaderView.swift in Sources */,
 				612ABC8F2BF200370056F127 /* GameMainHeaderView.swift in Sources */,
+				6BBB36202BFAF54B0088A8CB /* VocaTableViewCell.swift in Sources */,
 				4D1791DD2BF45AD500E645C9 /* FilterTableViewCell.swift in Sources */,
 				61BCB0562BF337B100CF73E4 /* VocaQuizModel.swift in Sources */,
 				4D9E8FA72BF8CCB2003F05D3 /* LoginModalViewController.swift in Sources */,
@@ -526,6 +537,7 @@
 				4D1791C12BF1E1F700E645C9 /* AddBookCaseViewController.swift in Sources */,
 				61EE0BF22BF9775100FD2F32 /* RecordViewController.swift in Sources */,
 				4D1791B12BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld in Sources */,
+				6BBB36222BFAF6050088A8CB /* VocaDetailViewController.swift in Sources */,
 				61EE0BF82BF9777600FD2F32 /* RecordBodyView.swift in Sources */,
 				611186F42BF4DE09009C2FE9 /* FlashBodyView.swift in Sources */,
 				612D10E82BF71B130097EDBA /* AddBookCaseHeaderView.swift in Sources */,
