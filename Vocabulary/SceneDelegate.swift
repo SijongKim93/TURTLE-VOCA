@@ -34,7 +34,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         myPageVC.tabBarItem = UITabBarItem(title: "마이페이지", image: UIImage(systemName: "person.crop.circle")?.withTintColor(.white, renderingMode: .alwaysOriginal), selectedImage: UIImage(systemName: "person.crop.circle.fill"))
         
         tabBarVC.viewControllers = [addBookVC, addVocaVC, gameMainPageVC, calenderVC, myPageVC]
-        tabBarVC.tabBar.backgroundColor = UIColor(red: 48/255, green: 140/255, blue: 74/255, alpha: 1.0)
+        tabBarVC.tabBar.backgroundColor = ThemeColor.mainColor
         tabBarVC.tabBar.itemPositioning = .centered
         tabBarVC.tabBar.tintColor = .white
         tabBarVC.tabBar.unselectedItemTintColor = .white
@@ -45,7 +45,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
         let backgroundView = UIView(frame: tabBar.bounds.insetBy(dx: -10, dy: -10))
-        backgroundView.backgroundColor = UIColor(red: 48/255, green: 140/255, blue: 74/255, alpha: 1.0)
+        backgroundView.backgroundColor = ThemeColor.mainColor
         backgroundView.layer.cornerRadius = 15
         backgroundView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         backgroundView.layer.masksToBounds = true
