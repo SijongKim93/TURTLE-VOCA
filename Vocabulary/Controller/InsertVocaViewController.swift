@@ -14,6 +14,8 @@ import CoreData
 
 class InsertVocaViewController: UIViewController {
     
+    var selectedBookCase: BookCase?
+    
     init(scrollView: UIScrollView) {
         self.scrollView = scrollView
         super.init(nibName: nil, bundle: nil)
@@ -53,7 +55,7 @@ class InsertVocaViewController: UIViewController {
         if let word = wordTextField.text, let definition = definitionTextField.text,
            word.isEmpty == false, definition.isEmpty == false {
             
-            CoreDataManager.shared.saveWord(word: word, definition: definition, detail: detailTextField.text ?? "", pronunciation: pronunciationTextField.text ?? "", synonym: synonymTextField.text ?? "", antonym: antonymTextField.text ?? "")
+            CoreDataManager.shared.saveWord(word: word, definition: definition, detail: detailTextField.text ?? "", pronunciation: pronunciationTextField.text ?? "", synonym: synonymTextField.text ?? "", antonym: antonymTextField.text ?? "", to: selectedBookCase!.name!)
             
             let alert = AlertController().makeNormalAlert(title: "저장 완료", message: "단어가 저장되었습니다.")
             let confirmButton = UIAlertAction(title: "확인", style: .default) { [weak self] _ in self?.dismiss(animated: true)}
@@ -73,6 +75,8 @@ class InsertVocaViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
+        print(selectedBookCase)
         
         saveVocaButton.tintColor = .black
         saveVocaButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)

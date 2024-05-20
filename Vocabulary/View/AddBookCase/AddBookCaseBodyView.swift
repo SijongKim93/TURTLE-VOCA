@@ -232,7 +232,7 @@ class AddBookCaseBodyView: UIView {
             }
             var imageData: Data?
             if image == UIImage(systemName: "plus") { // 이미지 선택 안 해서 plus일 경우, 다른 기본 사진으로 저장
-                imageData = UIImage(named: "mainturtle")?.jpegData(compressionQuality: 1.0)
+                imageData = UIImage(named: "logo")?.jpegData(compressionQuality: 1.0)
             } else {
                 imageData = image.jpegData(compressionQuality: 1.0)
             }

@@ -2,7 +2,7 @@
 //  WordEntity+CoreDataClass.swift
 //  Vocabulary
 //
-//  Created by t2023-m0049 on 5/17/24.
+//  Created by Luz on 5/20/24.
 //
 //
 
