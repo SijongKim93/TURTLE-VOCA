@@ -148,11 +148,10 @@ class AddBookCaseBodyView: UIView {
         imageStackView.snp.makeConstraints{
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview().inset(30)
-            $0.trailing.equalToSuperview().inset(230)
         }
         
         nameStackView.snp.makeConstraints{
-            $0.top.equalTo(imageStackView.snp.bottom).offset(16)
+            $0.top.equalTo(imageStackView.snp.bottom).offset(25)
             $0.horizontalEdges.equalToSuperview().inset(30)
         }
         
@@ -174,6 +173,7 @@ class AddBookCaseBodyView: UIView {
         //이미지 뷰 크기 조절
         backImgView.snp.makeConstraints{
             $0.height.equalTo(150)
+            $0.width.equalTo(120)
         }
         
         //설명 부분 텍스트 필드 크게 설정
