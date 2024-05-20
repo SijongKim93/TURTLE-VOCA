@@ -71,6 +71,14 @@ class CalenderViewController: UIViewController {
         buttonAction()
         
         view.backgroundColor = .white
+        
+        let currentDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date())
+        selectedDate = currentDateComponents
+        let selectionBehavior = UICalendarSelectionSingleDate(delegate: self)
+        selectionBehavior.selectedDate = currentDateComponents
+        dateView.selectionBehavior = selectionBehavior
+        
+        fetchWordListAndUpdateCollectionView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -99,13 +107,13 @@ class CalenderViewController: UIViewController {
         dayCollectionView.register(CalenderCollectionViewCell.self, forCellWithReuseIdentifier: CalenderCollectionViewCell.identifier)
         
         dateView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
+            $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
-            $0.height.equalTo(320)
+            $0.height.equalTo(435) // 높이 고정
         }
         
         buttonStackView.snp.makeConstraints {
-            $0.top.equalTo(dateView.snp.bottom).offset(30)
+            $0.top.equalTo(dateView.snp.bottom).offset(5)
             $0.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
         }
         
@@ -133,7 +141,7 @@ class CalenderViewController: UIViewController {
             if self.upButton.isSelected {
                 self.dateView.constraints.forEach {
                     if $0.firstAttribute == .height {
-                        $0.constant = 320
+                        $0.constant = 435
                     }
                 }
                 self.upButton.setImage(UIImage(systemName: "arrow.up"), for: .normal)
@@ -173,12 +181,11 @@ class CalenderViewController: UIViewController {
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 5
-        layout.itemSize = CGSize(width: view.frame.size.width - 20, height: 120)
+        layout.itemSize = CGSize(width: view.frame.size.width - 20, height: 100)
         return layout
     }
     
     func fetchWordListAndUpdateCollectionView() {
-        // 기본 날짜 설정 (현재 날짜)
         let currentDate = Calendar.current.dateComponents([.year, .month, .day], from: Date())
         let dateToFetch = selectedDate?.date ?? Calendar.current.date(from: currentDate)!
         
@@ -201,7 +208,6 @@ class CalenderViewController: UIViewController {
         }
     }
     
-    // 초창기 필터 값은 0 (최근 저장 순)
     func fetchFilterIndex() -> Int {
         if UserDefaults.standard.object(forKey: "SelectedFilterIndex") == nil {
             UserDefaults.standard.set(0, forKey: "SelectedFilterIndex")
@@ -209,7 +215,6 @@ class CalenderViewController: UIViewController {
         }
         return UserDefaults.standard.integer(forKey: "SelectedFilterIndex")
     }
-
     
     func sortWords(_ words: [WordEntity], by filterIndex: Int) -> [WordEntity] {
         switch filterIndex {
@@ -268,7 +273,6 @@ extension CalenderViewController: MenuDetailModalDelegate {
         for word in wordsForDate {
             coreDataManager.deleteWord(word)
         }
-        
         fetchWordListAndUpdateCollectionView()
     }
 }
@@ -313,6 +317,24 @@ extension CalenderViewController: UICalendarViewDelegate, UICalendarSelectionSin
         }
     }
     
+    func calendarView(_ calendarView: UICalendarView, decorationFor dateComponents: DateComponents) -> UICalendarView.Decoration? {
+        if let date = Calendar.current.date(from: dateComponents), coreDataManager.hasData(for: date) {
+            let emojiLabel = UILabel()
+            emojiLabel.text = "🐢"
+            emojiLabel.textAlignment = .center
+            
+            let containerView = UIView()
+            containerView.addSubview(emojiLabel)
+            emojiLabel.snp.makeConstraints {
+                $0.centerX.equalToSuperview()
+                $0.centerY.equalToSuperview()
+            }
+            
+            return .customView { containerView }
+        }
+        return nil
+    }
+    
     func calendarView(_ calendarView: UICalendarView, didSelect dateComponents: DateComponents?) {
         selectedDate = dateComponents
         fetchWordListAndUpdateCollectionView()
@@ -341,3 +363,4 @@ extension CalenderViewController: UIViewControllerTransitioningDelegate {
 protocol FilterDetailModalDelegate: AnyObject {
     func didDismissFilterDetailModal()
 }
+

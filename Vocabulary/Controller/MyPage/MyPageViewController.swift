@@ -23,8 +23,10 @@ class MyPageViewController: UIViewController {
     
     let profileImage: UIImageView = {
         let image = UIImageView()
-        image.backgroundColor = #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1)
+        image.backgroundColor = .white
+        image.image = UIImage(systemName: "person.crop.circle")
         image.contentMode = .scaleAspectFill
+        image.tintColor = UIColor(red: 48/255, green: 140/255, blue: 74/255, alpha: 1.0)
         image.clipsToBounds = true
         return image
     }()
@@ -50,7 +52,7 @@ class MyPageViewController: UIViewController {
     
     let memoryContainer: UIView = {
         let view = UIView()
-        view.backgroundColor = #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1)
+        view.backgroundColor = .white
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor(red: 48/255, green: 140/255, blue: 74/255, alpha: 1.0).cgColor
         return view
@@ -132,7 +134,7 @@ class MyPageViewController: UIViewController {
         let tableView = UITableView()
         tableView.register(MyPageTableViewCell.self, forCellReuseIdentifier: MyPageTableViewCell.identifier)
         tableView.layer.borderWidth = 1
-        tableView.backgroundColor = #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1)
+        tableView.backgroundColor = .white
         tableView.layer.borderColor = UIColor(red: 48/255, green: 140/255, blue: 74/255, alpha: 1.0).cgColor
         return tableView
     }()
@@ -296,7 +298,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
         let item = myPageData.items[indexPath.row]
         cell.configure(with: item.title, systemImageName: item.imageName)
         cell.selectionStyle = .none
-        cell.backgroundColor = #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1)
+        cell.backgroundColor = .white
         
         return cell
     }
