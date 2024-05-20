@@ -117,6 +117,7 @@ class QuizViewController: UIViewController {
         quizBodyView.snp.makeConstraints {
             $0.top.equalTo(quizHeaderView.snp.bottom)
             $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(150)
         }
         
         quizBottomView.snp.makeConstraints {

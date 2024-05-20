@@ -9,12 +9,15 @@ import UIKit
 
 class ButtonFactory {
     
-    func makeButton(title: String, color: UIColor = .black, backgroundColor: UIColor = .lightGray, completion: @escaping (UIButton) -> Void) -> UIButton {
+    func makeButton(title: String, size: CGFloat = 20, color: UIColor = ThemeColor.mainColor, backgroundColor: UIColor = .white, radius: CGFloat  = 7, borderWidth: CGFloat = 1.5 ,completion: @escaping (UIButton) -> Void) -> UIButton {
         let button = UIButton()
         button.setTitle(title, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: size)
         button.setTitleColor(color, for: .normal)
         button.backgroundColor = backgroundColor
-        button.layer.borderWidth = 0.3
+        button.layer.cornerRadius = radius
+        button.layer.borderWidth = borderWidth
+        button.layer.borderColor = ThemeColor.mainCgColor
         button.contentMode = .center
         button.imageView?.tintColor = .black
         button.addAction(UIAction { action in

@@ -14,6 +14,7 @@ class HangManBodyView: UIView {
         let view = UIView()
         view.layer.borderWidth = 1
         view.layer.cornerRadius = 10
+        view.layer.borderColor = ThemeColor.mainCgColor
         view.addSubview(wordFrameView)
         view.addSubview(hangManImageView)
         return view

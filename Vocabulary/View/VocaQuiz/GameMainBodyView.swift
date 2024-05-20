@@ -1,8 +1,8 @@
 //
-//  BodyView.swift
+//  GameMainBodyView.swift
 //  Vocabulary
 //
-//  Created by Dongik Song on 5/13/24.
+//  Created by Dongik Song on 5/20/24.
 //
 
 import UIKit
@@ -10,18 +10,20 @@ import SnapKit
 
 class GameMainBodyView: UIView {
     
-    
-    lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 15
-        layout.itemSize = .init(width: 350, height: 60)
-        var view = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        view.register(VocaQuizMainCollectionViewCell.self, forCellWithReuseIdentifier: "VocaQuizMainCollectionViewCell")
+    lazy var frameView: UIView = {
+        let view = UIView()
+        view.addSubview(turtleImageView)
         return view
     }()
     
-   
+    lazy var turtleImageView: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "logo resize")
+        view.contentMode = .scaleAspectFit
+        return view
+    }()
+    
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         layout()
@@ -31,12 +33,17 @@ class GameMainBodyView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func layout() {
-        self.addSubview(collectionView)
+    private func layout () {
+        addSubview(frameView)
         
-        collectionView.snp.makeConstraints {
+        frameView.snp.makeConstraints {
             $0.top.leading.equalToSuperview().offset(20)
-            $0.trailing.bottom.equalToSuperview().offset(-20)
+            $0.bottom.trailing.equalToSuperview().inset(20)
+        }
+
+        
+        turtleImageView.snp.makeConstraints {
+            $0.edges.equalTo(frameView.snp.edges)
         }
     }
     
