@@ -119,6 +119,43 @@ final class CoreDataManager {
         }
     }
     
+    
+    //단어 삭제
+    
+    func deleteWord(word: WordEntity) {
+        guard let context = managedContext else {
+            print("Error: managedContext is nil")
+            return
+        }
+        context.delete(word)
+        do {
+            try context.save()
+            print("단어가 삭제되었습니다.")
+        } catch let error as NSError {
+            print("Could not delete: \(error.localizedDescription)")
+        }
+    }
+    
+    //단어 불러오기
+    func getWordList() -> [WordEntity] {
+        var wordList: [WordEntity] = []
+        
+        guard let context = managedContext else {
+            print("Error: managedContext is nil")
+            return wordList
+        }
+
+        let request: NSFetchRequest<WordEntity> = WordEntity.fetchRequest()
+        
+        do {
+            wordList = try context.fetch(request)
+        } catch {
+            print("Failed to fetch word entities:", error)
+        }
+        return wordList
+    }
+    
+    
 
     func getWordListFromCoreData(for date: Date) -> [WordEntity] {
         var wordList: [WordEntity] = []
