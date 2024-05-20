@@ -26,6 +26,13 @@ class InsertVocaViewController: UIViewController {
     
     var scrollView = UIScrollView()
     
+    var backButton = UIButton()
+    
+    //단어 추가 페이지로 돌아가기
+    @objc func backButtonTapped() {
+    self.dismiss(animated: true, completion: nil)
+    }
+    
     var bookCaseLabel = LabelFactory().makeLabel(title: "선택한 단어장 이름", size: 20, textAlignment: .center, isBold: true)
     var saveVocaButton = UIButton()
     var wordLabel = LabelFactory().makeLabel(title: "기억할 단어", size: 15, textAlignment: .left, isBold: true)
@@ -74,6 +81,11 @@ class InsertVocaViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
+        backButton.tintColor = .black
+        backButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
+        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+       
+        
         saveVocaButton.tintColor = .black
         saveVocaButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
         saveVocaButton.addTarget(self, action: #selector(saveVocaButtonPressed), for: .touchUpInside)
@@ -89,6 +101,7 @@ class InsertVocaViewController: UIViewController {
     
     
     func configureUI() {
+        self.view.addSubview(backButton)
         self.view.addSubview(bookCaseLabel)
         self.view.addSubview(saveVocaButton)
         self.view.addSubview(wordLabel)
@@ -107,6 +120,12 @@ class InsertVocaViewController: UIViewController {
     
     
     func makeConstraints() {
+        
+        backButton.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
+            $0.leading.equalToSuperview().offset(20)
+        }
+        
         bookCaseLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
             $0.centerX.equalToSuperview()
