@@ -10,6 +10,8 @@ import SnapKit
 import CoreData
 
 class AddVocaViewController: UIViewController {
+    
+    var bookCase: BookCase?
    
     var bookCaseLabel = LabelFactory().makeLabel(title: "선택한 단어장 이름", size: 20, textAlignment: .center, isBold: true)
     var addVocaButton = UIButton()
@@ -26,6 +28,7 @@ class AddVocaViewController: UIViewController {
     @objc func presentInsertVocaPage() {
         let scrollView = UIScrollView()
         let insertVocaView = InsertVocaViewController(scrollView: scrollView)
+        insertVocaView.selectedBookCase = self.bookCase // 단어장 데이터 전달
         insertVocaView.modalPresentationStyle = .fullScreen
         self.present(insertVocaView, animated: true, completion: nil)
     }

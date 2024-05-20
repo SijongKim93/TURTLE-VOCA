@@ -71,12 +71,12 @@
 		61F75F5F2BF4F9E800FCC731 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F75F5E2BF4F9E800FCC731 /* AlertController.swift */; };
 		6B02ADED2BF6E88F006E0964 /* InsertVocaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02ADEC2BF6E88F006E0964 /* InsertVocaViewController.swift */; };
 		6B02ADEF2BF6E8B6006E0964 /* TextFieldFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02ADEE2BF6E8B6006E0964 /* TextFieldFactory.swift */; };
-		6B02ADF62BF6EB37006E0964 /* WordEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02ADF42BF6EB37006E0964 /* WordEntity+CoreDataClass.swift */; };
-		6B02ADF72BF6EB37006E0964 /* WordEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02ADF52BF6EB37006E0964 /* WordEntity+CoreDataProperties.swift */; };
+		FBC59FC52BFB786C002B0113 /* WordEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC59FC12BFB786C002B0113 /* WordEntity+CoreDataClass.swift */; };
+		FBC59FC62BFB786C002B0113 /* WordEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC59FC22BFB786C002B0113 /* WordEntity+CoreDataProperties.swift */; };
+		FBC59FC72BFB786C002B0113 /* BookCase+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC59FC32BFB786C002B0113 /* BookCase+CoreDataClass.swift */; };
+		FBC59FC82BFB786C002B0113 /* BookCase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC59FC42BFB786C002B0113 /* BookCase+CoreDataProperties.swift */; };
 		6BBB36202BFAF54B0088A8CB /* VocaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBB361E2BFAF54B0088A8CB /* VocaTableViewCell.swift */; };
 		6BBB36222BFAF6050088A8CB /* VocaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBB36212BFAF6050088A8CB /* VocaDetailViewController.swift */; };
-		FB475D812BF75324007A6FFF /* BookCase+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB475D7F2BF75324007A6FFF /* BookCase+CoreDataClass.swift */; };
-		FB475D822BF75324007A6FFF /* BookCase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB475D802BF75324007A6FFF /* BookCase+CoreDataProperties.swift */; };
 		FBE7EA412BF8778F00BE86E5 /* EditBookCaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7EA402BF8778F00BE86E5 /* EditBookCaseViewController.swift */; };
 		FBE7EA432BF877D200BE86E5 /* EditBookCaseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7EA422BF877D200BE86E5 /* EditBookCaseHeaderView.swift */; };
 		FBE7EA452BF8785700BE86E5 /* EditBookCaseBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7EA442BF8785700BE86E5 /* EditBookCaseBodyView.swift */; };
@@ -148,12 +148,12 @@
 		61F75F5E2BF4F9E800FCC731 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		6B02ADEC2BF6E88F006E0964 /* InsertVocaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertVocaViewController.swift; sourceTree = "<group>"; };
 		6B02ADEE2BF6E8B6006E0964 /* TextFieldFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldFactory.swift; sourceTree = "<group>"; };
-		6B02ADF42BF6EB37006E0964 /* WordEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WordEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
-		6B02ADF52BF6EB37006E0964 /* WordEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WordEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		6BBB361E2BFAF54B0088A8CB /* VocaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocaTableViewCell.swift; sourceTree = "<group>"; };
+		FBC59FC12BFB786C002B0113 /* WordEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WordEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		FBC59FC22BFB786C002B0113 /* WordEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WordEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		FBC59FC32BFB786C002B0113 /* BookCase+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookCase+CoreDataClass.swift"; sourceTree = "<group>"; };
+		FBC59FC42BFB786C002B0113 /* BookCase+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookCase+CoreDataProperties.swift"; sourceTree = "<group>"; };
+    6BBB361E2BFAF54B0088A8CB /* VocaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocaTableViewCell.swift; sourceTree = "<group>"; };
 		6BBB36212BFAF6050088A8CB /* VocaDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocaDetailViewController.swift; sourceTree = "<group>"; };
-		FB475D7F2BF75324007A6FFF /* BookCase+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookCase+CoreDataClass.swift"; sourceTree = "<group>"; };
-		FB475D802BF75324007A6FFF /* BookCase+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookCase+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FBE7EA402BF8778F00BE86E5 /* EditBookCaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookCaseViewController.swift; sourceTree = "<group>"; };
 		FBE7EA422BF877D200BE86E5 /* EditBookCaseHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookCaseHeaderView.swift; sourceTree = "<group>"; };
 		FBE7EA442BF8785700BE86E5 /* EditBookCaseBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookCaseBodyView.swift; sourceTree = "<group>"; };
@@ -289,10 +289,10 @@
 		612ABC852BF1E9B70056F127 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6B02ADF42BF6EB37006E0964 /* WordEntity+CoreDataClass.swift */,
-				6B02ADF52BF6EB37006E0964 /* WordEntity+CoreDataProperties.swift */,
-				FB475D7F2BF75324007A6FFF /* BookCase+CoreDataClass.swift */,
-				FB475D802BF75324007A6FFF /* BookCase+CoreDataProperties.swift */,
+				FBC59FC12BFB786C002B0113 /* WordEntity+CoreDataClass.swift */,
+				FBC59FC22BFB786C002B0113 /* WordEntity+CoreDataProperties.swift */,
+				FBC59FC32BFB786C002B0113 /* BookCase+CoreDataClass.swift */,
+				FBC59FC42BFB786C002B0113 /* BookCase+CoreDataProperties.swift */,
 				612ABC882BF1EA480056F127 /* DummyModel.swift */,
 				61BCB0552BF337B100CF73E4 /* VocaQuizModel.swift */,
 				612D10D12BF719030097EDBA /* MyPageData.swift */,
@@ -502,6 +502,7 @@
 			files = (
 				4D1791AB2BF1D5BE00E645C9 /* AddVocaViewController.swift in Sources */,
 				4D1791A72BF1D5BE00E645C9 /* AppDelegate.swift in Sources */,
+				FBC59FC62BFB786C002B0113 /* WordEntity+CoreDataProperties.swift in Sources */,
 				61EE0BF72BF9777600FD2F32 /* RecordTableViewCell.swift in Sources */,
 				612D10CE2BF718DD0097EDBA /* MenuDetailModalViewController.swift in Sources */,
 				612D10F82BF71BC40097EDBA /* MyPageTableViewCell.swift in Sources */,
@@ -524,13 +525,9 @@
 				6B02ADED2BF6E88F006E0964 /* InsertVocaViewController.swift in Sources */,
 				612D10EE2BF71B630097EDBA /* CoreDataManager.swift in Sources */,
 				611186F22BF4DD5E009C2FE9 /* FlashHeaderView.swift in Sources */,
-				6B02ADF62BF6EB37006E0964 /* WordEntity+CoreDataClass.swift in Sources */,
-				61CB7FC72BFB221600DFA96F /* GameMainBodyView.swift in Sources */,
-				FB475D812BF75324007A6FFF /* BookCase+CoreDataClass.swift in Sources */,
-				6B02ADF72BF6EB37006E0964 /* WordEntity+CoreDataProperties.swift in Sources */,
 				61EEE6902BF5E66E00803AA1 /* HangManGameViewController.swift in Sources */,
-				FB475D822BF75324007A6FFF /* BookCase+CoreDataProperties.swift in Sources */,
 				4D1791D12BF23F0300E645C9 /* CalenderCollectionViewCell.swift in Sources */,
+				FBC59FC82BFB786C002B0113 /* BookCase+CoreDataProperties.swift in Sources */,
 				612D10F52BF71B9B0097EDBA /* BookCaseHeaderView.swift in Sources */,
 				618E70662BF229D1007AEDFE /* VocaQuizMainCollectionViewCell.swift in Sources */,
 				61EEE6982BF5EDD900803AA1 /* ButtonFactory.swift in Sources */,
@@ -540,6 +537,7 @@
 				612D10CD2BF718DD0097EDBA /* FilterPresentationController.swift in Sources */,
 				4D1791C52BF1E27300E645C9 /* CalenderViewController.swift in Sources */,
 				6B02ADEF2BF6E8B6006E0964 /* TextFieldFactory.swift in Sources */,
+				FBC59FC52BFB786C002B0113 /* WordEntity+CoreDataClass.swift in Sources */,
 				4D9E8FA92BF8CCE3003F05D3 /* LoginPresentationController.swift in Sources */,
 				612D10D82BF719610097EDBA /* MenuDetailTableViewCell.swift in Sources */,
 				618E70712BF25354007AEDFE /* QuizBottomView.swift in Sources */,
@@ -566,6 +564,7 @@
 				618E70572BF2039E007AEDFE /* LabelFactory.swift in Sources */,
 				FBE7EA452BF8785700BE86E5 /* EditBookCaseBodyView.swift in Sources */,
 				612D10E92BF71B130097EDBA /* AddBookCaseBodyView.swift in Sources */,
+				FBC59FC72BFB786C002B0113 /* BookCase+CoreDataClass.swift in Sources */,
 				4D1791C72BF1E27F00E645C9 /* MyPageViewController.swift in Sources */,
 				612D10E02BF719D20097EDBA /* BookCaseViewController.swift in Sources */,
 			);

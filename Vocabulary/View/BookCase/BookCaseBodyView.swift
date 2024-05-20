@@ -12,6 +12,8 @@ import CoreData
 
 class BookCaseBodyView: UIView {
     
+    weak var delegate:BookCaseBodyViewDelegate?
+    
     var itemWidth: CGFloat = 0.0
     let minimumLineSpacing: CGFloat = 16
     var previousIndex: Int = 0
@@ -56,6 +58,10 @@ class BookCaseBodyView: UIView {
         super.init(frame: .zero)
         setupConstraints()
         configureUI()
+        
+        // AddVoca로 이동하기 위한 TapGestureRecognizer
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        self.addGestureRecognizer(tapGesture)
     }
     
     required init?(coder: NSCoder) {
@@ -155,6 +161,16 @@ class BookCaseBodyView: UIView {
             previousIndex = indexPath.item
         }
     }
+    
+    //탭 제스쳐 처리 메서드
+    @objc func handleTap(_ gesture: UITapGestureRecognizer) {
+        let location = gesture.location(in: vocaBookCollectionView)
+        if let indexPath = vocaBookCollectionView.indexPathForItem(at: location) {
+            print("cellTapped")
+            let selectedBookCase = bookCases[indexPath.item]
+            delegate?.didSelectBookCase(selectedBookCase)
+        }
+    }
 }
 
 extension BookCaseBodyView: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -218,4 +234,9 @@ extension BookCaseBodyView {
             },
             completion: nil)
     }
+}
+
+//셀 선택 시
+protocol BookCaseBodyViewDelegate: AnyObject {
+    func didSelectBookCase(_ bookCase: NSManagedObject)
 }
