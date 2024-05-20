@@ -26,7 +26,7 @@ class MyPageViewController: UIViewController {
         image.backgroundColor = .white
         image.image = UIImage(systemName: "person.crop.circle")
         image.contentMode = .scaleAspectFill
-        image.tintColor = UIColor(red: 48/255, green: 140/255, blue: 74/255, alpha: 1.0)
+        image.tintColor = ThemeColor.mainColor
         image.clipsToBounds = true
         return image
     }()
@@ -135,7 +135,7 @@ class MyPageViewController: UIViewController {
         tableView.register(MyPageTableViewCell.self, forCellReuseIdentifier: MyPageTableViewCell.identifier)
         tableView.layer.borderWidth = 1
         tableView.backgroundColor = .white
-        tableView.layer.borderColor = UIColor(red: 48/255, green: 140/255, blue: 74/255, alpha: 1.0).cgColor
+        tableView.layer.borderColor = ThemeColor.mainColor.cgColor
         return tableView
     }()
     
@@ -240,7 +240,7 @@ class MyPageViewController: UIViewController {
         if let count = coreDataManager?.getSavedWordCount() {
             saveVocaCount.text = "\(count)개"
         } else {
-            saveVocaCount.text = "0개" // 만약 coreDataManager가 nil이면 기본값으로 0개 설정
+            saveVocaCount.text = "0개"
         }
     }
     
@@ -248,7 +248,7 @@ class MyPageViewController: UIViewController {
         if let count = coreDataManager?.getLearnedWordCount() {
             memoryVocaCount.text = "\(count)개"
         } else {
-            memoryVocaCount.text = "0개" // 만약 coreDataManager가 nil이면 기본값으로 0개 설정
+            memoryVocaCount.text = "0개"
         }
     }
     
@@ -304,7 +304,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 3 { // Assuming "로그인" is the first item in the data source
+        if indexPath.row == 3 {
             let loginModelVC = LoginModalViewController()
             loginModelVC.modalPresentationStyle = .custom
             loginModelVC.transitioningDelegate = self

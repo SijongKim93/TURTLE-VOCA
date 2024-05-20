@@ -19,7 +19,7 @@ class CalenderViewController: UIViewController {
         var view = UICalendarView()
         view.calendar = .current
         view.locale = .current
-        view.tintColor = UIColor(red: 48/255, green: 140/255, blue: 74/255, alpha: 1.0)
+        view.tintColor = ThemeColor.mainColor
         view.fontDesign = .rounded
         return view
     }()

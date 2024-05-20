@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import AVFoundation
 
 class CalenderCollectionViewCell: UICollectionViewCell {
     static let identifier = "CalenderCollectionViewCell"
+    
+    let synthesizer = AVSpeechSynthesizer()
     
     let typeLabel: UILabel = {
         let label = UILabel()
@@ -33,7 +36,7 @@ class CalenderCollectionViewCell: UICollectionViewCell {
     let speakerButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "speaker.wave.2.fill"), for: .normal)
-        button.tintColor = UIColor(red: 48/255, green: 140/255, blue: 74/255, alpha: 1.0)
+        button.tintColor = ThemeColor.mainColor
         return button
     }()
     
@@ -41,7 +44,7 @@ class CalenderCollectionViewCell: UICollectionViewCell {
         let button = UIButton()
         button.setImage(UIImage(systemName: "square"), for: .normal)
         button.setImage(UIImage(systemName: "checkmark.square"), for: .selected)
-        button.tintColor = UIColor(red: 48/255, green: 140/255, blue: 74/255, alpha: 1.0)
+        button.tintColor = ThemeColor.mainColor
         return button
     }()
     
@@ -56,13 +59,15 @@ class CalenderCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         contentView.backgroundColor = #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1)
         contentView.layer.borderWidth = 1
-        contentView.layer.borderColor = UIColor(red: 48/255, green: 140/255, blue: 74/255, alpha: 1.0).cgColor
+        contentView.layer.borderColor = ThemeColor.mainColor.cgColor
         contentView.layer.cornerRadius = 16
         
         contentView.addSubview(typeLabel)
         contentView.addSubview(englishLabel)
         contentView.addSubview(meaningLabel)
         contentView.addSubview(buttonStackView)
+        
+        speakerButton.addTarget(self, action: #selector(speakEnglishLabel), for: .touchUpInside)
         
         typeLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(10)
@@ -93,5 +98,12 @@ class CalenderCollectionViewCell: UICollectionViewCell {
         englishLabel.text = word.word
         meaningLabel.text = word.definition
         learnedButton.isSelected = word.memory
+    }
+    
+    @objc func speakEnglishLabel() {
+        guard let text = englishLabel.text, !text.isEmpty else { return }
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        synthesizer.speak(utterance)
     }
 }
