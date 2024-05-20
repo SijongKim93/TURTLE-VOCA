@@ -19,7 +19,6 @@
 		4D1791C72BF1E27F00E645C9 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */; };
 		4D1791D12BF23F0300E645C9 /* CalenderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791D02BF23F0300E645C9 /* CalenderCollectionViewCell.swift */; };
 		4D1791DD2BF45AD500E645C9 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791DC2BF45AD500E645C9 /* FilterTableViewCell.swift */; };
-		4D7C9F9D2BFB1E9C00E41A65 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D7C9F9C2BFB1E9C00E41A65 /* GoogleService-Info.plist */; };
 		4D9E8FA72BF8CCB2003F05D3 /* LoginModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E8FA62BF8CCB2003F05D3 /* LoginModalViewController.swift */; };
 		4D9E8FA92BF8CCE3003F05D3 /* LoginPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E8FA82BF8CCE3003F05D3 /* LoginPresentationController.swift */; };
 		4D9E8FAB2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E8FAA2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift */; };
@@ -55,7 +54,6 @@
 		61BCB0542BF2F4B600CF73E4 /* DummyGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0532BF2F4B600CF73E4 /* DummyGenerator.swift */; };
 		61BCB0562BF337B100CF73E4 /* VocaQuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0552BF337B100CF73E4 /* VocaQuizModel.swift */; };
 		61BCB0592BF3597C00CF73E4 /* UIResponder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0582BF3597C00CF73E4 /* UIResponder+Extension.swift */; };
-		61CB7FC72BFB221600DFA96F /* GameMainBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CB7FC62BFB221600DFA96F /* GameMainBodyView.swift */; };
 		61CB7FCA2BFB29F400DFA96F /* ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CB7FC92BFB29F400DFA96F /* ThemeColor.swift */; };
 		61EE0BF22BF9775100FD2F32 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EE0BF12BF9775100FD2F32 /* RecordViewController.swift */; };
 		61EE0BF62BF9777600FD2F32 /* RecordHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EE0BF32BF9777600FD2F32 /* RecordHeaderView.swift */; };
@@ -71,12 +69,14 @@
 		61F75F5F2BF4F9E800FCC731 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F75F5E2BF4F9E800FCC731 /* AlertController.swift */; };
 		6B02ADED2BF6E88F006E0964 /* InsertVocaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02ADEC2BF6E88F006E0964 /* InsertVocaViewController.swift */; };
 		6B02ADEF2BF6E8B6006E0964 /* TextFieldFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02ADEE2BF6E8B6006E0964 /* TextFieldFactory.swift */; };
+		6BBB36202BFAF54B0088A8CB /* VocaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBB361E2BFAF54B0088A8CB /* VocaTableViewCell.swift */; };
+		6BBB36222BFAF6050088A8CB /* VocaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBB36212BFAF6050088A8CB /* VocaDetailViewController.swift */; };
+		FB04CC6B2BFB7E5C00FC0EEA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB04CC6A2BFB7E5C00FC0EEA /* GoogleService-Info.plist */; };
+		FB04CC6D2BFB7F2E00FC0EEA /* GameMainBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB04CC6C2BFB7F2E00FC0EEA /* GameMainBodyView.swift */; };
 		FBC59FC52BFB786C002B0113 /* WordEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC59FC12BFB786C002B0113 /* WordEntity+CoreDataClass.swift */; };
 		FBC59FC62BFB786C002B0113 /* WordEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC59FC22BFB786C002B0113 /* WordEntity+CoreDataProperties.swift */; };
 		FBC59FC72BFB786C002B0113 /* BookCase+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC59FC32BFB786C002B0113 /* BookCase+CoreDataClass.swift */; };
 		FBC59FC82BFB786C002B0113 /* BookCase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC59FC42BFB786C002B0113 /* BookCase+CoreDataProperties.swift */; };
-		6BBB36202BFAF54B0088A8CB /* VocaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBB361E2BFAF54B0088A8CB /* VocaTableViewCell.swift */; };
-		6BBB36222BFAF6050088A8CB /* VocaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBB36212BFAF6050088A8CB /* VocaDetailViewController.swift */; };
 		FBE7EA412BF8778F00BE86E5 /* EditBookCaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7EA402BF8778F00BE86E5 /* EditBookCaseViewController.swift */; };
 		FBE7EA432BF877D200BE86E5 /* EditBookCaseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7EA422BF877D200BE86E5 /* EditBookCaseHeaderView.swift */; };
 		FBE7EA452BF8785700BE86E5 /* EditBookCaseBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7EA442BF8785700BE86E5 /* EditBookCaseBodyView.swift */; };
@@ -97,7 +97,6 @@
 		4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		4D1791D02BF23F0300E645C9 /* CalenderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderCollectionViewCell.swift; sourceTree = "<group>"; };
 		4D1791DC2BF45AD500E645C9 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
-		4D7C9F9C2BFB1E9C00E41A65 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4D9E8FA62BF8CCB2003F05D3 /* LoginModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModalViewController.swift; sourceTree = "<group>"; };
 		4D9E8FA82BF8CCE3003F05D3 /* LoginPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresentationController.swift; sourceTree = "<group>"; };
 		4D9E8FAA2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDetailTableViewCell.swift; sourceTree = "<group>"; };
@@ -133,7 +132,6 @@
 		61BCB0532BF2F4B600CF73E4 /* DummyGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyGenerator.swift; sourceTree = "<group>"; };
 		61BCB0552BF337B100CF73E4 /* VocaQuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaQuizModel.swift; sourceTree = "<group>"; };
 		61BCB0582BF3597C00CF73E4 /* UIResponder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Extension.swift"; sourceTree = "<group>"; };
-		61CB7FC62BFB221600DFA96F /* GameMainBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMainBodyView.swift; sourceTree = "<group>"; };
 		61CB7FC92BFB29F400DFA96F /* ThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColor.swift; sourceTree = "<group>"; };
 		61EE0BF12BF9775100FD2F32 /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		61EE0BF32BF9777600FD2F32 /* RecordHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordHeaderView.swift; sourceTree = "<group>"; };
@@ -148,12 +146,14 @@
 		61F75F5E2BF4F9E800FCC731 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		6B02ADEC2BF6E88F006E0964 /* InsertVocaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertVocaViewController.swift; sourceTree = "<group>"; };
 		6B02ADEE2BF6E8B6006E0964 /* TextFieldFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldFactory.swift; sourceTree = "<group>"; };
+		6BBB361E2BFAF54B0088A8CB /* VocaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocaTableViewCell.swift; sourceTree = "<group>"; };
+		6BBB36212BFAF6050088A8CB /* VocaDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocaDetailViewController.swift; sourceTree = "<group>"; };
+		FB04CC6A2BFB7E5C00FC0EEA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FB04CC6C2BFB7F2E00FC0EEA /* GameMainBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMainBodyView.swift; sourceTree = "<group>"; };
 		FBC59FC12BFB786C002B0113 /* WordEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WordEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		FBC59FC22BFB786C002B0113 /* WordEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WordEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FBC59FC32BFB786C002B0113 /* BookCase+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookCase+CoreDataClass.swift"; sourceTree = "<group>"; };
 		FBC59FC42BFB786C002B0113 /* BookCase+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookCase+CoreDataProperties.swift"; sourceTree = "<group>"; };
-    6BBB361E2BFAF54B0088A8CB /* VocaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocaTableViewCell.swift; sourceTree = "<group>"; };
-		6BBB36212BFAF6050088A8CB /* VocaDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocaDetailViewController.swift; sourceTree = "<group>"; };
 		FBE7EA402BF8778F00BE86E5 /* EditBookCaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookCaseViewController.swift; sourceTree = "<group>"; };
 		FBE7EA422BF877D200BE86E5 /* EditBookCaseHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookCaseHeaderView.swift; sourceTree = "<group>"; };
 		FBE7EA442BF8785700BE86E5 /* EditBookCaseBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookCaseBodyView.swift; sourceTree = "<group>"; };
@@ -206,8 +206,7 @@
 				4D1791B72BF1D5BF00E645C9 /* Info.plist */,
 				4D1791AF2BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld */,
 				618E705F2BF21970007AEDFE /* Constants.swift */,
-				4D7C9F9C2BFB1E9C00E41A65 /* GoogleService-Info.plist */,
-
+				FB04CC6A2BFB7E5C00FC0EEA /* GoogleService-Info.plist */,
 			);
 			path = Vocabulary;
 			sourceTree = "<group>";
@@ -303,6 +302,7 @@
 		612ABC8A2BF1FCF80056F127 /* VocaQuiz */ = {
 			isa = PBXGroup;
 			children = (
+				FB04CC6C2BFB7F2E00FC0EEA /* GameMainBodyView.swift */,
 				611186F12BF4DD5E009C2FE9 /* FlashHeaderView.swift */,
 				611186F32BF4DE09009C2FE9 /* FlashBodyView.swift */,
 				618E706C2BF25328007AEDFE /* QuizHeaderView.swift */,
@@ -312,7 +312,6 @@
 				61EEE6932BF5E70300803AA1 /* HangManBodyView.swift */,
 				61EEE6952BF5E74700803AA1 /* HangManBottomView.swift */,
 				612ABC8E2BF200370056F127 /* GameMainHeaderView.swift */,
-				61CB7FC62BFB221600DFA96F /* GameMainBodyView.swift */,
 				612ABC902BF2003E0056F127 /* GameMainBottomView.swift */,
 				61EE0BF52BF9777600FD2F32 /* RecordBodyView.swift */,
 				61EE0BF32BF9777600FD2F32 /* RecordHeaderView.swift */,
@@ -396,20 +395,20 @@
 			path = General;
 			sourceTree = "<group>";
 		};
-		6BBB361F2BFAF54B0088A8CB /* AddVoca */ = {
-			isa = PBXGroup;
-			children = (
-				6BBB361E2BFAF54B0088A8CB /* VocaTableViewCell.swift */,
-			);
-			path = AddVoca;
-			sourceTree = "<group>";
-      		};
 		61CB7FC82BFB29E700DFA96F /* Config */ = {
 			isa = PBXGroup;
 			children = (
 				61CB7FC92BFB29F400DFA96F /* ThemeColor.swift */,
 			);
 			path = Config;
+			sourceTree = "<group>";
+		};
+		6BBB361F2BFAF54B0088A8CB /* AddVoca */ = {
+			isa = PBXGroup;
+			children = (
+				6BBB361E2BFAF54B0088A8CB /* VocaTableViewCell.swift */,
+			);
+			path = AddVoca;
 			sourceTree = "<group>";
 		};
 		FBE7EA3F2BF8776100BE86E5 /* EditBookCase */ = {
@@ -489,7 +488,7 @@
 			files = (
 				4D1791B32BF1D5BF00E645C9 /* Assets.xcassets in Resources */,
 				4D1791B62BF1D5BF00E645C9 /* Base in Resources */,
-				4D7C9F9D2BFB1E9C00E41A65 /* GoogleService-Info.plist in Resources */,
+				FB04CC6B2BFB7E5C00FC0EEA /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,6 +534,7 @@
 				618E706F2BF25337007AEDFE /* QuizBodyView.swift in Sources */,
 				618E70682BF22A66007AEDFE /* CollectionView+Extension.swift in Sources */,
 				612D10CD2BF718DD0097EDBA /* FilterPresentationController.swift in Sources */,
+				FB04CC6D2BFB7F2E00FC0EEA /* GameMainBodyView.swift in Sources */,
 				4D1791C52BF1E27300E645C9 /* CalenderViewController.swift in Sources */,
 				6B02ADEF2BF6E8B6006E0964 /* TextFieldFactory.swift in Sources */,
 				FBC59FC52BFB786C002B0113 /* WordEntity+CoreDataClass.swift in Sources */,
