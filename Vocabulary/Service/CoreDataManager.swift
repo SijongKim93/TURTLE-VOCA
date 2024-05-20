@@ -273,4 +273,20 @@ final class CoreDataManager {
             print("Failed to delete word: \(error)")
         }
     }
+    
+    func getSpecificData(query: String, onError: @escaping (Error) -> Void) -> [WordEntity] {
+        var array = [WordEntity]()
+        let request: NSFetchRequest<WordEntity> = WordEntity.fetchRequest()
+        let predicate = NSPredicate(format: "bookCaseName == %@", query)
+        request.predicate = predicate
+        
+        do {
+                array = try managedContext!.fetch(request)
+        } catch {
+           onError(error)
+        }
+        
+        return array
+    }
+    
 }

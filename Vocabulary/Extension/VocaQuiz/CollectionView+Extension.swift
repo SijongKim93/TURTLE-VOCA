@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ProgressHUD
 
 extension GameMainPageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -27,7 +28,7 @@ extension GameMainPageViewController: UICollectionViewDelegate, UICollectionView
         let item = buttonList[indexPath.row]
         
         cell.titleLabel.text = item
-
+        
         
         return cell
     }
@@ -36,24 +37,36 @@ extension GameMainPageViewController: UICollectionViewDelegate, UICollectionView
         
         switch indexPath.row {
         case 0 :
+            checkSetting()
             let flashVC = FlashCardViewController()
+            flashVC.receivedData = receivedData
             
             self.present(flashVC, animated: true)
         case 1 :
+            checkSetting()
             let quizVC = QuizViewController()
+            quizVC.receivedData = receivedData
             
             self.present(quizVC, animated: true)
         case 2 :
+            checkSetting()
             let hangVC = HangManGameViewController()
+            hangVC.receivedData = receivedData
             
             self.present(hangVC, animated: true)
         case 3 :
+            checkSetting()
             let recordVC = RecordViewController()
             
             self.present(recordVC, animated: true)
+        case 4 :
+            let vc = SelectVocaViewController()
+            vc.modalPresentationStyle = .custom
+            vc.transitioningDelegate = self
+            self.present(vc, animated: true, completion: nil)
         default :
             return
         }
     }
-
+    
 }

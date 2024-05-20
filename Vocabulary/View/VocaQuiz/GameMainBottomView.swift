@@ -15,7 +15,7 @@ class GameMainBottomView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 15
-        layout.itemSize = .init(width: 350, height: 60)
+        layout.itemSize = .init(width: 350, height: 50)
         var view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.register(VocaQuizMainCollectionViewCell.self, forCellWithReuseIdentifier: "VocaQuizMainCollectionViewCell")
         return view
