@@ -121,6 +121,43 @@ final class CoreDataManager {
         }
     }
     
+    
+    //단어 삭제
+    
+    func deleteWord(word: WordEntity) {
+        guard let context = managedContext else {
+            print("Error: managedContext is nil")
+            return
+        }
+        context.delete(word)
+        do {
+            try context.save()
+            print("단어가 삭제되었습니다.")
+        } catch let error as NSError {
+            print("Could not delete: \(error.localizedDescription)")
+        }
+    }
+    
+    //단어 불러오기
+    func getWordList() -> [WordEntity] {
+        var wordList: [WordEntity] = []
+        
+        guard let context = managedContext else {
+            print("Error: managedContext is nil")
+            return wordList
+        }
+
+        let request: NSFetchRequest<WordEntity> = WordEntity.fetchRequest()
+        
+        do {
+            wordList = try context.fetch(request)
+        } catch {
+            print("Failed to fetch word entities:", error)
+        }
+        return wordList
+    }
+    
+    
 
     func getWordListFromCoreData(for date: Date) -> [WordEntity] {
         var wordList: [WordEntity] = []
@@ -145,6 +182,30 @@ final class CoreDataManager {
             print("Failed to fetch word entities:", error)
         }
         return wordList
+    }
+    
+    func hasData(for date: Date) -> Bool {
+        guard let context = managedContext else {
+            print("Error: managedContext is nil")
+            return false
+        }
+        
+        let calendar = Calendar.current
+        let startOfDay = calendar.startOfDay(for: date)
+        let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay)!
+        
+        let predicate = NSPredicate(format: "(date >= %@) AND (date < %@)", argumentArray: [startOfDay, endOfDay])
+        
+        let request: NSFetchRequest<WordEntity> = WordEntity.fetchRequest()
+        request.predicate = predicate
+        
+        do {
+            let count = try context.count(for: request)
+            return count > 0
+        } catch {
+            print("Failed to fetch word entities:", error)
+            return false
+        }
     }
     
     func updateWordMemoryStatus(word: WordEntity, memory: Bool) {
@@ -194,6 +255,22 @@ final class CoreDataManager {
         } catch {
             print("Failed to fetch learned word count:", error)
             return 0
+        }
+    }
+    
+    func deleteWord(_ word: WordEntity) {
+        guard let context = managedContext else {
+            print("Error: managedContext is nil")
+            return
+        }
+        
+        context.delete(word)
+        
+        do {
+            try context.save()
+            print("Word deleted successfully.")
+        } catch {
+            print("Failed to delete word: \(error)")
         }
     }
 }

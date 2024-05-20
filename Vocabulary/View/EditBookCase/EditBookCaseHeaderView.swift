@@ -49,7 +49,6 @@ class EditBookCaseHeaderView: UIView {
     }
     
     @objc func backButtonTapped() {
-        let currentVC = currentViewController as? AddBookCaseViewController
         currentViewController?.dismiss(animated: true)
     }
 }
