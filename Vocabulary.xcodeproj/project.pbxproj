@@ -398,6 +398,8 @@
 				6BBB361E2BFAF54B0088A8CB /* VocaTableViewCell.swift */,
 			);
 			path = AddVoca;
+			sourceTree = "<group>";
+      		};
 		61CB7FC82BFB29E700DFA96F /* Config */ = {
 			isa = PBXGroup;
 			children = (
