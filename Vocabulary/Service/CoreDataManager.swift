@@ -182,6 +182,30 @@ final class CoreDataManager {
         return wordList
     }
     
+    func hasData(for date: Date) -> Bool {
+        guard let context = managedContext else {
+            print("Error: managedContext is nil")
+            return false
+        }
+        
+        let calendar = Calendar.current
+        let startOfDay = calendar.startOfDay(for: date)
+        let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay)!
+        
+        let predicate = NSPredicate(format: "(date >= %@) AND (date < %@)", argumentArray: [startOfDay, endOfDay])
+        
+        let request: NSFetchRequest<WordEntity> = WordEntity.fetchRequest()
+        request.predicate = predicate
+        
+        do {
+            let count = try context.count(for: request)
+            return count > 0
+        } catch {
+            print("Failed to fetch word entities:", error)
+            return false
+        }
+    }
+    
     func updateWordMemoryStatus(word: WordEntity, memory: Bool) {
         guard let context = managedContext else {
             print("Error: managedContext is nil")
