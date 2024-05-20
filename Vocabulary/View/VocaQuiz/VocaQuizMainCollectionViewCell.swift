@@ -10,7 +10,7 @@ import SnapKit
 
 class VocaQuizMainCollectionViewCell: UICollectionViewCell {
     
-    lazy var titleLabel = LabelFactory().makeLabel(title: "title", size: 25, isBold: false)
+    lazy var titleLabel = LabelFactory().makeLabel(title: "title",color: .white, size: 25, isBold: true)
 
     
     override init(frame: CGRect) {
@@ -24,7 +24,7 @@ class VocaQuizMainCollectionViewCell: UICollectionViewCell {
     
     private func layout () {
         self.layer.borderWidth = 0.5
-        self.backgroundColor = .lightGray
+        self.backgroundColor = UIColor(hexString: "308C4A")
         self.layer.cornerRadius = 15
         self.layer.masksToBounds = true
         

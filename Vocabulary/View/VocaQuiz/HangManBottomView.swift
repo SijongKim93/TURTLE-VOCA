@@ -51,6 +51,7 @@ class HangManBottomView: UIView {
         ])
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
+        stackView.spacing = 5
         return stackView
     }()
     
@@ -94,6 +95,7 @@ class HangManBottomView: UIView {
         ])
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
+        stackView.spacing = 5
         return stackView
     }()
     
@@ -137,6 +139,7 @@ class HangManBottomView: UIView {
         ])
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
+        stackView.spacing = 5
         return stackView
     }()
     
@@ -173,6 +176,7 @@ class HangManBottomView: UIView {
         ])
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
+        stackView.spacing = 5
         return stackView
     }()
     
@@ -185,6 +189,7 @@ class HangManBottomView: UIView {
         ])
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
+        stackView.spacing = 5
         return stackView
     }()
 

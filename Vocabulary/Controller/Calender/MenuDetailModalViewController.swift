@@ -7,9 +7,16 @@
 
 import UIKit
 
+
+protocol MenuDetailModalDelegate: AnyObject {
+    func markWordsAsLearned()
+    func deleteAllWords()
+}
+
 class MenuDetailModalViewController: UIViewController {
     
     let labels = ["다 외웠어요", "전체 삭제"]
+    weak var delegate: MenuDetailModalDelegate?
     
     let filterMainLabel = LabelFactory().makeLabel(title: "단어 상태 설정", size: 23, textAlignment: .left, isBold: true)
     
@@ -42,12 +49,9 @@ class MenuDetailModalViewController: UIViewController {
         return tableView
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
-
     }
     
     func setupUI() {
@@ -90,19 +94,36 @@ class MenuDetailModalViewController: UIViewController {
     }
 }
 
-
 extension MenuDetailModalViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return labels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MenuDetailTableViewCell.identifier, for: indexPath) as? MenuDetailTableViewCell else { fatalError("테이블 뷰 오류")}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MenuDetailTableViewCell.identifier, for: indexPath) as? MenuDetailTableViewCell else { fatalError("테이블 뷰 오류") }
         
         cell.label.text = labels[indexPath.row]
         cell.selectionStyle = .none
+        if indexPath.row == 1 {
+            cell.label.textColor = .red
+        }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            delegate?.markWordsAsLearned()
+            dismissViewController()
+        } else if indexPath.row == 1 {
+            let alert = UIAlertController(title: "전체 삭제", message: "선택한 날짜의 모든 단어를 삭제하시겠습니까?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "삭제", style: .destructive, handler: { _ in
+                self.delegate?.deleteAllWords()
+                self.dismissViewController()
+            }))
+            present(alert, animated: true, completion: nil)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

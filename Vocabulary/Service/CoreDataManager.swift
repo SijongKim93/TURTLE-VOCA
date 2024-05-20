@@ -231,4 +231,20 @@ final class CoreDataManager {
             return 0
         }
     }
+    
+    func deleteWord(_ word: WordEntity) {
+        guard let context = managedContext else {
+            print("Error: managedContext is nil")
+            return
+        }
+        
+        context.delete(word)
+        
+        do {
+            try context.save()
+            print("Word deleted successfully.")
+        } catch {
+            print("Failed to delete word: \(error)")
+        }
+    }
 }

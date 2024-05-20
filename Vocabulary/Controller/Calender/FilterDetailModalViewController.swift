@@ -10,6 +10,8 @@ import SnapKit
 
 class FilterDetailModalViewController: UIViewController {
     
+    weak var delegate: FilterDetailModalDelegate?
+    
     let labels = ["최근 저장 순", "나중 저장 순", "외운 단어 순", "못 외운 단어 순", "랜덤"]
     var selectedButtonIndex: Int?
     
@@ -55,8 +57,15 @@ class FilterDetailModalViewController: UIViewController {
         loadFilterSettings()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        delegate?.didDismissFilterDetailModal()
+    }
+    
     @objc func dismissViewController() {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true) { [weak self] in
+            self?.delegate?.didDismissFilterDetailModal()
+        }
     }
     
     func setupUI() {
@@ -66,7 +75,6 @@ class FilterDetailModalViewController: UIViewController {
         view.addSubview(topStackView)
         view.addSubview(viewLine)
         view.addSubview(tableView)
-        
         
         topStackView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(15)
@@ -93,7 +101,7 @@ class FilterDetailModalViewController: UIViewController {
     func saveFilterSettings() {
         guard let selectedButtonIndex = selectedButtonIndex else { return }
         UserDefaults.standard.set(selectedButtonIndex, forKey: "SelectedFilterIndex")
-        UserDefaults.standard.synchronize() // 즉시 동기화
+        UserDefaults.standard.synchronize()
         print("Saved selected filter index: \(selectedButtonIndex)")
     }
     
@@ -127,7 +135,7 @@ extension FilterDetailModalViewController: UITableViewDelegate, UITableViewDataS
             guard let self = self else { return }
             self.updateSelectedButton(at: indexPath.row)
         }
-
+        
         return cell
     }
     
@@ -143,22 +151,18 @@ extension FilterDetailModalViewController: UITableViewDelegate, UITableViewDataS
     
     func updateSelectedButton(at index: Int) {
         if let selectedButtonIndex = selectedButtonIndex {
-            // 이전에 선택된 버튼의 상태를 해제
             let previousIndexPath = IndexPath(row: selectedButtonIndex, section: 0)
             if let previousCell = tableView.cellForRow(at: previousIndexPath) as? FilterTableViewCell {
                 previousCell.button.isSelected = false
             }
         }
         
-        // 새로 선택된 버튼의 상태를 설정
         selectedButtonIndex = index
         let currentIndexPath = IndexPath(row: index, section: 0)
         if let currentCell = tableView.cellForRow(at: currentIndexPath) as? FilterTableViewCell {
             currentCell.button.isSelected = true
         }
         
-        // UserDefaults에 상태 저장
         saveFilterSettings()
     }
-    
 }

@@ -17,7 +17,6 @@ class FilterPresentationController: UIPresentationController {
         return CGRect(x: 0, y: containerView.bounds.height / 2, width: containerView.bounds.width, height: containerView.bounds.height / 2)
     }
     
-    
     override func presentationTransitionWillBegin() {
         guard let containerView = containerView, let presentedView = presentedView else { return }
         
@@ -38,7 +37,11 @@ class FilterPresentationController: UIPresentationController {
     }
     
     @objc func dimmingViewTapped() {
-        presentingViewController.dismiss(animated: true, completion: nil)
+        presentingViewController.dismiss(animated: true) { [weak self] in
+            if let calenderVC = self?.presentingViewController as? CalenderViewController {
+                calenderVC.didDismissFilterDetailModal()
+            }
+        }
     }
     
     override func dismissalTransitionWillBegin() {
@@ -54,6 +57,4 @@ class FilterPresentationController: UIPresentationController {
     func shouldRemovePresentersView() -> Bool {
         return false
     }
-    
 }
-

@@ -27,7 +27,7 @@
 		611186F42BF4DE09009C2FE9 /* FlashBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611186F32BF4DE09009C2FE9 /* FlashBodyView.swift */; };
 		612ABC892BF1EA480056F127 /* DummyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC882BF1EA480056F127 /* DummyModel.swift */; };
 		612ABC8F2BF200370056F127 /* GameMainHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC8E2BF200370056F127 /* GameMainHeaderView.swift */; };
-		612ABC912BF2003E0056F127 /* GameMainBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC902BF2003E0056F127 /* GameMainBodyView.swift */; };
+		612ABC912BF2003E0056F127 /* GameMainBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC902BF2003E0056F127 /* GameMainBottomView.swift */; };
 		612D10CD2BF718DD0097EDBA /* FilterPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D10C92BF718DD0097EDBA /* FilterPresentationController.swift */; };
 		612D10CE2BF718DD0097EDBA /* MenuDetailModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D10CA2BF718DD0097EDBA /* MenuDetailModalViewController.swift */; };
 		612D10CF2BF718DD0097EDBA /* FilterDetailModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D10CB2BF718DD0097EDBA /* FilterDetailModalViewController.swift */; };
@@ -54,6 +54,8 @@
 		61BCB0542BF2F4B600CF73E4 /* DummyGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0532BF2F4B600CF73E4 /* DummyGenerator.swift */; };
 		61BCB0562BF337B100CF73E4 /* VocaQuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0552BF337B100CF73E4 /* VocaQuizModel.swift */; };
 		61BCB0592BF3597C00CF73E4 /* UIResponder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0582BF3597C00CF73E4 /* UIResponder+Extension.swift */; };
+		61CB7FC72BFB221600DFA96F /* GameMainBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CB7FC62BFB221600DFA96F /* GameMainBodyView.swift */; };
+		61CB7FCA2BFB29F400DFA96F /* ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CB7FC92BFB29F400DFA96F /* ThemeColor.swift */; };
 		61EE0BF22BF9775100FD2F32 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EE0BF12BF9775100FD2F32 /* RecordViewController.swift */; };
 		61EE0BF62BF9777600FD2F32 /* RecordHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EE0BF32BF9777600FD2F32 /* RecordHeaderView.swift */; };
 		61EE0BF72BF9777600FD2F32 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EE0BF42BF9777600FD2F32 /* RecordTableViewCell.swift */; };
@@ -102,7 +104,7 @@
 		611186F32BF4DE09009C2FE9 /* FlashBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashBodyView.swift; sourceTree = "<group>"; };
 		612ABC882BF1EA480056F127 /* DummyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyModel.swift; sourceTree = "<group>"; };
 		612ABC8E2BF200370056F127 /* GameMainHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMainHeaderView.swift; sourceTree = "<group>"; };
-		612ABC902BF2003E0056F127 /* GameMainBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMainBodyView.swift; sourceTree = "<group>"; };
+		612ABC902BF2003E0056F127 /* GameMainBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMainBottomView.swift; sourceTree = "<group>"; };
 		612D10C92BF718DD0097EDBA /* FilterPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterPresentationController.swift; sourceTree = "<group>"; };
 		612D10CA2BF718DD0097EDBA /* MenuDetailModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDetailModalViewController.swift; sourceTree = "<group>"; };
 		612D10CB2BF718DD0097EDBA /* FilterDetailModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterDetailModalViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +131,8 @@
 		61BCB0532BF2F4B600CF73E4 /* DummyGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyGenerator.swift; sourceTree = "<group>"; };
 		61BCB0552BF337B100CF73E4 /* VocaQuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaQuizModel.swift; sourceTree = "<group>"; };
 		61BCB0582BF3597C00CF73E4 /* UIResponder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Extension.swift"; sourceTree = "<group>"; };
+		61CB7FC62BFB221600DFA96F /* GameMainBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMainBodyView.swift; sourceTree = "<group>"; };
+		61CB7FC92BFB29F400DFA96F /* ThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColor.swift; sourceTree = "<group>"; };
 		61EE0BF12BF9775100FD2F32 /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		61EE0BF32BF9777600FD2F32 /* RecordHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordHeaderView.swift; sourceTree = "<group>"; };
 		61EE0BF42BF9777600FD2F32 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
@@ -185,6 +189,7 @@
 		4D1791A52BF1D5BE00E645C9 /* Vocabulary */ = {
 			isa = PBXGroup;
 			children = (
+				61CB7FC82BFB29E700DFA96F /* Config */,
 				618862552BF8E0A000399DBD /* Vocabulary.entitlements */,
 				61BCB0522BF2F4A900CF73E4 /* Service */,
 				618E70612BF21E5A007AEDFE /* Extension */,
@@ -303,7 +308,8 @@
 				61EEE6932BF5E70300803AA1 /* HangManBodyView.swift */,
 				61EEE6952BF5E74700803AA1 /* HangManBottomView.swift */,
 				612ABC8E2BF200370056F127 /* GameMainHeaderView.swift */,
-				612ABC902BF2003E0056F127 /* GameMainBodyView.swift */,
+				61CB7FC62BFB221600DFA96F /* GameMainBodyView.swift */,
+				612ABC902BF2003E0056F127 /* GameMainBottomView.swift */,
 				61EE0BF52BF9777600FD2F32 /* RecordBodyView.swift */,
 				61EE0BF32BF9777600FD2F32 /* RecordHeaderView.swift */,
 				61EE0BF42BF9777600FD2F32 /* RecordTableViewCell.swift */,
@@ -392,6 +398,12 @@
 				6BBB361E2BFAF54B0088A8CB /* VocaTableViewCell.swift */,
 			);
 			path = AddVoca;
+		61CB7FC82BFB29E700DFA96F /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				61CB7FC92BFB29F400DFA96F /* ThemeColor.swift */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 		FBE7EA3F2BF8776100BE86E5 /* EditBookCase */ = {
@@ -490,7 +502,7 @@
 				618E706D2BF25328007AEDFE /* QuizHeaderView.swift in Sources */,
 				61EEE6942BF5E70300803AA1 /* HangManBodyView.swift in Sources */,
 				611186EF2BF4DCB6009C2FE9 /* FlashCardViewController.swift in Sources */,
-				612ABC912BF2003E0056F127 /* GameMainBodyView.swift in Sources */,
+				612ABC912BF2003E0056F127 /* GameMainBottomView.swift in Sources */,
 				612D10D02BF718DD0097EDBA /* MenuDetailPresentationController.swift in Sources */,
 				61EEE6922BF5E69C00803AA1 /* HangManHeaderView.swift in Sources */,
 				612D10D22BF719030097EDBA /* MyPageData.swift in Sources */,
@@ -498,6 +510,7 @@
 				612ABC892BF1EA480056F127 /* DummyModel.swift in Sources */,
 				618E70602BF21970007AEDFE /* Constants.swift in Sources */,
 				4D1791C32BF1E20F00E645C9 /* GameMainPageViewController.swift in Sources */,
+				61CB7FCA2BFB29F400DFA96F /* ThemeColor.swift in Sources */,
 				61F75F5F2BF4F9E800FCC731 /* AlertController.swift in Sources */,
 				61F75F5D2BF4ED2500FCC731 /* UIColor+Extension.swift in Sources */,
 				4D1791A92BF1D5BE00E645C9 /* SceneDelegate.swift in Sources */,
@@ -505,6 +518,7 @@
 				612D10EE2BF71B630097EDBA /* CoreDataManager.swift in Sources */,
 				611186F22BF4DD5E009C2FE9 /* FlashHeaderView.swift in Sources */,
 				6B02ADF62BF6EB37006E0964 /* WordEntity+CoreDataClass.swift in Sources */,
+				61CB7FC72BFB221600DFA96F /* GameMainBodyView.swift in Sources */,
 				FB475D812BF75324007A6FFF /* BookCase+CoreDataClass.swift in Sources */,
 				6B02ADF72BF6EB37006E0964 /* WordEntity+CoreDataProperties.swift in Sources */,
 				61EEE6902BF5E66E00803AA1 /* HangManGameViewController.swift in Sources */,
