@@ -10,93 +10,53 @@ import SnapKit
 
 class QuizBottomView: UIView {
     
-    lazy var firstButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("첫번째", for: .normal)
-        button.backgroundColor = .lightGray
-        button.setTitleColor(.black, for: .normal)
-        button.layer.cornerRadius = 15
-        button.layer.borderWidth = 0.5
-        button.addAction(UIAction(handler: { _ in
-            guard let title = button.titleLabel?.text else { return }
-            if self.checkAnswer(title: title) == true {
-                button.backgroundColor = .green
-                Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
-            } else {
-                button.backgroundColor = .red
-                Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
-            }
-            
-        }), for: .touchUpInside)
-        return button
-    }()
+    lazy var firstButton = ButtonFactory().makeButton(title: "첫번째", size: 30, color: .white, backgroundColor: ThemeColor.mainColor, radius: 15, borderWidth: 0.5) { button in
+        guard let title = button.titleLabel?.text else { return }
+        if self.checkAnswer(title: title) == true {
+            button.backgroundColor = .green
+            Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
+        } else {
+            button.backgroundColor = .red
+            Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
+        }
+    }
     
-    lazy var secondButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("두번째", for: .normal)
-        button.backgroundColor = .lightGray
-        button.setTitleColor(.black, for: .normal)
-        button.layer.cornerRadius = 15
-        button.layer.borderWidth = 0.5
-        button.addAction(UIAction(handler: { action in
-            guard let title = button.titleLabel?.text else { return }
-            if self.checkAnswer(title: title) == true {
-                button.backgroundColor = .green
-                Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
-            } else {
-                button.backgroundColor = .red
-                Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
-            }
-            
-        }), for: .touchUpInside)
-        return button
-    }()
+    lazy var secondButton = ButtonFactory().makeButton(title: "두번째", size: 30, color: .white, backgroundColor: ThemeColor.mainColor, radius: 15, borderWidth: 0.5) { button in
+        guard let title = button.titleLabel?.text else { return }
+        if self.checkAnswer(title: title) == true {
+            button.backgroundColor = .green
+            Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
+        } else {
+            button.backgroundColor = .red
+            Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
+        }
+    }
     
-    lazy var thirdButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("세번째", for: .normal)
-        button.backgroundColor = .lightGray
-        button.setTitleColor(.black, for: .normal)
-        button.layer.cornerRadius = 15
-        button.layer.borderWidth = 0.5
-        button.addAction(UIAction(handler: { _ in
-            guard let title = button.titleLabel?.text else { return }
-            if self.checkAnswer(title: title) == true {
-                button.backgroundColor = .green
-                Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
-            } else {
-                button.backgroundColor = .red
-                Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
-            }
-            
-        }), for: .touchUpInside)
-        return button
-    }()
+    lazy var thirdButton = ButtonFactory().makeButton(title: "세번째", size: 30, color: .white, backgroundColor: ThemeColor.mainColor, radius: 15, borderWidth: 0.5) { button in
+        guard let title = button.titleLabel?.text else { return }
+        if self.checkAnswer(title: title) == true {
+            button.backgroundColor = .green
+            Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
+        } else {
+            button.backgroundColor = .red
+            Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
+        }
+    }
     
-    lazy var forthButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("네번째", for: .normal)
-        button.backgroundColor = .lightGray
-        button.setTitleColor(.black, for: .normal)
-        button.layer.cornerRadius = 15
-        button.layer.borderWidth = 0.5
-        button.addAction(UIAction(handler: { _ in
-            guard let title = button.titleLabel?.text else { return }
-            if self.checkAnswer(title: title) == true {
-                button.backgroundColor = .green
-                Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
-            } else {
-                button.backgroundColor = .red
-                Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
-            }
-            
-        }), for: .touchUpInside)
-        return button
-    }()
+    lazy var forthButton = ButtonFactory().makeButton(title: "네번째", size: 30, color: .white, backgroundColor: ThemeColor.mainColor, radius: 15, borderWidth: 0.5) { button in
+        guard let title = button.titleLabel?.text else { return }
+        if self.checkAnswer(title: title) == true {
+            button.backgroundColor = .green
+            Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
+        } else {
+            button.backgroundColor = .red
+            Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
+        }
+    }
     
     @objc func updateBackground () {
         [firstButton, secondButton, thirdButton, forthButton].forEach { button in
-            button.backgroundColor = .lightGray
+            button.backgroundColor = ThemeColor.mainColor
         }
     }
     
@@ -128,6 +88,7 @@ class QuizBottomView: UIView {
         ])
         stackView.axis = .vertical
         stackView.spacing = 10
+        stackView.distribution = .fillEqually
         return stackView
     }()
     

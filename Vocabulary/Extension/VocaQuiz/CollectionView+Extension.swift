@@ -10,8 +10,8 @@ import UIKit
 extension GameMainPageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func setUp (){
-        gameMainBodyView.collectionView.delegate = self
-        gameMainBodyView.collectionView.dataSource = self
+        gameMainBottomView.collectionView.delegate = self
+        gameMainBottomView.collectionView.dataSource = self
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -20,7 +20,7 @@ extension GameMainPageViewController: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = gameMainBodyView.collectionView.dequeueReusableCell(withReuseIdentifier: Constants.vocaQuizMainCell, for: indexPath) as? VocaQuizMainCollectionViewCell else {
+        guard let cell = gameMainBottomView.collectionView.dequeueReusableCell(withReuseIdentifier: Constants.vocaQuizMainCell, for: indexPath) as? VocaQuizMainCollectionViewCell else {
             return UICollectionViewCell()
         }
         

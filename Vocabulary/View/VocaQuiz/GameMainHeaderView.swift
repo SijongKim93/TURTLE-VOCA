@@ -11,7 +11,7 @@ import SnapKit
 class GameMainHeaderView: UIView {
     
     private lazy var titleLabel = LabelFactory().makeLabel(title: "거북이의 단어장", size: 25, textAlignment: .left, isBold: true)
-    private lazy var subLabel = LabelFactory().makeLabel(title: "단어외우기",color: .gray, size: 15, textAlignment: .left, isBold: false)
+    private lazy var subLabel = LabelFactory().makeLabel(title: "단어퀴즈",color: .gray, size: 15, textAlignment: .left, isBold: false)
     
     private lazy var vStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [
