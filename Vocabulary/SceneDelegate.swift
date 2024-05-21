@@ -16,6 +16,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: windowScene)
         
+        // LaunchScreen
+        let launchScreenViewController = UIViewController()
+        let launchImageView = UIImageView(frame: window!.bounds)
+        launchImageView.image = UIImage(named: "launchScreen")
+        launchImageView.contentMode = .scaleAspectFill
+        launchScreenViewController.view.addSubview(launchImageView)
+        
         let tabBarVC = UITabBarController()
         
         let addBookVC = BookCaseViewController()
@@ -62,8 +69,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UITabBarItem.appearance().setTitleTextAttributes(normalAttributes, for: .normal)
         UITabBarItem.appearance().setTitleTextAttributes(selectedAttributes, for: .selected)
         
-        self.window?.rootViewController = tabBarVC
+        self.window?.rootViewController = launchScreenViewController
         window?.makeKeyAndVisible()
+        
+        // 3초 후 MainViewController로 전환
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.window?.rootViewController = addBookVC
+        }
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
