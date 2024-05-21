@@ -21,6 +21,7 @@ class BookCaseViewController: UIViewController{
         return stackView
     }()
         
+    let networkManager = NetworkManager()
     override func viewDidLoad() {
         super.viewDidLoad()
         

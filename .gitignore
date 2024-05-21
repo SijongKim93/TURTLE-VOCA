@@ -114,4 +114,4 @@ iOSInjectionProject/
 
 # protect API Key
 Vocabulary/GoogleService-Info.plist
-
+Vocabulary/Secret.swift
