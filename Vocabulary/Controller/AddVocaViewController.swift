@@ -33,13 +33,9 @@ class AddVocaViewController: UIViewController {
     var wordList: [WordEntity] = []
     var filteredWordList: [WordEntity] = []
     var isFiltering: Bool = false
-
-    
-    var countLabel = LabelFactory().makeLabel(title: "", size: 15, textAlignment: .left, isBold: false)
     
     var vocaCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
-    var wordList: [WordEntity] = []
 
     // 단어 추가 버튼 눌렸을 때 단어입력페이지로 이동
 
@@ -197,67 +193,15 @@ extension AddVocaViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VocaCollectionViewCell.identifier, for: indexPath) as? VocaCollectionViewCell else { fatalError("컬렉션 뷰 오류")}
         
+        
         let item = wordList[indexPath.row]
-
-extension AddVocaViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return isFiltering ? filteredWordList.count : wordList.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: VocaTableViewCell.identifier, for: indexPath) as? VocaTableViewCell else { fatalError("테이블 뷰 에러") }
-        let item = isFiltering ? filteredWordList[indexPath.row] : wordList[indexPath.row]
-
         
         cell.wordLabel.text = item.word
         cell.pronunciationLabel.text = item.pronunciation
         cell.definitionLabel.text = item.definition
         
-        cell.buttonAction = { [weak cell] in
-            cell?.toggleButtonSelection()
-        }
-        
         return cell
     }
 }
 
-
-extension AddVocaViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailVC = VocaDetailViewController()
-        
-        let item =  wordList[indexPath.row]
-        
-        detailVC.word.text = item.word
-        detailVC.pronunciation.text = item.pronunciation
-        detailVC.definition.text = item.definition
-        detailVC.detail.text = item.detail
-        detailVC.synonym.text = item.synonym
-        detailVC.antonym.text = item.antonym
-        
-        detailVC.modalPresentationStyle = .automatic
-        
-        self.present(detailVC, animated: true, completion: nil)
-    }
-    
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
-            
-            let wordToDelete = self.wordList[indexPath.row]
-            
-            self.wordList.remove(at: indexPath.row)
-            
-            CoreDataManager.shared.deleteWord(word: wordToDelete)
-            
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            self.updateCountLabel()
-            completionHandler(true)
-        }
-        
-        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
-        return configuration
-        
-    }
-}
 
