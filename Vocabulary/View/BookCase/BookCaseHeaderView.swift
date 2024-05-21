@@ -15,7 +15,7 @@ class BookCaseHeaderView: UIView {
     
     let logoImageView: UIImageView = {
         let imageView = UIImageView()
-        if let logoImage = UIImage(named: "logo resize") {
+        if let logoImage = UIImage(named: "turtlevoca") {
             imageView.image = logoImage
         }
         imageView.contentMode = .scaleAspectFit
@@ -52,13 +52,13 @@ class BookCaseHeaderView: UIView {
         addSubview(headerStackView)
         
         logoImageView.snp.makeConstraints {
-            $0.width.equalTo(plusButton.snp.width).multipliedBy(3)
-            $0.height.equalTo(70)
+            $0.width.equalTo(plusButton.snp.width).multipliedBy(2)
+            $0.height.equalTo(20)
         }
         
         headerStackView.snp.makeConstraints{
-            $0.top.equalToSuperview().inset(23)
-            $0.bottom.equalToSuperview()
+            $0.top.equalToSuperview().inset(30)
+            $0.bottom.equalToSuperview().inset(20)
             $0.horizontalEdges.equalToSuperview().inset(30)
         }
         

@@ -24,7 +24,6 @@
 		4D9E8FA92BF8CCE3003F05D3 /* LoginPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E8FA82BF8CCE3003F05D3 /* LoginPresentationController.swift */; };
 		4D9E8FAB2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E8FAA2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift */; };
 		611177AB2BFC5A5500A635B8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 611177A92BFC5A5500A635B8 /* GoogleService-Info.plist */; };
-		611177AC2BFC5A5500A635B8 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611177AA2BFC5A5500A635B8 /* Secret.swift */; };
 		611177AE2BFC7FF900A635B8 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611177AD2BFC7FF900A635B8 /* UITextField+Extension.swift */; };
 		611177B12BFC808F00A635B8 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 611177B02BFC808F00A635B8 /* CombineCocoa */; };
 		611177B32BFC8F5300A635B8 /* DiffableSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611177B22BFC8F5300A635B8 /* DiffableSectionModel.swift */; };
@@ -89,6 +88,7 @@
 		6B02ADEF2BF6E8B6006E0964 /* TextFieldFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02ADEE2BF6E8B6006E0964 /* TextFieldFactory.swift */; };
 		6BBB36222BFAF6050088A8CB /* VocaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBB36212BFAF6050088A8CB /* VocaDetailViewController.swift */; };
 		FB04CC6D2BFB7F2E00FC0EEA /* GameMainBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB04CC6C2BFB7F2E00FC0EEA /* GameMainBodyView.swift */; };
+		FB669DF22BFCA10B00C5EE82 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB669DF12BFCA10B00C5EE82 /* Secret.swift */; };
 		FBC59FC52BFB786C002B0113 /* WordEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC59FC12BFB786C002B0113 /* WordEntity+CoreDataClass.swift */; };
 		FBC59FC62BFB786C002B0113 /* WordEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC59FC22BFB786C002B0113 /* WordEntity+CoreDataProperties.swift */; };
 		FBC59FC72BFB786C002B0113 /* BookCase+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC59FC32BFB786C002B0113 /* BookCase+CoreDataClass.swift */; };
@@ -118,7 +118,6 @@
 		4D9E8FA82BF8CCE3003F05D3 /* LoginPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresentationController.swift; sourceTree = "<group>"; };
 		4D9E8FAA2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDetailTableViewCell.swift; sourceTree = "<group>"; };
 		611177A92BFC5A5500A635B8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		611177AA2BFC5A5500A635B8 /* Secret.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		611177AD2BFC7FF900A635B8 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		611177B22BFC8F5300A635B8 /* DiffableSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableSectionModel.swift; sourceTree = "<group>"; };
 		611177B42BFC911000A635B8 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
@@ -180,6 +179,7 @@
 		6B02ADEE2BF6E8B6006E0964 /* TextFieldFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldFactory.swift; sourceTree = "<group>"; };
 		6BBB36212BFAF6050088A8CB /* VocaDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocaDetailViewController.swift; sourceTree = "<group>"; };
 		FB04CC6C2BFB7F2E00FC0EEA /* GameMainBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMainBodyView.swift; sourceTree = "<group>"; };
+		FB669DF12BFCA10B00C5EE82 /* Secret.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		FBC59FC12BFB786C002B0113 /* WordEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WordEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		FBC59FC22BFB786C002B0113 /* WordEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WordEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FBC59FC32BFB786C002B0113 /* BookCase+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookCase+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -239,7 +239,7 @@
 				4D1791AF2BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld */,
 				618E705F2BF21970007AEDFE /* Constants.swift */,
 				611177A92BFC5A5500A635B8 /* GoogleService-Info.plist */,
-				611177AA2BFC5A5500A635B8 /* Secret.swift */,
+				FB669DF12BFCA10B00C5EE82 /* Secret.swift */,
 			);
 			path = Vocabulary;
 			sourceTree = "<group>";
@@ -550,6 +550,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				61B2FFBD2BFB8AD900CE039B /* SelectHeaderView.swift in Sources */,
+				FB669DF22BFCA10B00C5EE82 /* Secret.swift in Sources */,
 				4D1791AB2BF1D5BE00E645C9 /* AddVocaViewController.swift in Sources */,
 				4D1791A72BF1D5BE00E645C9 /* AppDelegate.swift in Sources */,
 				FBC59FC62BFB786C002B0113 /* WordEntity+CoreDataProperties.swift in Sources */,
@@ -612,7 +613,6 @@
 				61EEE6962BF5E74700803AA1 /* HangManBottomView.swift in Sources */,
 				61B2FFC02BFB8AF500CE039B /* Int+Extension.swift in Sources */,
 				61D051742BFC3FB70056294A /* NetworkManager.swift in Sources */,
-				611177AC2BFC5A5500A635B8 /* Secret.swift in Sources */,
 				61B2FFCD2BFBD66F00CE039B /* NotificationCenter.swift in Sources */,
 				612D10F42BF71B9B0097EDBA /* BookCaseBodyView.swift in Sources */,
 				4D1791C12BF1E1F700E645C9 /* AddBookCaseViewController.swift in Sources */,
