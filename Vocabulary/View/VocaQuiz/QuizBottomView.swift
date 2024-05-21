@@ -14,10 +14,10 @@ class QuizBottomView: UIView {
         guard let title = button.titleLabel?.text else { return }
         if self.checkAnswer(title: title) == true {
             button.backgroundColor = .green
-            Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 0.1,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
         } else {
             button.backgroundColor = .red
-            Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 0.1,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
         }
     }
     
@@ -25,10 +25,10 @@ class QuizBottomView: UIView {
         guard let title = button.titleLabel?.text else { return }
         if self.checkAnswer(title: title) == true {
             button.backgroundColor = .green
-            Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 0.1,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
         } else {
             button.backgroundColor = .red
-            Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 0.1,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
         }
     }
     
@@ -36,10 +36,10 @@ class QuizBottomView: UIView {
         guard let title = button.titleLabel?.text else { return }
         if self.checkAnswer(title: title) == true {
             button.backgroundColor = .green
-            Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 0.1,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
         } else {
             button.backgroundColor = .red
-            Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 0.1,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
         }
     }
     
@@ -47,10 +47,10 @@ class QuizBottomView: UIView {
         guard let title = button.titleLabel?.text else { return }
         if self.checkAnswer(title: title) == true {
             button.backgroundColor = .green
-            Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 0.1,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
         } else {
             button.backgroundColor = .red
-            Timer.scheduledTimer(timeInterval: 0.2,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 0.1,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
         }
     }
     
