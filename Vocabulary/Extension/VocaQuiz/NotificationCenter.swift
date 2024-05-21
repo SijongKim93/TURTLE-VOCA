@@ -10,5 +10,6 @@ import Foundation
 extension Notification.Name {
     
     static let sender = Notification.Name("sender")
-    
+    static let quiz = Notification.Name("quiz")
+    static let hangman = Notification.Name("hangman")
 }

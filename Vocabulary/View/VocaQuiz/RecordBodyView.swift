@@ -18,9 +18,9 @@ class RecordBodyView: UIView {
     
     lazy var tableView: UITableView = {
         let table = UITableView()
-        table.backgroundColor = .blue
         table.register(RecordTableViewCell.self, forCellReuseIdentifier: Constants.recordCell)
         table.rowHeight = 60
+        table.tableHeaderView = headerView
         return table
     }()
     
@@ -31,6 +31,27 @@ class RecordBodyView: UIView {
         ])
         stackView.axis = .vertical
         stackView.spacing = 30
+        return stackView
+    }()
+    
+    lazy var headerView: UIView = {
+        let view = UIView()
+        view.addSubview(hStackView)
+        return view
+    }()
+    
+    lazy var categoryLabel = LabelFactory().makeLabel(title: "단어장", size: 20, isBold: true)
+    lazy var wordLabel = LabelFactory().makeLabel(title: "단어", size: 20, isBold: false)
+    lazy var defLabel = LabelFactory().makeLabel(title: "의미", size: 20, isBold: false)
+    
+    lazy var hStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [
+            categoryLabel,
+            wordLabel,
+            defLabel
+        ])
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
         return stackView
     }()
     
@@ -52,6 +73,11 @@ class RecordBodyView: UIView {
             $0.bottom.trailing.equalToSuperview().offset(-20)
         }
         
+        headerView.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 40)
+        
+        hStackView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
         
     }
 }

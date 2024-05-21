@@ -10,15 +10,15 @@ import SnapKit
 
 class RecordTableViewCell: UITableViewCell {
 
-    lazy var gameCategoryLabel = LabelFactory().makeLabel(title: "Category", size: 20, isBold: true)
-    lazy var gameScoreLabel = LabelFactory().makeLabel(title: "score", size: 20, isBold: false)
-    lazy var countLabel = LabelFactory().makeLabel(title: "GameCount", size: 20, isBold: false)
+    lazy var categoryLabel = LabelFactory().makeLabel(title: "Category", size: 20, isBold: true)
+    lazy var wordLabel = LabelFactory().makeLabel(title: "score", size: 20, isBold: false)
+    lazy var defLabel = LabelFactory().makeLabel(title: "GameCount", size: 20, isBold: false)
     
     private lazy var hStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [
-        gameCategoryLabel,
-        gameScoreLabel,
-        countLabel
+        categoryLabel,
+        wordLabel,
+        defLabel
         ])
         stackView.axis = .horizontal
         stackView.spacing = 30
@@ -52,26 +52,28 @@ class RecordTableViewCell: UITableViewCell {
             $0.edges.equalToSuperview()
         }
         
-        gameCategoryLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(20)
-            $0.top.equalToSuperview().offset(10)
-            $0.bottom.equalToSuperview().offset(-10)
-            $0.width.equalTo(250)
+        categoryLabel.snp.makeConstraints {
+            $0.leading.equalToSuperview()
+            $0.top.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.width.equalTo(50)
         }
         
-        gameScoreLabel.snp.makeConstraints {
-            $0.leading.equalTo(gameScoreLabel.snp.trailing).offset(30)
-            $0.top.equalToSuperview().offset(10)
-            $0.bottom.equalToSuperview().offset(-10)
+        wordLabel.snp.makeConstraints {
+            $0.leading.equalTo(categoryLabel.snp.trailing).offset(30)
+            $0.top.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.width.equalTo(150)
         }
         
-        countLabel.snp.makeConstraints {
-            $0.leading.equalTo(gameScoreLabel.snp.trailing).offset(30)
-            $0.top.equalToSuperview().offset(10)
-            $0.bottom.equalToSuperview().offset(-10)
-            $0.trailing.equalToSuperview().offset(-20)
+        defLabel.snp.makeConstraints {
+            $0.leading.equalTo(wordLabel.snp.trailing).offset(30)
+            $0.top.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.trailing.equalToSuperview()
         }
         
     }
     
 }
+

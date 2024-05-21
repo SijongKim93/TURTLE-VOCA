@@ -73,6 +73,9 @@ class QuizBottomView: UIView {
             currentVC.gameStart()
             flag = true
         } else {
+            let currentData = currentVC.quizData[currentVC.currentNumber]
+            let data = ReminderModel(index: 0, word: currentData.question, meaning: currentData.answer, category: currentVC.receivedData!.category)
+            NotificationCenter.default.post(name: .quiz, object: data)
             currentVC.currentNumber += 1
             currentVC.gameStart()
         }
@@ -95,6 +98,7 @@ class QuizBottomView: UIView {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         layout()
+        
     }
     
     required init?(coder: NSCoder) {

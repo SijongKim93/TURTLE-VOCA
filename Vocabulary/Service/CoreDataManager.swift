@@ -148,7 +148,7 @@ final class CoreDataManager {
             print("Error: managedContext is nil")
             return wordList
         }
-
+        
         let request: NSFetchRequest<WordEntity> = WordEntity.fetchRequest()
         
         do {
@@ -160,7 +160,7 @@ final class CoreDataManager {
     }
     
     
-
+    
     func getWordListFromCoreData(for date: Date) -> [WordEntity] {
         var wordList: [WordEntity] = []
         
@@ -283,9 +283,9 @@ final class CoreDataManager {
         request.predicate = predicate
         
         do {
-                array = try managedContext!.fetch(request)
+            array = try managedContext!.fetch(request)
         } catch {
-           onError(error)
+            onError(error)
         }
         
         return array
