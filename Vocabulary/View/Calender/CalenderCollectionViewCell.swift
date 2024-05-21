@@ -75,7 +75,7 @@ class CalenderCollectionViewCell: UICollectionViewCell {
         }
         
         englishLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(10)
+            $0.leading.equalToSuperview().offset(30)
             $0.centerY.equalToSuperview()
         }
         
