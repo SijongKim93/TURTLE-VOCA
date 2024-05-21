@@ -65,6 +65,12 @@ class CalenderViewController: UIViewController {
     
     let dayCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
+    let emptyStateView: EmptyStateView = {
+        let view = EmptyStateView()
+        view.isHidden = true
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -98,6 +104,8 @@ class CalenderViewController: UIViewController {
         view.addSubview(viewLine)
         view.addSubview(dayCollectionView)
         
+        view.addSubview(emptyStateView)
+        
         dateView.delegate = self
         dateView.selectionBehavior = UICalendarSelectionSingleDate(delegate: self)
         
@@ -127,6 +135,10 @@ class CalenderViewController: UIViewController {
             $0.top.equalTo(viewLine.snp.bottom)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        emptyStateView.snp.makeConstraints {
+            $0.edges.equalTo(dayCollectionView)
         }
     }
     
@@ -196,6 +208,8 @@ class CalenderViewController: UIViewController {
         filteredWords = sortWords(filteredWords, by: filterIndex)
         
         dayCollectionView.reloadData()
+        dateView.reloadDecorations(forDateComponents: [selectedDate!], animated: true)
+        emptyStateView.isHidden = !filteredWords.isEmpty
     }
     
     func filterWords(for date: Date, words: [WordEntity]) -> [WordEntity] {
@@ -274,6 +288,7 @@ extension CalenderViewController: MenuDetailModalDelegate {
             coreDataManager.deleteWord(word)
         }
         fetchWordListAndUpdateCollectionView()
+        dateView.reloadDecorations(forDateComponents: [selectedDate!], animated: true)
     }
 }
 
@@ -314,6 +329,7 @@ extension CalenderViewController: UICalendarViewDelegate, UICalendarSelectionSin
             let filterIndex = fetchFilterIndex()
             filteredWords = sortWords(filteredWords, by: filterIndex)
             dayCollectionView.reloadData()
+            emptyStateView.isHidden = !filteredWords.isEmpty
         }
     }
     

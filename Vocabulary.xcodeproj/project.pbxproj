@@ -20,10 +20,15 @@
 		4D1791D12BF23F0300E645C9 /* CalenderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791D02BF23F0300E645C9 /* CalenderCollectionViewCell.swift */; };
 		4D1791DD2BF45AD500E645C9 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791DC2BF45AD500E645C9 /* FilterTableViewCell.swift */; };
 		4D7C9F9F2BFC32AC00E41A65 /* VocaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C9F9E2BFC32AC00E41A65 /* VocaCollectionViewCell.swift */; };
+		4D7C9FA12BFC94FE00E41A65 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D7C9FA02BFC94FE00E41A65 /* GoogleService-Info.plist */; };
+		4D7C9FA32BFC953700E41A65 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C9FA22BFC953700E41A65 /* Secret.swift */; };
+		4D7C9FA62BFC958700E41A65 /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 4D7C9FA52BFC958700E41A65 /* KakaoSDK */; };
+		4D7C9FAF2BFCB3D600E41A65 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C9FAE2BFCB3D600E41A65 /* Secret.swift */; };
+		4D7C9FB12BFCB3DD00E41A65 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D7C9FB02BFCB3DD00E41A65 /* GoogleService-Info.plist */; };
+		4D7C9FB32BFCB99100E41A65 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C9FB22BFCB99100E41A65 /* EmptyStateView.swift */; };
 		4D9E8FA72BF8CCB2003F05D3 /* LoginModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E8FA62BF8CCB2003F05D3 /* LoginModalViewController.swift */; };
 		4D9E8FA92BF8CCE3003F05D3 /* LoginPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E8FA82BF8CCE3003F05D3 /* LoginPresentationController.swift */; };
 		4D9E8FAB2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E8FAA2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift */; };
-		611177AB2BFC5A5500A635B8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 611177A92BFC5A5500A635B8 /* GoogleService-Info.plist */; };
 		611177AE2BFC7FF900A635B8 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611177AD2BFC7FF900A635B8 /* UITextField+Extension.swift */; };
 		611177B12BFC808F00A635B8 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 611177B02BFC808F00A635B8 /* CombineCocoa */; };
 		611177B32BFC8F5300A635B8 /* DiffableSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611177B22BFC8F5300A635B8 /* DiffableSectionModel.swift */; };
@@ -114,10 +119,14 @@
 		4D1791D02BF23F0300E645C9 /* CalenderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderCollectionViewCell.swift; sourceTree = "<group>"; };
 		4D1791DC2BF45AD500E645C9 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		4D7C9F9E2BFC32AC00E41A65 /* VocaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaCollectionViewCell.swift; sourceTree = "<group>"; };
+		4D7C9FA02BFC94FE00E41A65 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4D7C9FA22BFC953700E41A65 /* Secret.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
+		4D7C9FAE2BFCB3D600E41A65 /* Secret.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Secret.swift; path = Vocabulary/Secret.swift; sourceTree = "<group>"; };
+		4D7C9FB02BFCB3DD00E41A65 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Vocabulary/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4D7C9FB22BFCB99100E41A65 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		4D9E8FA62BF8CCB2003F05D3 /* LoginModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModalViewController.swift; sourceTree = "<group>"; };
 		4D9E8FA82BF8CCE3003F05D3 /* LoginPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresentationController.swift; sourceTree = "<group>"; };
 		4D9E8FAA2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDetailTableViewCell.swift; sourceTree = "<group>"; };
-		611177A92BFC5A5500A635B8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		611177AD2BFC7FF900A635B8 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		611177B22BFC8F5300A635B8 /* DiffableSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableSectionModel.swift; sourceTree = "<group>"; };
 		611177B42BFC911000A635B8 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
@@ -195,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				61B2FFCB2BFBBC7B00CE039B /* ProgressHUD in Frameworks */,
+				4D7C9FA62BFC958700E41A65 /* KakaoSDK in Frameworks */,
 				61AAEBC92BF724AE0032961C /* SnapKit in Frameworks */,
 				611177B12BFC808F00A635B8 /* CombineCocoa in Frameworks */,
 				61EE0BFD2BF9C0E000FD2F32 /* FirebaseAuth in Frameworks */,
@@ -209,6 +219,7 @@
 			children = (
 				4D1791A52BF1D5BE00E645C9 /* Vocabulary */,
 				4D1791A42BF1D5BE00E645C9 /* Products */,
+				4D7C9FA72BFCB24600E41A65 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -238,8 +249,8 @@
 				4D1791B72BF1D5BF00E645C9 /* Info.plist */,
 				4D1791AF2BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld */,
 				618E705F2BF21970007AEDFE /* Constants.swift */,
-				611177A92BFC5A5500A635B8 /* GoogleService-Info.plist */,
-				FB669DF12BFCA10B00C5EE82 /* Secret.swift */,
+				4D7C9FA02BFC94FE00E41A65 /* GoogleService-Info.plist */,
+				4D7C9FA22BFC953700E41A65 /* Secret.swift */,
 			);
 			path = Vocabulary;
 			sourceTree = "<group>";
@@ -280,6 +291,7 @@
 				4D1791D02BF23F0300E645C9 /* CalenderCollectionViewCell.swift */,
 				4D1791DC2BF45AD500E645C9 /* FilterTableViewCell.swift */,
 				612D10D72BF719610097EDBA /* MenuDetailTableViewCell.swift */,
+				4D7C9FB22BFCB99100E41A65 /* EmptyStateView.swift */,
 			);
 			path = Calender;
 			sourceTree = "<group>";
@@ -304,6 +316,15 @@
 				4D9E8FA82BF8CCE3003F05D3 /* LoginPresentationController.swift */,
 			);
 			path = MyPage;
+			sourceTree = "<group>";
+		};
+		4D7C9FA72BFCB24600E41A65 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				4D7C9FB02BFCB3DD00E41A65 /* GoogleService-Info.plist */,
+				4D7C9FAE2BFCB3D600E41A65 /* Secret.swift */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		610130D62BF3D9E400CE8183 /* VocaQuiz */ = {
@@ -486,6 +507,7 @@
 				61AAEBC82BF724AE0032961C /* SnapKit */,
 				61EE0BFC2BF9C0E000FD2F32 /* FirebaseAuth */,
 				61B2FFCA2BFBBC7B00CE039B /* ProgressHUD */,
+				4D7C9FA52BFC958700E41A65 /* KakaoSDK */,
 				611177B02BFC808F00A635B8 /* CombineCocoa */,
 			);
 			productName = Vocabulary;
@@ -520,6 +542,7 @@
 				61AAEBC72BF724AE0032961C /* XCRemoteSwiftPackageReference "SnapKit" */,
 				61EE0BFB2BF9C0E000FD2F32 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				61B2FFC92BFBBC7B00CE039B /* XCRemoteSwiftPackageReference "ProgressHUD" */,
+				4D7C9FA42BFC958700E41A65 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				611177AF2BFC808F00A635B8 /* XCRemoteSwiftPackageReference "CombineCocoa" */,
 			);
 			productRefGroup = 4D1791A42BF1D5BE00E645C9 /* Products */;
@@ -537,8 +560,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D1791B32BF1D5BF00E645C9 /* Assets.xcassets in Resources */,
-				611177AB2BFC5A5500A635B8 /* GoogleService-Info.plist in Resources */,
+				4D7C9FB12BFCB3DD00E41A65 /* GoogleService-Info.plist in Resources */,
 				4D1791B62BF1D5BF00E645C9 /* Base in Resources */,
+				4D7C9FA12BFC94FE00E41A65 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,11 +574,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				61B2FFBD2BFB8AD900CE039B /* SelectHeaderView.swift in Sources */,
-				FB669DF22BFCA10B00C5EE82 /* Secret.swift in Sources */,
+				4D7C9FAF2BFCB3D600E41A65 /* Secret.swift in Sources */,
 				4D1791AB2BF1D5BE00E645C9 /* AddVocaViewController.swift in Sources */,
 				4D1791A72BF1D5BE00E645C9 /* AppDelegate.swift in Sources */,
 				FBC59FC62BFB786C002B0113 /* WordEntity+CoreDataProperties.swift in Sources */,
 				61EE0BF72BF9777600FD2F32 /* RecordTableViewCell.swift in Sources */,
+				4D7C9FB32BFCB99100E41A65 /* EmptyStateView.swift in Sources */,
+				4D7C9FA32BFC953700E41A65 /* Secret.swift in Sources */,
 				611177AE2BFC7FF900A635B8 /* UITextField+Extension.swift in Sources */,
 				612D10CE2BF718DD0097EDBA /* MenuDetailModalViewController.swift in Sources */,
 				612D10F82BF71BC40097EDBA /* MyPageTableViewCell.swift in Sources */,
@@ -857,6 +883,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4D7C9FA42BFC958700E41A65 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.22.2;
+			};
+		};
 		611177AF2BFC808F00A635B8 /* XCRemoteSwiftPackageReference "CombineCocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/CombineCommunity/CombineCocoa";
@@ -892,6 +926,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4D7C9FA52BFC958700E41A65 /* KakaoSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4D7C9FA42BFC958700E41A65 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDK;
+		};
 		611177B02BFC808F00A635B8 /* CombineCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 611177AF2BFC808F00A635B8 /* XCRemoteSwiftPackageReference "CombineCocoa" */;
