@@ -9,4 +9,6 @@ import Foundation
 
 enum DiffableSectionModel {
     case requestResult
+    case quiz
+    case hangman
 }

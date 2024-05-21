@@ -56,6 +56,7 @@ extension GameMainPageViewController: UICollectionViewDelegate, UICollectionView
             self.present(hangVC, animated: true)
         case 3 :
             let recordVC = RecordViewController()
+            recordVC.dataList = dataList
             
             self.present(recordVC, animated: true)
         case 4 :

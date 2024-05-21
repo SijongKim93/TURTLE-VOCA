@@ -48,6 +48,9 @@
 		612D10F42BF71B9B0097EDBA /* BookCaseBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D10F12BF71B9B0097EDBA /* BookCaseBodyView.swift */; };
 		612D10F52BF71B9B0097EDBA /* BookCaseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D10F22BF71B9B0097EDBA /* BookCaseHeaderView.swift */; };
 		612D10F82BF71BC40097EDBA /* MyPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D10F72BF71BC40097EDBA /* MyPageTableViewCell.swift */; };
+		613F52F72BFCA1E000829DC6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 613F52F52BFCA1E000829DC6 /* GoogleService-Info.plist */; };
+		613F52F82BFCA1E000829DC6 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613F52F62BFCA1E000829DC6 /* Secret.swift */; };
+		613F52FA2BFCB05800829DC6 /* ReminderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613F52F92BFCB05800829DC6 /* ReminderModel.swift */; };
 		618E70572BF2039E007AEDFE /* LabelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E70562BF2039E007AEDFE /* LabelFactory.swift */; };
 		618E70602BF21970007AEDFE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E705F2BF21970007AEDFE /* Constants.swift */; };
 		618E70662BF229D1007AEDFE /* VocaQuizMainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E70652BF229D1007AEDFE /* VocaQuizMainCollectionViewCell.swift */; };
@@ -142,6 +145,9 @@
 		612D10F12BF71B9B0097EDBA /* BookCaseBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCaseBodyView.swift; sourceTree = "<group>"; };
 		612D10F22BF71B9B0097EDBA /* BookCaseHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCaseHeaderView.swift; sourceTree = "<group>"; };
 		612D10F72BF71BC40097EDBA /* MyPageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageTableViewCell.swift; sourceTree = "<group>"; };
+		613F52F52BFCA1E000829DC6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		613F52F62BFCA1E000829DC6 /* Secret.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
+		613F52F92BFCB05800829DC6 /* ReminderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderModel.swift; sourceTree = "<group>"; };
 		618862552BF8E0A000399DBD /* Vocabulary.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Vocabulary.entitlements; sourceTree = "<group>"; };
 		618E70562BF2039E007AEDFE /* LabelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFactory.swift; sourceTree = "<group>"; };
 		618E705F2BF21970007AEDFE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -243,8 +249,8 @@
 				4D1791B72BF1D5BF00E645C9 /* Info.plist */,
 				4D1791AF2BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld */,
 				618E705F2BF21970007AEDFE /* Constants.swift */,
-				FBB0C06C2BFCF45300694418 /* GoogleService-Info.plist */,
-				FBB0C06E2BFCF45D00694418 /* Secret.swift */,
+				613F52F52BFCA1E000829DC6 /* GoogleService-Info.plist */,
+				613F52F62BFCA1E000829DC6 /* Secret.swift */,
 			);
 			path = Vocabulary;
 			sourceTree = "<group>";
@@ -345,6 +351,7 @@
 				61B2FFC72BFBAD2900CE039B /* GenQuizModel.swift */,
 				61D051752BFC42470056294A /* TranslatedModel.swift */,
 				611177B22BFC8F5300A635B8 /* DiffableSectionModel.swift */,
+				613F52F92BFCB05800829DC6 /* ReminderModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -552,8 +559,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D1791B32BF1D5BF00E645C9 /* Assets.xcassets in Resources */,
-				FBB0C06D2BFCF45300694418 /* GoogleService-Info.plist in Resources */,
 				4D1791B62BF1D5BF00E645C9 /* Base in Resources */,
+				613F52F72BFCA1E000829DC6 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,6 +572,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				61B2FFBD2BFB8AD900CE039B /* SelectHeaderView.swift in Sources */,
+				613F52F82BFCA1E000829DC6 /* Secret.swift in Sources */,
 				4D1791AB2BF1D5BE00E645C9 /* AddVocaViewController.swift in Sources */,
 				4D1791A72BF1D5BE00E645C9 /* AppDelegate.swift in Sources */,
 				FBC59FC62BFB786C002B0113 /* WordEntity+CoreDataProperties.swift in Sources */,
@@ -647,6 +655,7 @@
 				FBC59FC72BFB786C002B0113 /* BookCase+CoreDataClass.swift in Sources */,
 				4D1791C72BF1E27F00E645C9 /* MyPageViewController.swift in Sources */,
 				612D10E02BF719D20097EDBA /* BookCaseViewController.swift in Sources */,
+				613F52FA2BFCB05800829DC6 /* ReminderModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

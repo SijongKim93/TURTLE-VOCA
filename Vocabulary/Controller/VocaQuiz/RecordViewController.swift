@@ -25,23 +25,48 @@ class RecordViewController: UIViewController {
         return stackView
     }()
     
-    //var tableDiffableDatasoure: UITableViewDiffableDataSource<DiffableSection, >?
+    var dataList = [ReminderModel]()
+    
+    var tableDiffableDatasoure: UITableViewDiffableDataSource<DiffableSectionModel, ReminderModel>?
+    var quizSnapshot: NSDiffableDataSourceSnapshot<DiffableSectionModel, ReminderModel>?
+    var hangmanSnapshot: NSDiffableDataSourceSnapshot<DiffableSectionModel, ReminderModel>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .systemBackground
         
+        removeDuplicate()
         layout()
         addSegAction()
+        configureDiffableDataSource()
+        configureQuizSnapshot()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+    }
+    
+    func removeDuplicate () {
+        dataList = Array(Set(dataList)).sorted(by: { $0.word < $1.word })
     }
     
     func addSegAction () {
         recordBodyView.segControl.addAction(UIAction(handler: { [unowned self] _ in
             let index = recordBodyView.segControl.selectedSegmentIndex
-            print (index)
+            switch index {
+            case 0:
+                configureQuizSnapshot()
+            case 1:
+                configureHangmanSnapshot()
+            default:
+                return
+            }
         }), for: .valueChanged)
     }
+    
+    
     
     private func layout () {
         view.addSubview(vStackView)
@@ -62,5 +87,40 @@ class RecordViewController: UIViewController {
             $0.bottom.equalToSuperview().offset(-100)
         }
         
+    }
+}
+
+extension RecordViewController {
+    func configureDiffableDataSource () {
+        tableDiffableDatasoure = UITableViewDiffableDataSource(tableView: recordBodyView.tableView, cellProvider: { tableView, indexPath, model in
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.recordCell, for: indexPath) as! RecordTableViewCell
+        
+            cell.categoryLabel.text = model.category
+            cell.wordLabel.text = model.word
+            cell.defLabel.text = model.meaning
+            
+            cell.selectionStyle = .none
+            
+            return cell
+        })
+    }
+    
+    func configureQuizSnapshot() {
+        quizSnapshot = NSDiffableDataSourceSnapshot<DiffableSectionModel, ReminderModel>()
+        quizSnapshot?.deleteAllItems()
+        quizSnapshot?.appendSections([.quiz])
+        quizSnapshot?.appendItems(dataList.filter{ $0.index == 0}.map { $0 } )
+
+        tableDiffableDatasoure?.apply(quizSnapshot!,animatingDifferences: true)
+    }
+    
+    func configureHangmanSnapshot() {
+        hangmanSnapshot = NSDiffableDataSourceSnapshot<DiffableSectionModel, ReminderModel>()
+        hangmanSnapshot?.deleteAllItems()
+        hangmanSnapshot?.appendSections([.hangman])
+        hangmanSnapshot?.appendItems(dataList.filter{ $0.index == 1}.map { $0 })
+
+        tableDiffableDatasoure?.apply(hangmanSnapshot!,animatingDifferences: true)
     }
 }

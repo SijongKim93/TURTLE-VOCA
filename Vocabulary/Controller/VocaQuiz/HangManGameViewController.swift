@@ -153,7 +153,10 @@ extension HangManGameViewController {
     
     
     func updateUI () {
-        
+        guard let word = quizArray[currentCount].word, let meaning = quizArray[currentCount].definition, let category = receivedData?.category else {
+            return
+        }
+        let data = ReminderModel(index: 1, word: word, meaning: meaning, category: category)
         if failCount >= 7 {
             hangManBodyView.hangManImageView.image = UIImage(named: imageList[failCount])
             let alert = alertController.makeAlertWithCompletion(title: "게임종료", message: "게임이 끝났습니다.\n다시 시작하시겠습니까?") { [weak self] _ in
@@ -163,6 +166,7 @@ extension HangManGameViewController {
                 self?.gameStart()
                 self?.isGameEnd = false
             }
+            NotificationCenter.default.post(name: .hangman, object: data)
             self.present(alert, animated: true)
             isGameEnd = true
             

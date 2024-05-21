@@ -32,13 +32,13 @@ class QuizViewController: UIViewController {
     
     let alertController = AlertController()
     
-    var quizData = [VocaQuizModel]()
     var currentNumber: Int = 0
     var score: Int = 0
     var titleText = ""
     var receivedData: GenQuizModel?
     var quizArray = [WordEntity]()
-
+    var quizData = [VocaQuizModel]()
+    //var data
     
     override func viewDidLoad() {
         super.viewDidLoad()
