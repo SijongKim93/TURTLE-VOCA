@@ -20,6 +20,11 @@ class EditBookCaseViewController: UIViewController, EditBookCaseBodyViewDelegate
         present(alertController, animated: true, completion: nil)
     }
     
+    func editErrorAlert() {
+        let alertController = AlertController().makeNormalAlert(title: "에러", message: "단어장 수정에 실패했습니다.")
+        present(alertController, animated: true, completion: nil)
+    }
+    
     var bookCaseData: NSManagedObject?
 
     let headerView = EditBookCaseHeaderView()

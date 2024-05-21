@@ -97,16 +97,18 @@ class EditBookCaseBodyView: UIView {
         button.setTitle("단어장 수정", for: .normal)
         button.backgroundColor = ThemeColor.mainColor
         button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
         return button
     }()
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
+        
         setupConstraints()
         configureUI()
         setupImageViewGesture()
         setupTextFieldData()
+        
+        editButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
     }
         
     required init?(coder: NSCoder) {
@@ -218,7 +220,9 @@ class EditBookCaseBodyView: UIView {
                   let data = bookCaseData else {
                 return
             }
-            coreDataManager.updateBookCase(data, name: name, explain: explain, word: word, meaning: meaning, image: image)
+            coreDataManager.updateBookCase(data, name: name, explain: explain, word: word, meaning: meaning, image: image, errorHandler: { _ in
+                self.delegate?.editErrorAlert()
+            })
             delegate?.editButtonTapped()
         }
     }
@@ -239,4 +243,5 @@ class EditBookCaseBodyView: UIView {
 protocol EditBookCaseBodyViewDelegate: AnyObject {
     func editButtonTapped()
     func didSelectImage()
+    func editErrorAlert()
 }

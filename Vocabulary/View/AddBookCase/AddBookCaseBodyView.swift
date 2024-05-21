@@ -92,7 +92,6 @@ class AddBookCaseBodyView: UIView {
         button.setTitle("단어장 생성", for: .normal)
         button.backgroundColor = ThemeColor.mainColor
         button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -107,6 +106,8 @@ class AddBookCaseBodyView: UIView {
         explainTextField.delegate = self
         wordTextField.delegate = self
         meaningTextField.delegate = self
+        
+        addButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
     }
         
     required init?(coder: NSCoder) {
