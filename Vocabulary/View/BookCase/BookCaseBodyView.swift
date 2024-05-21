@@ -80,7 +80,7 @@ class BookCaseBodyView: UIView {
         }
         
         vocaBookCollectionView.snp.makeConstraints{
-            $0.top.equalToSuperview()
+            $0.top.equalToSuperview().inset(30)
             $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalTo(motivationLabel.snp.top).offset(-20)
         }
@@ -91,7 +91,7 @@ class BookCaseBodyView: UIView {
         }
         
         backgroundImage.snp.makeConstraints {
-            $0.edges.equalTo(vocaBookCollectionView).inset(100)
+            $0.edges.equalTo(vocaBookCollectionView).inset(80)
         }
     }
     
@@ -166,7 +166,6 @@ class BookCaseBodyView: UIView {
     @objc func handleTap(_ gesture: UITapGestureRecognizer) {
         let location = gesture.location(in: vocaBookCollectionView)
         if let indexPath = vocaBookCollectionView.indexPathForItem(at: location) {
-            print("cellTapped")
             let selectedBookCase = bookCases[indexPath.item]
             delegate?.didSelectBookCase(selectedBookCase)
         }
@@ -230,7 +229,7 @@ extension BookCaseBodyView {
             delay: 0,
             options: .curveEaseOut,
             animations: {
-                zoomCell.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+                zoomCell.transform = CGAffineTransform(scaleX: 0.98, y: 0.98)
             },
             completion: nil)
     }

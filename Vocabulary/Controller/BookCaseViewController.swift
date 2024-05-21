@@ -18,6 +18,7 @@ class BookCaseViewController: UIViewController{
         let stackView = UIStackView(arrangedSubviews: [headerView, bodyView])
         stackView.axis = .vertical
         stackView.distribution = .fill
+        stackView.spacing = -30
         return stackView
     }()
         
