@@ -23,6 +23,12 @@
 		4D9E8FA72BF8CCB2003F05D3 /* LoginModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E8FA62BF8CCB2003F05D3 /* LoginModalViewController.swift */; };
 		4D9E8FA92BF8CCE3003F05D3 /* LoginPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E8FA82BF8CCE3003F05D3 /* LoginPresentationController.swift */; };
 		4D9E8FAB2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E8FAA2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift */; };
+		611177AB2BFC5A5500A635B8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 611177A92BFC5A5500A635B8 /* GoogleService-Info.plist */; };
+		611177AC2BFC5A5500A635B8 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611177AA2BFC5A5500A635B8 /* Secret.swift */; };
+		611177AE2BFC7FF900A635B8 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611177AD2BFC7FF900A635B8 /* UITextField+Extension.swift */; };
+		611177B12BFC808F00A635B8 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 611177B02BFC808F00A635B8 /* CombineCocoa */; };
+		611177B32BFC8F5300A635B8 /* DiffableSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611177B22BFC8F5300A635B8 /* DiffableSectionModel.swift */; };
+		611177B52BFC911000A635B8 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611177B42BFC911000A635B8 /* ResultTableViewCell.swift */; };
 		611186EF2BF4DCB6009C2FE9 /* FlashCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611186EE2BF4DCB6009C2FE9 /* FlashCardViewController.swift */; };
 		611186F22BF4DD5E009C2FE9 /* FlashHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611186F12BF4DD5E009C2FE9 /* FlashHeaderView.swift */; };
 		611186F42BF4DE09009C2FE9 /* FlashBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611186F32BF4DE09009C2FE9 /* FlashBodyView.swift */; };
@@ -51,7 +57,6 @@
 		618E706F2BF25337007AEDFE /* QuizBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E706E2BF25337007AEDFE /* QuizBodyView.swift */; };
 		618E70712BF25354007AEDFE /* QuizBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E70702BF25354007AEDFE /* QuizBottomView.swift */; };
 		61AAEBC92BF724AE0032961C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 61AAEBC82BF724AE0032961C /* SnapKit */; };
-		61B2FFB62BFB8A7D00CE039B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61B2FFB52BFB8A7D00CE039B /* GoogleService-Info.plist */; };
 		61B2FFB92BFB8A9A00CE039B /* ManageModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B2FFB72BFB8A9A00CE039B /* ManageModalPresentationController.swift */; };
 		61B2FFBA2BFB8A9A00CE039B /* SelectVocaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B2FFB82BFB8A9A00CE039B /* SelectVocaViewController.swift */; };
 		61B2FFBD2BFB8AD900CE039B /* SelectHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B2FFBB2BFB8AD900CE039B /* SelectHeaderView.swift */; };
@@ -68,7 +73,6 @@
 		61CB7FCA2BFB29F400DFA96F /* ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CB7FC92BFB29F400DFA96F /* ThemeColor.swift */; };
 		61D051742BFC3FB70056294A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D051732BFC3FB70056294A /* NetworkManager.swift */; };
 		61D051762BFC42470056294A /* TranslatedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D051752BFC42470056294A /* TranslatedModel.swift */; };
-		61D051782BFC43150056294A /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D051772BFC43150056294A /* Secret.swift */; };
 		61EE0BF22BF9775100FD2F32 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EE0BF12BF9775100FD2F32 /* RecordViewController.swift */; };
 		61EE0BF62BF9777600FD2F32 /* RecordHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EE0BF32BF9777600FD2F32 /* RecordHeaderView.swift */; };
 		61EE0BF72BF9777600FD2F32 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EE0BF42BF9777600FD2F32 /* RecordTableViewCell.swift */; };
@@ -109,11 +113,15 @@
 		4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		4D1791D02BF23F0300E645C9 /* CalenderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderCollectionViewCell.swift; sourceTree = "<group>"; };
 		4D1791DC2BF45AD500E645C9 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
-		4D7C9F9C2BFB1E9C00E41A65 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4D7C9F9E2BFC32AC00E41A65 /* VocaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaCollectionViewCell.swift; sourceTree = "<group>"; };
 		4D9E8FA62BF8CCB2003F05D3 /* LoginModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModalViewController.swift; sourceTree = "<group>"; };
 		4D9E8FA82BF8CCE3003F05D3 /* LoginPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresentationController.swift; sourceTree = "<group>"; };
 		4D9E8FAA2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDetailTableViewCell.swift; sourceTree = "<group>"; };
+		611177A92BFC5A5500A635B8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		611177AA2BFC5A5500A635B8 /* Secret.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
+		611177AD2BFC7FF900A635B8 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		611177B22BFC8F5300A635B8 /* DiffableSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableSectionModel.swift; sourceTree = "<group>"; };
+		611177B42BFC911000A635B8 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 		611186EE2BF4DCB6009C2FE9 /* FlashCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardViewController.swift; sourceTree = "<group>"; };
 		611186F12BF4DD5E009C2FE9 /* FlashHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashHeaderView.swift; sourceTree = "<group>"; };
 		611186F32BF4DE09009C2FE9 /* FlashBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashBodyView.swift; sourceTree = "<group>"; };
@@ -142,7 +150,6 @@
 		618E706C2BF25328007AEDFE /* QuizHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizHeaderView.swift; sourceTree = "<group>"; };
 		618E706E2BF25337007AEDFE /* QuizBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBodyView.swift; sourceTree = "<group>"; };
 		618E70702BF25354007AEDFE /* QuizBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBottomView.swift; sourceTree = "<group>"; };
-		61B2FFB52BFB8A7D00CE039B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		61B2FFB72BFB8A9A00CE039B /* ManageModalPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageModalPresentationController.swift; sourceTree = "<group>"; };
 		61B2FFB82BFB8A9A00CE039B /* SelectVocaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectVocaViewController.swift; sourceTree = "<group>"; };
 		61B2FFBB2BFB8AD900CE039B /* SelectHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectHeaderView.swift; sourceTree = "<group>"; };
@@ -158,7 +165,6 @@
 		61CB7FC92BFB29F400DFA96F /* ThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColor.swift; sourceTree = "<group>"; };
 		61D051732BFC3FB70056294A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		61D051752BFC42470056294A /* TranslatedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatedModel.swift; sourceTree = "<group>"; };
-		61D051772BFC43150056294A /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		61EE0BF12BF9775100FD2F32 /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		61EE0BF32BF9777600FD2F32 /* RecordHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordHeaderView.swift; sourceTree = "<group>"; };
 		61EE0BF42BF9777600FD2F32 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
@@ -190,6 +196,7 @@
 			files = (
 				61B2FFCB2BFBBC7B00CE039B /* ProgressHUD in Frameworks */,
 				61AAEBC92BF724AE0032961C /* SnapKit in Frameworks */,
+				611177B12BFC808F00A635B8 /* CombineCocoa in Frameworks */,
 				61EE0BFD2BF9C0E000FD2F32 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -231,9 +238,8 @@
 				4D1791B72BF1D5BF00E645C9 /* Info.plist */,
 				4D1791AF2BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld */,
 				618E705F2BF21970007AEDFE /* Constants.swift */,
-				4D7C9F9C2BFB1E9C00E41A65 /* GoogleService-Info.plist */,
-				61B2FFB52BFB8A7D00CE039B /* GoogleService-Info.plist */,
-				61D051772BFC43150056294A /* Secret.swift */,
+				611177A92BFC5A5500A635B8 /* GoogleService-Info.plist */,
+				611177AA2BFC5A5500A635B8 /* Secret.swift */,
 			);
 			path = Vocabulary;
 			sourceTree = "<group>";
@@ -325,6 +331,7 @@
 				612D10D12BF719030097EDBA /* MyPageData.swift */,
 				61B2FFC72BFBAD2900CE039B /* GenQuizModel.swift */,
 				61D051752BFC42470056294A /* TranslatedModel.swift */,
+				611177B22BFC8F5300A635B8 /* DiffableSectionModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -428,6 +435,7 @@
 				61BCB0582BF3597C00CF73E4 /* UIResponder+Extension.swift */,
 				61F75F5C2BF4ED2500FCC731 /* UIColor+Extension.swift */,
 				61B2FFBF2BFB8AF500CE039B /* Int+Extension.swift */,
+				611177AD2BFC7FF900A635B8 /* UITextField+Extension.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -443,6 +451,7 @@
 		6BBB361F2BFAF54B0088A8CB /* AddVoca */ = {
 			isa = PBXGroup;
 			children = (
+				611177B42BFC911000A635B8 /* ResultTableViewCell.swift */,
 				4D7C9F9E2BFC32AC00E41A65 /* VocaCollectionViewCell.swift */,
 			);
 			path = AddVoca;
@@ -477,6 +486,7 @@
 				61AAEBC82BF724AE0032961C /* SnapKit */,
 				61EE0BFC2BF9C0E000FD2F32 /* FirebaseAuth */,
 				61B2FFCA2BFBBC7B00CE039B /* ProgressHUD */,
+				611177B02BFC808F00A635B8 /* CombineCocoa */,
 			);
 			productName = Vocabulary;
 			productReference = 4D1791A32BF1D5BE00E645C9 /* Vocabulary.app */;
@@ -510,6 +520,7 @@
 				61AAEBC72BF724AE0032961C /* XCRemoteSwiftPackageReference "SnapKit" */,
 				61EE0BFB2BF9C0E000FD2F32 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				61B2FFC92BFBBC7B00CE039B /* XCRemoteSwiftPackageReference "ProgressHUD" */,
+				611177AF2BFC808F00A635B8 /* XCRemoteSwiftPackageReference "CombineCocoa" */,
 			);
 			productRefGroup = 4D1791A42BF1D5BE00E645C9 /* Products */;
 			projectDirPath = "";
@@ -526,8 +537,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D1791B32BF1D5BF00E645C9 /* Assets.xcassets in Resources */,
+				611177AB2BFC5A5500A635B8 /* GoogleService-Info.plist in Resources */,
 				4D1791B62BF1D5BF00E645C9 /* Base in Resources */,
-				61B2FFB62BFB8A7D00CE039B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -543,7 +554,7 @@
 				4D1791A72BF1D5BE00E645C9 /* AppDelegate.swift in Sources */,
 				FBC59FC62BFB786C002B0113 /* WordEntity+CoreDataProperties.swift in Sources */,
 				61EE0BF72BF9777600FD2F32 /* RecordTableViewCell.swift in Sources */,
-				61D051782BFC43150056294A /* Secret.swift in Sources */,
+				611177AE2BFC7FF900A635B8 /* UITextField+Extension.swift in Sources */,
 				612D10CE2BF718DD0097EDBA /* MenuDetailModalViewController.swift in Sources */,
 				612D10F82BF71BC40097EDBA /* MyPageTableViewCell.swift in Sources */,
 				612D10F32BF71B9B0097EDBA /* BookCaseBodyCell.swift in Sources */,
@@ -552,6 +563,7 @@
 				611186EF2BF4DCB6009C2FE9 /* FlashCardViewController.swift in Sources */,
 				612ABC912BF2003E0056F127 /* GameMainBottomView.swift in Sources */,
 				612D10D02BF718DD0097EDBA /* MenuDetailPresentationController.swift in Sources */,
+				611177B52BFC911000A635B8 /* ResultTableViewCell.swift in Sources */,
 				61B2FFC62BFBA44C00CE039B /* SelectBottomView.swift in Sources */,
 				61EEE6922BF5E69C00803AA1 /* HangManHeaderView.swift in Sources */,
 				612D10D22BF719030097EDBA /* MyPageData.swift in Sources */,
@@ -589,6 +601,7 @@
 				FBE7EA412BF8778F00BE86E5 /* EditBookCaseViewController.swift in Sources */,
 				FBE7EA432BF877D200BE86E5 /* EditBookCaseHeaderView.swift in Sources */,
 				612D10CF2BF718DD0097EDBA /* FilterDetailModalViewController.swift in Sources */,
+				611177B32BFC8F5300A635B8 /* DiffableSectionModel.swift in Sources */,
 				61B2FFC42BFBA0E300CE039B /* Picker+Extension.swift in Sources */,
 				4D9E8FAB2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift in Sources */,
 				61EE0BF62BF9777600FD2F32 /* RecordHeaderView.swift in Sources */,
@@ -599,6 +612,7 @@
 				61EEE6962BF5E74700803AA1 /* HangManBottomView.swift in Sources */,
 				61B2FFC02BFB8AF500CE039B /* Int+Extension.swift in Sources */,
 				61D051742BFC3FB70056294A /* NetworkManager.swift in Sources */,
+				611177AC2BFC5A5500A635B8 /* Secret.swift in Sources */,
 				61B2FFCD2BFBD66F00CE039B /* NotificationCenter.swift in Sources */,
 				612D10F42BF71B9B0097EDBA /* BookCaseBodyView.swift in Sources */,
 				4D1791C12BF1E1F700E645C9 /* AddBookCaseViewController.swift in Sources */,
@@ -841,6 +855,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		611177AF2BFC808F00A635B8 /* XCRemoteSwiftPackageReference "CombineCocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CombineCommunity/CombineCocoa";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.1;
+			};
+		};
 		61AAEBC72BF724AE0032961C /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -868,6 +890,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		611177B02BFC808F00A635B8 /* CombineCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 611177AF2BFC808F00A635B8 /* XCRemoteSwiftPackageReference "CombineCocoa" */;
+			productName = CombineCocoa;
+		};
 		61AAEBC82BF724AE0032961C /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 61AAEBC72BF724AE0032961C /* XCRemoteSwiftPackageReference "SnapKit" */;

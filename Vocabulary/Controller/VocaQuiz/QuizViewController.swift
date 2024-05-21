@@ -38,6 +38,7 @@ class QuizViewController: UIViewController {
     var titleText = ""
     var receivedData: GenQuizModel?
     var quizArray = [WordEntity]()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

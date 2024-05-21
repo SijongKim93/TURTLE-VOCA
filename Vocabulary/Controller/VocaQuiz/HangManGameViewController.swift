@@ -47,7 +47,6 @@ class HangManGameViewController: UIViewController {
         
         layout()
         getData()
-        currentCount = (0...quizArray.count-1).randomElement()!
         gameStart()
         
     }
@@ -114,13 +113,15 @@ extension HangManGameViewController {
             $0.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().offset(-60)
         }
-        
-        answer = quizArray[currentCount].word!
-        print(answer)
-        print(currentCount)
-        makeWordLabel(word: answer)
-        
-        updateUI()
+        if currentCount < quizArray.count {
+            answer = quizArray[currentCount].word!
+            makeWordLabel(word: answer)
+            
+            updateUI()
+        } else {
+            let alert = alertController.makeNormalAlert(title: "게임종료", message: "게임이 끝났습니다.")
+            self.present(alert, animated: true)
+        }
     }
     
     func guessAnswer(alphabet: Character) {
@@ -135,10 +136,12 @@ extension HangManGameViewController {
     }
     
     func monitorScore() {
+        
         if score == answer.count {
             let alert = alertController.makeAlertWithCompletion(title: "축하합니다.", message: "정답을 맞추셨습니다\n다시 시작하시겠습니까?") { [weak self] _ in
                 self?.hangManBottomView?.removeFromSuperview()
                 self?.resetLabel()
+                self?.currentCount += 1
                 self?.gameStart()
                 self?.isGameEnd = false
             }
@@ -150,18 +153,19 @@ extension HangManGameViewController {
     
     
     func updateUI () {
+        
         if failCount >= 7 {
             hangManBodyView.hangManImageView.image = UIImage(named: imageList[failCount])
-            let alert = alertController.makeAlertWithCompletion(title: "게임종료", message: "게임이 끝났습니다.\n다시 시작하시겠습니까?\n취소하여도 버튼 터치시 재시작이 가능합니다.") { [weak self] _ in
+            let alert = alertController.makeAlertWithCompletion(title: "게임종료", message: "게임이 끝났습니다.\n다시 시작하시겠습니까?") { [weak self] _ in
                 self?.hangManBottomView?.removeFromSuperview()
                 self?.resetLabel()
-                self?.currentCount = (0...(self?.quizArray.count)!-1).randomElement()!
+                self?.currentCount += 1
                 self?.gameStart()
                 self?.isGameEnd = false
-                
             }
             self.present(alert, animated: true)
             isGameEnd = true
+            
         } else {
             hangManBodyView.hangManImageView.image = UIImage(named: imageList[failCount])
         }

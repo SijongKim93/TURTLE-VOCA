@@ -209,8 +209,6 @@ class HangManBottomView: UIView {
                 button.setTitle("", for: .normal)
                 button.backgroundColor = .blue
                 button.setImage(UIImage(systemName: "checkmark"), for: .normal)
-            } else {
-                currentVC.gameStart()
             }
         } else {
             if currentVC.isGameEnd == false {
@@ -220,8 +218,6 @@ class HangManBottomView: UIView {
                 button.setImage(UIImage(systemName: "xmark"), for: .normal)
                 currentVC.failCount += 1
                 currentVC.updateUI()
-            } else {
-                currentVC.gameStart()
             }
         }
     }
