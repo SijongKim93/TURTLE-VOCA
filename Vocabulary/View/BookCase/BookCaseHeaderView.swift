@@ -26,7 +26,7 @@ class BookCaseHeaderView: UIView {
         let button = UIButton()
         button.setImage(UIImage(systemName: "plus.circle"), for: .normal)
         button.contentMode = .scaleAspectFit
-        button.tintColor = .black
+        button.tintColor = ThemeColor.mainColor
         button.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -53,13 +53,15 @@ class BookCaseHeaderView: UIView {
         
         logoImageView.snp.makeConstraints {
             $0.width.equalTo(plusButton.snp.width).multipliedBy(3)
-            $0.height.equalTo(60)
+            $0.height.equalTo(70)
         }
         
         headerStackView.snp.makeConstraints{
-            $0.verticalEdges.equalToSuperview().inset(5)
+            $0.top.equalToSuperview().inset(23)
+            $0.bottom.equalToSuperview()
             $0.horizontalEdges.equalToSuperview().inset(30)
         }
+        
     }
     
     @objc func plusButtonTapped() {

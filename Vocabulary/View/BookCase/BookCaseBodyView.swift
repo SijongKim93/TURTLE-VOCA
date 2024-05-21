@@ -80,7 +80,7 @@ class BookCaseBodyView: UIView {
         }
         
         vocaBookCollectionView.snp.makeConstraints{
-            $0.top.equalToSuperview()
+            $0.top.equalToSuperview().inset(30)
             $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalTo(motivationLabel.snp.top).offset(-20)
         }
@@ -91,7 +91,7 @@ class BookCaseBodyView: UIView {
         }
         
         backgroundImage.snp.makeConstraints {
-            $0.edges.equalTo(vocaBookCollectionView).inset(100)
+            $0.edges.equalTo(vocaBookCollectionView).inset(80)
         }
     }
     

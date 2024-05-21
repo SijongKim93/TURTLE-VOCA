@@ -72,9 +72,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window?.rootViewController = launchScreenViewController
         window?.makeKeyAndVisible()
         
-        // 3초 후 MainViewController로 전환
+        // 2초 후 Main으로 전환
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.window?.rootViewController = addBookVC
+            self.window?.rootViewController = tabBarVC
         }
     }
     
