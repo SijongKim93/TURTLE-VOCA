@@ -61,31 +61,36 @@ class QuizViewController: UIViewController {
             let alert = alertController.makeNormalAlert(title: "에러발생", message: "\(error.localizedDescription)가 발생했습니다.")
             self.present(alert, animated: true)
         }).shuffled()
+        checkException()
+        quizArray = Array(quizArray.prefix(receivedData!.quizCount))
     }
     
     
-    private func generate(count: Int) { // 문제배열이 생성
+    private func generate(count: Int) {
         
-        for _ in 0..<count {
-            let numberArray = (0...quizArray.count-1).map{ $0 }.shuffled()
+        var madeList = [String]()
+        
+        for _ in 0 ..< count {
+            var numberArray = (0...quizArray.count-1).map { $0 }.shuffled()
             
-            let getFourNumberArray = numberArray.prefix(4).map { numberArray[$0] } // 3 0 1 8
+            var getFourNumberArray = numberArray.prefix(4).map { numberArray[$0] }
+            var answerInfo = quizArray[getFourNumberArray[0]]
             
-            let number1 = getFourNumberArray[0] // 3
-            let number2 = getFourNumberArray[1] // 0
-            let number3 = getFourNumberArray[2] // 1
-            let number4 = getFourNumberArray[3] // 8
+            while madeList.contains(answerInfo.word!) {
+                numberArray = (0...quizArray.count-1).map { $0 }.shuffled()
+                getFourNumberArray = numberArray.prefix(4).map { numberArray[$0] }
+                answerInfo = quizArray[getFourNumberArray[0]]
+            }
             
-            
-            let answerInfo = quizArray[number1]
             let question = answerInfo.word!
             let answer = answerInfo.definition!
-            let first = quizArray[number2].definition!
-            let second = quizArray[number3].definition!
-            let third = quizArray[number4].definition!
+            let first = quizArray[getFourNumberArray[1]].definition!
+            let second = quizArray[getFourNumberArray[2]].definition!
+            let third = quizArray[getFourNumberArray[3]].definition!
             
             let dummy = VocaQuizModel(question: question, answer: answer, incorrectFirst: first, incorrectSecond: second, incorrectThird: third)
             quizData.append(dummy)
+            madeList.append(question)
         }
         
     }
