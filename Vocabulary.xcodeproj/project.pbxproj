@@ -93,6 +93,7 @@
 		6B02ADEF2BF6E8B6006E0964 /* TextFieldFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02ADEE2BF6E8B6006E0964 /* TextFieldFactory.swift */; };
 		6BBB36222BFAF6050088A8CB /* VocaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBB36212BFAF6050088A8CB /* VocaDetailViewController.swift */; };
 		FB04CC6D2BFB7F2E00FC0EEA /* GameMainBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB04CC6C2BFB7F2E00FC0EEA /* GameMainBodyView.swift */; };
+		FB669DF22BFCA10B00C5EE82 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB669DF12BFCA10B00C5EE82 /* Secret.swift */; };
 		FBC59FC52BFB786C002B0113 /* WordEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC59FC12BFB786C002B0113 /* WordEntity+CoreDataClass.swift */; };
 		FBC59FC62BFB786C002B0113 /* WordEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC59FC22BFB786C002B0113 /* WordEntity+CoreDataProperties.swift */; };
 		FBC59FC72BFB786C002B0113 /* BookCase+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC59FC32BFB786C002B0113 /* BookCase+CoreDataClass.swift */; };
@@ -187,6 +188,7 @@
 		6B02ADEE2BF6E8B6006E0964 /* TextFieldFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldFactory.swift; sourceTree = "<group>"; };
 		6BBB36212BFAF6050088A8CB /* VocaDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocaDetailViewController.swift; sourceTree = "<group>"; };
 		FB04CC6C2BFB7F2E00FC0EEA /* GameMainBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMainBodyView.swift; sourceTree = "<group>"; };
+		FB669DF12BFCA10B00C5EE82 /* Secret.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		FBC59FC12BFB786C002B0113 /* WordEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WordEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		FBC59FC22BFB786C002B0113 /* WordEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WordEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FBC59FC32BFB786C002B0113 /* BookCase+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookCase+CoreDataClass.swift"; sourceTree = "<group>"; };
