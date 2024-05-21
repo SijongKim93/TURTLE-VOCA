@@ -21,9 +21,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let addBookVC = BookCaseViewController()
         addBookVC.tabBarItem = UITabBarItem(title: "단어장", image: UIImage(systemName: "book.pages")?.withTintColor(.white, renderingMode: .alwaysOriginal), selectedImage: UIImage(systemName: "book.pages.fill"))
         
-        let addVocaVC = AddVocaViewController()
-        addVocaVC.tabBarItem = UITabBarItem(title: "단어 추가", image: UIImage(systemName: "pencil")?.withTintColor(.white, renderingMode: .alwaysOriginal), selectedImage: UIImage(systemName: "pencil.circle.fill"))
-        
         let gameMainPageVC = GameMainPageViewController()
         gameMainPageVC.tabBarItem = UITabBarItem(title: "단어 퀴즈", image: UIImage(systemName: "gamecontroller")?.withTintColor(.white, renderingMode: .alwaysOriginal), selectedImage: UIImage(systemName: "gamecontroller.fill"))
         
@@ -33,7 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let myPageVC = MyPageViewController()
         myPageVC.tabBarItem = UITabBarItem(title: "마이페이지", image: UIImage(systemName: "person.crop.circle")?.withTintColor(.white, renderingMode: .alwaysOriginal), selectedImage: UIImage(systemName: "person.crop.circle.fill"))
         
-        tabBarVC.viewControllers = [addBookVC, addVocaVC, gameMainPageVC, calenderVC, myPageVC]
+        tabBarVC.viewControllers = [addBookVC, gameMainPageVC, calenderVC, myPageVC]
         tabBarVC.tabBar.backgroundColor = ThemeColor.mainColor
         tabBarVC.tabBar.itemPositioning = .centered
         tabBarVC.tabBar.tintColor = .white
