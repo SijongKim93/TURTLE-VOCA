@@ -15,14 +15,15 @@ class AddBookCaseBodyView: UIView {
     weak var delegate: AddBookCaseBodyViewDelegate?
     
     //imageStackView
-    let backImgLabel = LabelFactory().makeLabel(title: "배경 이미지", size: 20, textAlignment: .left, isBold: true)
+    let backImgLabel = LabelFactory().makeLabel(title: "배경 이미지", size: 18, textAlignment: .left, isBold: true)
     
     let backImgView: UIImageView = {
         let backImgView = UIImageView()
         backImgView.image = UIImage(systemName: "plus")
         backImgView.contentMode = .center
-        backImgView.tintColor = .white
-        backImgView.backgroundColor = .systemGray2
+        backImgView.tintColor = ThemeColor.mainColor
+        backImgView.layer.borderColor = ThemeColor.mainCgColor
+        backImgView.layer.borderWidth = 2
         backImgView.layer.cornerRadius = 10
         return backImgView
     }()
@@ -36,16 +37,8 @@ class AddBookCaseBodyView: UIView {
     }()
     
     //nameStackView
-    let nameLabel = LabelFactory().makeLabel(title: "단어장 이름", size: 20, textAlignment: .left, isBold: true)
-    
-    let nameTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "단어장 이름을 입력하세요"
-        textField.textColor = .black
-        textField.borderStyle = .roundedRect
-        return textField
-    }()
-    
+    let nameLabel = LabelFactory().makeLabel(title: "단어장 이름", size: 18, textAlignment: .left, isBold: true)
+    let nameTextField = TextFieldFactory().makeTextField(placeholder: "단어장 이름을 입력하세요")
     let nameCountLabel = LabelFactory().makeLabel(title: "0/10", size: 13, textAlignment: .right, isBold: false)
     
     lazy var nameStackView: UIStackView = {
@@ -57,15 +50,8 @@ class AddBookCaseBodyView: UIView {
     }()
     
     //explainStackView
-    let explainLabel = LabelFactory().makeLabel(title: "단어장 간단 설명", size: 20, textAlignment: .left, isBold: true)
-    
-    let explainTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "단어장에 대한 간단한 설명을 적어주세요"
-        textField.textColor = .black
-        textField.borderStyle = .roundedRect
-        return textField
-    }()
+    let explainLabel = LabelFactory().makeLabel(title: "단어장 간단 설명", size: 18, textAlignment: .left, isBold: true)
+    let explainTextField = TextFieldFactory().makeTextField(placeholder: "단어장에 대한 간단한 설명을 적어주세요")
     
     let explainCountLabel = LabelFactory().makeLabel(title: "0/15", size: 13, textAlignment: .right, isBold: false)
     
@@ -78,23 +64,10 @@ class AddBookCaseBodyView: UIView {
     }()
     
     //languageStackView
-    let languageLabel = LabelFactory().makeLabel(title: "언어 (단어 & 의미)", size: 20, textAlignment: .left, isBold: true)
+    let languageLabel = LabelFactory().makeLabel(title: "언어 (단어 & 의미)", size: 18, textAlignment: .left, isBold: true)
     
-    let wordTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "단어"
-        textField.textColor = .black
-        textField.borderStyle = .roundedRect
-        return textField
-    }()
-    
-    let meaningTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "의미"
-        textField.textColor = .black
-        textField.borderStyle = .roundedRect
-        return textField
-    }()
+    let wordTextField = TextFieldFactory().makeTextField(placeholder: "단어")
+    let meaningTextField = TextFieldFactory().makeTextField(placeholder: "의미")
     
     // 단어 & 의미 스택뷰
     lazy var wmStackView: UIStackView = {
@@ -117,8 +90,8 @@ class AddBookCaseBodyView: UIView {
     let addButton: UIButton = {
         let button = UIButton()
         button.setTitle("단어장 생성", for: .normal)
-        button.backgroundColor = .black
-        button.layer.cornerRadius = 8
+        button.backgroundColor = ThemeColor.mainColor
+        button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -148,11 +121,10 @@ class AddBookCaseBodyView: UIView {
         imageStackView.snp.makeConstraints{
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview().inset(30)
-            $0.trailing.equalToSuperview().inset(230)
         }
         
         nameStackView.snp.makeConstraints{
-            $0.top.equalTo(imageStackView.snp.bottom).offset(16)
+            $0.top.equalTo(imageStackView.snp.bottom).offset(25)
             $0.horizontalEdges.equalToSuperview().inset(30)
         }
         
@@ -174,11 +146,7 @@ class AddBookCaseBodyView: UIView {
         //이미지 뷰 크기 조절
         backImgView.snp.makeConstraints{
             $0.height.equalTo(150)
-        }
-        
-        //설명 부분 텍스트 필드 크게 설정
-        explainTextField.snp.makeConstraints {
-            $0.height.equalTo(80)
+            $0.width.equalTo(120)
         }
         
         //버튼 크기 늘리기
@@ -241,6 +209,13 @@ class AddBookCaseBodyView: UIView {
         }
     }
     
+//    private let errorHandler: () -> Void = {
+//        let alertController = AlertController().makeNormalAlert(title: "Error", message: "단어장 저장에 실패했습니다.")
+//        DispatchQueue.main.async {
+//            UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
+//        }
+//    }
+    
     func shakeTextField(_ textField: UITextField) {
         let animation = CABasicAnimation(keyPath: "position")
         animation.duration = 0.07
@@ -249,9 +224,8 @@ class AddBookCaseBodyView: UIView {
         animation.fromValue = NSValue(cgPoint: CGPoint(x: textField.center.x - 10, y: textField.center.y))
         animation.toValue = NSValue(cgPoint: CGPoint(x: textField.center.x + 10, y: textField.center.y))
         textField.layer.add(animation, forKey: "position")
-        textField.layer.borderColor = UIColor.systemRed.cgColor
-        textField.layer.borderWidth = 1.0
-        textField.layer.cornerRadius = 5.0
+        textField.layer.borderWidth = 2
+        textField.layer.cornerRadius = 5
     }
 }
 

@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct TranslatedModel: Codable {
+struct TranslatedModel: Codable, Hashable {
     let translations: [Translation]
 }
 
 // MARK: - Translation
-struct Translation: Codable {
+struct Translation: Codable, Hashable {
     let text: String
 }
 

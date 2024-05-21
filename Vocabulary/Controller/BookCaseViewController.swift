@@ -18,6 +18,7 @@ class BookCaseViewController: UIViewController{
         let stackView = UIStackView(arrangedSubviews: [headerView, bodyView])
         stackView.axis = .vertical
         stackView.distribution = .fill
+        stackView.spacing = -30
         return stackView
     }()
         
@@ -75,5 +76,6 @@ extension BookCaseViewController: BookCaseBodyViewDelegate {
         addVocaVC.bookCase = bookCase
         addVocaVC.modalPresentationStyle = .fullScreen
         present(addVocaVC, animated: true)
+        //navigationController?.pushViewController(addVocaVC, animated: true)
     }
 }

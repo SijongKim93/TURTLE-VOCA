@@ -20,16 +20,18 @@ class BookCaseBodyCell: UICollectionViewCell {
     
     private let cellView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemGray2
-        view.layer.cornerRadius = 26
+        view.backgroundColor = .white
+        view.layer.borderColor = ThemeColor.mainCgColor
+        view.layer.borderWidth = 2.5
+        view.layer.cornerRadius = 43
         return view
     }()
     
     private lazy var menuButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
-        button.tintColor = .black
         button.menu = createMenu()
+        button.tintColor = ThemeColor.mainColor
         button.showsMenuAsPrimaryAction = true
         return button
     }()
@@ -47,6 +49,7 @@ class BookCaseBodyCell: UICollectionViewCell {
         let stackView = UIStackView(arrangedSubviews: [nameLabel, detailLabel])
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
+        stackView.spacing = 5
         return stackView
     }()
     
@@ -73,8 +76,8 @@ class BookCaseBodyCell: UICollectionViewCell {
         }
         
         menuButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(10)
-            $0.trailing.equalToSuperview().inset(25)
+            $0.top.equalToSuperview().offset(13)
+            $0.trailing.equalToSuperview().inset(32)
         }
         
         imageView.snp.makeConstraints {
@@ -85,12 +88,14 @@ class BookCaseBodyCell: UICollectionViewCell {
         
         nameStackView.snp.makeConstraints {
             $0.top.equalTo(imageView.snp.bottom).offset(20)
-            $0.horizontalEdges.equalToSuperview().inset(25)
+            $0.leading.equalToSuperview().inset(32)
+            $0.trailing.equalToSuperview().inset(25)
         }
         
         languageLabel.snp.makeConstraints {
             $0.top.equalTo(nameStackView.snp.bottom).offset(20)
-            $0.horizontalEdges.equalToSuperview().inset(25)
+            $0.leading.equalToSuperview().inset(32)
+            $0.trailing.equalToSuperview().inset(25)
             $0.bottom.equalToSuperview().inset(20)
         }
     }
@@ -99,7 +104,7 @@ class BookCaseBodyCell: UICollectionViewCell {
         self.bookCaseData = bookCaseData
         if let imageData = bookCaseData.value(forKey: "image") as? Data {
             imageView.image = UIImage(data: imageData)
-            imageView.layer.cornerRadius = 20
+            imageView.layer.cornerRadius = 30
             imageView.layer.masksToBounds = true
             imageView.contentMode = .scaleToFill
         }
@@ -114,10 +119,13 @@ class BookCaseBodyCell: UICollectionViewCell {
         let editAction = UIAction(title: "수정", image: UIImage(systemName: "square.and.pencil")) { [self] _ in
             self.delagateEdit?.didTapEditButton(on: self, with: bookCaseData!)
         }
+        
         let deleteAction = UIAction(title: "삭제", image: UIImage(systemName: "trash"), attributes: .destructive) { _ in
             self.delegateDelete?.didTapDeleteButton(on: self)
         }
-        return UIMenu(title: "", children: [editAction, deleteAction])
+        
+        let menu = UIMenu(title: "", children: [editAction, deleteAction])
+        return menu
     }
 }
 

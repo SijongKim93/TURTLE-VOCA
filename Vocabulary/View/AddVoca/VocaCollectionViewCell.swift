@@ -30,7 +30,11 @@ class VocaCollectionViewCell: UICollectionViewCell {
         label.font = .systemFont(ofSize: 18, weight: .regular)
         return label
     }()
-
+    
+    private let deleteButton = UIButton()
+    
+    var deleteAction: (() -> Void)?
+    
     var checkToMemorizeButton: UIButton = {
         let button = UIButton()
         let config = UIImage.SymbolConfiguration(pointSize: 30, weight: .light, scale: .large)
@@ -71,32 +75,41 @@ class VocaCollectionViewCell: UICollectionViewCell {
         stackView.spacing = 10
         return stackView
     }()
-
+    
     var buttonAction: (() -> Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.configureUI()
         self.makeConstraints()
+        self.addSwipeGesture()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureUI() {
+    private func configureUI() {
         contentView.addSubview(textStackView)
         contentView.addSubview(buttonStackView)
-
+        contentView.addSubview(deleteButton)
+        
+        deleteButton.setTitle("Delete", for: .normal)
+        deleteButton.setTitleColor(.red, for: .normal)
+        deleteButton.backgroundColor = .white
+        deleteButton.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
+        deleteButton.isHidden = true
+        
         checkToMemorizeButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         speakButton.addTarget(self, action: #selector(speakButtonTapped), for: .touchUpInside)
         
         contentView.layer.borderWidth = 2.0
         contentView.layer.borderColor = ThemeColor.mainColor.cgColor
         contentView.layer.cornerRadius = 16
+        contentView.clipsToBounds = true
     }
     
-    func makeConstraints() {
+    private func makeConstraints() {
         textStackView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().offset(20)
@@ -115,7 +128,57 @@ class VocaCollectionViewCell: UICollectionViewCell {
         speakButton.snp.makeConstraints {
             $0.width.height.equalTo(50)
         }
+        
+        deleteButton.snp.makeConstraints {
+            $0.top.bottom.equalToSuperview()
+            $0.width.equalTo(100)
+            $0.trailing.equalToSuperview().offset(100)
+        }
     }
+    
+    private func addSwipeGesture() {
+        let leftswipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleLeftSwipeGesture(_:)))
+        leftswipeGesture.direction = .left
+        contentView.addGestureRecognizer(leftswipeGesture)
+        
+        let rightswipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleRightSwipeGesture(_:)))
+        rightswipeGesture.direction = .right
+        contentView.addGestureRecognizer(rightswipeGesture)
+    }
+    
+    @objc private func handleLeftSwipeGesture(_ gesture: UISwipeGestureRecognizer) {
+        if deleteButton.isHidden {
+            showDeleteButton()
+        }
+    }
+    
+    @objc private func handleRightSwipeGesture(_ gesture: UISwipeGestureRecognizer) {
+        if !deleteButton.isHidden {
+            hideDeleteButton()
+        }
+    }
+            
+    private func showDeleteButton() {
+        deleteButton.isHidden = false
+        UIView.animate(withDuration: 0.3) {
+            self.contentView.frame.origin.x -= 100
+            self.deleteButton.frame.origin.x -= 100
+        }
+    }
+    
+    private func hideDeleteButton() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.contentView.frame.origin.x += 100
+            self.deleteButton.frame.origin.x += 100
+        }) {_ in
+            self.deleteButton.isHidden = true
+            }
+        }
+    
+    @objc private func deleteButtonTapped() {
+        deleteAction?()
+    }
+
     
     @objc func buttonTapped() {
         toggleButtonSelection()

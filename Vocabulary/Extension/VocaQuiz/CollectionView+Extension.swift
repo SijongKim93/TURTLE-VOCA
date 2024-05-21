@@ -55,7 +55,6 @@ extension GameMainPageViewController: UICollectionViewDelegate, UICollectionView
             
             self.present(hangVC, animated: true)
         case 3 :
-            checkSetting()
             let recordVC = RecordViewController()
             
             self.present(recordVC, animated: true)

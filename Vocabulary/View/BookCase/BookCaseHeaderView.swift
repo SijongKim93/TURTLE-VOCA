@@ -13,22 +13,28 @@ class BookCaseHeaderView: UIView {
     
     weak var delegate: BookCaseHeaderViewDelegate?
     
-    let headerLabel = LabelFactory().makeLabel(title: "거북이의 단어장", size: 23, isBold: true)
+    let logoImageView: UIImageView = {
+        let imageView = UIImageView()
+        if let logoImage = UIImage(named: "logo resize") {
+            imageView.image = logoImage
+        }
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
     
     let plusButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "plus.circle"), for: .normal)
         button.contentMode = .scaleAspectFit
-        button.tintColor = .black
+        button.tintColor = ThemeColor.mainColor
         button.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
         return button
     }()
     
     lazy var headerStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [headerLabel, plusButton])
+        let stackView = UIStackView(arrangedSubviews: [logoImageView, plusButton])
         stackView.axis = .horizontal
         stackView.distribution = .fill
-        stackView.spacing = 150
         return stackView
     }()
     
@@ -45,10 +51,17 @@ class BookCaseHeaderView: UIView {
         
         addSubview(headerStackView)
         
+        logoImageView.snp.makeConstraints {
+            $0.width.equalTo(plusButton.snp.width).multipliedBy(3)
+            $0.height.equalTo(70)
+        }
+        
         headerStackView.snp.makeConstraints{
-            $0.verticalEdges.equalToSuperview().inset(30)
+            $0.top.equalToSuperview().inset(23)
+            $0.bottom.equalToSuperview()
             $0.horizontalEdges.equalToSuperview().inset(30)
         }
+        
     }
     
     @objc func plusButtonTapped() {
