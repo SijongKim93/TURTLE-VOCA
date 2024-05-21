@@ -23,7 +23,7 @@ class BookCaseBodyCell: UICollectionViewCell {
         view.backgroundColor = .white
         view.layer.borderColor = ThemeColor.mainCgColor
         view.layer.borderWidth = 2.5
-        view.layer.cornerRadius = 36
+        view.layer.cornerRadius = 43
         return view
     }()
     
@@ -104,7 +104,7 @@ class BookCaseBodyCell: UICollectionViewCell {
         self.bookCaseData = bookCaseData
         if let imageData = bookCaseData.value(forKey: "image") as? Data {
             imageView.image = UIImage(data: imageData)
-            imageView.layer.cornerRadius = 20
+            imageView.layer.cornerRadius = 30
             imageView.layer.masksToBounds = true
             imageView.contentMode = .scaleToFill
         }
