@@ -9,11 +9,10 @@ import UIKit
 import SnapKit
 import AuthenticationServices
 import CryptoKit
+import KakaoSDKAuth
+import KakaoSDKUser
 
 class LoginModalViewController: UIViewController {
-    
-    lazy var appleBtn = ASAuthorizationAppleIDButton(authorizationButtonType: .signIn, authorizationButtonStyle: .black)
-    
     
     let filterMainLabel = LabelFactory().makeLabel(title: "소셜 로그인", size: 23, textAlignment: .left, isBold: true)
     
@@ -40,35 +39,40 @@ class LoginModalViewController: UIViewController {
         return view
     }()
     
-    let menuTableView: UITableView = {
-        let tableView = UITableView()
-        tableView.register(LoginDetailTableViewCell.self, forCellReuseIdentifier: LoginDetailTableViewCell.identifier)
-        tableView.separatorStyle = .none
-        return tableView
+    lazy var appleBtn = ASAuthorizationAppleIDButton(authorizationButtonType: .signIn, authorizationButtonStyle: .black)
+    
+    
+    let kakaoLoginButton: UIButton = {
+        let button = UIButton()
+        if let image = UIImage(named: "kakaologin") {
+            button.setImage(image, for: .normal)
+        }
+        button.imageView?.contentMode = .scaleAspectFit
+        button.backgroundColor = #colorLiteral(red: 0.9969366193, green: 0.8984512687, blue: 0.006965545472, alpha: 1)
+        button.layer.cornerRadius = 8
+        button.clipsToBounds = true
+        return button
     }()
     
-    let labels = ["카카오 로그인"]
     let alertController = AlertController()
     private var currentNonce: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         appleBtn.addTarget(self, action: #selector(handleAppleIDRequest), for: .touchUpInside)
+        kakaoLoginButton.addTarget(self, action: #selector(handleKakaoLogin), for: .touchUpInside)
         
         setupUI()
     }
     
     func setupUI() {
-        menuTableView.delegate = self
-        menuTableView.dataSource = self
-        
         view.backgroundColor = .white
         view.layer.cornerRadius = 16
         
         view.addSubview(topStackView)
         view.addSubview(viewLine)
         view.addSubview(appleBtn)
-        view.addSubview(menuTableView)
+        view.addSubview(kakaoLoginButton)
         
         xButton.addTarget(self, action: #selector(dismissViewController), for: .touchUpInside)
         
@@ -90,37 +94,39 @@ class LoginModalViewController: UIViewController {
         
         appleBtn.snp.makeConstraints {
             $0.top.equalTo(viewLine.snp.bottom).offset(20)
-            $0.leading.trailing.equalToSuperview().inset(115)
+            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.height.equalTo(50)
         }
         
-        menuTableView.snp.makeConstraints {
-            $0.top.equalTo(appleBtn.snp.bottom)
-            $0.leading.trailing.bottom.equalToSuperview().inset(10)
+        kakaoLoginButton.snp.makeConstraints {
+            $0.top.equalTo(appleBtn.snp.bottom).offset(20)
+            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.height.equalTo(50)
         }
     }
     
     @objc func dismissViewController() {
         self.dismiss(animated: true, completion: nil)
     }
-}
-
-
-extension LoginModalViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return labels.count
-    }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: LoginDetailTableViewCell.identifier, for: indexPath) as? LoginDetailTableViewCell else { fatalError("테이블 뷰 오류")}
-        
-        cell.label.text = labels[indexPath.row]
-        cell.selectionStyle = .none
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        60
+    @objc func handleKakaoLogin() {
+        if UserApi.isKakaoTalkLoginAvailable() {
+            UserApi.shared.loginWithKakaoTalk { (oauthToken, error) in
+                if let error = error {
+                    print("Error: \(error.localizedDescription)")
+                } else {
+                    print("Login with KakaoTalk succeeded.")
+                }
+            }
+        } else {
+            UserApi.shared.loginWithKakaoAccount { (oauthToken, error) in
+                if let error = error {
+                    print("Error: \(error.localizedDescription)")
+                } else {
+                    print("Login with KakaoAccount succeeded.")
+                }
+            }
+        }
     }
 }
 
