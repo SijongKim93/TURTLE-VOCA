@@ -30,11 +30,12 @@ final class CoreDataManager {
     // MARK: - methods
     
     //단어장 추가
-    func saveBookCase(name: String, explain: String, word: String, meaning: String, image: Data) {
+    func saveBookCase(name: String, explain: String, word: String, meaning: String, image: Data /*errorHandler: @escaping () -> Void*/) {
         guard let context = managedContext else {
             print("Error: managedContext is nil")
             return
         }
+        
         let entity = NSEntityDescription.entity(forEntityName: "BookCase", in: context)!
         let bookCase = NSManagedObject(entity: entity, insertInto: context)
         
@@ -49,6 +50,7 @@ final class CoreDataManager {
             print("코어데이터가 저장되었습니다.")
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
+            //errorHandler()
         }
     }
     

@@ -166,7 +166,6 @@ class BookCaseBodyView: UIView {
     @objc func handleTap(_ gesture: UITapGestureRecognizer) {
         let location = gesture.location(in: vocaBookCollectionView)
         if let indexPath = vocaBookCollectionView.indexPathForItem(at: location) {
-            print("cellTapped")
             let selectedBookCase = bookCases[indexPath.item]
             delegate?.didSelectBookCase(selectedBookCase)
         }
@@ -230,7 +229,7 @@ extension BookCaseBodyView {
             delay: 0,
             options: .curveEaseOut,
             animations: {
-                zoomCell.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+                zoomCell.transform = CGAffineTransform(scaleX: 0.98, y: 0.98)
             },
             completion: nil)
     }

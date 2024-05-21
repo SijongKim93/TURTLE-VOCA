@@ -241,6 +241,13 @@ class AddBookCaseBodyView: UIView {
         }
     }
     
+//    private let errorHandler: () -> Void = {
+//        let alertController = AlertController().makeNormalAlert(title: "Error", message: "단어장 저장에 실패했습니다.")
+//        DispatchQueue.main.async {
+//            UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
+//        }
+//    }
+    
     func shakeTextField(_ textField: UITextField) {
         let animation = CABasicAnimation(keyPath: "position")
         animation.duration = 0.07

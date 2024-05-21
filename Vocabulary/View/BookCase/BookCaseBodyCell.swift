@@ -30,8 +30,8 @@ class BookCaseBodyCell: UICollectionViewCell {
     private lazy var menuButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
-        button.tintColor = ThemeColor.mainColor
         button.menu = createMenu()
+        button.tintColor = ThemeColor.mainColor
         button.showsMenuAsPrimaryAction = true
         return button
     }()
@@ -119,10 +119,13 @@ class BookCaseBodyCell: UICollectionViewCell {
         let editAction = UIAction(title: "수정", image: UIImage(systemName: "square.and.pencil")) { [self] _ in
             self.delagateEdit?.didTapEditButton(on: self, with: bookCaseData!)
         }
+        
         let deleteAction = UIAction(title: "삭제", image: UIImage(systemName: "trash"), attributes: .destructive) { _ in
             self.delegateDelete?.didTapDeleteButton(on: self)
         }
-        return UIMenu(title: "", children: [editAction, deleteAction])
+        
+        let menu = UIMenu(title: "", children: [editAction, deleteAction])
+        return menu
     }
 }
 
