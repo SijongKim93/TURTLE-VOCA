@@ -11,7 +11,7 @@ import CoreData
 import PhotosUI
 
 class AddBookCaseViewController: UIViewController, AddBookCaseBodyViewDelegate {
-    
+
     var bookCaseData: NSManagedObject?
 
     let headerView = AddBookCaseHeaderView()
@@ -58,6 +58,11 @@ class AddBookCaseViewController: UIViewController, AddBookCaseBodyViewDelegate {
             NotificationCenter.default.post(name: NSNotification.Name("didBookCase"), object: nil)
             self.dismiss(animated: true, completion: nil)
         }
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func errorAlert() {
+        let alertController = AlertController().makeNormalAlert(title: "에러", message: "단어장 저장에 실패했습니다.")
         present(alertController, animated: true, completion: nil)
     }
 }

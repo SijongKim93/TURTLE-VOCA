@@ -1,5 +1,5 @@
 {
-  "originHash" : "1a332f52754df608e7905d2f405590ad0f2f8963e4cfe281d23ef153ca140a59",
+  "originHash" : "fdab9d9c37a024cf3c6a0ee69c3ea2ff230f82535b0dd998db3c4da0ecaa3a15",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "748c7837511d0e6a507737353af268484e1745e2",
         "version" : "1.2024011601.1"
+      }
+    },
+    {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire.git",
+      "state" : {
+        "revision" : "f455c2975872ccd2d9c81594c658af65716e9b9a",
+        "version" : "5.9.1"
       }
     },
     {
@@ -92,6 +101,15 @@
       }
     },
     {
+      "identity" : "kakao-ios-sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kakao/kakao-ios-sdk",
+      "state" : {
+        "revision" : "9f9b830dfd7ee66607c6fddcfeb1a6bc07e48714",
+        "version" : "2.22.2"
+      }
+    },
+    {
       "identity" : "leveldb",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/leveldb.git",
@@ -146,5 +164,5 @@
       }
     }
   ],
-  "version" : 3
+  "version" : 2
 }
