@@ -15,22 +15,32 @@ class AddVocaViewController: UIViewController {
    
     var bookCaseLabel = LabelFactory().makeLabel(title: "선택한 단어장 이름", size: 20, textAlignment: .center, isBold: true)
     
+
+
     var backButton = UIButton()
     //단어장 페이지로 돌아가기
     @objc func backButtonTapped() {
     self.dismiss(animated: true, completion: nil)
     }
     
+
     var addVocaButton = UIButton()
+    
     var searchBar = UISearchBar()
+
     var countLabel = LabelFactory().makeLabel(title: "", size: 15, textAlignment: .left, isBold: false)
     var tableView = UITableView()
     var wordList: [WordEntity] = []
     var filteredWordList: [WordEntity] = []
     var isFiltering: Bool = false
+
     
+    var countLabel = LabelFactory().makeLabel(title: "", size: 15, textAlignment: .left, isBold: false)
     
+    var vocaCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
+    var wordList: [WordEntity] = []
+
     // 단어 추가 버튼 눌렸을 때 단어입력페이지로 이동
 
     @objc func presentInsertVocaPage() {
@@ -66,10 +76,10 @@ class AddVocaViewController: UIViewController {
 
         updateCountLabel()
         
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
-        self.tableView.register(VocaTableViewCell.self, forCellReuseIdentifier: VocaTableViewCell.identifier)
-        self.tableView.rowHeight = 60
+        vocaCollectionView.dataSource = self
+        vocaCollectionView.delegate = self
+        vocaCollectionView.register(VocaCollectionViewCell.self, forCellWithReuseIdentifier: VocaCollectionViewCell.identifier)
+        vocaCollectionView.collectionViewLayout = createCollectionViewFlowLayout(for: vocaCollectionView)
         
         self.configureUI()
         self.makeConstraints()
@@ -87,9 +97,13 @@ class AddVocaViewController: UIViewController {
     
     func getData() {
         wordList = CoreDataManager.shared.getWordList()
+     
+        vocaCollectionView.reloadData()
+
         filteredWordList = wordList
         updateCountLabel()
         self.tableView.reloadData()
+
     }
     
     func updateCountLabel() {
@@ -102,18 +116,18 @@ class AddVocaViewController: UIViewController {
         self.view.addSubview(addVocaButton)
         self.view.addSubview(searchBar)
         self.view.addSubview(countLabel)
-        self.view.addSubview(tableView)
-
+        self.view.addSubview(vocaCollectionView)
     }
     
-    
     func makeConstraints() {
+
         
         backButton.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(4)
             $0.leading.equalToSuperview().offset(20)
         }
         
+
         bookCaseLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(4)
             $0.centerX.equalToSuperview()
@@ -134,11 +148,19 @@ class AddVocaViewController: UIViewController {
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(20)
         }
         
-        tableView.snp.makeConstraints {
+        vocaCollectionView.snp.makeConstraints {
             $0.top.equalTo(countLabel.snp.bottom).offset(10)
-            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
+    }
+    
+    func createCollectionViewFlowLayout(for collectionView: UICollectionView) -> UICollectionViewFlowLayout {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 15
+        layout.minimumInteritemSpacing = 5
+        layout.itemSize = CGSize(width: view.frame.size.width - 20, height: 100)
+        return layout
     }
 }
 
@@ -166,6 +188,17 @@ extension AddVocaViewController: UISearchBarDelegate {
     }
 }
 
+
+extension AddVocaViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return wordList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VocaCollectionViewCell.identifier, for: indexPath) as? VocaCollectionViewCell else { fatalError("컬렉션 뷰 오류")}
+        
+        let item = wordList[indexPath.row]
+
 extension AddVocaViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return isFiltering ? filteredWordList.count : wordList.count
@@ -174,12 +207,11 @@ extension AddVocaViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: VocaTableViewCell.identifier, for: indexPath) as? VocaTableViewCell else { fatalError("테이블 뷰 에러") }
         let item = isFiltering ? filteredWordList[indexPath.row] : wordList[indexPath.row]
+
         
         cell.wordLabel.text = item.word
         cell.pronunciationLabel.text = item.pronunciation
         cell.definitionLabel.text = item.definition
-        
-        cell.selectionStyle = .default
         
         cell.buttonAction = { [weak cell] in
             cell?.toggleButtonSelection()
@@ -188,6 +220,7 @@ extension AddVocaViewController: UITableViewDataSource {
         return cell
     }
 }
+
 
 extension AddVocaViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -227,3 +260,4 @@ extension AddVocaViewController: UITableViewDelegate {
         
     }
 }
+
