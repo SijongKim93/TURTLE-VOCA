@@ -879,6 +879,8 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.22.2;
+                };
+        };
 		611177AF2BFC808F00A635B8 /* XCRemoteSwiftPackageReference "CombineCocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/CombineCommunity/CombineCocoa";
@@ -919,7 +921,7 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4D7C9FA42BFC958700E41A65 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
 			productName = KakaoSDK;
-
+        };
 		611177B02BFC808F00A635B8 /* CombineCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 611177AF2BFC808F00A635B8 /* XCRemoteSwiftPackageReference "CombineCocoa" */;
