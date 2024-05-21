@@ -10,12 +10,30 @@ import SnapKit
 import CoreData
 
 class AddVocaViewController: UIViewController {
+    
+    var bookCase: BookCase?
    
     var bookCaseLabel = LabelFactory().makeLabel(title: "선택한 단어장 이름", size: 20, textAlignment: .center, isBold: true)
     
+
+
+    var backButton = UIButton()
+    //단어장 페이지로 돌아가기
+    @objc func backButtonTapped() {
+    self.dismiss(animated: true, completion: nil)
+    }
+    
+
     var addVocaButton = UIButton()
     
     var searchBar = UISearchBar()
+
+    var countLabel = LabelFactory().makeLabel(title: "", size: 15, textAlignment: .left, isBold: false)
+    var tableView = UITableView()
+    var wordList: [WordEntity] = []
+    var filteredWordList: [WordEntity] = []
+    var isFiltering: Bool = false
+
     
     var countLabel = LabelFactory().makeLabel(title: "", size: 15, textAlignment: .left, isBold: false)
     
@@ -28,6 +46,7 @@ class AddVocaViewController: UIViewController {
     @objc func presentInsertVocaPage() {
         let scrollView = UIScrollView()
         let insertVocaView = InsertVocaViewController(scrollView: scrollView)
+        insertVocaView.selectedBookCase = self.bookCase // 단어장 데이터 전달
         insertVocaView.modalPresentationStyle = .fullScreen
         self.present(insertVocaView, animated: true, completion: nil)
     }
@@ -37,15 +56,25 @@ class AddVocaViewController: UIViewController {
         // Do any additional setup after loading the view.
         view.backgroundColor = .white
         
-        if let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last {
-            print("Documents Directory: \(documentsDirectoryURL)")
-        }
+        //코어데이터 작동 확인용
+        
+//        if let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last {
+//            print("Documents Directory: \(documentsDirectoryURL)")
+//        }
+        
+        backButton.tintColor = .black
+        backButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
+        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        
+        self.searchBar.delegate = self
+        filteredWordList = wordList
+        searchBar.clipsToBounds
         
         addVocaButton.tintColor = .black
         addVocaButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
         addVocaButton.addTarget(self, action: #selector(presentInsertVocaPage), for: .touchUpInside)
 
-        countLabel.text = "총 \(wordList.count)단어"
+        updateCountLabel()
         
         vocaCollectionView.dataSource = self
         vocaCollectionView.delegate = self
@@ -54,7 +83,7 @@ class AddVocaViewController: UIViewController {
         
         self.configureUI()
         self.makeConstraints()
-        self.searchBar.delegate = self
+        
         
         getData()
        
@@ -68,12 +97,21 @@ class AddVocaViewController: UIViewController {
     
     func getData() {
         wordList = CoreDataManager.shared.getWordList()
-        
+     
         vocaCollectionView.reloadData()
+
+        filteredWordList = wordList
+        updateCountLabel()
+        self.tableView.reloadData()
+
     }
     
+    func updateCountLabel() {
+        countLabel.text = "총 \(wordList.count)단어"
+    }
     
     func configureUI() {
+        self.view.addSubview(backButton)
         self.view.addSubview(bookCaseLabel)
         self.view.addSubview(addVocaButton)
         self.view.addSubview(searchBar)
@@ -82,6 +120,14 @@ class AddVocaViewController: UIViewController {
     }
     
     func makeConstraints() {
+
+        
+        backButton.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(4)
+            $0.leading.equalToSuperview().offset(20)
+        }
+        
+
         bookCaseLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(4)
             $0.centerX.equalToSuperview()
@@ -120,10 +166,28 @@ class AddVocaViewController: UIViewController {
 
 extension AddVocaViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        searchResults = vocaList.filter
+        if searchText.isEmpty {
+            isFiltering = false
+            filteredWordList = wordList
+        } else {
+            isFiltering = true
+            filteredWordList = wordList.filter { wordEntity in
+                let wordMatch = wordEntity.word?.localizedCaseInsensitiveContains(searchText) ?? false
+                let definitionMatch = wordEntity.definition?.localizedCaseInsensitiveContains(searchText) ?? false
+                return wordMatch || definitionMatch
+            }
+        }
+        tableView.reloadData()
+    }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        filteredWordList = wordList
+        tableView.reloadData()
+        searchBar.resignFirstResponder()
     }
 }
+
 
 extension AddVocaViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -134,6 +198,16 @@ extension AddVocaViewController: UICollectionViewDelegate, UICollectionViewDataS
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VocaCollectionViewCell.identifier, for: indexPath) as? VocaCollectionViewCell else { fatalError("컬렉션 뷰 오류")}
         
         let item = wordList[indexPath.row]
+
+extension AddVocaViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return isFiltering ? filteredWordList.count : wordList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: VocaTableViewCell.identifier, for: indexPath) as? VocaTableViewCell else { fatalError("테이블 뷰 에러") }
+        let item = isFiltering ? filteredWordList[indexPath.row] : wordList[indexPath.row]
+
         
         cell.wordLabel.text = item.word
         cell.pronunciationLabel.text = item.pronunciation
@@ -146,3 +220,44 @@ extension AddVocaViewController: UICollectionViewDelegate, UICollectionViewDataS
         return cell
     }
 }
+
+
+extension AddVocaViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = VocaDetailViewController()
+        
+        let item =  wordList[indexPath.row]
+        
+        detailVC.word.text = item.word
+        detailVC.pronunciation.text = item.pronunciation
+        detailVC.definition.text = item.definition
+        detailVC.detail.text = item.detail
+        detailVC.synonym.text = item.synonym
+        detailVC.antonym.text = item.antonym
+        
+        detailVC.modalPresentationStyle = .automatic
+        
+        self.present(detailVC, animated: true, completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
+            
+            let wordToDelete = self.wordList[indexPath.row]
+            
+            self.wordList.remove(at: indexPath.row)
+            
+            CoreDataManager.shared.deleteWord(word: wordToDelete)
+            
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.updateCountLabel()
+            completionHandler(true)
+        }
+        
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        return configuration
+        
+    }
+}
+

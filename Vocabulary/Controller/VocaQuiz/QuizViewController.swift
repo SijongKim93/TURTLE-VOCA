@@ -30,30 +30,43 @@ class QuizViewController: UIViewController {
         return stackView
     }()
     
-    let dummyGenerator = DummyGenerator()
     let alertController = AlertController()
     
-    var dummyData = [DummyModel]()
     var quizData = [VocaQuizModel]()
     var currentNumber: Int = 0
     var score: Int = 0
     var titleText = ""
+    var receivedData: GenQuizModel?
+    var quizArray = [WordEntity]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         
         layout()
-        generate(count: 5)
+        getData()
+        generate(count: receivedData!.quizCount)
         gameStart()
-        print(quizData)
     }
+    
+    func checkException () {
+        if receivedData!.quizCount > quizArray.count {
+            receivedData?.quizCount = quizArray.count
+        }
+    }
+    
+    func getData () {
+        quizArray = CoreDataManager.shared.getSpecificData(query: receivedData!.category, onError: { [unowned self] error in
+            let alert = alertController.makeNormalAlert(title: "에러발생", message: "\(error.localizedDescription)가 발생했습니다.")
+            self.present(alert, animated: true)
+        }).shuffled()
+    }
+    
     
     private func generate(count: Int) { // 문제배열이 생성
         
         for _ in 0..<count {
-            let dummyData = dummyGenerator.makeDummy() // Coredata 가져올애 지금은 Dummy
-            let numberArray = (0...dummyData.count-1).map{ $0 }.shuffled()
+            let numberArray = (0...quizArray.count-1).map{ $0 }.shuffled()
             
             let getFourNumberArray = numberArray.prefix(4).map { numberArray[$0] } // 3 0 1 8
             
@@ -63,12 +76,12 @@ class QuizViewController: UIViewController {
             let number4 = getFourNumberArray[3] // 8
             
             
-            let answerInfo = dummyData[number1]
-            let question = answerInfo.words
-            let answer = answerInfo.meaning
-            let first = dummyData[number2].meaning
-            let second = dummyData[number3].meaning
-            let third = dummyData[number4].meaning
+            let answerInfo = quizArray[number1]
+            let question = answerInfo.word!
+            let answer = answerInfo.definition!
+            let first = quizArray[number2].definition!
+            let second = quizArray[number3].definition!
+            let third = quizArray[number4].definition!
             
             let dummy = VocaQuizModel(question: question, answer: answer, incorrectFirst: first, incorrectSecond: second, incorrectThird: third)
             quizData.append(dummy)

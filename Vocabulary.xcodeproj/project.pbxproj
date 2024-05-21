@@ -27,7 +27,6 @@
 		611186EF2BF4DCB6009C2FE9 /* FlashCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611186EE2BF4DCB6009C2FE9 /* FlashCardViewController.swift */; };
 		611186F22BF4DD5E009C2FE9 /* FlashHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611186F12BF4DD5E009C2FE9 /* FlashHeaderView.swift */; };
 		611186F42BF4DE09009C2FE9 /* FlashBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611186F32BF4DE09009C2FE9 /* FlashBodyView.swift */; };
-		612ABC892BF1EA480056F127 /* DummyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC882BF1EA480056F127 /* DummyModel.swift */; };
 		612ABC8F2BF200370056F127 /* GameMainHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC8E2BF200370056F127 /* GameMainHeaderView.swift */; };
 		612ABC912BF2003E0056F127 /* GameMainBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC902BF2003E0056F127 /* GameMainBottomView.swift */; };
 		612D10CD2BF718DD0097EDBA /* FilterPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D10C92BF718DD0097EDBA /* FilterPresentationController.swift */; };
@@ -53,10 +52,20 @@
 		618E706F2BF25337007AEDFE /* QuizBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E706E2BF25337007AEDFE /* QuizBodyView.swift */; };
 		618E70712BF25354007AEDFE /* QuizBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E70702BF25354007AEDFE /* QuizBottomView.swift */; };
 		61AAEBC92BF724AE0032961C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 61AAEBC82BF724AE0032961C /* SnapKit */; };
-		61BCB0542BF2F4B600CF73E4 /* DummyGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0532BF2F4B600CF73E4 /* DummyGenerator.swift */; };
+		61B2FFB62BFB8A7D00CE039B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61B2FFB52BFB8A7D00CE039B /* GoogleService-Info.plist */; };
+		61B2FFB92BFB8A9A00CE039B /* ManageModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B2FFB72BFB8A9A00CE039B /* ManageModalPresentationController.swift */; };
+		61B2FFBA2BFB8A9A00CE039B /* SelectVocaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B2FFB82BFB8A9A00CE039B /* SelectVocaViewController.swift */; };
+		61B2FFBD2BFB8AD900CE039B /* SelectHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B2FFBB2BFB8AD900CE039B /* SelectHeaderView.swift */; };
+		61B2FFBE2BFB8AD900CE039B /* SelectBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B2FFBC2BFB8AD900CE039B /* SelectBodyView.swift */; };
+		61B2FFC02BFB8AF500CE039B /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B2FFBF2BFB8AF500CE039B /* Int+Extension.swift */; };
+		61B2FFC22BFB8B0A00CE039B /* UIViewControllerTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B2FFC12BFB8B0A00CE039B /* UIViewControllerTransitioningDelegate.swift */; };
+		61B2FFC42BFBA0E300CE039B /* Picker+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B2FFC32BFBA0E300CE039B /* Picker+Extension.swift */; };
+		61B2FFC62BFBA44C00CE039B /* SelectBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B2FFC52BFBA44C00CE039B /* SelectBottomView.swift */; };
+		61B2FFC82BFBAD2900CE039B /* GenQuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B2FFC72BFBAD2900CE039B /* GenQuizModel.swift */; };
+		61B2FFCB2BFBBC7B00CE039B /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 61B2FFCA2BFBBC7B00CE039B /* ProgressHUD */; };
+		61B2FFCD2BFBD66F00CE039B /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B2FFCC2BFBD66F00CE039B /* NotificationCenter.swift */; };
 		61BCB0562BF337B100CF73E4 /* VocaQuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0552BF337B100CF73E4 /* VocaQuizModel.swift */; };
 		61BCB0592BF3597C00CF73E4 /* UIResponder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0582BF3597C00CF73E4 /* UIResponder+Extension.swift */; };
-		61CB7FC72BFB221600DFA96F /* GameMainBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CB7FC62BFB221600DFA96F /* GameMainBodyView.swift */; };
 		61CB7FCA2BFB29F400DFA96F /* ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CB7FC92BFB29F400DFA96F /* ThemeColor.swift */; };
 		61EE0BF22BF9775100FD2F32 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EE0BF12BF9775100FD2F32 /* RecordViewController.swift */; };
 		61EE0BF62BF9777600FD2F32 /* RecordHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EE0BF32BF9777600FD2F32 /* RecordHeaderView.swift */; };
@@ -72,11 +81,17 @@
 		61F75F5F2BF4F9E800FCC731 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F75F5E2BF4F9E800FCC731 /* AlertController.swift */; };
 		6B02ADED2BF6E88F006E0964 /* InsertVocaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02ADEC2BF6E88F006E0964 /* InsertVocaViewController.swift */; };
 		6B02ADEF2BF6E8B6006E0964 /* TextFieldFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02ADEE2BF6E8B6006E0964 /* TextFieldFactory.swift */; };
+
 		6B02ADF62BF6EB37006E0964 /* WordEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02ADF42BF6EB37006E0964 /* WordEntity+CoreDataClass.swift */; };
 		6B02ADF72BF6EB37006E0964 /* WordEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02ADF52BF6EB37006E0964 /* WordEntity+CoreDataProperties.swift */; };
+
+		6BBB36202BFAF54B0088A8CB /* VocaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBB361E2BFAF54B0088A8CB /* VocaTableViewCell.swift */; };
 		6BBB36222BFAF6050088A8CB /* VocaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBB36212BFAF6050088A8CB /* VocaDetailViewController.swift */; };
-		FB475D812BF75324007A6FFF /* BookCase+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB475D7F2BF75324007A6FFF /* BookCase+CoreDataClass.swift */; };
-		FB475D822BF75324007A6FFF /* BookCase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB475D802BF75324007A6FFF /* BookCase+CoreDataProperties.swift */; };
+		FB04CC6D2BFB7F2E00FC0EEA /* GameMainBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB04CC6C2BFB7F2E00FC0EEA /* GameMainBodyView.swift */; };
+		FBC59FC52BFB786C002B0113 /* WordEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC59FC12BFB786C002B0113 /* WordEntity+CoreDataClass.swift */; };
+		FBC59FC62BFB786C002B0113 /* WordEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC59FC22BFB786C002B0113 /* WordEntity+CoreDataProperties.swift */; };
+		FBC59FC72BFB786C002B0113 /* BookCase+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC59FC32BFB786C002B0113 /* BookCase+CoreDataClass.swift */; };
+		FBC59FC82BFB786C002B0113 /* BookCase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC59FC42BFB786C002B0113 /* BookCase+CoreDataProperties.swift */; };
 		FBE7EA412BF8778F00BE86E5 /* EditBookCaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7EA402BF8778F00BE86E5 /* EditBookCaseViewController.swift */; };
 		FBE7EA432BF877D200BE86E5 /* EditBookCaseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7EA422BF877D200BE86E5 /* EditBookCaseHeaderView.swift */; };
 		FBE7EA452BF8785700BE86E5 /* EditBookCaseBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7EA442BF8785700BE86E5 /* EditBookCaseBodyView.swift */; };
@@ -97,15 +112,16 @@
 		4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		4D1791D02BF23F0300E645C9 /* CalenderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderCollectionViewCell.swift; sourceTree = "<group>"; };
 		4D1791DC2BF45AD500E645C9 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
+
 		4D7C9F9C2BFB1E9C00E41A65 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4D7C9F9E2BFC32AC00E41A65 /* VocaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaCollectionViewCell.swift; sourceTree = "<group>"; };
+
 		4D9E8FA62BF8CCB2003F05D3 /* LoginModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModalViewController.swift; sourceTree = "<group>"; };
 		4D9E8FA82BF8CCE3003F05D3 /* LoginPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresentationController.swift; sourceTree = "<group>"; };
 		4D9E8FAA2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDetailTableViewCell.swift; sourceTree = "<group>"; };
 		611186EE2BF4DCB6009C2FE9 /* FlashCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardViewController.swift; sourceTree = "<group>"; };
 		611186F12BF4DD5E009C2FE9 /* FlashHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashHeaderView.swift; sourceTree = "<group>"; };
 		611186F32BF4DE09009C2FE9 /* FlashBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashBodyView.swift; sourceTree = "<group>"; };
-		612ABC882BF1EA480056F127 /* DummyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyModel.swift; sourceTree = "<group>"; };
 		612ABC8E2BF200370056F127 /* GameMainHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMainHeaderView.swift; sourceTree = "<group>"; };
 		612ABC902BF2003E0056F127 /* GameMainBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMainBottomView.swift; sourceTree = "<group>"; };
 		612D10C92BF718DD0097EDBA /* FilterPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterPresentationController.swift; sourceTree = "<group>"; };
@@ -131,10 +147,19 @@
 		618E706C2BF25328007AEDFE /* QuizHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizHeaderView.swift; sourceTree = "<group>"; };
 		618E706E2BF25337007AEDFE /* QuizBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBodyView.swift; sourceTree = "<group>"; };
 		618E70702BF25354007AEDFE /* QuizBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBottomView.swift; sourceTree = "<group>"; };
-		61BCB0532BF2F4B600CF73E4 /* DummyGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyGenerator.swift; sourceTree = "<group>"; };
+		61B2FFB52BFB8A7D00CE039B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		61B2FFB72BFB8A9A00CE039B /* ManageModalPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageModalPresentationController.swift; sourceTree = "<group>"; };
+		61B2FFB82BFB8A9A00CE039B /* SelectVocaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectVocaViewController.swift; sourceTree = "<group>"; };
+		61B2FFBB2BFB8AD900CE039B /* SelectHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectHeaderView.swift; sourceTree = "<group>"; };
+		61B2FFBC2BFB8AD900CE039B /* SelectBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectBodyView.swift; sourceTree = "<group>"; };
+		61B2FFBF2BFB8AF500CE039B /* Int+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
+		61B2FFC12BFB8B0A00CE039B /* UIViewControllerTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerTransitioningDelegate.swift; sourceTree = "<group>"; };
+		61B2FFC32BFBA0E300CE039B /* Picker+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Picker+Extension.swift"; sourceTree = "<group>"; };
+		61B2FFC52BFBA44C00CE039B /* SelectBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBottomView.swift; sourceTree = "<group>"; };
+		61B2FFC72BFBAD2900CE039B /* GenQuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenQuizModel.swift; sourceTree = "<group>"; };
+		61B2FFCC2BFBD66F00CE039B /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		61BCB0552BF337B100CF73E4 /* VocaQuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaQuizModel.swift; sourceTree = "<group>"; };
 		61BCB0582BF3597C00CF73E4 /* UIResponder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Extension.swift"; sourceTree = "<group>"; };
-		61CB7FC62BFB221600DFA96F /* GameMainBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMainBodyView.swift; sourceTree = "<group>"; };
 		61CB7FC92BFB29F400DFA96F /* ThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColor.swift; sourceTree = "<group>"; };
 		61EE0BF12BF9775100FD2F32 /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		61EE0BF32BF9777600FD2F32 /* RecordHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordHeaderView.swift; sourceTree = "<group>"; };
@@ -149,11 +174,18 @@
 		61F75F5E2BF4F9E800FCC731 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		6B02ADEC2BF6E88F006E0964 /* InsertVocaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertVocaViewController.swift; sourceTree = "<group>"; };
 		6B02ADEE2BF6E8B6006E0964 /* TextFieldFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldFactory.swift; sourceTree = "<group>"; };
+
 		6B02ADF42BF6EB37006E0964 /* WordEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WordEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		6B02ADF52BF6EB37006E0964 /* WordEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WordEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+
+		6BBB361E2BFAF54B0088A8CB /* VocaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocaTableViewCell.swift; sourceTree = "<group>"; };
+
 		6BBB36212BFAF6050088A8CB /* VocaDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocaDetailViewController.swift; sourceTree = "<group>"; };
-		FB475D7F2BF75324007A6FFF /* BookCase+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookCase+CoreDataClass.swift"; sourceTree = "<group>"; };
-		FB475D802BF75324007A6FFF /* BookCase+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookCase+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		FB04CC6C2BFB7F2E00FC0EEA /* GameMainBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMainBodyView.swift; sourceTree = "<group>"; };
+		FBC59FC12BFB786C002B0113 /* WordEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WordEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		FBC59FC22BFB786C002B0113 /* WordEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WordEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		FBC59FC32BFB786C002B0113 /* BookCase+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookCase+CoreDataClass.swift"; sourceTree = "<group>"; };
+		FBC59FC42BFB786C002B0113 /* BookCase+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookCase+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FBE7EA402BF8778F00BE86E5 /* EditBookCaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookCaseViewController.swift; sourceTree = "<group>"; };
 		FBE7EA422BF877D200BE86E5 /* EditBookCaseHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookCaseHeaderView.swift; sourceTree = "<group>"; };
 		FBE7EA442BF8785700BE86E5 /* EditBookCaseBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookCaseBodyView.swift; sourceTree = "<group>"; };
@@ -164,6 +196,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61B2FFCB2BFBBC7B00CE039B /* ProgressHUD in Frameworks */,
 				61AAEBC92BF724AE0032961C /* SnapKit in Frameworks */,
 				61EE0BFD2BF9C0E000FD2F32 /* FirebaseAuth in Frameworks */,
 			);
@@ -206,7 +239,11 @@
 				4D1791B72BF1D5BF00E645C9 /* Info.plist */,
 				4D1791AF2BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld */,
 				618E705F2BF21970007AEDFE /* Constants.swift */,
+
 				4D7C9F9C2BFB1E9C00E41A65 /* GoogleService-Info.plist */,
+
+				61B2FFB52BFB8A7D00CE039B /* GoogleService-Info.plist */,
+
 			);
 			path = Vocabulary;
 			sourceTree = "<group>";
@@ -281,6 +318,8 @@
 				611186EE2BF4DCB6009C2FE9 /* FlashCardViewController.swift */,
 				61EEE68F2BF5E66E00803AA1 /* HangManGameViewController.swift */,
 				61EE0BF12BF9775100FD2F32 /* RecordViewController.swift */,
+				61B2FFB72BFB8A9A00CE039B /* ManageModalPresentationController.swift */,
+				61B2FFB82BFB8A9A00CE039B /* SelectVocaViewController.swift */,
 			);
 			path = VocaQuiz;
 			sourceTree = "<group>";
@@ -288,13 +327,13 @@
 		612ABC852BF1E9B70056F127 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6B02ADF42BF6EB37006E0964 /* WordEntity+CoreDataClass.swift */,
-				6B02ADF52BF6EB37006E0964 /* WordEntity+CoreDataProperties.swift */,
-				FB475D7F2BF75324007A6FFF /* BookCase+CoreDataClass.swift */,
-				FB475D802BF75324007A6FFF /* BookCase+CoreDataProperties.swift */,
-				612ABC882BF1EA480056F127 /* DummyModel.swift */,
+				FBC59FC12BFB786C002B0113 /* WordEntity+CoreDataClass.swift */,
+				FBC59FC22BFB786C002B0113 /* WordEntity+CoreDataProperties.swift */,
+				FBC59FC32BFB786C002B0113 /* BookCase+CoreDataClass.swift */,
+				FBC59FC42BFB786C002B0113 /* BookCase+CoreDataProperties.swift */,
 				61BCB0552BF337B100CF73E4 /* VocaQuizModel.swift */,
 				612D10D12BF719030097EDBA /* MyPageData.swift */,
+				61B2FFC72BFBAD2900CE039B /* GenQuizModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -302,6 +341,7 @@
 		612ABC8A2BF1FCF80056F127 /* VocaQuiz */ = {
 			isa = PBXGroup;
 			children = (
+				FB04CC6C2BFB7F2E00FC0EEA /* GameMainBodyView.swift */,
 				611186F12BF4DD5E009C2FE9 /* FlashHeaderView.swift */,
 				611186F32BF4DE09009C2FE9 /* FlashBodyView.swift */,
 				618E706C2BF25328007AEDFE /* QuizHeaderView.swift */,
@@ -311,12 +351,14 @@
 				61EEE6932BF5E70300803AA1 /* HangManBodyView.swift */,
 				61EEE6952BF5E74700803AA1 /* HangManBottomView.swift */,
 				612ABC8E2BF200370056F127 /* GameMainHeaderView.swift */,
-				61CB7FC62BFB221600DFA96F /* GameMainBodyView.swift */,
 				612ABC902BF2003E0056F127 /* GameMainBottomView.swift */,
 				61EE0BF52BF9777600FD2F32 /* RecordBodyView.swift */,
 				61EE0BF32BF9777600FD2F32 /* RecordHeaderView.swift */,
 				61EE0BF42BF9777600FD2F32 /* RecordTableViewCell.swift */,
 				618E70652BF229D1007AEDFE /* VocaQuizMainCollectionViewCell.swift */,
+				61B2FFBB2BFB8AD900CE039B /* SelectHeaderView.swift */,
+				61B2FFBC2BFB8AD900CE039B /* SelectBodyView.swift */,
+				61B2FFC52BFBA44C00CE039B /* SelectBottomView.swift */,
 			);
 			path = VocaQuiz;
 			sourceTree = "<group>";
@@ -372,6 +414,9 @@
 			isa = PBXGroup;
 			children = (
 				618E70672BF22A66007AEDFE /* CollectionView+Extension.swift */,
+				61B2FFC12BFB8B0A00CE039B /* UIViewControllerTransitioningDelegate.swift */,
+				61B2FFC32BFBA0E300CE039B /* Picker+Extension.swift */,
+				61B2FFCC2BFBD66F00CE039B /* NotificationCenter.swift */,
 			);
 			path = VocaQuiz;
 			sourceTree = "<group>";
@@ -379,7 +424,6 @@
 		61BCB0522BF2F4A900CF73E4 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				61BCB0532BF2F4B600CF73E4 /* DummyGenerator.swift */,
 				61F75F5E2BF4F9E800FCC731 /* AlertController.swift */,
 				612D10ED2BF71B630097EDBA /* CoreDataManager.swift */,
 			);
@@ -391,6 +435,7 @@
 			children = (
 				61BCB0582BF3597C00CF73E4 /* UIResponder+Extension.swift */,
 				61F75F5C2BF4ED2500FCC731 /* UIColor+Extension.swift */,
+				61B2FFBF2BFB8AF500CE039B /* Int+Extension.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -406,7 +451,11 @@
 		6BBB361F2BFAF54B0088A8CB /* AddVoca */ = {
 			isa = PBXGroup;
 			children = (
+
 				4D7C9F9E2BFC32AC00E41A65 /* VocaCollectionViewCell.swift */,
+
+				6BBB361E2BFAF54B0088A8CB /* VocaTableViewCell.swift */,
+
 			);
 			path = AddVoca;
 			sourceTree = "<group>";
@@ -439,6 +488,7 @@
 			packageProductDependencies = (
 				61AAEBC82BF724AE0032961C /* SnapKit */,
 				61EE0BFC2BF9C0E000FD2F32 /* FirebaseAuth */,
+				61B2FFCA2BFBBC7B00CE039B /* ProgressHUD */,
 			);
 			productName = Vocabulary;
 			productReference = 4D1791A32BF1D5BE00E645C9 /* Vocabulary.app */;
@@ -471,6 +521,7 @@
 			packageReferences = (
 				61AAEBC72BF724AE0032961C /* XCRemoteSwiftPackageReference "SnapKit" */,
 				61EE0BFB2BF9C0E000FD2F32 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				61B2FFC92BFBBC7B00CE039B /* XCRemoteSwiftPackageReference "ProgressHUD" */,
 			);
 			productRefGroup = 4D1791A42BF1D5BE00E645C9 /* Products */;
 			projectDirPath = "";
@@ -488,7 +539,7 @@
 			files = (
 				4D1791B32BF1D5BF00E645C9 /* Assets.xcassets in Resources */,
 				4D1791B62BF1D5BF00E645C9 /* Base in Resources */,
-				4D7C9F9D2BFB1E9C00E41A65 /* GoogleService-Info.plist in Resources */,
+				61B2FFB62BFB8A7D00CE039B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,8 +550,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61B2FFBD2BFB8AD900CE039B /* SelectHeaderView.swift in Sources */,
 				4D1791AB2BF1D5BE00E645C9 /* AddVocaViewController.swift in Sources */,
 				4D1791A72BF1D5BE00E645C9 /* AppDelegate.swift in Sources */,
+				FBC59FC62BFB786C002B0113 /* WordEntity+CoreDataProperties.swift in Sources */,
 				61EE0BF72BF9777600FD2F32 /* RecordTableViewCell.swift in Sources */,
 				612D10CE2BF718DD0097EDBA /* MenuDetailModalViewController.swift in Sources */,
 				612D10F82BF71BC40097EDBA /* MyPageTableViewCell.swift in Sources */,
@@ -510,41 +563,43 @@
 				611186EF2BF4DCB6009C2FE9 /* FlashCardViewController.swift in Sources */,
 				612ABC912BF2003E0056F127 /* GameMainBottomView.swift in Sources */,
 				612D10D02BF718DD0097EDBA /* MenuDetailPresentationController.swift in Sources */,
+				61B2FFC62BFBA44C00CE039B /* SelectBottomView.swift in Sources */,
 				61EEE6922BF5E69C00803AA1 /* HangManHeaderView.swift in Sources */,
 				612D10D22BF719030097EDBA /* MyPageData.swift in Sources */,
-				61BCB0542BF2F4B600CF73E4 /* DummyGenerator.swift in Sources */,
-				612ABC892BF1EA480056F127 /* DummyModel.swift in Sources */,
+				61B2FFC22BFB8B0A00CE039B /* UIViewControllerTransitioningDelegate.swift in Sources */,
 				618E70602BF21970007AEDFE /* Constants.swift in Sources */,
 				4D1791C32BF1E20F00E645C9 /* GameMainPageViewController.swift in Sources */,
 				61CB7FCA2BFB29F400DFA96F /* ThemeColor.swift in Sources */,
 				61F75F5F2BF4F9E800FCC731 /* AlertController.swift in Sources */,
 				61F75F5D2BF4ED2500FCC731 /* UIColor+Extension.swift in Sources */,
+				61B2FFBA2BFB8A9A00CE039B /* SelectVocaViewController.swift in Sources */,
 				4D1791A92BF1D5BE00E645C9 /* SceneDelegate.swift in Sources */,
 				6B02ADED2BF6E88F006E0964 /* InsertVocaViewController.swift in Sources */,
 				612D10EE2BF71B630097EDBA /* CoreDataManager.swift in Sources */,
 				611186F22BF4DD5E009C2FE9 /* FlashHeaderView.swift in Sources */,
-				6B02ADF62BF6EB37006E0964 /* WordEntity+CoreDataClass.swift in Sources */,
-				61CB7FC72BFB221600DFA96F /* GameMainBodyView.swift in Sources */,
-				FB475D812BF75324007A6FFF /* BookCase+CoreDataClass.swift in Sources */,
-				6B02ADF72BF6EB37006E0964 /* WordEntity+CoreDataProperties.swift in Sources */,
 				61EEE6902BF5E66E00803AA1 /* HangManGameViewController.swift in Sources */,
-				FB475D822BF75324007A6FFF /* BookCase+CoreDataProperties.swift in Sources */,
 				4D1791D12BF23F0300E645C9 /* CalenderCollectionViewCell.swift in Sources */,
+				FBC59FC82BFB786C002B0113 /* BookCase+CoreDataProperties.swift in Sources */,
 				612D10F52BF71B9B0097EDBA /* BookCaseHeaderView.swift in Sources */,
 				618E70662BF229D1007AEDFE /* VocaQuizMainCollectionViewCell.swift in Sources */,
+				61B2FFC82BFBAD2900CE039B /* GenQuizModel.swift in Sources */,
+				61B2FFBE2BFB8AD900CE039B /* SelectBodyView.swift in Sources */,
 				61EEE6982BF5EDD900803AA1 /* ButtonFactory.swift in Sources */,
 				61BCB0592BF3597C00CF73E4 /* UIResponder+Extension.swift in Sources */,
 				618E706F2BF25337007AEDFE /* QuizBodyView.swift in Sources */,
 				618E70682BF22A66007AEDFE /* CollectionView+Extension.swift in Sources */,
 				612D10CD2BF718DD0097EDBA /* FilterPresentationController.swift in Sources */,
+				FB04CC6D2BFB7F2E00FC0EEA /* GameMainBodyView.swift in Sources */,
 				4D1791C52BF1E27300E645C9 /* CalenderViewController.swift in Sources */,
 				6B02ADEF2BF6E8B6006E0964 /* TextFieldFactory.swift in Sources */,
+				FBC59FC52BFB786C002B0113 /* WordEntity+CoreDataClass.swift in Sources */,
 				4D9E8FA92BF8CCE3003F05D3 /* LoginPresentationController.swift in Sources */,
 				612D10D82BF719610097EDBA /* MenuDetailTableViewCell.swift in Sources */,
 				618E70712BF25354007AEDFE /* QuizBottomView.swift in Sources */,
 				FBE7EA412BF8778F00BE86E5 /* EditBookCaseViewController.swift in Sources */,
 				FBE7EA432BF877D200BE86E5 /* EditBookCaseHeaderView.swift in Sources */,
 				612D10CF2BF718DD0097EDBA /* FilterDetailModalViewController.swift in Sources */,
+				61B2FFC42BFBA0E300CE039B /* Picker+Extension.swift in Sources */,
 				4D9E8FAB2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift in Sources */,
 				61EE0BF62BF9777600FD2F32 /* RecordHeaderView.swift in Sources */,
 				612ABC8F2BF200370056F127 /* GameMainHeaderView.swift in Sources */,
@@ -552,8 +607,11 @@
 				61BCB0562BF337B100CF73E4 /* VocaQuizModel.swift in Sources */,
 				4D9E8FA72BF8CCB2003F05D3 /* LoginModalViewController.swift in Sources */,
 				61EEE6962BF5E74700803AA1 /* HangManBottomView.swift in Sources */,
+				61B2FFC02BFB8AF500CE039B /* Int+Extension.swift in Sources */,
+				61B2FFCD2BFBD66F00CE039B /* NotificationCenter.swift in Sources */,
 				612D10F42BF71B9B0097EDBA /* BookCaseBodyView.swift in Sources */,
 				4D1791C12BF1E1F700E645C9 /* AddBookCaseViewController.swift in Sources */,
+				61B2FFB92BFB8A9A00CE039B /* ManageModalPresentationController.swift in Sources */,
 				61EE0BF22BF9775100FD2F32 /* RecordViewController.swift in Sources */,
 				4D1791B12BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld in Sources */,
 				6BBB36222BFAF6050088A8CB /* VocaDetailViewController.swift in Sources */,
@@ -564,7 +622,11 @@
 				618E70572BF2039E007AEDFE /* LabelFactory.swift in Sources */,
 				FBE7EA452BF8785700BE86E5 /* EditBookCaseBodyView.swift in Sources */,
 				612D10E92BF71B130097EDBA /* AddBookCaseBodyView.swift in Sources */,
+
 				4D7C9F9F2BFC32AC00E41A65 /* VocaCollectionViewCell.swift in Sources */,
+
+				FBC59FC72BFB786C002B0113 /* BookCase+CoreDataClass.swift in Sources */,
+
 				4D1791C72BF1E27F00E645C9 /* MyPageViewController.swift in Sources */,
 				612D10E02BF719D20097EDBA /* BookCaseViewController.swift in Sources */,
 			);
@@ -799,6 +861,14 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		61B2FFC92BFBBC7B00CE039B /* XCRemoteSwiftPackageReference "ProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/relatedcode/ProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 14.1.3;
+			};
+		};
 		61EE0BFB2BF9C0E000FD2F32 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -814,6 +884,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 61AAEBC72BF724AE0032961C /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		61B2FFCA2BFBBC7B00CE039B /* ProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 61B2FFC92BFBBC7B00CE039B /* XCRemoteSwiftPackageReference "ProgressHUD" */;
+			productName = ProgressHUD;
 		};
 		61EE0BFC2BF9C0E000FD2F32 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;

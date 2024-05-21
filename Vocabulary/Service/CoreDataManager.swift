@@ -95,7 +95,7 @@ final class CoreDataManager {
     }
     
     //단어 저장
-    func saveWord(word: String, definition: String, detail: String, pronunciation: String, synonym: String, antonym: String) {
+    func saveWord(word: String, definition: String, detail: String, pronunciation: String, synonym: String, antonym: String, to bookCase: String) {
         guard let context = managedContext else {
             print("Error: managedContext is nil")
             return
@@ -110,6 +110,8 @@ final class CoreDataManager {
         newWord.antonym = antonym
         newWord.date = Date()
         newWord.memory = false
+        
+        newWord.bookCaseName = bookCase  // 관계 설정
         
         do {
             try context.save()
@@ -271,4 +273,20 @@ final class CoreDataManager {
             print("Failed to delete word: \(error)")
         }
     }
+    
+    func getSpecificData(query: String, onError: @escaping (Error) -> Void) -> [WordEntity] {
+        var array = [WordEntity]()
+        let request: NSFetchRequest<WordEntity> = WordEntity.fetchRequest()
+        let predicate = NSPredicate(format: "bookCaseName == %@", query)
+        request.predicate = predicate
+        
+        do {
+                array = try managedContext!.fetch(request)
+        } catch {
+           onError(error)
+        }
+        
+        return array
+    }
+    
 }

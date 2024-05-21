@@ -30,6 +30,7 @@ class BookCaseViewController: UIViewController{
         NotificationCenter.default.addObserver(self, selector: #selector(didBookCase), name: NSNotification.Name("didBookCase"), object: nil)
         
         bodyView.delagateEdit = self
+        bodyView.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -58,5 +59,20 @@ extension BookCaseViewController: EditBookCaseBodyCellDelegate {
         let editBookCaseVC = EditBookCaseViewController()
         editBookCaseVC.bookCaseData = bookCaseData
         present(editBookCaseVC, animated: true, completion: nil)
+    }
+}
+
+
+extension BookCaseViewController: BookCaseBodyViewDelegate {
+    func didSelectBookCase(_ bookCase: NSManagedObject) {
+        guard let bookCase = bookCase as? BookCase else {
+            print("Error: Failed NSManagedObject to BookCase")
+            return
+        }
+        
+        let addVocaVC = AddVocaViewController()
+        addVocaVC.bookCase = bookCase
+        addVocaVC.modalPresentationStyle = .fullScreen
+        present(addVocaVC, animated: true)
     }
 }

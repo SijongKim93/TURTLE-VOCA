@@ -27,8 +27,10 @@ class GameMainPageViewController: UIViewController {
         return stackView
     }()
     
-    let buttonList = ["FlashCard", "Quiz", "Hangman", "기록보기"]
-    
+    let selectVC = SelectVocaViewController()
+    let buttonList = ["FlashCard", "Quiz", "Hangman", "기록보기", "설정하기"]
+    let alertController = AlertController()
+    var receivedData: GenQuizModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +39,19 @@ class GameMainPageViewController: UIViewController {
         
         setUp()
         layout()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(getSetting), name: .sender, object: nil)
+    }
+    
+    func checkSetting() {
+        if receivedData == nil {
+            let alert = alertController.makeAlertWithCompletion(title: "설정값이 없습니다.", message: "게임 설정이 필요합니다.\n설정 페이지로 이동합니다.") { _ in
+                let vc = SelectVocaViewController()
+                vc.modalPresentationStyle = .custom
+                vc.transitioningDelegate = self
+                self.present(vc, animated: true, completion: nil)
+            }
+            self.present(alert, animated: true)
+        }
     }
     
     private func layout () {
@@ -66,5 +80,10 @@ class GameMainPageViewController: UIViewController {
         }
     }
     
+    @objc func getSetting (_ notification: Notification) {
+        if let data = notification.object as? GenQuizModel {
+            receivedData = data
+        }
+    }
     
 }
