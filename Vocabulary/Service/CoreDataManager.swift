@@ -80,7 +80,7 @@ final class CoreDataManager {
     }
     
     //단어장 수정
-    func updateBookCase(_ bookCase: NSManagedObject, name: String, explain: String, word: String, meaning: String, image: Data) {
+    func updateBookCase(_ bookCase: NSManagedObject, name: String, explain: String, word: String, meaning: String, image: Data, errorHandler: @escaping (Error) -> Void) {
         bookCase.setValue(name, forKey: "name")
         bookCase.setValue(explain, forKey: "explain")
         bookCase.setValue(word, forKey: "word")
@@ -91,7 +91,7 @@ final class CoreDataManager {
             try managedContext?.save()
             print("코어데이터가 수정되었습니다.")
         } catch let error as NSError {
-            print("Could not update. \(error), \(error.userInfo)")
+            errorHandler(error)
         }
     }
     

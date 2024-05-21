@@ -27,7 +27,6 @@ class BookCaseHeaderView: UIView {
         button.setImage(UIImage(systemName: "plus.circle"), for: .normal)
         button.contentMode = .scaleAspectFit
         button.tintColor = ThemeColor.mainColor
-        button.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -41,6 +40,8 @@ class BookCaseHeaderView: UIView {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupConstraints()
+        
+        plusButton.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
