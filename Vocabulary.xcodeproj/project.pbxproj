@@ -66,6 +66,9 @@
 		61BCB0562BF337B100CF73E4 /* VocaQuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0552BF337B100CF73E4 /* VocaQuizModel.swift */; };
 		61BCB0592BF3597C00CF73E4 /* UIResponder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0582BF3597C00CF73E4 /* UIResponder+Extension.swift */; };
 		61CB7FCA2BFB29F400DFA96F /* ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CB7FC92BFB29F400DFA96F /* ThemeColor.swift */; };
+		61D051742BFC3FB70056294A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D051732BFC3FB70056294A /* NetworkManager.swift */; };
+		61D051762BFC42470056294A /* TranslatedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D051752BFC42470056294A /* TranslatedModel.swift */; };
+		61D051782BFC43150056294A /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D051772BFC43150056294A /* Secret.swift */; };
 		61EE0BF22BF9775100FD2F32 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EE0BF12BF9775100FD2F32 /* RecordViewController.swift */; };
 		61EE0BF62BF9777600FD2F32 /* RecordHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EE0BF32BF9777600FD2F32 /* RecordHeaderView.swift */; };
 		61EE0BF72BF9777600FD2F32 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EE0BF42BF9777600FD2F32 /* RecordTableViewCell.swift */; };
@@ -153,6 +156,9 @@
 		61BCB0552BF337B100CF73E4 /* VocaQuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaQuizModel.swift; sourceTree = "<group>"; };
 		61BCB0582BF3597C00CF73E4 /* UIResponder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Extension.swift"; sourceTree = "<group>"; };
 		61CB7FC92BFB29F400DFA96F /* ThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColor.swift; sourceTree = "<group>"; };
+		61D051732BFC3FB70056294A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		61D051752BFC42470056294A /* TranslatedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatedModel.swift; sourceTree = "<group>"; };
+		61D051772BFC43150056294A /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		61EE0BF12BF9775100FD2F32 /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		61EE0BF32BF9777600FD2F32 /* RecordHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordHeaderView.swift; sourceTree = "<group>"; };
 		61EE0BF42BF9777600FD2F32 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
@@ -227,6 +233,7 @@
 				618E705F2BF21970007AEDFE /* Constants.swift */,
 				4D7C9F9C2BFB1E9C00E41A65 /* GoogleService-Info.plist */,
 				61B2FFB52BFB8A7D00CE039B /* GoogleService-Info.plist */,
+				61D051772BFC43150056294A /* Secret.swift */,
 			);
 			path = Vocabulary;
 			sourceTree = "<group>";
@@ -317,6 +324,7 @@
 				61BCB0552BF337B100CF73E4 /* VocaQuizModel.swift */,
 				612D10D12BF719030097EDBA /* MyPageData.swift */,
 				61B2FFC72BFBAD2900CE039B /* GenQuizModel.swift */,
+				61D051752BFC42470056294A /* TranslatedModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -409,6 +417,7 @@
 			children = (
 				61F75F5E2BF4F9E800FCC731 /* AlertController.swift */,
 				612D10ED2BF71B630097EDBA /* CoreDataManager.swift */,
+				61D051732BFC3FB70056294A /* NetworkManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -534,6 +543,7 @@
 				4D1791A72BF1D5BE00E645C9 /* AppDelegate.swift in Sources */,
 				FBC59FC62BFB786C002B0113 /* WordEntity+CoreDataProperties.swift in Sources */,
 				61EE0BF72BF9777600FD2F32 /* RecordTableViewCell.swift in Sources */,
+				61D051782BFC43150056294A /* Secret.swift in Sources */,
 				612D10CE2BF718DD0097EDBA /* MenuDetailModalViewController.swift in Sources */,
 				612D10F82BF71BC40097EDBA /* MyPageTableViewCell.swift in Sources */,
 				612D10F32BF71B9B0097EDBA /* BookCaseBodyCell.swift in Sources */,
@@ -560,6 +570,7 @@
 				4D1791D12BF23F0300E645C9 /* CalenderCollectionViewCell.swift in Sources */,
 				FBC59FC82BFB786C002B0113 /* BookCase+CoreDataProperties.swift in Sources */,
 				612D10F52BF71B9B0097EDBA /* BookCaseHeaderView.swift in Sources */,
+				61D051762BFC42470056294A /* TranslatedModel.swift in Sources */,
 				618E70662BF229D1007AEDFE /* VocaQuizMainCollectionViewCell.swift in Sources */,
 				61B2FFC82BFBAD2900CE039B /* GenQuizModel.swift in Sources */,
 				61B2FFBE2BFB8AD900CE039B /* SelectBodyView.swift in Sources */,
@@ -587,6 +598,7 @@
 				4D9E8FA72BF8CCB2003F05D3 /* LoginModalViewController.swift in Sources */,
 				61EEE6962BF5E74700803AA1 /* HangManBottomView.swift in Sources */,
 				61B2FFC02BFB8AF500CE039B /* Int+Extension.swift in Sources */,
+				61D051742BFC3FB70056294A /* NetworkManager.swift in Sources */,
 				61B2FFCD2BFBD66F00CE039B /* NotificationCenter.swift in Sources */,
 				612D10F42BF71B9B0097EDBA /* BookCaseBodyView.swift in Sources */,
 				4D1791C12BF1E1F700E645C9 /* AddBookCaseViewController.swift in Sources */,
