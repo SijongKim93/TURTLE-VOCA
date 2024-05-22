@@ -406,3 +406,81 @@ extension CoreDataManager {
         }
     }
 }
+
+// MARK: - Cloud to Coredata
+
+extension CoreDataManager {
+    func syncDataFromCloudKit() {
+        syncEntityFromCloudKit(recordType: "BookCase", entityType: BookCase.self)
+        syncEntityFromCloudKit(recordType: "WordEntity", entityType: WordEntity.self)
+    }
+
+    func syncEntityFromCloudKit<T: NSManagedObject>(recordType: String, entityType: T.Type) {
+        let database = CKContainer(identifier: "iCloud.com.teamproject.Vocabularytest").publicCloudDatabase
+        let query = CKQuery(recordType: recordType, predicate: NSPredicate(value: true))
+        
+        database.perform(query, inZoneWith: nil) { records, error in
+            if let error = error {
+                print("Error fetching records from CloudKit: \(error)")
+                return
+            }
+            
+            guard let records = records else { return }
+            
+            let context = self.managedContext!
+            
+            context.perform {
+                for record in records {
+                    self.updateOrInsertRecord(record, entityType: entityType, context: context)
+                }
+                
+                do {
+                    try context.save()
+                    print("\(recordType) records synced to Core Data successfully")
+                } catch {
+                    print("Error saving context: \(error)")
+                }
+            }
+        }
+    }
+
+    func updateOrInsertRecord<T: NSManagedObject>(_ record: CKRecord, entityType: T.Type, context: NSManagedObjectContext) {
+        let fetchRequest = T.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "uuid == %@", record.recordID.recordName)
+        
+        do {
+            let results = try context.fetch(fetchRequest)
+            
+            if let existingObject = results.first as? T {
+                populateManagedObject(existingObject, withRecord: record)
+            } else {
+                let newObject = T(context: context)
+                populateManagedObject(newObject, withRecord: record)
+            }
+        } catch {
+            print("Error fetching object: \(error)")
+        }
+    }
+
+    func populateManagedObject(_ object: NSManagedObject, withRecord record: CKRecord) {
+        if let bookCase = object as? BookCase {
+            bookCase.uuid = record.recordID.recordName
+            bookCase.name = record["name"] as? String
+            bookCase.explain = record["explain"] as? String
+            bookCase.meaning = record["meaning"] as? String
+            bookCase.image = record["image"] as? Data
+            bookCase.word = record["word"] as? String
+        } else if let wordEntity = object as? WordEntity {
+            wordEntity.uuid = record.recordID.recordName
+            wordEntity.antonym = record["antonym"] as? String
+            wordEntity.bookCaseName = record["bookCaseName"] as? String
+            wordEntity.date = record["date"] as? Date
+            wordEntity.definition = record["definition"] as? String
+            wordEntity.detail = record["detail"] as? String
+            wordEntity.memory = (record["memory"] as? Bool)!
+            wordEntity.pronunciation = record["pronunciation"] as? String
+            wordEntity.synonym = record["synonym"] as? String
+            wordEntity.word = record["word"] as? String
+        }
+    }
+}

@@ -93,6 +93,7 @@ class GameMainPageViewController: UIViewController {
     @objc func getSetting (_ notification: Notification) {
         if let data = notification.object as? GenQuizModel {
             receivedData = data
+            print(receivedData)
         }
     }
     
@@ -102,3 +103,5 @@ class GameMainPageViewController: UIViewController {
         }
     }
 }
+
+

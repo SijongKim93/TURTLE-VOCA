@@ -173,7 +173,7 @@ class MyPageViewController: UIViewController {
     }
     
     func reloadTableView() {
-            myPageTableView.reloadData()
+        myPageTableView.reloadData()
     }
     
     func updateSaveVocaCount() {
@@ -260,10 +260,14 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
                 present(loginModelVC, animated: true, completion: nil)
             }
         case 4:
-            print(index)
             CoreDataManager.shared.syncData()
+        case 5:
+            DispatchQueue.main.async {
+                CoreDataManager.shared.syncDataFromCloudKit()
+            }
         default :
             return
+        }
     }
 }
 
