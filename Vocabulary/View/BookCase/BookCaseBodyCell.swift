@@ -87,16 +87,16 @@ class BookCaseBodyCell: UICollectionViewCell {
         }
         
         nameStackView.snp.makeConstraints {
-            $0.top.equalTo(imageView.snp.bottom).offset(20)
+            $0.top.equalTo(imageView.snp.bottom).offset(15)
             $0.leading.equalToSuperview().inset(32)
             $0.trailing.equalToSuperview().inset(25)
         }
         
         languageLabel.snp.makeConstraints {
-            $0.top.equalTo(nameStackView.snp.bottom).offset(20)
+            $0.top.equalTo(nameStackView.snp.bottom).offset(15)
             $0.leading.equalToSuperview().inset(32)
             $0.trailing.equalToSuperview().inset(25)
-            $0.bottom.equalToSuperview().inset(20)
+            $0.bottom.equalToSuperview().inset(15)
         }
     }
     

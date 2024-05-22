@@ -15,7 +15,6 @@ class CalenderCollectionViewCell: UICollectionViewCell {
     
     let typeLabel: UILabel = {
         let label = UILabel()
-        label.text = "단어장 종류"
         label.font = .systemFont(ofSize: 15, weight: .light)
         label.textColor = .gray
         return label
@@ -95,6 +94,7 @@ class CalenderCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(with word: WordEntity) {
+        typeLabel.text = word.bookCaseName
         englishLabel.text = word.word
         meaningLabel.text = word.definition
         learnedButton.isSelected = word.memory

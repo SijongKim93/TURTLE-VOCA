@@ -55,7 +55,7 @@ final class CoreDataManager {
     }
     
     //단어장 가져오기
-    func fetchBookCase() -> [NSManagedObject] {
+    func fetchBookCase(errorHandler: @escaping (Error) -> Void) -> [NSManagedObject] {
         guard let context = managedContext else {
             print("Error: managedContext is nil")
             return []
@@ -65,18 +65,18 @@ final class CoreDataManager {
             let bookCases = try context.fetch(fetchRequest)
             return bookCases
         } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+            errorHandler(error)
             return []
         }
     }
     
     //단어장 삭제
-    func deleteBookCase(bookCase: NSManagedObject) {
+    func deleteBookCase(bookCase: NSManagedObject, errorHandler: @escaping (Error) -> Void) {
         managedContext?.delete(bookCase)
         do {
             try managedContext?.save()
         } catch let error as NSError {
-            print("Could not delete: \(error.localizedDescription)")
+            errorHandler(error)
         }
     }
     
@@ -97,7 +97,7 @@ final class CoreDataManager {
     }
     
     //단어 저장
-    func saveWord(word: String, definition: String, detail: String, pronunciation: String, synonym: String, antonym: String, to bookCase: String) {
+    func saveWord(word: String, definition: String, detail: String, pronunciation: String, synonym: String, antonym: String, to bookCase: BookCase, to bookCaseName: String) {
         guard let context = managedContext else {
             print("Error: managedContext is nil")
             return
@@ -113,13 +113,30 @@ final class CoreDataManager {
         newWord.date = Date()
         newWord.memory = false
         
-        newWord.bookCaseName = bookCase  // 관계 설정
+        newWord.bookCase = bookCase
+        newWord.bookCaseName = bookCase.name
         
         do {
             try context.save()
             print("단어가 저장되었습니다.")
         } catch {
             print("단어가 저장되지 않았습니다. 다시 시도해주세요. 오류: \(error)")
+        }
+    }
+    
+    //단어 수정
+    func updateVoca(_ bookCase: NSManagedObject, name: String, explain: String, word: String, meaning: String, image: Data, errorHandler: @escaping (Error) -> Void) {
+        bookCase.setValue(name, forKey: "name")
+        bookCase.setValue(explain, forKey: "explain")
+        bookCase.setValue(word, forKey: "word")
+        bookCase.setValue(meaning, forKey: "meaning")
+        bookCase.setValue(image, forKey: "image")
+        
+        do {
+            try managedContext?.save()
+            print("코어데이터가 수정되었습니다.")
+        } catch let error as NSError {
+            errorHandler(error)
         }
     }
     

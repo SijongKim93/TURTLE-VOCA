@@ -18,7 +18,7 @@ class GameMainBodyView: UIView {
     
     lazy var turtleImageView: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(named: "logo resize")
+        view.image = UIImage(named: "logoresize")
         view.contentMode = .scaleAspectFit
         return view
     }()

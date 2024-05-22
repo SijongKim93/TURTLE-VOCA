@@ -112,16 +112,16 @@ extension MenuDetailModalViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let alertController = AlertController()
+        
         if indexPath.row == 0 {
             delegate?.markWordsAsLearned()
             dismissViewController()
         } else if indexPath.row == 1 {
-            let alert = UIAlertController(title: "전체 삭제", message: "선택한 날짜의 모든 단어를 삭제하시겠습니까?", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
-            alert.addAction(UIAlertAction(title: "삭제", style: .destructive, handler: { _ in
-                self.delegate?.deleteAllWords()
-                self.dismissViewController()
-            }))
+            let alert = alertController.makeAlertWithCompletion(title: "전체 삭제", message: "선택한 날짜의 모든 단어를 삭제하시겠습니까?") { [weak self] _ in
+                self?.delegate?.deleteAllWords()
+                self?.dismissViewController()
+            }
             present(alert, animated: true, completion: nil)
         }
     }

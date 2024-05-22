@@ -11,6 +11,10 @@ import AVFoundation
 class VocaCollectionViewCell: UICollectionViewCell {
     static let identifier = "VocaCollectionViewCell"
     
+    var filteredWords: [WordEntity] = []
+    let coreDataManager = CoreDataManager.shared
+    var wordEntity: WordEntity?
+    
     let synthesizer = AVSpeechSynthesizer()
     
     var wordLabel: UILabel = {
@@ -44,10 +48,7 @@ class VocaCollectionViewCell: UICollectionViewCell {
         button.setImage(image, for: .normal)
         button.setImage(selectedImage, for: .selected)
         button.tintColor = ThemeColor.mainColor
-        button.addAction(UIAction(handler: { action in
-            guard let button = action.sender as? UIButton else { return }
-            button.isSelected.toggle()
-        }), for: .touchUpInside)
+        
         return button
     }()
     
@@ -76,8 +77,6 @@ class VocaCollectionViewCell: UICollectionViewCell {
         return stackView
     }()
     
-    var buttonAction: (() -> Void)?
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.configureUI()
@@ -94,13 +93,13 @@ class VocaCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(buttonStackView)
         contentView.addSubview(deleteButton)
         
-        deleteButton.setTitle("Delete", for: .normal)
+        deleteButton.setTitle("삭제", for: .normal)
         deleteButton.setTitleColor(.red, for: .normal)
         deleteButton.backgroundColor = .white
         deleteButton.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
         deleteButton.isHidden = true
         
-        checkToMemorizeButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        checkToMemorizeButton.addTarget(self, action: #selector(memorizeButtonTapped), for: .touchUpInside)
         speakButton.addTarget(self, action: #selector(speakButtonTapped), for: .touchUpInside)
         
         contentView.layer.borderWidth = 2.0
@@ -180,8 +179,11 @@ class VocaCollectionViewCell: UICollectionViewCell {
     }
 
     
-    @objc func buttonTapped() {
-        toggleButtonSelection()
+    @objc private func memorizeButtonTapped(_ sender: UIButton) {
+        guard let wordEntity = wordEntity else { return }
+        wordEntity.memory.toggle()
+        checkToMemorizeButton.isSelected = wordEntity.memory
+        coreDataManager.updateWordMemoryStatus(word: wordEntity, memory: wordEntity.memory)
     }
     
     @objc func speakButtonTapped() {
@@ -191,7 +193,13 @@ class VocaCollectionViewCell: UICollectionViewCell {
         synthesizer.speak(utterance)
     }
     
-    func toggleButtonSelection() {
-        checkToMemorizeButton.isSelected.toggle()
+    func configure(with word: WordEntity) {
+        wordEntity = word
+        wordLabel.text = word.word
+        pronunciationLabel.text = word.pronunciation
+        definitionLabel.text = word.definition
+        checkToMemorizeButton.isSelected = word.memory
     }
+    
+    var memorizeAction: ((Bool) -> Void)?
 }
