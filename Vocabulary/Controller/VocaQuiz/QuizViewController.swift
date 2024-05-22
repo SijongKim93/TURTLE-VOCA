@@ -37,6 +37,7 @@ class QuizViewController: UIViewController {
     var titleText = ""
     var receivedData: GenQuizModel?
     var quizArray = [WordEntity]()
+    var shuffledArray = [WordEntity]()
     var quizData = [VocaQuizModel]()
     //var data
     
@@ -62,7 +63,6 @@ class QuizViewController: UIViewController {
             self.present(alert, animated: true)
         }).shuffled()
         checkException()
-        quizArray = Array(quizArray.prefix(receivedData!.quizCount))
     }
     
     
@@ -91,6 +91,8 @@ class QuizViewController: UIViewController {
             let dummy = VocaQuizModel(question: question, answer: answer, incorrectFirst: first, incorrectSecond: second, incorrectThird: third)
             quizData.append(dummy)
             madeList.append(question)
+            print(dummy)
+            print("=====")
         }
         
     }
