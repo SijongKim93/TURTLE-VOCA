@@ -45,13 +45,7 @@ class GameMainPageViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(getData), name: .quiz, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(getData), name: .hangman, object: nil)
     }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        NotificationCenter.default.removeObserver(self, name: .sender, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .quiz, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .hangman, object: nil)
-    }
+
     
     func checkSetting() {
         if receivedData == nil {
