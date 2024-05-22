@@ -109,7 +109,7 @@ class InsertVocaViewController: UIViewController {
             .sink { _ in
                 self.configureSnapshot()
             }.store(in: &cancellables)
-    }
+    }   
     
     func observe() {
         wordTextField.textPublisher
@@ -257,6 +257,7 @@ extension InsertVocaViewController {
         tableDatasource = UITableViewDiffableDataSource(tableView: resultTable, cellProvider: { tableView, indexPath, model in
             
             let cell = tableView.dequeueReusableCell(withIdentifier: Constants.resultCell, for: indexPath) as! ResultTableViewCell
+            
             
             cell.wordLabel.text = model.text
             cell.selectionStyle = .none

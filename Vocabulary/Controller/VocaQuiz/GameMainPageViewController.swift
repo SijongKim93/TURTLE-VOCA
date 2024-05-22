@@ -31,6 +31,8 @@ class GameMainPageViewController: UIViewController {
     let buttonList = ["FlashCard", "Quiz", "Hangman", "기록보기", "설정하기"]
     let alertController = AlertController()
     var receivedData: GenQuizModel?
+    var dataList = [ReminderModel]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +42,15 @@ class GameMainPageViewController: UIViewController {
         setUp()
         layout()
         NotificationCenter.default.addObserver(self, selector: #selector(getSetting), name: .sender, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(getData), name: .quiz, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(getData), name: .hangman, object: nil)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: .sender, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .quiz, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .hangman, object: nil)
     }
     
     func checkSetting() {
@@ -86,4 +97,10 @@ class GameMainPageViewController: UIViewController {
         }
     }
     
+    @objc func getData(_ notification: Notification) {
+        if let data = notification.object as? ReminderModel {
+            //print(data)
+            dataList.append(data)
+        }
+    }
 }

@@ -15,7 +15,7 @@ class BookCaseHeaderView: UIView {
     
     let logoImageView: UIImageView = {
         let imageView = UIImageView()
-        if let logoImage = UIImage(named: "logo resize") {
+        if let logoImage = UIImage(named: "turtlevoca") {
             imageView.image = logoImage
         }
         imageView.contentMode = .scaleAspectFit
@@ -27,7 +27,6 @@ class BookCaseHeaderView: UIView {
         button.setImage(UIImage(systemName: "plus.circle"), for: .normal)
         button.contentMode = .scaleAspectFit
         button.tintColor = ThemeColor.mainColor
-        button.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -41,6 +40,8 @@ class BookCaseHeaderView: UIView {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupConstraints()
+        
+        plusButton.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -52,13 +53,13 @@ class BookCaseHeaderView: UIView {
         addSubview(headerStackView)
         
         logoImageView.snp.makeConstraints {
-            $0.width.equalTo(plusButton.snp.width).multipliedBy(3)
-            $0.height.equalTo(70)
+            $0.width.equalTo(plusButton.snp.width).multipliedBy(2)
+            $0.height.equalTo(20)
         }
         
         headerStackView.snp.makeConstraints{
-            $0.top.equalToSuperview().inset(23)
-            $0.bottom.equalToSuperview()
+            $0.top.equalToSuperview().inset(30)
+            $0.bottom.equalToSuperview().inset(20)
             $0.horizontalEdges.equalToSuperview().inset(30)
         }
         

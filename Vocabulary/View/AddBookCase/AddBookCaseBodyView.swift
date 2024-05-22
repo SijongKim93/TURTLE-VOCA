@@ -92,7 +92,6 @@ class AddBookCaseBodyView: UIView {
         button.setTitle("단어장 생성", for: .normal)
         button.backgroundColor = ThemeColor.mainColor
         button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -107,6 +106,8 @@ class AddBookCaseBodyView: UIView {
         explainTextField.delegate = self
         wordTextField.delegate = self
         meaningTextField.delegate = self
+        
+        addButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
     }
         
     required init?(coder: NSCoder) {
@@ -189,7 +190,7 @@ class AddBookCaseBodyView: UIView {
             shakeTextField(meaningTextField)
             isValid = false
         }
-
+        
         if isValid {
             guard let name = nameTextField.text,
                   let explain = explainTextField.text,
@@ -199,22 +200,21 @@ class AddBookCaseBodyView: UIView {
                 return
             }
             var imageData: Data?
-            if image == UIImage(systemName: "plus") { // 이미지 선택 안 해서 plus일 경우, 다른 기본 사진으로 저장
-                imageData = UIImage(named: "logo")?.jpegData(compressionQuality: 1.0)
+            if image == UIImage(systemName: "plus") { // 이미지 선택 안 해서 plus일 경우, 기본 사진으로 저장
+                imageData = UIImage(named: "launchScreen")?.jpegData(compressionQuality: 1.0)
             } else {
                 imageData = image.jpegData(compressionQuality: 1.0)
             }
-            coreDataManager.saveBookCase(name: name, explain: explain, word: word, meaning: meaning, image: imageData!)
-            delegate?.addButtonTapped()
+            if let imageData = imageData {
+                coreDataManager.saveBookCase(name: name, explain: explain, word: word, meaning: meaning, image: imageData, errorHandler: { _ in
+                    self.delegate?.errorAlert()
+                })
+                delegate?.addButtonTapped()
+            } else {
+                delegate?.errorAlert()
+            }
         }
     }
-    
-//    private let errorHandler: () -> Void = {
-//        let alertController = AlertController().makeNormalAlert(title: "Error", message: "단어장 저장에 실패했습니다.")
-//        DispatchQueue.main.async {
-//            UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
-//        }
-//    }
     
     func shakeTextField(_ textField: UITextField) {
         let animation = CABasicAnimation(keyPath: "position")
@@ -232,6 +232,7 @@ class AddBookCaseBodyView: UIView {
 protocol AddBookCaseBodyViewDelegate: AnyObject {
     func addButtonTapped()
     func didSelectImage()
+    func errorAlert()
 }
 
 extension AddBookCaseBodyView: UITextFieldDelegate {

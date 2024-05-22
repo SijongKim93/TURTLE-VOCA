@@ -22,14 +22,15 @@ class EditBookCaseBodyView: UIView {
     weak var delegate: EditBookCaseBodyViewDelegate?
     
     //imageStackView
-    let backImgLabel = LabelFactory().makeLabel(title: "배경 이미지", size: 20, textAlignment: .left, isBold: true)
+    let backImgLabel = LabelFactory().makeLabel(title: "배경 이미지", size: 18, textAlignment: .left, isBold: true)
     
     let backImgView: UIImageView = {
         let backImgView = UIImageView()
         backImgView.image = UIImage(systemName: "plus")
         backImgView.contentMode = .center
-        backImgView.tintColor = .white
-        backImgView.backgroundColor = .systemGray2
+        backImgView.tintColor = ThemeColor.mainColor
+        backImgView.layer.borderColor = ThemeColor.mainCgColor
+        backImgView.layer.borderWidth = 2
         backImgView.layer.cornerRadius = 10
         return backImgView
     }()
@@ -43,16 +44,8 @@ class EditBookCaseBodyView: UIView {
     }()
     
     //nameStackView
-    let nameLabel = LabelFactory().makeLabel(title: "단어장 이름", size: 20, textAlignment: .left, isBold: true)
-    
-    let nameTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "단어장 이름을 입력하세요"
-        textField.textColor = .black
-        textField.borderStyle = .roundedRect
-        return textField
-    }()
-    
+    let nameLabel = LabelFactory().makeLabel(title: "단어장 이름", size: 18, textAlignment: .left, isBold: true)
+    let nameTextField = TextFieldFactory().makeTextField(placeholder: "단어장 이름을 입력하세요")
     let nameCountLabel = LabelFactory().makeLabel(title: "0/10", size: 13, textAlignment: .right, isBold: false)
     
     lazy var nameStackView: UIStackView = {
@@ -64,16 +57,8 @@ class EditBookCaseBodyView: UIView {
     }()
     
     //explainStackView
-    let explainLabel = LabelFactory().makeLabel(title: "단어장 간단 설명", size: 20, textAlignment: .left, isBold: true)
-    
-    let explainTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "단어장에 대한 간단한 설명을 적어주세요"
-        textField.textColor = .black
-        textField.borderStyle = .roundedRect
-        return textField
-    }()
-    
+    let explainLabel = LabelFactory().makeLabel(title: "단어장 간단 설명", size: 18, textAlignment: .left, isBold: true)
+    let explainTextField = TextFieldFactory().makeTextField(placeholder: "단어장에 대한 간단한 설명을 적어주세요")
     let explainCountLabel = LabelFactory().makeLabel(title: "0/15", size: 13, textAlignment: .right, isBold: false)
     
     lazy var explainStackView: UIStackView = {
@@ -85,23 +70,9 @@ class EditBookCaseBodyView: UIView {
     }()
     
     //languageStackView
-    let languageLabel = LabelFactory().makeLabel(title: "언어 (단어 & 의미)", size: 20, textAlignment: .left, isBold: true)
-    
-    let wordTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "단어"
-        textField.textColor = .black
-        textField.borderStyle = .roundedRect
-        return textField
-    }()
-    
-    let meaningTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "의미"
-        textField.textColor = .black
-        textField.borderStyle = .roundedRect
-        return textField
-    }()
+    let languageLabel = LabelFactory().makeLabel(title: "언어 (단어 & 의미)", size: 18, textAlignment: .left, isBold: true)
+    let wordTextField = TextFieldFactory().makeTextField(placeholder: "단어")
+    let meaningTextField = TextFieldFactory().makeTextField(placeholder: "의미")
     
     // 단어 & 의미 스택뷰
     lazy var wmStackView: UIStackView = {
@@ -124,18 +95,20 @@ class EditBookCaseBodyView: UIView {
     let editButton: UIButton = {
         let button = UIButton()
         button.setTitle("단어장 수정", for: .normal)
-        button.backgroundColor = .black
-        button.layer.cornerRadius = 8
-        button.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
+        button.backgroundColor = ThemeColor.mainColor
+        button.layer.cornerRadius = 10
         return button
     }()
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
+        
         setupConstraints()
         configureUI()
         setupImageViewGesture()
         setupTextFieldData()
+        
+        editButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
     }
         
     required init?(coder: NSCoder) {
@@ -176,11 +149,7 @@ class EditBookCaseBodyView: UIView {
         //이미지 뷰 크기 조절
         backImgView.snp.makeConstraints{
             $0.height.equalTo(150)
-        }
-        
-        //설명 부분 텍스트 필드 크게 설정
-        explainTextField.snp.makeConstraints {
-            $0.height.equalTo(80)
+            $0.width.equalTo(120)
         }
         
         //버튼 크기 늘리기
@@ -203,7 +172,6 @@ class EditBookCaseBodyView: UIView {
     func setImage(_ image: UIImage) {
         backImgView.image = image
         backImgView.contentMode = .scaleToFill
-        backImgView.layer.cornerRadius = 10 // 이건 왜 안 되지.. ㅠ
     }
     
     @objc private func imageViewTapped(_ gestureRecognizer: UITapGestureRecognizer) {
@@ -252,7 +220,9 @@ class EditBookCaseBodyView: UIView {
                   let data = bookCaseData else {
                 return
             }
-            coreDataManager.updateBookCase(data, name: name, explain: explain, word: word, meaning: meaning, image: image)
+            coreDataManager.updateBookCase(data, name: name, explain: explain, word: word, meaning: meaning, image: image, errorHandler: { _ in
+                self.delegate?.editErrorAlert()
+            })
             delegate?.editButtonTapped()
         }
     }
@@ -265,13 +235,13 @@ class EditBookCaseBodyView: UIView {
         animation.fromValue = NSValue(cgPoint: CGPoint(x: textField.center.x - 10, y: textField.center.y))
         animation.toValue = NSValue(cgPoint: CGPoint(x: textField.center.x + 10, y: textField.center.y))
         textField.layer.add(animation, forKey: "position")
-        textField.layer.borderColor = UIColor.systemRed.cgColor
-        textField.layer.borderWidth = 1.0
-        textField.layer.cornerRadius = 5.0
+        textField.layer.borderWidth = 2
+        textField.layer.cornerRadius = 5
     }
 }
 
 protocol EditBookCaseBodyViewDelegate: AnyObject {
     func editButtonTapped()
     func didSelectImage()
+    func editErrorAlert()
 }

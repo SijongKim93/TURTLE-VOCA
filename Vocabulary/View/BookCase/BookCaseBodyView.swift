@@ -20,7 +20,7 @@ class BookCaseBodyView: UIView {
     
     let motivations = [
         "“성적이나 결과는 행동이 아니라 습관입니다.” \n – 아리스토텔레스",
-        "“끝날 때까지 항상 불가능해 보인다” \n – 넬슨 만델라",
+        "“끝날 때까진 항상 불가능해 보입니다.” \n – 넬슨 만델라",
         "“열심히 하면 할수록 행운도 더 많이 옵니다.” \n – 토마스 제퍼슨",
         "“산을 옮기는 사람은 작은 돌부터 옮기기 시작한다.” \n – 공자",
     ]
@@ -49,7 +49,7 @@ class BookCaseBodyView: UIView {
     //셀이 없을 때
     let backgroundImage: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "mainturtle"))
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.isHidden = false
         return imageView
     }()
@@ -91,7 +91,9 @@ class BookCaseBodyView: UIView {
         }
         
         backgroundImage.snp.makeConstraints {
-            $0.edges.equalTo(vocaBookCollectionView).inset(80)
+            $0.center.equalToSuperview()
+            $0.width.equalToSuperview().multipliedBy(0.8)
+            $0.height.equalToSuperview().multipliedBy(0.8)
         }
     }
     

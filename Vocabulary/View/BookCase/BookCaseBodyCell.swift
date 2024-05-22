@@ -106,7 +106,7 @@ class BookCaseBodyCell: UICollectionViewCell {
             imageView.image = UIImage(data: imageData)
             imageView.layer.cornerRadius = 30
             imageView.layer.masksToBounds = true
-            imageView.contentMode = .scaleToFill
+            imageView.contentMode = .scaleAspectFill
         }
         nameLabel.text = bookCaseData.value(forKey: "name") as? String ?? ""
         detailLabel.text = bookCaseData.value(forKey: "explain") as? String ?? ""
