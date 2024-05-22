@@ -227,12 +227,34 @@ class AddBookCaseBodyView: UIView {
         textField.layer.borderWidth = 2
         textField.layer.cornerRadius = 5
     }
+    
+    func setupKeyboardEvent() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ sender: Notification) {
+        delegate?.keyboardWillShow(sender)
+    }
+
+    @objc func keyboardWillHide(_ sender: Notification) {
+        delegate?.keyboardWillHide(sender)
+    }
 }
 
 protocol AddBookCaseBodyViewDelegate: AnyObject {
     func addButtonTapped()
     func didSelectImage()
     func errorAlert()
+    
+    func keyboardWillShow(_ sender: Notification)
+    func keyboardWillHide(_ sender: Notification)
 }
 
 extension AddBookCaseBodyView: UITextFieldDelegate {

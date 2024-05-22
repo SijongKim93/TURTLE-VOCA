@@ -98,7 +98,9 @@ class BookCaseBodyView: UIView {
     }
     
     func configureUI(){
-        bookCases = CoreDataManager.shared.fetchBookCase()
+        bookCases = CoreDataManager.shared.fetchBookCase(errorHandler: { _ in
+            self.delegate?.fetchErrorAlert()
+        })
         vocaBookCollectionView.reloadData()
         
         vocaBookCollectionView.delegate = self
@@ -201,7 +203,9 @@ extension BookCaseBodyView: DeleteBookCaseBodyCellDelegate {
     func didTapDeleteButton(on cell: BookCaseBodyCell) {
         guard let indexPath = vocaBookCollectionView.indexPath(for: cell) else { return }
         let bookCaseToDelete = bookCases[indexPath.item]
-        CoreDataManager.shared.deleteBookCase(bookCase: bookCaseToDelete)
+        CoreDataManager.shared.deleteBookCase(bookCase: bookCaseToDelete, errorHandler: { _ in
+            self.delegate?.deleteErrorAlert()
+        })
         self.configureUI()
     }
 }
@@ -240,4 +244,6 @@ extension BookCaseBodyView {
 //셀 선택 시
 protocol BookCaseBodyViewDelegate: AnyObject {
     func didSelectBookCase(_ bookCase: NSManagedObject)
+    func deleteErrorAlert()
+    func fetchErrorAlert()
 }

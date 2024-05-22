@@ -15,6 +15,7 @@ import CombineCocoa
 class InsertVocaViewController: UIViewController {
     
     var selectedBookCaseName: String?
+    var bookCaseData: BookCase?
     
     init(scrollView: UIScrollView) {
         self.scrollView = scrollView
@@ -81,7 +82,6 @@ class InsertVocaViewController: UIViewController {
         backButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
         
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
-     
         
         saveVocaButton.tintColor = .black
         saveVocaButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
@@ -95,6 +95,8 @@ class InsertVocaViewController: UIViewController {
         self.makeConstraints()
         self.observe()
         self.bind()
+        
+        setupKeyboardEvent() // 키보드
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -234,7 +236,7 @@ class InsertVocaViewController: UIViewController {
         if let word = wordTextField.text, let definition = definitionTextField.text,
            word.isEmpty == false, definition.isEmpty == false {
             
-            CoreDataManager.shared.saveWord(word: word, definition: definition, detail: detailTextField.text ?? "", pronunciation: pronunciationTextField.text ?? "", synonym: synonymTextField.text ?? "", antonym: antonymTextField.text ?? "", to: selectedBookCaseName!)
+            CoreDataManager.shared.saveWord(word: word, definition: definition, detail: detailTextField.text ?? "", pronunciation: pronunciationTextField.text ?? "", synonym: synonymTextField.text ?? "", antonym: antonymTextField.text ?? "", to: bookCaseData!, to: selectedBookCaseName!)
             
             let alert = AlertController().makeNormalAlert(title: "저장 완료", message: "단어가 저장되었습니다.")
             let confirmButton = UIAlertAction(title: "확인", style: .default) { [weak self] _ in self?.dismiss(animated: true)}
@@ -248,6 +250,48 @@ class InsertVocaViewController: UIViewController {
             self.present(alert, animated: true)
             print("단어와 단어의 뜻은 모두 입력해야 저장이 가능합니다.")
             
+        }
+    }
+    
+    func setupKeyboardEvent() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    
+    //텍스트 필드 입력 시 키보드가 가리지 않게
+    @objc func keyboardWillShow(_ sender: Notification) {
+        guard let userInfo = sender.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
+              let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else { return }
+        
+        let keyboardHeight = keyboardFrame.cgRectValue.height
+        let activeField = UIResponder.findFirstResponder() as? UIView
+        
+        guard let activeField = activeField else { return }
+        
+        let fieldFrame = activeField.convert(activeField.bounds, to: view)
+        let fieldBottom = fieldFrame.origin.y + fieldFrame.size.height
+        
+        let overlap = fieldBottom - (view.frame.height - keyboardHeight) + 20
+        if overlap > 0 {
+            UIView.animate(withDuration: animationDuration) {
+                self.view.frame.origin.y = -overlap
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(_ sender: Notification) {
+        guard let userInfo = sender.userInfo,
+              let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else { return }
+        
+        UIView.animate(withDuration: animationDuration) {
+            self.view.frame.origin.y = 0
         }
     }
 }

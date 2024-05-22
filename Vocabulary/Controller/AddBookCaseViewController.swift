@@ -11,9 +11,9 @@ import CoreData
 import PhotosUI
 
 class AddBookCaseViewController: UIViewController, AddBookCaseBodyViewDelegate {
-
+    
     var bookCaseData: NSManagedObject?
-
+    
     let headerView = AddBookCaseHeaderView()
     let bodyView = AddBookCaseBodyView()
     
@@ -32,6 +32,7 @@ class AddBookCaseViewController: UIViewController, AddBookCaseBodyViewDelegate {
         
         setupConstraints()
         bodyView.delegate = self
+        bodyView.setupKeyboardEvent()
     }
     
     private func setupConstraints(){
@@ -65,6 +66,37 @@ class AddBookCaseViewController: UIViewController, AddBookCaseBodyViewDelegate {
         let alertController = AlertController().makeNormalAlert(title: "에러", message: "단어장 저장에 실패했습니다.")
         present(alertController, animated: true, completion: nil)
     }
+    
+    //텍스트 필드 입력 시 키보드가 가리지 않게
+    func keyboardWillShow(_ sender: Notification) {
+        guard let userInfo = sender.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
+              let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else { return }
+        
+        let keyboardHeight = keyboardFrame.cgRectValue.height
+        let activeField = UIResponder.findFirstResponder() as? UIView
+        
+        guard let activeField = activeField else { return }
+        
+        let fieldFrame = activeField.convert(activeField.bounds, to: view)
+        let fieldBottom = fieldFrame.origin.y + fieldFrame.size.height
+        
+        let overlap = fieldBottom - (view.frame.height - keyboardHeight) + 20
+        if overlap > 0 {
+            UIView.animate(withDuration: animationDuration) {
+                self.view.frame.origin.y = -overlap
+            }
+        }
+    }
+    
+    func keyboardWillHide(_ sender: Notification) {
+        guard let userInfo = sender.userInfo,
+              let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else { return }
+        
+        UIView.animate(withDuration: animationDuration) {
+            self.view.frame.origin.y = 0
+        }
+    }
 }
 
 extension AddBookCaseViewController: PHPickerViewControllerDelegate {
@@ -82,5 +114,20 @@ extension AddBookCaseViewController: PHPickerViewControllerDelegate {
                 }
             }
         }
+    }
+}
+
+//포커스 받고 있는 텍스트 필드 찾기
+extension UIResponder {
+    private static weak var currentResponder: UIResponder?
+    
+    public static func findFirstResponder() -> UIResponder? {
+        UIResponder.currentResponder = nil
+        UIApplication.shared.sendAction(#selector(UIResponder._trap), to: nil, from: nil, for: nil)
+        return UIResponder.currentResponder
+    }
+    
+    @objc private func _trap() {
+        UIResponder.currentResponder = self
     }
 }

@@ -12,6 +12,7 @@ import CoreData
 class AddVocaViewController: UIViewController {
     
     var bookCaseName: String?
+    var bookCaseData: BookCase?
     
     var bookCaseLabel = LabelFactory().makeLabel(title: "선택한 단어장 이름" , size: 20, textAlignment: .center, isBold: true)
     var backButton = UIButton()
@@ -33,6 +34,7 @@ class AddVocaViewController: UIViewController {
     @objc func presentInsertVocaPage() {
         let scrollView = UIScrollView()
         let insertVocaView = InsertVocaViewController(scrollView: scrollView)
+        insertVocaView.bookCaseData = self.bookCaseData
         insertVocaView.selectedBookCaseName = self.bookCaseName // 단어장 데이터 전달
         insertVocaView.modalPresentationStyle = .fullScreen
         self.present(insertVocaView, animated: true, completion: nil)

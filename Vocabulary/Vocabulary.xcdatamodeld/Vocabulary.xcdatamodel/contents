@@ -6,7 +6,7 @@
         <attribute name="meaning" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="word" optional="YES" attributeType="String"/>
-        <relationship name="words" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WordEntity" inverseName="bookCase" inverseEntity="WordEntity"/>
+        <relationship name="words" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="WordEntity" inverseName="bookCase" inverseEntity="WordEntity"/>
     </entity>
     <entity name="WordEntity" representedClassName="WordEntity" syncable="YES">
         <attribute name="antonym" optional="YES" attributeType="String"/>
