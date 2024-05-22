@@ -276,8 +276,12 @@ final class CoreDataManager {
         }
     }
     
-    func getSpecificData(query: String, onError: @escaping (Error) -> Void) -> [WordEntity] {
+    func getSpecificData(query: String?, onError: @escaping (Error) -> Void) -> [WordEntity] {
         var array = [WordEntity]()
+        guard let query = query else {
+            return array
+        }
+        
         let request: NSFetchRequest<WordEntity> = WordEntity.fetchRequest()
         let predicate = NSPredicate(format: "bookCaseName == %@", query)
         request.predicate = predicate

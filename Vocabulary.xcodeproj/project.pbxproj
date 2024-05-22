@@ -26,8 +26,6 @@
 		4D9E8FA72BF8CCB2003F05D3 /* LoginModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E8FA62BF8CCB2003F05D3 /* LoginModalViewController.swift */; };
 		4D9E8FA92BF8CCE3003F05D3 /* LoginPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E8FA82BF8CCE3003F05D3 /* LoginPresentationController.swift */; };
 		4D9E8FAB2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E8FAA2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift */; };
-		611177AB2BFC5A5500A635B8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 611177A92BFC5A5500A635B8 /* GoogleService-Info.plist */; };
-		611177AC2BFC5A5500A635B8 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611177AA2BFC5A5500A635B8 /* Secret.swift */; };
 		611177AE2BFC7FF900A635B8 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611177AD2BFC7FF900A635B8 /* UITextField+Extension.swift */; };
 		611177B12BFC808F00A635B8 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 611177B02BFC808F00A635B8 /* CombineCocoa */; };
 		611177B32BFC8F5300A635B8 /* DiffableSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611177B22BFC8F5300A635B8 /* DiffableSectionModel.swift */; };
@@ -122,8 +120,6 @@
 		4D9E8FA62BF8CCB2003F05D3 /* LoginModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModalViewController.swift; sourceTree = "<group>"; };
 		4D9E8FA82BF8CCE3003F05D3 /* LoginPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresentationController.swift; sourceTree = "<group>"; };
 		4D9E8FAA2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDetailTableViewCell.swift; sourceTree = "<group>"; };
-		611177A92BFC5A5500A635B8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		611177AA2BFC5A5500A635B8 /* Secret.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		611177AD2BFC7FF900A635B8 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		611177B22BFC8F5300A635B8 /* DiffableSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableSectionModel.swift; sourceTree = "<group>"; };
 		611177B42BFC911000A635B8 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
@@ -215,6 +211,7 @@
 			children = (
 				4D1791A52BF1D5BE00E645C9 /* Vocabulary */,
 				4D1791A42BF1D5BE00E645C9 /* Products */,
+				6BD307252BFCB2B9006009BA /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -246,7 +243,6 @@
 				618E705F2BF21970007AEDFE /* Constants.swift */,
 				4D7C9FA02BFC94FE00E41A65 /* GoogleService-Info.plist */,
 				4D7C9FA22BFC953700E41A65 /* Secret.swift */,
-
 			);
 			path = Vocabulary;
 			sourceTree = "<group>";
@@ -464,6 +460,13 @@
 			path = AddVoca;
 			sourceTree = "<group>";
 		};
+		6BD307252BFCB2B9006009BA /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		FBE7EA3F2BF8776100BE86E5 /* EditBookCase */ = {
 			isa = PBXGroup;
 			children = (
@@ -528,11 +531,8 @@
 				61AAEBC72BF724AE0032961C /* XCRemoteSwiftPackageReference "SnapKit" */,
 				61EE0BFB2BF9C0E000FD2F32 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				61B2FFC92BFBBC7B00CE039B /* XCRemoteSwiftPackageReference "ProgressHUD" */,
-
 				4D7C9FA42BFC958700E41A65 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
-
 				611177AF2BFC808F00A635B8 /* XCRemoteSwiftPackageReference "CombineCocoa" */,
-
 			);
 			productRefGroup = 4D1791A42BF1D5BE00E645C9 /* Products */;
 			projectDirPath = "";
@@ -549,10 +549,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D1791B32BF1D5BF00E645C9 /* Assets.xcassets in Resources */,
-				611177AB2BFC5A5500A635B8 /* GoogleService-Info.plist in Resources */,
 				4D1791B62BF1D5BF00E645C9 /* Base in Resources */,
 				4D7C9FA12BFC94FE00E41A65 /* GoogleService-Info.plist in Resources */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,7 +625,6 @@
 				61EEE6962BF5E74700803AA1 /* HangManBottomView.swift in Sources */,
 				61B2FFC02BFB8AF500CE039B /* Int+Extension.swift in Sources */,
 				61D051742BFC3FB70056294A /* NetworkManager.swift in Sources */,
-				611177AC2BFC5A5500A635B8 /* Secret.swift in Sources */,
 				61B2FFCD2BFBD66F00CE039B /* NotificationCenter.swift in Sources */,
 				612D10F42BF71B9B0097EDBA /* BookCaseBodyView.swift in Sources */,
 				4D1791C12BF1E1F700E645C9 /* AddBookCaseViewController.swift in Sources */,
@@ -872,15 +869,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-
 		4D7C9FA42BFC958700E41A65 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.22.2;
-                };
-        };
+			};
+		};
 		611177AF2BFC808F00A635B8 /* XCRemoteSwiftPackageReference "CombineCocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/CombineCommunity/CombineCocoa";
@@ -916,17 +912,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-
 		4D7C9FA52BFC958700E41A65 /* KakaoSDK */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4D7C9FA42BFC958700E41A65 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
 			productName = KakaoSDK;
-        };
+		};
 		611177B02BFC808F00A635B8 /* CombineCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 611177AF2BFC808F00A635B8 /* XCRemoteSwiftPackageReference "CombineCocoa" */;
 			productName = CombineCocoa;
-
 		};
 		61AAEBC82BF724AE0032961C /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
