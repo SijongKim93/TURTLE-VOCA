@@ -15,6 +15,7 @@ import CombineCocoa
 class InsertVocaViewController: UIViewController {
     
     var selectedBookCaseName: String?
+    var bookCaseData: BookCase?
     
     init(scrollView: UIScrollView) {
         self.scrollView = scrollView
@@ -234,7 +235,7 @@ class InsertVocaViewController: UIViewController {
         if let word = wordTextField.text, let definition = definitionTextField.text,
            word.isEmpty == false, definition.isEmpty == false {
             
-            CoreDataManager.shared.saveWord(word: word, definition: definition, detail: detailTextField.text ?? "", pronunciation: pronunciationTextField.text ?? "", synonym: synonymTextField.text ?? "", antonym: antonymTextField.text ?? "", to: selectedBookCaseName!)
+            CoreDataManager.shared.saveWord(word: word, definition: definition, detail: detailTextField.text ?? "", pronunciation: pronunciationTextField.text ?? "", synonym: synonymTextField.text ?? "", antonym: antonymTextField.text ?? "", to: bookCaseData!, to: selectedBookCaseName!)
             
             let alert = AlertController().makeNormalAlert(title: "저장 완료", message: "단어가 저장되었습니다.")
             let confirmButton = UIAlertAction(title: "확인", style: .default) { [weak self] _ in self?.dismiss(animated: true)}

@@ -72,6 +72,7 @@ extension BookCaseViewController: BookCaseBodyViewDelegate {
         }
         
         let addVocaVC = AddVocaViewController()
+        addVocaVC.bookCaseData = bookCase
         addVocaVC.bookCaseName = bookCase.name
         addVocaVC.modalPresentationStyle = .fullScreen
         present(addVocaVC, animated: true)
