@@ -220,12 +220,10 @@ extension AddVocaViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VocaCollectionViewCell.identifier, for: indexPath) as? VocaCollectionViewCell else { fatalError("컬렉션 뷰 오류")}
         
-        
+
         let item = isFiltering ? filteredWordList[indexPath.row] : wordList[indexPath.row]
         
-        cell.wordLabel.text = item.word
-        cell.pronunciationLabel.text = item.pronunciation
-        cell.definitionLabel.text = item.definition
+        cell.configure(with: item)
         
         cell.deleteAction = { [weak self] in
             guard let self = self else { return }
@@ -237,6 +235,12 @@ extension AddVocaViewController: UICollectionViewDelegate, UICollectionViewDataS
             CoreDataManager.shared.deleteWord(word: item)
             collectionView.deleteItems(at: [indexPath])
             self.updateCountLabel()
+        }
+        
+        cell.memorizeAction = { [weak self] isSelected in
+            guard self != nil else { return }
+            item.memory = isSelected
+            CoreDataManager.shared.updateWordMemoryStatus(word: item, memory: isSelected)
         }
         
         return cell
