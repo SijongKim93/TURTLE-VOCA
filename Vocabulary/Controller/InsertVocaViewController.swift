@@ -107,7 +107,6 @@ class InsertVocaViewController: UIViewController {
     func bind() {
         $result
             .receive(on: DispatchQueue.main)
-            .print()
             .sink { _ in
                 self.configureSnapshot()
             }.store(in: &cancellables)
@@ -238,11 +237,11 @@ class InsertVocaViewController: UIViewController {
             
             CoreDataManager.shared.saveWord(word: word, definition: definition, detail: detailTextField.text ?? "", pronunciation: pronunciationTextField.text ?? "", synonym: synonymTextField.text ?? "", antonym: antonymTextField.text ?? "", to: bookCaseData!, to: selectedBookCaseName!)
             
-            let alert = AlertController().makeNormalAlert(title: "저장 완료", message: "단어가 저장되었습니다.")
-            let confirmButton = UIAlertAction(title: "확인", style: .default) { [weak self] _ in self?.dismiss(animated: true)}
-            
+            let alert = AlertController().makeAlertWithCompletion(title: "저장 완료", message: "단어가 저장되었습니다.") { [weak self] _ in
+                self?.dismiss(animated: true)
+            }
+
             self.present(alert, animated: true)
-            alert.addAction(confirmButton)
             
         } else {
             
@@ -296,6 +295,7 @@ class InsertVocaViewController: UIViewController {
     }
 }
 
+// MARK: - Diffable DataSource 적용
 extension InsertVocaViewController {
     func configureDiffableDataSource () {
         tableDatasource = UITableViewDiffableDataSource(tableView: resultTable, cellProvider: { tableView, indexPath, model in

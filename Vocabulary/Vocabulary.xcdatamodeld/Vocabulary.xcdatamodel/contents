@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="23D60" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22757" systemVersion="23F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="BookCase" representedClassName=".BookCase" syncable="YES">
         <attribute name="explain" optional="YES" attributeType="String"/>
         <attribute name="image" optional="YES" attributeType="Binary"/>
         <attribute name="meaning" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="uuid" optional="YES" attributeType="String"/>
         <attribute name="word" optional="YES" attributeType="String"/>
         <relationship name="words" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="WordEntity" inverseName="bookCase" inverseEntity="WordEntity"/>
     </entity>
@@ -17,6 +18,7 @@
         <attribute name="memory" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="pronunciation" optional="YES" attributeType="String"/>
         <attribute name="synonym" optional="YES" attributeType="String"/>
+        <attribute name="uuid" optional="YES" attributeType="String"/>
         <attribute name="word" optional="YES" attributeType="String"/>
         <relationship name="bookCase" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BookCase" inverseName="words" inverseEntity="BookCase"/>
     </entity>
