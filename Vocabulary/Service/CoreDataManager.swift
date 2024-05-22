@@ -123,6 +123,22 @@ final class CoreDataManager {
         }
     }
     
+    //단어 수정
+    func updateVoca(_ bookCase: NSManagedObject, name: String, explain: String, word: String, meaning: String, image: Data, errorHandler: @escaping (Error) -> Void) {
+        bookCase.setValue(name, forKey: "name")
+        bookCase.setValue(explain, forKey: "explain")
+        bookCase.setValue(word, forKey: "word")
+        bookCase.setValue(meaning, forKey: "meaning")
+        bookCase.setValue(image, forKey: "image")
+        
+        do {
+            try managedContext?.save()
+            print("코어데이터가 수정되었습니다.")
+        } catch let error as NSError {
+            errorHandler(error)
+        }
+    }
+    
     
     //단어 삭제
     

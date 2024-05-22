@@ -93,7 +93,7 @@ class VocaCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(buttonStackView)
         contentView.addSubview(deleteButton)
         
-        deleteButton.setTitle("Delete", for: .normal)
+        deleteButton.setTitle("삭제", for: .normal)
         deleteButton.setTitleColor(.red, for: .normal)
         deleteButton.backgroundColor = .white
         deleteButton.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
