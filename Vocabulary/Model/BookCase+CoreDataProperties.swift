@@ -2,7 +2,7 @@
 //  BookCase+CoreDataProperties.swift
 //  Vocabulary
 //
-//  Created by Luz on 5/20/24.
+//  Created by Dongik Song on 5/23/24.
 //
 //
 
@@ -21,6 +21,7 @@ extension BookCase {
     @NSManaged public var meaning: String?
     @NSManaged public var name: String?
     @NSManaged public var word: String?
+    @NSManaged public var uuid: String?
     @NSManaged public var words: NSSet?
 
 }

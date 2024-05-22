@@ -2,7 +2,7 @@
 //  BookCase+CoreDataClass.swift
 //  Vocabulary
 //
-//  Created by Luz on 5/20/24.
+//  Created by Dongik Song on 5/23/24.
 //
 //
 

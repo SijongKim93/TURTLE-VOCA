@@ -90,6 +90,9 @@ class RecordViewController: UIViewController {
     }
 }
 
+
+
+// MARK: - Diffable DataSource 적용
 extension RecordViewController {
     func configureDiffableDataSource () {
         tableDiffableDatasoure = UITableViewDiffableDataSource(tableView: recordBodyView.tableView, cellProvider: { tableView, indexPath, model in

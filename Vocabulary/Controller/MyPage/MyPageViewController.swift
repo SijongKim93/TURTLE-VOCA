@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import PhotosUI
 import AuthenticationServices
+import CloudKit
 
 class MyPageViewController: UIViewController {
     
@@ -138,6 +139,8 @@ class MyPageViewController: UIViewController {
         tableView.layer.borderColor = ThemeColor.mainColor.cgColor
         return tableView
     }()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -304,11 +307,25 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 3 {
+        let index = indexPath.row
+        
+        switch index {
+        case 0:
+            print(index)
+        case 1:
+            print(index)
+        case 2:
+            print(index)
+        case 3:
             let loginModelVC = LoginModalViewController()
             loginModelVC.modalPresentationStyle = .custom
             loginModelVC.transitioningDelegate = self
             present(loginModelVC, animated: true, completion: nil)
+        case 4:
+            print(index)
+            CoreDataManager.shared.syncData()
+        default :
+            return
         }
     }
 }
@@ -324,17 +341,18 @@ extension MyPageViewController: UIViewControllerTransitioningDelegate {
 }
 
 //extension MyPageViewController {
-//    
+//
 //    func getUserData() {
 //        if let user = Auth.auth().currentUser {
 //            let uid = user.uid
 //            let email = user.email
-//            
+//
 //            DispatchQueue.main.async{ [weak self] in
 //                self?.subLabel.text = uid
 //                self?.mailLabel.text = email
 //            }
-//            
+//
 //        }
 //    }
 //}
+

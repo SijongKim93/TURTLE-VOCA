@@ -2,7 +2,7 @@
 //  WordEntity+CoreDataProperties.swift
 //  Vocabulary
 //
-//  Created by Luz on 5/20/24.
+//  Created by Dongik Song on 5/23/24.
 //
 //
 
@@ -17,6 +17,7 @@ extension WordEntity {
     }
 
     @NSManaged public var antonym: String?
+    @NSManaged public var bookCaseName: String?
     @NSManaged public var date: Date?
     @NSManaged public var definition: String?
     @NSManaged public var detail: String?
@@ -24,7 +25,7 @@ extension WordEntity {
     @NSManaged public var pronunciation: String?
     @NSManaged public var synonym: String?
     @NSManaged public var word: String?
-    @NSManaged public var bookCaseName: String?
+    @NSManaged public var uuid: String?
     @NSManaged public var bookCase: BookCase?
 
 }

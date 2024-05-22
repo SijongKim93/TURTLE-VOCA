@@ -98,7 +98,6 @@ class GameMainPageViewController: UIViewController {
     
     @objc func getData(_ notification: Notification) {
         if let data = notification.object as? ReminderModel {
-            //print(data)
             dataList.append(data)
         }
     }
