@@ -11,7 +11,7 @@ import CoreData
 
 class AddVocaViewController: UIViewController {
     
-    var bookCase: BookCase?
+    var bookCaseName: String?
     
     var bookCaseLabel = LabelFactory().makeLabel(title: "선택한 단어장 이름" , size: 20, textAlignment: .center, isBold: true)
     var backButton = UIButton()
@@ -33,7 +33,7 @@ class AddVocaViewController: UIViewController {
     @objc func presentInsertVocaPage() {
         let scrollView = UIScrollView()
         let insertVocaView = InsertVocaViewController(scrollView: scrollView)
-        insertVocaView.selectedBookCase = self.bookCase // 단어장 데이터 전달
+        insertVocaView.selectedBookCaseName = self.bookCaseName // 단어장 데이터 전달
         insertVocaView.modalPresentationStyle = .fullScreen
         self.present(insertVocaView, animated: true, completion: nil)
     }
@@ -45,11 +45,11 @@ class AddVocaViewController: UIViewController {
         view.backgroundColor = .white
         
         //코어데이터 작동 확인용
-        
-        if let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last {
-            print("Documents Directory: \(documentsDirectoryURL)")
-        }
-        
+//        
+//        if let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last {
+//            print("Documents Directory: \(documentsDirectoryURL)")
+//        }
+//        
         backButton.tintColor = .black
         backButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
@@ -86,7 +86,16 @@ class AddVocaViewController: UIViewController {
     }
     
     func getData() {
-        wordList = CoreDataManager.shared.getWordList()
+        guard let bookCaseName = bookCaseName else {
+            wordList = []
+            filteredWordList = wordList
+            vocaCollectionView.reloadData()
+            updateCountLabel()
+            return
+        }
+        
+        wordList = CoreDataManager.shared.getSpecificData(query: bookCaseName) {error in  print("Failed to fetch words: \(error)")
+        }
         filteredWordList = wordList
         vocaCollectionView.reloadData()
         updateCountLabel()
