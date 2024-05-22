@@ -60,10 +60,17 @@ extension GameMainPageViewController: UICollectionViewDelegate, UICollectionView
             
             self.present(recordVC, animated: true)
         case 4 :
-            let vc = SelectVocaViewController()
-            vc.modalPresentationStyle = .custom
-            vc.transitioningDelegate = self
-            self.present(vc, animated: true, completion: nil)
+            checkData()
+            if data.filter({ $0.bookCaseName!.count != 0 }).count == 0 {
+                let alert = alertController.makeNormalAlert(title: "데이터가 없습니다.", message: "단어장과 단어를 생성해주세요\n게임을 진행하려면 한 단어장에 최소 4개의 단어가 필요합니다.")
+                self.present(alert, animated: true)
+            } else {
+                let vc = SelectVocaViewController()
+                vc.modalPresentationStyle = .custom
+                vc.transitioningDelegate = self
+                self.present(vc, animated: true, completion: nil)
+            }
+            
         default :
             return
         }

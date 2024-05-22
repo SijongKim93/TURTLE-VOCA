@@ -29,19 +29,35 @@ class SelectVocaViewController: UIViewController {
     var selectedCategory = ""
     var category = [String]()
     var receivedData: GenQuizModel?
+    let alertController = AlertController()
+    var checkList = [WordEntity]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        view.layer.cornerRadius = 25
+        
         layout()
         
         selectBodyView.numberLabel.text = quizCount.stringValue
         setup()
         getCategory()
-        // picker 움직임이 없을때.
-        selectedCategory = category[0]
+        
+        if !category.isEmpty {
+            selectedCategory = category[0] // picker 움직임이 없을때.
+        }
+        
     }
-
+    
+    func checkDataCount(query: String) -> Int {
+        var count = 0
+        checkList = CoreDataManager.shared.getSpecificData(query: query, onError: {[unowned self] error in
+            let alert = alertController.makeNormalAlert(title: "에러발생", message: "\(error.localizedDescription)가 발생했습니다.")
+            self.present(alert, animated: true)
+        })
+        count = checkList.count
+        return count
+    }
     
     private func getCategory () {
         category = Array(Set(CoreDataManager.shared.getWordList().map{ $0.bookCaseName! }).sorted(by: <))

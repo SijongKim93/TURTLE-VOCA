@@ -41,8 +41,13 @@ class SelectBottomView: UIView {
         let count = currentVC.quizCount
         let category = currentVC.selectedCategory
         let data = GenQuizModel(category: category, quizCount: count)
-        NotificationCenter.default.post(name: .sender, object: data)
-        currentVC.dismiss(animated: true)
+        if currentVC.checkDataCount(query: category) < 4 {
+            let alert = currentVC.alertController.makeNormalAlert(title: "갯수 부족", message: "한 단어장에 최소 4개의 단어가 있어야합니다.")
+            currentVC.present(alert, animated: true)
+        } else {
+            NotificationCenter.default.post(name: .sender, object: data)
+            currentVC.dismiss(animated: true)
+        }
     }
     
     private func layout () {
