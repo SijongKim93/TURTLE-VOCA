@@ -64,7 +64,6 @@ extension BookCaseViewController: EditBookCaseBodyCellDelegate {
     }
 }
 
-
 extension BookCaseViewController: BookCaseBodyViewDelegate {
     func didSelectBookCase(_ bookCase: NSManagedObject) {
         guard let bookCase = bookCase as? BookCase else {
@@ -76,5 +75,15 @@ extension BookCaseViewController: BookCaseBodyViewDelegate {
         addVocaVC.bookCaseName = bookCase.name
         addVocaVC.modalPresentationStyle = .fullScreen
         present(addVocaVC, animated: true)
+    }
+    
+    func deleteErrorAlert() {
+        let alertController = AlertController().makeNormalAlert(title: "에러", message: "단어장 삭제에 실패했습니다.")
+        present(alertController, animated: true)
+    }
+    
+    func fetchErrorAlert() {
+        let alertController = AlertController().makeNormalAlert(title: "에러", message: "단어장 불러오기에 실패했습니다.")
+        present(alertController, animated: true)
     }
 }

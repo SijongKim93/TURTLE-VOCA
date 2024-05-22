@@ -54,7 +54,7 @@ final class CoreDataManager {
     }
     
     //단어장 가져오기
-    func fetchBookCase() -> [NSManagedObject] {
+    func fetchBookCase(errorHandler: @escaping (Error) -> Void) -> [NSManagedObject] {
         guard let context = managedContext else {
             print("Error: managedContext is nil")
             return []
@@ -64,18 +64,18 @@ final class CoreDataManager {
             let bookCases = try context.fetch(fetchRequest)
             return bookCases
         } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+            errorHandler(error)
             return []
         }
     }
     
     //단어장 삭제
-    func deleteBookCase(bookCase: NSManagedObject) {
+    func deleteBookCase(bookCase: NSManagedObject, errorHandler: @escaping (Error) -> Void) {
         managedContext?.delete(bookCase)
         do {
             try managedContext?.save()
         } catch let error as NSError {
-            print("Could not delete: \(error.localizedDescription)")
+            errorHandler(error)
         }
     }
     
