@@ -15,46 +15,15 @@ class MyPageViewController: UIViewController {
     let myPageData = MyPageData()
     var coreDataManager: CoreDataManager?
     
-    let profileContainer: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(red: 48/255, green: 140/255, blue: 74/255, alpha: 1.0)
-        return view
-    }()
-    
-    let profileImage: UIImageView = {
-        let image = UIImageView()
-        image.backgroundColor = .white
-        image.image = UIImage(systemName: "person.crop.circle")
-        image.contentMode = .scaleAspectFill
-        image.tintColor = ThemeColor.mainColor
-        image.clipsToBounds = true
+    let logoImage: UIImageView = {
+        var image = UIImageView()
+        image.image = UIImage(named: "logoresize")
         return image
     }()
     
-    let changeImageButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("사진 변경", for: .normal)
-        button.setTitleColor(#colorLiteral(red: 0.1499286592, green: 0.3536310196, blue: 0.2331167161, alpha: 1), for: .normal)
-        return button
-    }()
-    
-    var mailLabel = LabelFactory().makeLabel(title: "rlatlwhd456@naver.com", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 17, textAlignment: .center, isBold: false)
-    let subLabel = LabelFactory().makeLabel(title: "김시종", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 17, textAlignment: .center, isBold: false)
-    
-    lazy var profileStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.distribution = .fillEqually
-        stackView.addArrangedSubview(mailLabel)
-        stackView.addArrangedSubview(subLabel)
-        return stackView
-    }()
-    
-    let memoryContainer: UIView = {
+    let profileContainer: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
-        view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor(red: 48/255, green: 140/255, blue: 74/255, alpha: 1.0).cgColor
+        view.backgroundColor = UIColor(red: 48/255, green: 140/255, blue: 74/255, alpha: 1.0)
         return view
     }()
     
@@ -76,12 +45,12 @@ class MyPageViewController: UIViewController {
         return image
     }()
     
-    let saveVocaLabel = LabelFactory().makeLabel(title: "저장 된 단어", size: 17, textAlignment: .center, isBold: true)
-    let saveVocaCount = LabelFactory().makeLabel(title: "\(String(describing: updateSaveVocaCount))개", size: 25, textAlignment: .center, isBold: true)
-    let memoryVocaLabel = LabelFactory().makeLabel(title: "외운 단어", size: 17, textAlignment: .center, isBold: true)
-    let memoryVocaCount = LabelFactory().makeLabel(title: "\(String(describing: updateMemoryVocaCount))", size: 25, textAlignment: .center, isBold: true)
-    let gamePlayLabel = LabelFactory().makeLabel(title: "게임 진행 수", size: 17, textAlignment: .center, isBold: true)
-    let gamePlayCount = LabelFactory().makeLabel(title: "3회", size: 25, textAlignment: .center, isBold: true)
+    let saveVocaLabel = LabelFactory().makeLabel(title: "저장 된 단어", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 17, textAlignment: .center, isBold: true)
+    let saveVocaCount = LabelFactory().makeLabel(title: "\(String(describing: updateSaveVocaCount))개", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 25, textAlignment: .center, isBold: true)
+    let memoryVocaLabel = LabelFactory().makeLabel(title: "외운 단어", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 17, textAlignment: .center, isBold: true)
+    let memoryVocaCount = LabelFactory().makeLabel(title: "\(String(describing: updateMemoryVocaCount))", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 25, textAlignment: .center, isBold: true)
+    let gamePlayLabel = LabelFactory().makeLabel(title: "게임 진행 수", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 17, textAlignment: .center, isBold: true)
+    let gamePlayCount = LabelFactory().makeLabel(title: "3회", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 25, textAlignment: .center, isBold: true)
     
     lazy var saveStackView: UIStackView = {
         let stackView = UIStackView()
@@ -119,7 +88,7 @@ class MyPageViewController: UIViewController {
     lazy var allCountStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.spacing = 20
+        stackView.spacing = 25
         stackView.alignment = .fill
         stackView.distribution = .fillEqually
         
@@ -143,7 +112,6 @@ class MyPageViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        
         coreDataManager = CoreDataManager.shared
         setupUI()
         setupTableView()
@@ -159,55 +127,30 @@ class MyPageViewController: UIViewController {
     }
     
     func setupUI() {
+        view.addSubview(logoImage)
         view.addSubview(profileContainer)
-        view.addSubview(profileImage)
-        view.addSubview(changeImageButton)
-        view.addSubview(profileStackView)
-        view.addSubview(memoryContainer)
         view.addSubview(allCountStackView)
         
         profileContainer.layer.cornerRadius = 16
         profileContainer.clipsToBounds = true
         
-        profileImage.layer.cornerRadius = 50
-        profileImage.clipsToBounds = true
-        
-        memoryContainer.layer.cornerRadius = 16
-        memoryContainer.clipsToBounds = true
-        
-        changeImageButton.addTarget(self, action: #selector(changeImageTapped), for: .touchUpInside)
+        logoImage.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(0)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(170)
+            $0.height.equalTo(90)
+        }
         
         profileContainer.snp.makeConstraints {
-            $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
-            $0.height.equalTo(220)
-        }
-        
-        profileImage.snp.makeConstraints {
-            $0.top.equalTo(profileContainer.snp.top).offset(20)
-            $0.centerX.equalToSuperview()
-            $0.width.height.equalTo(100)
-        }
-        
-        changeImageButton.snp.makeConstraints {
-            $0.top.equalTo(profileImage.snp.bottom).offset(10)
-            $0.centerX.equalToSuperview()
-            $0.height.equalTo(15)
-        }
-        
-        profileStackView.snp.makeConstraints {
-            $0.top.equalTo(changeImageButton.snp.bottom).offset(15)
-            $0.centerX.equalToSuperview()
-        }
-        
-        memoryContainer.snp.makeConstraints {
-            $0.top.equalTo(profileContainer.snp.bottom).offset(10)
+            $0.top.equalTo(logoImage.snp.bottom).offset(0)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
-            $0.height.equalTo(150)
+            $0.height.equalTo(180)
         }
         
         allCountStackView.snp.makeConstraints {
-            $0.top.equalTo(memoryContainer.snp.top).offset(10)
-            $0.leading.trailing.bottom.equalTo(memoryContainer).inset(10)
+            $0.top.equalTo(profileContainer.snp.top).offset(20)
+            $0.bottom.equalTo(profileContainer.snp.bottom).inset(20)
+            $0.centerX.equalToSuperview()
         }
     }
     
@@ -221,19 +164,13 @@ class MyPageViewController: UIViewController {
         myPageTableView.clipsToBounds = true
         
         myPageTableView.snp.makeConstraints {
-            $0.top.equalTo(memoryContainer.snp.bottom).offset(10)
+            $0.top.equalTo(profileContainer.snp.bottom).offset(10)
             $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide).inset(10)
         }
     }
     
-    @objc func changeImageTapped() {
-        var configuration = PHPickerConfiguration()
-        configuration.filter = .images // 이미지만 사용
-        configuration.selectionLimit = 1
-        
-        let picker = PHPickerViewController(configuration: configuration)
-        picker.delegate = self
-        present(picker, animated: true, completion: nil)
+    func reloadTableView() {
+            myPageTableView.reloadData()
     }
     
     func updateSaveVocaCount() {
@@ -265,38 +202,27 @@ class MyPageViewController: UIViewController {
     }
 }
 
-extension MyPageViewController: PHPickerViewControllerDelegate {
-    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-        picker.dismiss(animated: true, completion: nil)
-        
-        guard let provider = results.first?.itemProvider else { return }
-        
-        if provider.canLoadObject(ofClass: UIImage.self) {
-            provider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
-                DispatchQueue.main.async {
-                    if let image = image as? UIImage {
-                        self?.profileImage.image = image
-                    }
-                }
-            }
-        }
-    }
-}
-
 extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myPageData.items.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        60
+        70
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MyPageTableViewCell.identifier, for: indexPath) as? MyPageTableViewCell else { fatalError("마이 페이지 테이블 뷰 에러")}
         
-        let item = myPageData.items[indexPath.row]
+        var item = myPageData.items[indexPath.row]
         cell.configure(with: item.title, systemImageName: item.imageName)
+        
+        if indexPath.row == 3 {
+            let isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
+            item = isLoggedIn ? ("로그아웃", "lock.open") : ("로그인", "lock")
+            cell.configure(with: item.title, systemImageName: item.imageName)
+        }
+        
         cell.selectionStyle = .none
         cell.backgroundColor = .white
         
@@ -305,10 +231,22 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 3 {
-            let loginModelVC = LoginModalViewController()
-            loginModelVC.modalPresentationStyle = .custom
-            loginModelVC.transitioningDelegate = self
-            present(loginModelVC, animated: true, completion: nil)
+            let isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
+            let alertController = AlertController()
+            
+            if isLoggedIn {
+                let alert = alertController.makeAlertWithCompletion(title: "로그아웃", message: "로그아웃 하시겠습니까?") { [weak self] _ in
+                    UserDefaults.standard.set(false, forKey: "isLoggedIn")
+                    self?.reloadTableView()
+                }
+                present(alert, animated: true, completion: nil)
+            } else {
+                let loginModelVC = LoginModalViewController()
+                loginModelVC.modalPresentationStyle = .custom
+                loginModelVC.transitioningDelegate = self
+                loginModelVC.delegate = self
+                present(loginModelVC, animated: true, completion: nil)
+            }
         }
     }
 }
@@ -323,18 +261,28 @@ extension MyPageViewController: UIViewControllerTransitioningDelegate {
     }
 }
 
+protocol LoginModalViewControllerDelegate: AnyObject {
+    func loginStatusDidChange()
+}
+
+extension MyPageViewController: LoginModalViewControllerDelegate {
+    func loginStatusDidChange() {
+        reloadTableView()
+    }
+}
+
 //extension MyPageViewController {
-//    
+//
 //    func getUserData() {
 //        if let user = Auth.auth().currentUser {
 //            let uid = user.uid
 //            let email = user.email
-//            
+//
 //            DispatchQueue.main.async{ [weak self] in
 //                self?.subLabel.text = uid
 //                self?.mailLabel.text = email
 //            }
-//            
+//
 //        }
 //    }
 //}

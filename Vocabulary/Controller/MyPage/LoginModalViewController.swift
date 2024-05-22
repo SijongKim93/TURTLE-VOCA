@@ -14,6 +14,8 @@ import KakaoSDKUser
 
 class LoginModalViewController: UIViewController {
     
+    weak var delegate: LoginModalViewControllerDelegate?
+    
     let filterMainLabel = LabelFactory().makeLabel(title: "소셜 로그인", size: 23, textAlignment: .left, isBold: true)
     
     let xButton: UIButton = {
@@ -116,6 +118,10 @@ class LoginModalViewController: UIViewController {
                     print("Error: \(error.localizedDescription)")
                 } else {
                     print("Login with KakaoTalk succeeded.")
+                    UserDefaults.standard.set(true, forKey: "isLoggedIn")
+                    self.dismiss(animated: true) {
+                        self.delegate?.loginStatusDidChange()
+                    }
                 }
             }
         } else {
@@ -124,6 +130,10 @@ class LoginModalViewController: UIViewController {
                     print("Error: \(error.localizedDescription)")
                 } else {
                     print("Login with KakaoAccount succeeded.")
+                    UserDefaults.standard.set(true, forKey: "isLoggedIn")
+                    self.dismiss(animated: true) {
+                        self.delegate?.loginStatusDidChange()
+                    }
                 }
             }
         }
@@ -131,7 +141,6 @@ class LoginModalViewController: UIViewController {
 }
 
 // MARK: - Apple Signin
-
 extension LoginModalViewController: ASAuthorizationControllerDelegate {
     
     @objc func handleAppleIDRequest() {
@@ -149,7 +158,6 @@ extension LoginModalViewController: ASAuthorizationControllerDelegate {
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: any Error) {
         let alert = alertController.makeNormalAlert(title: "에러발생", message: "로그인 할 수 없습니다.")
-        
         self.present(alert, animated: true)
     }
     
@@ -183,6 +191,7 @@ extension LoginModalViewController: ASAuthorizationControllerDelegate {
 //                self?.dismiss(animated: true)
 //                
 //            }
+//           saveLoginStatus()    //로그인 여부 저장
 //        }
 //        
 //        
@@ -204,7 +213,6 @@ extension LoginModalViewController: ASAuthorizationControllerDelegate {
         Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
         
         let nonce = randomBytes.map { byte in
-            // Pick a random character from the set, wrapping around if needed.
             charset[Int(byte) % charset.count]
         }
         
@@ -221,5 +229,4 @@ extension LoginModalViewController: ASAuthorizationControllerDelegate {
         
         return hashString
     }
-    
 }
