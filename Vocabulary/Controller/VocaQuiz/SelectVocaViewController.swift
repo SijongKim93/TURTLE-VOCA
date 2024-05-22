@@ -42,7 +42,6 @@ class SelectVocaViewController: UIViewController {
         selectBodyView.numberLabel.text = quizCount.stringValue
         setup()
         getCategory()
-        
         if !category.isEmpty {
             selectedCategory = category[0] // picker 움직임이 없을때.
         }
