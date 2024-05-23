@@ -10,7 +10,7 @@ import UIKit
 
 class TextFieldFactory {
     
-    func makeTextField(placeholder: String) -> UITextField {
+    func makeTextField(placeholder: String, action: Selector, dictAction: Selector) -> UITextField {
         
         let textField = UITextField()
         
@@ -36,6 +36,33 @@ class TextFieldFactory {
         textField.leftView = paddingView
         textField.leftViewMode = .always
         
+        // Toolbar 추가
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIView().frame.size.width, height: 36))
+        toolBar.barStyle = .default
+        toolBar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(
+            title: "Done",
+            style: .plain,
+            target: self,
+            action: action) // 매개변수를 직접 사용
+        
+        
+        let dictButton = UIBarButtonItem(
+            image: UIImage(named: "dict"),
+            style: .plain,
+            target: self,
+            action: dictAction)
+ 
+        toolBar.items = [
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+            doneButton
+        ]
+        
+        toolBar.isUserInteractionEnabled = true
+        textField.inputAccessoryView = toolBar
+        
         return textField
     }
+    
 }
