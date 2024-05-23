@@ -42,7 +42,7 @@ class AddBookCaseBodyView: UIView {
     
     //nameStackView
     let nameLabel = LabelFactory().makeLabel(title: "단어장 이름", size: 18, textAlignment: .left, isBold: true)
-    let nameTextField = TextFieldFactory().makeTextField(placeholder: "단어장 이름을 입력하세요")
+    let nameTextField = TextFieldFactory().makeTextField(placeholder: "단어장 이름을 입력하세요", action: #selector(doneButtonTapped), dictAction: #selector(showDict))
     let nameCountLabel = LabelFactory().makeLabel(title: "0/10", size: 13, textAlignment: .right, isBold: false)
     
     lazy var nameStackView: UIStackView = {
@@ -55,7 +55,7 @@ class AddBookCaseBodyView: UIView {
     
     //explainStackView
     let explainLabel = LabelFactory().makeLabel(title: "단어장 간단 설명", size: 18, textAlignment: .left, isBold: true)
-    let explainTextField = TextFieldFactory().makeTextField(placeholder: "단어장에 대한 간단한 설명을 적어주세요")
+    let explainTextField = TextFieldFactory().makeTextField(placeholder: "단어장에 대한 간단한 설명을 적어주세요", action: #selector(doneButtonTapped), dictAction: #selector(showDict))
     
     let explainCountLabel = LabelFactory().makeLabel(title: "0/15", size: 13, textAlignment: .right, isBold: false)
     
@@ -70,8 +70,8 @@ class AddBookCaseBodyView: UIView {
     //languageStackView
     let languageLabel = LabelFactory().makeLabel(title: "언어 (단어 & 의미)", size: 18, textAlignment: .left, isBold: true)
     
-    let wordTextField = TextFieldFactory().makeTextField(placeholder: "단어")
-    let meaningTextField = TextFieldFactory().makeTextField(placeholder: "의미")
+    let wordTextField = TextFieldFactory().makeTextField(placeholder: "단어", action: #selector(doneButtonTapped), dictAction: #selector(showDict))
+    let meaningTextField = TextFieldFactory().makeTextField(placeholder: "의미", action: #selector(doneButtonTapped), dictAction: #selector(showDict))
     
     // 단어 & 의미 스택뷰
     lazy var wmStackView: UIStackView = {
@@ -235,6 +235,16 @@ class AddBookCaseBodyView: UIView {
         textField.layer.borderWidth = 2
         textField.layer.cornerRadius = 5
     }
+    
+    @objc func doneButtonTapped() {
+            self.endEditing(true)
+    }
+    
+    @objc func showDict() {
+        let url = URL(string: "https://dict.naver.com/")
+        UIApplication.shared.open(url!)
+    }
+    
 }
 
 // MARK: - UITextFieldDelegate 텍스트 입력 제한

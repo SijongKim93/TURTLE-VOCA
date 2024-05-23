@@ -21,6 +21,7 @@ class MyPageViewController: UIViewController {
     let logoImage: UIImageView = {
         var image = UIImageView()
         image.image = UIImage(named: "logoresize")
+        image.contentMode = .scaleAspectFit
         return image
     }()
     
@@ -33,27 +34,30 @@ class MyPageViewController: UIViewController {
     let saveVocaImage: UIImageView = {
         var image = UIImageView()
         image.image = UIImage(named: "savevoca")
+        image.contentMode = .scaleAspectFit
         return image
     }()
     
     let memoryVocaImage: UIImageView = {
         var image = UIImageView()
         image.image = UIImage(named: "memoryvoca")
+        image.contentMode = .scaleAspectFit
         return image
     }()
     
     let gamePlayImage: UIImageView = {
         var image = UIImageView()
         image.image = UIImage(named: "game")
+        image.contentMode = .scaleAspectFit
         return image
     }()
     
     let saveVocaLabel = LabelFactory().makeLabel(title: "저장 된 단어", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 17, textAlignment: .center, isBold: true)
-    let saveVocaCount = LabelFactory().makeLabel(title: "\(String(describing: updateSaveVocaCount))개", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 25, textAlignment: .center, isBold: true)
+    let saveVocaCount = LabelFactory().makeLabel(title: "\(String(describing: updateSaveVocaCount))개", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 23, textAlignment: .center, isBold: true)
     let memoryVocaLabel = LabelFactory().makeLabel(title: "외운 단어", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 17, textAlignment: .center, isBold: true)
-    let memoryVocaCount = LabelFactory().makeLabel(title: "\(String(describing: updateMemoryVocaCount))", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 25, textAlignment: .center, isBold: true)
+    let memoryVocaCount = LabelFactory().makeLabel(title: "\(String(describing: updateMemoryVocaCount))", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 23, textAlignment: .center, isBold: true)
     let gamePlayLabel = LabelFactory().makeLabel(title: "게임 진행 수", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 17, textAlignment: .center, isBold: true)
-    let gamePlayCount = LabelFactory().makeLabel(title: "0회", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 25, textAlignment: .center, isBold: true)
+    let gamePlayCount = LabelFactory().makeLabel(title: "0회", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 23, textAlignment: .center, isBold: true)
     
     lazy var saveStackView: UIStackView = {
         let stackView = UIStackView()
@@ -269,17 +273,31 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
                 present(loginModelVC, animated: true, completion: nil)
             }
         case 4:
-            ProgressHUD.animate("데이터를 저장하는 중 입니다.")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            CoreDataManager.shared.syncData()
-                ProgressHUD.succeed("데이터 저장에 성공했습니다.")
+            CoreDataManager.shared.checkiCloudLoginStatus { loginStatus in
+                if loginStatus {
+                    ProgressHUD.animate("데이터를 저장하는 중 입니다.")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        CoreDataManager.shared.syncData()
+                        ProgressHUD.succeed("데이터 저장에 성공했습니다.")
+                    }
+                } else {
+                    ProgressHUD.failed("로그인 상태를 확인해 주세요.")
+                }
             }
+            
         case 5:
-            ProgressHUD.animate("데이터를 가져오는 중 입니다.")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                CoreDataManager.shared.syncDataFromCloudKit()
-                ProgressHUD.succeed("데이터를 불러오는데 성공했습니다.")
+            CoreDataManager.shared.checkiCloudLoginStatus { loginStatus in
+                if loginStatus {
+                    ProgressHUD.animate("데이터를 가져오는 중 입니다.")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        CoreDataManager.shared.syncDataFromCloudKit()
+                        ProgressHUD.succeed("데이터를 불러오는데 성공했습니다.")
+                    }
+                } else {
+                    ProgressHUD.failed("로그인 상태를 확인해 주세요.")
+                }
             }
+            
         default :
             return
         }

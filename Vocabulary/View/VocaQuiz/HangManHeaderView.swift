@@ -10,7 +10,7 @@ import UIKit
 class HangManHeaderView: UIView {
     
     private lazy var titleLabel = LabelFactory().makeLabel(title: "거북이의 단어퀴즈", size: 25, textAlignment: .left, isBold: true)
-    private lazy var subLabel = LabelFactory().makeLabel(title: "HangMan",color: .gray, size: 15, textAlignment: .left, isBold: false)
+    private lazy var subLabel = LabelFactory().makeLabel(title: "Turtle Game",color: .gray, size: 15, textAlignment: .left, isBold: false)
     
     
     private lazy var vStackView: UIStackView = {

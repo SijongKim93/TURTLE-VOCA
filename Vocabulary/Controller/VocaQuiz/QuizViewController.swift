@@ -37,9 +37,7 @@ class QuizViewController: UIViewController {
     var titleText = ""
     var receivedData: GenQuizModel?
     var quizArray = [WordEntity]()
-    var shuffledArray = [WordEntity]()
     var quizData = [VocaQuizModel]()
-    //var data
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,9 +62,40 @@ class QuizViewController: UIViewController {
         }).shuffled()
         checkException()
     }
+        
+    private func layout () {
+        view.addSubview(vStackView)
+        
+        vStackView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        quizHeaderView.snp.makeConstraints {
+            $0.top.equalTo(vStackView.snp.top).offset(50)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(150)
+        }
+        
+        quizBodyView.snp.makeConstraints {
+            $0.top.equalTo(quizHeaderView.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(150)
+        }
+        
+        quizBottomView.snp.makeConstraints {
+            $0.top.equalTo(quizBodyView.snp.bottom).offset(50)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview().offset(-100)
+        }
+    }
     
+}
+
+// MARK: - Game Logic
+
+extension QuizViewController {
     
-    private func generate(count: Int) {
+    func generate(count: Int) {
         
         var madeList = [String]()
         
@@ -120,32 +149,6 @@ class QuizViewController: UIViewController {
         quizBodyView.gameTitle.text = quizData[currentNumber].question
         quizHeaderView.scoreLabel.text = "Score: \(score) 점"
         
-    }
-    
-    private func layout () {
-        view.addSubview(vStackView)
-        
-        vStackView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-        
-        quizHeaderView.snp.makeConstraints {
-            $0.top.equalTo(vStackView.snp.top).offset(50)
-            $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(150)
-        }
-        
-        quizBodyView.snp.makeConstraints {
-            $0.top.equalTo(quizHeaderView.snp.bottom)
-            $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(150)
-        }
-        
-        quizBottomView.snp.makeConstraints {
-            $0.top.equalTo(quizBodyView.snp.bottom).offset(50)
-            $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview().offset(-100)
-        }
     }
     
 }

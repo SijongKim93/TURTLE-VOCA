@@ -23,6 +23,7 @@ class HangManBodyView: UIView {
     lazy var hangManImageView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(systemName: "hanger")
+        view.contentMode = .scaleAspectFit
         
         return view
     }()

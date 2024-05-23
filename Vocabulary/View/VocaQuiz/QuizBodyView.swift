@@ -10,7 +10,7 @@ import SnapKit
 
 class QuizBodyView: UIView {
     
-    lazy var gameTitle = LabelFactory().makeLabel(title: "문제", color: .black, size: 40, textAlignment: .center, isBold: true)
+    lazy var gameTitle = LabelFactory().makeLabel(title: "문제", color: .black, size: 30, textAlignment: .center, isBold: true)
     
     override init(frame: CGRect) {
         super.init(frame: .zero)

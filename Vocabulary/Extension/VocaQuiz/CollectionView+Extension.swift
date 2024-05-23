@@ -74,5 +74,4 @@ extension GameMainPageViewController: UICollectionViewDelegate, UICollectionView
             return
         }
     }
-    
 }

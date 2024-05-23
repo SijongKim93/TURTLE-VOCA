@@ -44,12 +44,12 @@ class FlashHeaderView: UIView {
         
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview()
-            $0.leading.equalToSuperview()
+            $0.leading.equalToSuperview().offset(20)
             $0.trailing.equalToSuperview()
         }
         
         subLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview()
+            $0.leading.equalToSuperview().offset(20)
             $0.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
         }

@@ -10,7 +10,7 @@ import SnapKit
 
 class VocaQuizMainCollectionViewCell: UICollectionViewCell {
     
-    lazy var titleLabel = LabelFactory().makeLabel(title: "title",color: ThemeColor.mainColor, size: 25, isBold: true)
+    lazy var titleLabel = LabelFactory().makeLabel(title: "title",color: ThemeColor.mainColor, size: 20, isBold: true)
 
     
     override init(frame: CGRect) {

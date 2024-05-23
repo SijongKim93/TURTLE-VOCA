@@ -58,7 +58,8 @@ class SelectBodyView: UIView {
             hStackView
         ])
         stackView.axis = .vertical
-        stackView.distribution = .fillEqually
+        stackView.distribution = .fill
+        stackView.spacing = 10
         return stackView
     }()
     
@@ -131,7 +132,7 @@ class SelectBodyView: UIView {
         
         vSecondStackView.snp.makeConstraints {
             $0.top.equalTo(vFirstStackView.snp.bottom).offset(10)
-            $0.bottom.equalToSuperview().offset(-50)
+            $0.bottom.equalToSuperview().offset(-25)
         }
 
         
