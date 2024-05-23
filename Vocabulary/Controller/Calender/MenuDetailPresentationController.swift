@@ -57,6 +57,4 @@ class MenuPresentationController: UIPresentationController {
     func shouldRemovePresentersView() -> Bool {
         return false
     }
-    
-    
 }

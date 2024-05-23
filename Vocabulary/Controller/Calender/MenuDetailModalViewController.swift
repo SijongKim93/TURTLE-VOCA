@@ -18,6 +18,7 @@ class MenuDetailModalViewController: UIViewController {
     let labels = ["다 외웠어요", "전체 삭제"]
     weak var delegate: MenuDetailModalDelegate?
     
+    //MARK: - Component 호출
     let filterMainLabel = LabelFactory().makeLabel(title: "단어 상태 설정", size: 23, textAlignment: .left, isBold: true)
     
     let xButton: UIButton = {
@@ -49,11 +50,13 @@ class MenuDetailModalViewController: UIViewController {
         return tableView
     }()
     
+    //MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
     
+    //MARK: - Setup
     func setupUI() {
         menuTableView.delegate = self
         menuTableView.dataSource = self
@@ -94,6 +97,7 @@ class MenuDetailModalViewController: UIViewController {
     }
 }
 
+//MARK: - TableView Setting
 extension MenuDetailModalViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return labels.count

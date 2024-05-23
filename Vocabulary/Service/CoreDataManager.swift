@@ -177,7 +177,7 @@ final class CoreDataManager {
     }
     
     
-    
+    // 날짜에 맞는 데이터만 가져오기
     func getWordListFromCoreData(for date: Date) -> [WordEntity] {
         var wordList: [WordEntity] = []
         
@@ -203,6 +203,7 @@ final class CoreDataManager {
         return wordList
     }
     
+    // 선택한 날짜에 데이터 유무 확인
     func hasData(for date: Date) -> Bool {
         guard let context = managedContext else {
             print("Error: managedContext is nil")
@@ -227,6 +228,7 @@ final class CoreDataManager {
         }
     }
     
+    // 코어데이터 memory 상태 변경 저장
     func updateWordMemoryStatus(word: WordEntity, memory: Bool) {
         guard let context = managedContext else {
             print("Error: managedContext is nil")
@@ -242,6 +244,7 @@ final class CoreDataManager {
         }
     }
     
+    // 저장된 단어 갯수
     func getSavedWordCount() -> Int {
         guard let context = managedContext else {
             print("Error: managedContext is nil")
@@ -259,6 +262,7 @@ final class CoreDataManager {
         }
     }
     
+    // 저장된 외운 단어 갯수
     func getLearnedWordCount() -> Int {
         guard let context = managedContext else {
             print("Error: managedContext is nil")
@@ -277,6 +281,7 @@ final class CoreDataManager {
         }
     }
     
+    // 특정 단어 삭제
     func deleteWord(_ word: WordEntity) {
         guard let context = managedContext else {
             print("Error: managedContext is nil")
