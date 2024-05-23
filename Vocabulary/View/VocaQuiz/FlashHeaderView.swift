@@ -10,7 +10,7 @@ import SnapKit
 
 class FlashHeaderView: UIView {
     
-    private lazy var titleLabel = LabelFactory().makeLabel(title: "거북이의 단어장", size: 25, textAlignment: .left, isBold: true)
+    private lazy var titleLabel = LabelFactory().makeLabel(title: "거북이의 단어퀴즈", size: 25, textAlignment: .left, isBold: true)
     private lazy var subLabel = LabelFactory().makeLabel(title: "FlashCard", size: 15, textAlignment: .left, isBold: false)
     
     private lazy var vStackView: UIStackView = {
@@ -44,12 +44,12 @@ class FlashHeaderView: UIView {
         
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview()
-            $0.leading.equalToSuperview()
+            $0.leading.equalToSuperview().offset(20)
             $0.trailing.equalToSuperview()
         }
         
         subLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview()
+            $0.leading.equalToSuperview().offset(20)
             $0.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
         }

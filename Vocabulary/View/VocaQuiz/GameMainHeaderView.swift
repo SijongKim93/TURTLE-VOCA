@@ -10,19 +10,22 @@ import SnapKit
 
 class GameMainHeaderView: UIView {
     
-    private lazy var titleLabel = LabelFactory().makeLabel(title: "거북이의 단어장", size: 25, textAlignment: .left, isBold: true)
-    private lazy var subLabel = LabelFactory().makeLabel(title: "단어퀴즈",color: .gray, size: 15, textAlignment: .left, isBold: false)
+    private lazy var titleLabel = LabelFactory().makeLabel(title: "거북이의 단어퀴즈", color: ThemeColor.mainColor, size: 23, textAlignment: .center, isBold: true)
     
-    private lazy var vStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [
-            titleLabel,
-            subLabel
-        ])
-        stackView.axis = .vertical
-        stackView.spacing = -30
-        return stackView
+    private let imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "turtle")
+        return imageView
     }()
     
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [imageView, titleLabel])
+        stackView.axis = .horizontal
+        stackView.spacing = 5
+        stackView.alignment = .center
+        return stackView
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -34,25 +37,15 @@ class GameMainHeaderView: UIView {
     }
     
     private func layout() {
-        addSubview(vStackView)
+        addSubview(stackView)
         
-        vStackView.snp.makeConstraints {
-            $0.top.bottom.equalToSuperview()
-            $0.leading.equalToSuperview().offset(20)
-            $0.trailing.equalToSuperview().offset(-20)
+        stackView.snp.makeConstraints {
+            $0.top.equalTo(safeAreaLayoutGuide).offset(30)
+            $0.centerX.equalTo(safeAreaLayoutGuide)
         }
         
-        titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
-        }
-        
-        subLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview()
+        imageView.snp.makeConstraints {
+            $0.width.height.equalTo(40)
         }
     }
-    
 }

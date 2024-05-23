@@ -10,20 +10,7 @@ import SnapKit
 import CoreData
 import PhotosUI
 
-class EditBookCaseViewController: UIViewController, EditBookCaseBodyViewDelegate {
-    
-    func editButtonTapped() {
-        let alertController = AlertController().makeAlertWithCompletion(title: "수정 완료", message: "단어장이 수정되었습니다.") { _ in
-            NotificationCenter.default.post(name: NSNotification.Name("didBookCase"), object: nil)
-            self.dismiss(animated: true, completion: nil)
-        }
-        present(alertController, animated: true, completion: nil)
-    }
-    
-    func editErrorAlert() {
-        let alertController = AlertController().makeNormalAlert(title: "에러", message: "단어장 수정에 실패했습니다.")
-        present(alertController, animated: true, completion: nil)
-    }
+class EditBookCaseViewController: UIViewController {
     
     var bookCaseData: NSManagedObject?
 
@@ -43,9 +30,21 @@ class EditBookCaseViewController: UIViewController, EditBookCaseBodyViewDelegate
         
         view.backgroundColor = .white
         
+        if let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last {
+            print("Documents Directory: \(documentsDirectoryURL)")
+        }
+        
+        
         setupConstraints()
         bodyView.delegate = self
         bodyView.bookCaseData = bookCaseData
+        
+        setupKeyboardEvent()
+    }
+    
+    // 여백 탭했을 때 키보드 내려가게
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
     }
     
     private func setupConstraints(){
@@ -67,6 +66,26 @@ class EditBookCaseViewController: UIViewController, EditBookCaseBodyViewDelegate
         present(picker, animated: true, completion: nil)
     }
 }
+
+//MARK: - EditBookCaseBodyView 에서 프로토콜 호출
+
+extension EditBookCaseViewController: EditBookCaseBodyViewDelegate {
+    
+    func editButtonTapped() {
+        let alertController = AlertController().makeAlertWithCompletion(title: "수정 완료", message: "단어장이 수정되었습니다.") { _ in
+            NotificationCenter.default.post(name: NSNotification.Name("didBookCase"), object: nil)
+            self.dismiss(animated: true, completion: nil)
+        }
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func editErrorAlert() {
+        let alertController = AlertController().makeNormalAlert(title: "에러", message: "단어장 수정에 실패했습니다.")
+        present(alertController, animated: true, completion: nil)
+    }
+}
+
+//MARK: - PHPicker extension
 
 extension EditBookCaseViewController: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {

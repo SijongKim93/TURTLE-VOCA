@@ -10,46 +10,46 @@ import SnapKit
 
 class QuizBottomView: UIView {
     
-    lazy var firstButton = ButtonFactory().makeButton(title: "첫번째", size: 30, color: .white, backgroundColor: ThemeColor.mainColor, radius: 15, borderWidth: 0.5) { button in
+    lazy var firstButton = ButtonFactory().makeButton(title: "첫번째", size: 23, color: .white, backgroundColor: ThemeColor.mainColor, radius: 15, borderWidth: 0.5) { button in
         guard let title = button.titleLabel?.text else { return }
         if self.checkAnswer(title: title) == true {
-            button.backgroundColor = .green
+            button.backgroundColor = UIColor(hexString: "#2A5135")
             Timer.scheduledTimer(timeInterval: 0.1,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
         } else {
-            button.backgroundColor = .red
+            button.backgroundColor = UIColor(hexString: "#D45454")
             Timer.scheduledTimer(timeInterval: 0.1,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
         }
     }
     
-    lazy var secondButton = ButtonFactory().makeButton(title: "두번째", size: 30, color: .white, backgroundColor: ThemeColor.mainColor, radius: 15, borderWidth: 0.5) { button in
+    lazy var secondButton = ButtonFactory().makeButton(title: "두번째", size: 23, color: .white, backgroundColor: ThemeColor.mainColor, radius: 15, borderWidth: 0.5) { button in
         guard let title = button.titleLabel?.text else { return }
         if self.checkAnswer(title: title) == true {
-            button.backgroundColor = .green
+            button.backgroundColor = UIColor(hexString: "#2A5135")
             Timer.scheduledTimer(timeInterval: 0.1,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
         } else {
-            button.backgroundColor = .red
+            button.backgroundColor = UIColor(hexString: "#D45454")
             Timer.scheduledTimer(timeInterval: 0.1,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
         }
     }
     
-    lazy var thirdButton = ButtonFactory().makeButton(title: "세번째", size: 30, color: .white, backgroundColor: ThemeColor.mainColor, radius: 15, borderWidth: 0.5) { button in
+    lazy var thirdButton = ButtonFactory().makeButton(title: "세번째", size: 23, color: .white, backgroundColor: ThemeColor.mainColor, radius: 15, borderWidth: 0.5) { button in
         guard let title = button.titleLabel?.text else { return }
         if self.checkAnswer(title: title) == true {
-            button.backgroundColor = .green
+            button.backgroundColor = UIColor(hexString: "#2A5135")
             Timer.scheduledTimer(timeInterval: 0.1,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
         } else {
-            button.backgroundColor = .red
+            button.backgroundColor = UIColor(hexString: "#D45454")
             Timer.scheduledTimer(timeInterval: 0.1,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
         }
     }
     
-    lazy var forthButton = ButtonFactory().makeButton(title: "네번째", size: 30, color: .white, backgroundColor: ThemeColor.mainColor, radius: 15, borderWidth: 0.5) { button in
+    lazy var forthButton = ButtonFactory().makeButton(title: "네번째", size: 23, color: .white, backgroundColor: ThemeColor.mainColor, radius: 15, borderWidth: 0.5) { button in
         guard let title = button.titleLabel?.text else { return }
         if self.checkAnswer(title: title) == true {
-            button.backgroundColor = .green
+            button.backgroundColor = UIColor(hexString: "#2A5135")
             Timer.scheduledTimer(timeInterval: 0.1,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
         } else {
-            button.backgroundColor = .red
+            button.backgroundColor = UIColor(hexString: "#D45454")
             Timer.scheduledTimer(timeInterval: 0.1,target: self, selector: #selector(self.updateBackground), userInfo: nil, repeats: false)
         }
     }
@@ -90,7 +90,7 @@ class QuizBottomView: UIView {
             forthButton
         ])
         stackView.axis = .vertical
-        stackView.spacing = 10
+        stackView.spacing = 18
         stackView.distribution = .fillEqually
         return stackView
     }()
@@ -98,7 +98,7 @@ class QuizBottomView: UIView {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         layout()
-        
+        addShadow()
     }
     
     required init?(coder: NSCoder) {
@@ -109,8 +109,8 @@ class QuizBottomView: UIView {
         self.addSubview(vStackView)
         
         vStackView.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(20)
-            $0.trailing.equalToSuperview().offset(-20)
+            $0.leading.equalToSuperview().offset(28)
+            $0.trailing.equalToSuperview().offset(-28)
             $0.top.bottom.equalToSuperview()
             
         }
@@ -135,6 +135,15 @@ class QuizBottomView: UIView {
             $0.trailing.equalTo(vStackView.snp.trailing)
         }
         
+    }
+    
+    private func addShadow() {
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowOffset = CGSize(width: 0, height: 2)
+        self.layer.shadowRadius = 4
+        self.layer.shouldRasterize = true
+        self.layer.rasterizationScale = UIScreen.main.scale
     }
     
 }

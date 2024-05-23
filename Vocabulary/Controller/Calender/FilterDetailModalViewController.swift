@@ -12,7 +12,8 @@ class FilterDetailModalViewController: UIViewController {
     
     weak var delegate: FilterDetailModalDelegate?
     
-    let labels = ["최근 저장 순", "나중 저장 순", "외운 단어 순", "못 외운 단어 순", "랜덤"]
+    //MARK: - Component 생성
+    let labels = ["최근 저장 순", "오래된 저장 순", "외운 단어 순", "못 외운 단어 순", "랜덤"]
     var selectedButtonIndex: Int?
     
     let filterMainLabel = LabelFactory().makeLabel(title: "단어 정렬 설정", size: 23, textAlignment: .left, isBold: true)
@@ -46,6 +47,7 @@ class FilterDetailModalViewController: UIViewController {
         return tableView
     }()
     
+    //MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -57,17 +59,20 @@ class FilterDetailModalViewController: UIViewController {
         loadFilterSettings()
     }
     
+    //MARK: - ViewDidDisappear
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         delegate?.didDismissFilterDetailModal()
     }
     
+    //MARK: - 화면 전환 시 필터 값을 통한 데이터 정렬 델리게이트
     @objc func dismissViewController() {
         self.dismiss(animated: true) { [weak self] in
             self?.delegate?.didDismissFilterDetailModal()
         }
     }
     
+    //MARK: - setup
     func setupUI() {
         view.backgroundColor = .white
         view.layer.cornerRadius = 16
@@ -98,6 +103,7 @@ class FilterDetailModalViewController: UIViewController {
         }
     }
     
+    //MARK: - 원하는 필터 정렬 값 UserDefaults 저장
     func saveFilterSettings() {
         guard let selectedButtonIndex = selectedButtonIndex else { return }
         UserDefaults.standard.set(selectedButtonIndex, forKey: "SelectedFilterIndex")
@@ -105,6 +111,7 @@ class FilterDetailModalViewController: UIViewController {
         print("Saved selected filter index: \(selectedButtonIndex)")
     }
     
+    //MARK: - 필터 정렬 값 UserDefaults 저장
     func loadFilterSettings() {
         let savedIndex = UserDefaults.standard.integer(forKey: "SelectedFilterIndex")
         if savedIndex < labels.count {
@@ -118,6 +125,7 @@ class FilterDetailModalViewController: UIViewController {
     
 }
 
+//MARK: - TableView Delegate , dataSource 세팅
 extension FilterDetailModalViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         labels.count
@@ -149,6 +157,7 @@ extension FilterDetailModalViewController: UITableViewDelegate, UITableViewDataS
         
     }
     
+    //MARK: - 필터 값은 하나만 저장되어야 하므로 이전 값 삭제 새로운 값 저장 메서드
     func updateSelectedButton(at index: Int) {
         if let selectedButtonIndex = selectedButtonIndex {
             let previousIndexPath = IndexPath(row: selectedButtonIndex, section: 0)
@@ -162,7 +171,6 @@ extension FilterDetailModalViewController: UITableViewDelegate, UITableViewDataS
         if let currentCell = tableView.cellForRow(at: currentIndexPath) as? FilterTableViewCell {
             currentCell.button.isSelected = true
         }
-        
         saveFilterSettings()
     }
 }

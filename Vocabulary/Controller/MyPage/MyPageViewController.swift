@@ -17,6 +17,7 @@ class MyPageViewController: UIViewController {
     let myPageData = MyPageData()
     var coreDataManager: CoreDataManager?
     
+    //MARK: - Component 호출
     let logoImage: UIImageView = {
         var image = UIImageView()
         image.image = UIImage(named: "logoresize")
@@ -52,7 +53,7 @@ class MyPageViewController: UIViewController {
     let memoryVocaLabel = LabelFactory().makeLabel(title: "외운 단어", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 17, textAlignment: .center, isBold: true)
     let memoryVocaCount = LabelFactory().makeLabel(title: "\(String(describing: updateMemoryVocaCount))", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 25, textAlignment: .center, isBold: true)
     let gamePlayLabel = LabelFactory().makeLabel(title: "게임 진행 수", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 17, textAlignment: .center, isBold: true)
-    let gamePlayCount = LabelFactory().makeLabel(title: "3회", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 25, textAlignment: .center, isBold: true)
+    let gamePlayCount = LabelFactory().makeLabel(title: "0회", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 25, textAlignment: .center, isBold: true)
     
     lazy var saveStackView: UIStackView = {
         let stackView = UIStackView()
@@ -110,8 +111,7 @@ class MyPageViewController: UIViewController {
         return tableView
     }()
     
-    
-    
+    //MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -124,12 +124,14 @@ class MyPageViewController: UIViewController {
         //getUserData()
     }
     
+    //MARK: - ViewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateWordCounts()
         //getUserData()
     }
     
+    //MARK: - Setup
     func setupUI() {
         view.addSubview(logoImage)
         view.addSubview(profileContainer)
@@ -139,16 +141,16 @@ class MyPageViewController: UIViewController {
         profileContainer.clipsToBounds = true
         
         logoImage.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(0)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(10)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(170)
             $0.height.equalTo(90)
         }
         
         profileContainer.snp.makeConstraints {
-            $0.top.equalTo(logoImage.snp.bottom).offset(0)
+            $0.top.equalTo(logoImage.snp.bottom).offset(10)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
-            $0.height.equalTo(180)
+            $0.height.equalTo(150)
         }
         
         allCountStackView.snp.makeConstraints {
@@ -169,7 +171,8 @@ class MyPageViewController: UIViewController {
         
         myPageTableView.snp.makeConstraints {
             $0.top.equalTo(profileContainer.snp.bottom).offset(10)
-            $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide).inset(10)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
         }
     }
     
@@ -177,6 +180,7 @@ class MyPageViewController: UIViewController {
         myPageTableView.reloadData()
     }
     
+    //MARK: - 단어 갯수 카운트
     func updateSaveVocaCount() {
         if let count = coreDataManager?.getSavedWordCount() {
             saveVocaCount.text = "\(count)개"
@@ -193,6 +197,7 @@ class MyPageViewController: UIViewController {
         }
     }
     
+    //MARK: - 단어 갯수 업데이트
     func updateWordCounts() {
         if let coreDataManager = coreDataManager {
             let savedWordCount = coreDataManager.getSavedWordCount()
@@ -206,6 +211,7 @@ class MyPageViewController: UIViewController {
     }
 }
 
+//MARK: - TableView delegate, dataSource
 extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myPageData.items.count
@@ -215,6 +221,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
         70
     }
     
+    //MARK: - 로그인 여부에 따라 로그인 , 로그아웃 값 저장
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MyPageTableViewCell.identifier, for: indexPath) as? MyPageTableViewCell else { fatalError("마이 페이지 테이블 뷰 에러")}
         
@@ -233,6 +240,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    //MARK: - 테이블 뷰 인덱스 별 호출 메서드
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let index = indexPath.row
         
@@ -292,6 +300,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+//MARK: - 커스텀 뷰 호출 메서드
 extension MyPageViewController: UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         if let loginPresentationController = presented as? LoginModalViewController {

@@ -30,6 +30,8 @@ class EditBookCaseHeaderView: UIView {
         return stackView
     }()
     
+    //MARK: - Initialization
+
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupConstraints()
@@ -39,6 +41,8 @@ class EditBookCaseHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Setup
+
     func setupConstraints() {
         addSubview(hStackView)
         
@@ -48,6 +52,8 @@ class EditBookCaseHeaderView: UIView {
         }
     }
     
+    //MARK: - Button Action
+
     @objc func backButtonTapped() {
         currentViewController?.dismiss(animated: true)
     }

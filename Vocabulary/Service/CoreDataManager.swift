@@ -81,12 +81,18 @@ final class CoreDataManager {
     }
     
     //단어장 수정
-    func updateBookCase(_ bookCase: NSManagedObject, name: String, explain: String, word: String, meaning: String, image: Data, errorHandler: @escaping (Error) -> Void) {
+    func updateBookCase(_ bookCase: BookCase, name: String, explain: String, word: String, meaning: String, image: Data, errorHandler: @escaping (Error) -> Void) {
         bookCase.setValue(name, forKey: "name")
         bookCase.setValue(explain, forKey: "explain")
         bookCase.setValue(word, forKey: "word")
         bookCase.setValue(meaning, forKey: "meaning")
         bookCase.setValue(image, forKey: "image")
+        
+        if let words = bookCase.words as? Set<WordEntity> {
+            for word in words {
+                word.bookCaseName = name
+            }
+        }
         
         do {
             try managedContext?.save()
@@ -97,7 +103,7 @@ final class CoreDataManager {
     }
     
     //단어 저장
-    func saveWord(word: String, definition: String, detail: String, pronunciation: String, synonym: String, antonym: String, to bookCase: BookCase, to bookCaseName: String) {
+    func saveWord(word: String, definition: String, detail: String, pronunciation: String, synonym: String, antonym: String, to bookCase: BookCase, to bookCaseName: String, errorHandler: @escaping (Error) -> Void) {
         guard let context = managedContext else {
             print("Error: managedContext is nil")
             return
@@ -119,31 +125,39 @@ final class CoreDataManager {
         do {
             try context.save()
             print("단어가 저장되었습니다.")
-        } catch {
-            print("단어가 저장되지 않았습니다. 다시 시도해주세요. 오류: \(error)")
+        } catch let error as NSError {
+            errorHandler(error)
         }
     }
     
     //단어 수정
-    func updateVoca(_ bookCase: NSManagedObject, name: String, explain: String, word: String, meaning: String, image: Data, errorHandler: @escaping (Error) -> Void) {
-        bookCase.setValue(name, forKey: "name")
-        bookCase.setValue(explain, forKey: "explain")
-        bookCase.setValue(word, forKey: "word")
-        bookCase.setValue(meaning, forKey: "meaning")
-        bookCase.setValue(image, forKey: "image")
-        
+    func updateVoca(editedWord:WordEntity, word: String, definition: String, detail: String, pronunciation: String, synonym: String, antonym: String, to bookCaseName: String, errorHandler: @escaping (Error) -> Void) {
+        guard let context = managedContext else {
+            print("Error: managedContext is nil")
+            return
+        }
+
+
+        editedWord.setValue(word, forKey: "word")
+        editedWord.setValue(definition, forKey: "definition")
+        editedWord.setValue(detail, forKey: "detail")
+        editedWord.setValue(pronunciation, forKey: "pronunciation")
+        editedWord.setValue(synonym, forKey: "synonym")
+        editedWord.setValue(antonym, forKey: "antonym")
+        editedWord.setValue(Date(), forKey: "date")
+        editedWord.setValue(bookCaseName, forKey: "bookCaseName")
+
         do {
-            try managedContext?.save()
+            try context.save()
             print("코어데이터가 수정되었습니다.")
         } catch let error as NSError {
             errorHandler(error)
         }
     }
     
-    
     //단어 삭제
     
-    func deleteWord(word: WordEntity) {
+    func deleteWord(word: WordEntity, errorHandler: @escaping (Error) -> Void) {
         guard let context = managedContext else {
             print("Error: managedContext is nil")
             return
@@ -153,12 +167,13 @@ final class CoreDataManager {
             try context.save()
             print("단어가 삭제되었습니다.")
         } catch let error as NSError {
-            print("Could not delete: \(error.localizedDescription)")
+            errorHandler(error)
         }
     }
     
     //단어 불러오기
     func getWordList() -> [WordEntity] {
+    
         var wordList: [WordEntity] = []
         
         guard let context = managedContext else {
@@ -170,14 +185,15 @@ final class CoreDataManager {
         
         do {
             wordList = try context.fetch(request)
-        } catch {
-            print("Failed to fetch word entities:", error)
+        } catch let error as NSError {
+
         }
         return wordList
+        
     }
     
     
-    
+    // 날짜에 맞는 데이터만 가져오기
     func getWordListFromCoreData(for date: Date) -> [WordEntity] {
         var wordList: [WordEntity] = []
         
@@ -203,6 +219,7 @@ final class CoreDataManager {
         return wordList
     }
     
+    // 선택한 날짜에 데이터 유무 확인
     func hasData(for date: Date) -> Bool {
         guard let context = managedContext else {
             print("Error: managedContext is nil")
@@ -227,6 +244,7 @@ final class CoreDataManager {
         }
     }
     
+    // 코어데이터 memory 상태 변경 저장
     func updateWordMemoryStatus(word: WordEntity, memory: Bool) {
         guard let context = managedContext else {
             print("Error: managedContext is nil")
@@ -242,6 +260,7 @@ final class CoreDataManager {
         }
     }
     
+    // 저장된 단어 갯수
     func getSavedWordCount() -> Int {
         guard let context = managedContext else {
             print("Error: managedContext is nil")
@@ -259,6 +278,7 @@ final class CoreDataManager {
         }
     }
     
+    // 저장된 외운 단어 갯수
     func getLearnedWordCount() -> Int {
         guard let context = managedContext else {
             print("Error: managedContext is nil")
@@ -277,6 +297,7 @@ final class CoreDataManager {
         }
     }
     
+    // 특정 단어 삭제
     func deleteWord(_ word: WordEntity) {
         guard let context = managedContext else {
             print("Error: managedContext is nil")
@@ -315,6 +336,7 @@ final class CoreDataManager {
 }
 
 // MARK: - Coredata to Cloud
+
 extension CoreDataManager {
     
     func checkiCloudLoginStatus(completion: @escaping (Bool) -> Void) {

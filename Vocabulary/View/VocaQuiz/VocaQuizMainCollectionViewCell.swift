@@ -10,12 +10,13 @@ import SnapKit
 
 class VocaQuizMainCollectionViewCell: UICollectionViewCell {
     
-    lazy var titleLabel = LabelFactory().makeLabel(title: "title",color: .white, size: 25, isBold: true)
+    lazy var titleLabel = LabelFactory().makeLabel(title: "title",color: ThemeColor.mainColor, size: 25, isBold: true)
 
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         layout()
+        addShadow()
     }
     
     required init?(coder: NSCoder) {
@@ -23,10 +24,11 @@ class VocaQuizMainCollectionViewCell: UICollectionViewCell {
     }
     
     private func layout () {
-        self.layer.borderWidth = 0.5
-        self.backgroundColor = UIColor(hexString: "308C4A")
-        self.layer.cornerRadius = 15
-        self.layer.masksToBounds = true
+        self.layer.borderWidth = 2
+        self.layer.borderColor = ThemeColor.mainColor.cgColor
+        self.backgroundColor = .white
+        self.layer.cornerRadius = 16
+        self.layer.masksToBounds = false
         
         self.contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
@@ -35,4 +37,12 @@ class VocaQuizMainCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    private func addShadow() {
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowOffset = CGSize(width: 0, height: 2)
+        self.layer.shadowRadius = 4
+        self.layer.shouldRasterize = true
+        self.layer.rasterizationScale = UIScreen.main.scale
+    }
 }
