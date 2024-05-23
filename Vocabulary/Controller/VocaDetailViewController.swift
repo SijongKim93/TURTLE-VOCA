@@ -100,6 +100,9 @@ class VocaDetailViewController: UIViewController {
         synonymTextField.isHidden = true
         antonymTextField.isHidden = true
         
+        [wordTextField, definitionTextField ,detailTextField, pronunciationTextField, synonymTextField, antonymTextField].forEach { $0.isHidden = true
+        }
+        
         view.addSubview(wordTextField)
         view.addSubview(definitionTextField)
         view.addSubview(pronunciationTextField)

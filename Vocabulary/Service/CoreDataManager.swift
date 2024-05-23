@@ -316,6 +316,26 @@ final class CoreDataManager {
 
 // MARK: - Coredata to Cloud
 extension CoreDataManager {
+    
+    func checkiCloudLoginStatus(completion: @escaping (Bool) -> Void) {
+        let container = CKContainer.default()
+        container.accountStatus { status, error in
+            if let error = error {
+                print("Error checking iCloud account status: \(error)")
+                completion(false)
+                return
+            }
+
+            if status == .available {
+                print("iCloud account is available and logged in.")
+                completion(true)
+            } else {
+                print("No iCloud account is logged in.")
+                completion(false)
+            }
+        }
+    }
+    
     func syncData() {
         syncEntity(BookCase.self, recordType: "BookCase")
         syncEntity(WordEntity.self, recordType: "WordEntity")
@@ -410,38 +430,6 @@ extension CoreDataManager {
 // MARK: - Cloud to Coredata
 
 extension CoreDataManager {
-    
-    func checkiCloudLoginStatus(completion: @escaping (Bool) -> Void) {
-        // CKContainer의 default() 메서드를 사용하여 기본 컨테이너에 접근
-        let container = CKContainer.default()
-
-        // 계정 상태를 체크하는 메서드 호출
-        container.accountStatus { status, error in
-            if let error = error {
-                print("Error checking iCloud account status: \(error)")
-                completion(false)
-                return
-            }
-
-            switch status {
-            case .available:
-                print("iCloud account is available and logged in.")
-                completion(true)
-            case .noAccount:
-                print("No iCloud account is logged in.")
-                completion(false)
-            case .restricted:
-                print("iCloud account access is restricted.")
-                completion(false)
-            case .couldNotDetermine:
-                print("Could not determine the iCloud account status.")
-                completion(false)
-            @unknown default:
-                print("Unknown iCloud account status.")
-                completion(false)
-            }
-        }
-    }
     
     func syncDataFromCloudKit() {
         syncEntityFromCloudKit(recordType: "BookCase", entityType: BookCase.self)
