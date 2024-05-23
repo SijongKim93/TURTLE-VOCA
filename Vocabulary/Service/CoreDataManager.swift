@@ -410,13 +410,47 @@ extension CoreDataManager {
 // MARK: - Cloud to Coredata
 
 extension CoreDataManager {
+    
+    func checkiCloudLoginStatus(completion: @escaping (Bool) -> Void) {
+        // CKContainer의 default() 메서드를 사용하여 기본 컨테이너에 접근
+        let container = CKContainer.default()
+
+        // 계정 상태를 체크하는 메서드 호출
+        container.accountStatus { status, error in
+            if let error = error {
+                print("Error checking iCloud account status: \(error)")
+                completion(false)
+                return
+            }
+
+            switch status {
+            case .available:
+                print("iCloud account is available and logged in.")
+                completion(true)
+            case .noAccount:
+                print("No iCloud account is logged in.")
+                completion(false)
+            case .restricted:
+                print("iCloud account access is restricted.")
+                completion(false)
+            case .couldNotDetermine:
+                print("Could not determine the iCloud account status.")
+                completion(false)
+            @unknown default:
+                print("Unknown iCloud account status.")
+                completion(false)
+            }
+        }
+    }
+    
     func syncDataFromCloudKit() {
         syncEntityFromCloudKit(recordType: "BookCase", entityType: BookCase.self)
         syncEntityFromCloudKit(recordType: "WordEntity", entityType: WordEntity.self)
     }
-
+    
     func syncEntityFromCloudKit<T: NSManagedObject>(recordType: String, entityType: T.Type) {
-        let database = CKContainer(identifier: "iCloud.com.teamproject.Vocabularytest").publicCloudDatabase
+        
+        let database = CKContainer(identifier: "iCloud.com.teamproject.Vocabularytest").privateCloudDatabase
         let query = CKQuery(recordType: recordType, predicate: NSPredicate(value: true))
         
         database.perform(query, inZoneWith: nil) { records, error in
@@ -442,9 +476,11 @@ extension CoreDataManager {
                 }
             }
         }
+        
     }
-
+    
     func updateOrInsertRecord<T: NSManagedObject>(_ record: CKRecord, entityType: T.Type, context: NSManagedObjectContext) {
+        
         let fetchRequest = T.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "uuid == %@", record.recordID.recordName)
         
@@ -460,17 +496,22 @@ extension CoreDataManager {
         } catch {
             print("Error fetching object: \(error)")
         }
+        
     }
-
+    
     func populateManagedObject(_ object: NSManagedObject, withRecord record: CKRecord) {
+        
         if let bookCase = object as? BookCase {
+            
             bookCase.uuid = record.recordID.recordName
             bookCase.name = record["name"] as? String
             bookCase.explain = record["explain"] as? String
             bookCase.meaning = record["meaning"] as? String
             bookCase.image = record["image"] as? Data
             bookCase.word = record["word"] as? String
+            
         } else if let wordEntity = object as? WordEntity {
+            
             wordEntity.uuid = record.recordID.recordName
             wordEntity.antonym = record["antonym"] as? String
             wordEntity.bookCaseName = record["bookCaseName"] as? String
@@ -481,6 +522,9 @@ extension CoreDataManager {
             wordEntity.pronunciation = record["pronunciation"] as? String
             wordEntity.synonym = record["synonym"] as? String
             wordEntity.word = record["word"] as? String
+            
         }
+        
     }
+    
 }
