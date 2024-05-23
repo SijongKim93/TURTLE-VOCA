@@ -49,14 +49,14 @@ class TextFieldFactory {
         
         
         let dictButton = UIBarButtonItem(
-            image: UIImage(named: "dict"),
+            image: UIImage(systemName: "character.book.closed"),
             style: .plain,
             target: self,
             action: dictAction)
  
         toolBar.items = [
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-            doneButton
+            dictButton,doneButton
         ]
         
         toolBar.isUserInteractionEnabled = true

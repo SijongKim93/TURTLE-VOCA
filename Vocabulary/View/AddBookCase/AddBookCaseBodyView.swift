@@ -241,7 +241,8 @@ class AddBookCaseBodyView: UIView {
     }
     
     @objc func showDict() {
-
+        let url = URL(string: "https://dict.naver.com/")
+        UIApplication.shared.open(url!)
     }
     
 }
