@@ -26,7 +26,7 @@ class GameMainPageViewController: UIViewController {
     }()
     
     let selectVC = SelectVocaViewController()
-    let buttonList = ["FlashCard", "Quiz", "Turtle Game", "기록보기", "설정하기"]
+    let buttonList = ["FlashCard", "Quiz", "Turtle Game", "오답 기록보기", "설정하기"]
     let alertController = AlertController()
     var receivedData: GenQuizModel?
     var dataList = [ReminderModel]()
