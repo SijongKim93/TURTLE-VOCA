@@ -17,18 +17,18 @@ class InsertVocaViewController: UIViewController {
     var selectedBookCaseName: String?
     var bookCaseData: BookCase?
     
+    //스크롤 뷰 삽입
     init(scrollView: UIScrollView) {
         self.scrollView = scrollView
         super.init(nibName: nil, bundle: nil)
     }
     
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Component 호출
     var scrollView = UIScrollView()
-    
     var backButton = UIButton()
     
     //단어 추가 페이지로 돌아가기
@@ -74,6 +74,8 @@ class InsertVocaViewController: UIViewController {
     var tableDatasource: UITableViewDiffableDataSource<DiffableSectionModel, Translation>?
     var tableSnapshot: NSDiffableDataSourceSnapshot<DiffableSectionModel, Translation>?
     
+    
+    //MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -86,7 +88,7 @@ class InsertVocaViewController: UIViewController {
         saveVocaButton.tintColor = .black
         saveVocaButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
         saveVocaButton.addTarget(self, action: #selector(saveVocaButtonPressed), for: .touchUpInside)
-   
+        
         self.setupBookCaseLabel()
         self.configureUI()
         self.configureDiffableDataSource()
@@ -94,7 +96,7 @@ class InsertVocaViewController: UIViewController {
         self.observe()
         self.bind()
         
-        setupKeyboardEvent() // 키보드
+        setupKeyboardEvent()
     }
     
     // 여백 탭했을 때 키보드 내려가게
@@ -106,11 +108,12 @@ class InsertVocaViewController: UIViewController {
         super.viewWillAppear(animated)
         bind()
     }
-    
+    //MARK: - 선택한 단어장 이름 가져오기
     func setupBookCaseLabel() {
         bookCaseLabel.text = selectedBookCaseName
     }
     
+    //MARK: - 단어 텍스트필드 API호출 결과값 적용
     func bind() {
         $result
             .receive(on: DispatchQueue.main)
@@ -137,14 +140,14 @@ class InsertVocaViewController: UIViewController {
             }.store(in: &cancellables)
     }
     
-    
+    //MARK: - 화면 구성
     func configureUI() {
         [backButton, bookCaseLabel, saveVocaButton, wordLabel, wordTextField, resultTable, definitionLabel, definitionTextField, detailLabel, detailTextField, pronunciationLabel, pronunciationTextField, synonymLabel, synonymTextField, antonymLabel, antonymTextField].forEach {
             self.view.addSubview( $0 )
         }
     }
     
-    
+    //MARK: - Layout
     func makeConstraints() {
         
         backButton.snp.makeConstraints {
@@ -236,7 +239,7 @@ class InsertVocaViewController: UIViewController {
         }
     }
     
-    // 단어 추가 버튼 눌렸을 때 코어데이터에 저장 -> 단어와 단어뜻은 둘 다 입력되어야 저장되도록
+    //MARK: - 단어 추가 버튼 눌렀을 때 코어데이터에 저장(단어와 단어뜻은 필수 입력)
     @objc func saveVocaButtonPressed() {
         
         if let word = wordTextField.text, let definition = definitionTextField.text,
