@@ -36,7 +36,7 @@ class InsertVocaViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    var bookCaseLabel = LabelFactory().makeLabel(title: "선택한 단어장 이름", size: 20, textAlignment: .center, isBold: true)
+    var bookCaseLabel = LabelFactory().makeLabel(title: "", size: 20, textAlignment: .center, isBold: true)
     var saveVocaButton = UIButton()
     var wordLabel = LabelFactory().makeLabel(title: "기억할 단어", size: 15, textAlignment: .left, isBold: true)
     var wordTextField = TextFieldFactory().makeTextField(placeholder: "단어를 입력하세요.(필수)")
@@ -90,6 +90,7 @@ class InsertVocaViewController: UIViewController {
         if let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last {
             print("Documents Directory: \(documentsDirectoryURL)")
         }
+        self.setupBookCaseLabel()
         self.configureUI()
         self.configureDiffableDataSource()
         self.makeConstraints()
@@ -102,6 +103,10 @@ class InsertVocaViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         bind()
+    }
+    
+    func setupBookCaseLabel() {
+        bookCaseLabel.text = selectedBookCaseName
     }
     
     func bind() {
