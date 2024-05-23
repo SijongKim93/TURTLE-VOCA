@@ -73,7 +73,7 @@ class InsertVocaViewController: UIViewController {
     
     var tableDatasource: UITableViewDiffableDataSource<DiffableSectionModel, Translation>?
     var tableSnapshot: NSDiffableDataSourceSnapshot<DiffableSectionModel, Translation>?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -86,10 +86,7 @@ class InsertVocaViewController: UIViewController {
         saveVocaButton.tintColor = .black
         saveVocaButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
         saveVocaButton.addTarget(self, action: #selector(saveVocaButtonPressed), for: .touchUpInside)
-        
-        if let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last {
-            print("Documents Directory: \(documentsDirectoryURL)")
-        }
+   
         self.setupBookCaseLabel()
         self.configureUI()
         self.configureDiffableDataSource()
@@ -115,7 +112,7 @@ class InsertVocaViewController: UIViewController {
             .sink { _ in
                 self.configureSnapshot()
             }.store(in: &cancellables)
-    }   
+    }
     
     func observe() {
         wordTextField.textPublisher
@@ -132,7 +129,7 @@ class InsertVocaViewController: UIViewController {
                     }, receiveValue: { documents in
                         self!.result = documents
                     }).store(in: &self!.cancellables)
-        }.store(in: &cancellables)
+            }.store(in: &cancellables)
     }
     
     
@@ -240,19 +237,21 @@ class InsertVocaViewController: UIViewController {
         if let word = wordTextField.text, let definition = definitionTextField.text,
            word.isEmpty == false, definition.isEmpty == false {
             
-            CoreDataManager.shared.saveWord(word: word, definition: definition, detail: detailTextField.text ?? "", pronunciation: pronunciationTextField.text ?? "", synonym: synonymTextField.text ?? "", antonym: antonymTextField.text ?? "", to: bookCaseData!, to: selectedBookCaseName!)
+            CoreDataManager.shared.saveWord(word: word, definition: definition, detail: detailTextField.text ?? "", pronunciation: pronunciationTextField.text ?? "", synonym: synonymTextField.text ?? "", antonym: antonymTextField.text ?? "", to: bookCaseData!, to: selectedBookCaseName!, errorHandler: {_ in
+                let alert = AlertController().makeNormalAlert(title: "오류", message: "단어가 저장되지 않았습니다.")
+                self.present(alert, animated: true)
+            })
             
             let alert = AlertController().makeAlertWithCompletion(title: "저장 완료", message: "단어가 저장되었습니다.") { [weak self] _ in
                 self?.dismiss(animated: true)
             }
-
+            
             self.present(alert, animated: true)
             
         } else {
             
             let alert = AlertController().makeNormalAlert(title: "저장 불가", message: "단어와 단어의 뜻은 모두 입력해야 저장이 가능합니다.")
             self.present(alert, animated: true)
-            print("단어와 단어의 뜻은 모두 입력해야 저장이 가능합니다.")
             
         }
     }
@@ -320,7 +319,7 @@ extension InsertVocaViewController {
         tableSnapshot?.deleteAllItems()
         tableSnapshot?.appendSections([.requestResult])
         tableSnapshot?.appendItems(result)
-
+        
         tableDatasource?.apply(tableSnapshot!,animatingDifferences: true)
     }
     

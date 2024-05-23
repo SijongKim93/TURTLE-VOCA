@@ -43,6 +43,11 @@ class EditBookCaseViewController: UIViewController, EditBookCaseBodyViewDelegate
         
         view.backgroundColor = .white
         
+        if let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last {
+            print("Documents Directory: \(documentsDirectoryURL)")
+        }
+        
+        
         setupConstraints()
         bodyView.delegate = self
         bodyView.bookCaseData = bookCaseData
