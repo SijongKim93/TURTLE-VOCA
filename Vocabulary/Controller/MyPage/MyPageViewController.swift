@@ -51,7 +51,7 @@ class MyPageViewController: UIViewController {
     let memoryVocaLabel = LabelFactory().makeLabel(title: "외운 단어", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 17, textAlignment: .center, isBold: true)
     let memoryVocaCount = LabelFactory().makeLabel(title: "\(String(describing: updateMemoryVocaCount))", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 25, textAlignment: .center, isBold: true)
     let gamePlayLabel = LabelFactory().makeLabel(title: "게임 진행 수", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 17, textAlignment: .center, isBold: true)
-    let gamePlayCount = LabelFactory().makeLabel(title: "3회", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 25, textAlignment: .center, isBold: true)
+    let gamePlayCount = LabelFactory().makeLabel(title: "0회", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 25, textAlignment: .center, isBold: true)
     
     lazy var saveStackView: UIStackView = {
         let stackView = UIStackView()
@@ -138,16 +138,16 @@ class MyPageViewController: UIViewController {
         profileContainer.clipsToBounds = true
         
         logoImage.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(0)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(10)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(170)
             $0.height.equalTo(90)
         }
         
         profileContainer.snp.makeConstraints {
-            $0.top.equalTo(logoImage.snp.bottom).offset(0)
+            $0.top.equalTo(logoImage.snp.bottom).offset(10)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
-            $0.height.equalTo(180)
+            $0.height.equalTo(150)
         }
         
         allCountStackView.snp.makeConstraints {
@@ -168,7 +168,8 @@ class MyPageViewController: UIViewController {
         
         myPageTableView.snp.makeConstraints {
             $0.top.equalTo(profileContainer.snp.bottom).offset(10)
-            $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide).inset(10)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
         }
     }
     

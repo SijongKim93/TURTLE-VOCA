@@ -13,6 +13,7 @@ class RecordBodyView: UIView {
     lazy var segControl: UISegmentedControl = {
         let control = UISegmentedControl(items: ["Quiz", "HangMan"])
         control.selectedSegmentIndex = 0
+        control.backgroundColor = ThemeColor.mainColor
         return control
     }()
     
@@ -40,9 +41,9 @@ class RecordBodyView: UIView {
         return view
     }()
     
-    lazy var categoryLabel = LabelFactory().makeLabel(title: "단어장", size: 20, isBold: true)
-    lazy var wordLabel = LabelFactory().makeLabel(title: "단어", size: 20, isBold: false)
-    lazy var defLabel = LabelFactory().makeLabel(title: "의미", size: 20, isBold: false)
+    lazy var categoryLabel = LabelFactory().makeLabel(title: "단어장", color: ThemeColor.mainColor, size: 20, isBold: true)
+    lazy var wordLabel = LabelFactory().makeLabel(title: "단어", color: ThemeColor.mainColor,size: 20, isBold: false)
+    lazy var defLabel = LabelFactory().makeLabel(title: "의미", color: ThemeColor.mainColor,size: 20, isBold: false)
     
     lazy var hStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [

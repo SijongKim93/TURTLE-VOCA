@@ -12,7 +12,7 @@ class EmptyStateView: UIView {
     private let messageLabel: UILabel = {
         let label = UILabel()
         label.text = "저장된 단어가 없습니다."
-        label.textColor = .black
+        label.textColor = ThemeColor.mainColor
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 18)
         return label
@@ -21,7 +21,6 @@ class EmptyStateView: UIView {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "turtle")
-        imageView.tintColor = .gray
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
