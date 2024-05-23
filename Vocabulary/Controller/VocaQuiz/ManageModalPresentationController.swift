@@ -10,7 +10,6 @@ import SnapKit
 
 class ManageModalPresentationController: UIPresentationController {
     
-    
     private lazy var dimmingView: UIView = {
         let dimmingView = UIView()
         dimmingView.translatesAutoresizingMaskIntoConstraints = false

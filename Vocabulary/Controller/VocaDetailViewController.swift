@@ -30,12 +30,12 @@ class VocaDetailViewController: UIViewController, UITextFieldDelegate {
     var synonym = LabelFactory().detailTextFieldLabel()
     var antonym = LabelFactory().detailTextFieldLabel()
     
-    var wordTextField = TextFieldFactory().makeTextField(placeholder: "")
-    var definitionTextField = TextFieldFactory().makeTextField(placeholder: "")
-    var pronunciationTextField = TextFieldFactory().makeTextField(placeholder: "")
-    var detailTextField = TextFieldFactory().makeTextField(placeholder: "")
-    var synonymTextField = TextFieldFactory().makeTextField(placeholder: "")
-    var antonymTextField = TextFieldFactory().makeTextField(placeholder: "")
+    var wordTextField = TextFieldFactory().makeTextField(placeholder: "", action: #selector(doneButtonTapped), dictAction: #selector(showDict))
+    var definitionTextField = TextFieldFactory().makeTextField(placeholder: "", action: #selector(doneButtonTapped), dictAction: #selector(showDict))
+    var pronunciationTextField = TextFieldFactory().makeTextField(placeholder: "", action: #selector(doneButtonTapped), dictAction: #selector(showDict))
+    var detailTextField = TextFieldFactory().makeTextField(placeholder: "", action: #selector(doneButtonTapped), dictAction: #selector(showDict))
+    var synonymTextField = TextFieldFactory().makeTextField(placeholder: "", action: #selector(doneButtonTapped), dictAction: #selector(showDict))
+    var antonymTextField = TextFieldFactory().makeTextField(placeholder: "", action: #selector(doneButtonTapped), dictAction: #selector(showDict))
     
     var backButton = UIButton()
     var editSaveButton = UIButton()
@@ -320,6 +320,16 @@ class VocaDetailViewController: UIViewController, UITextFieldDelegate {
     @objc func textFieldDidChange(_ textField: UITextField) {
         isChange = true
     }
+    
+    @objc func doneButtonTapped() {
+        self.view.endEditing(true)
+    }
+    
+    @objc func showDict() {
+        let url = URL(string: "https://dict.naver.com/")
+        UIApplication.shared.open(url!)
+    }
+    
 }
 
 

@@ -46,6 +46,7 @@ class FlashCardViewController: UIViewController {
         }
     }
     
+    // Gesture 추가
     private func addGesture () {
         let touchGesture = UITapGestureRecognizer(target: self, action: #selector(showAnswer))
         let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(showNext))

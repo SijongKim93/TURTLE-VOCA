@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 class RecordViewController: UIViewController {
+    
     lazy var recordBodyView = RecordBodyView()
     
     lazy var vStackView: UIStackView = {
@@ -39,11 +40,6 @@ class RecordViewController: UIViewController {
         configureQuizSnapshot()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-    }
-    
     func removeDuplicate () {
         dataList = Array(Set(dataList)).sorted(by: { $0.word < $1.word })
     }
@@ -62,8 +58,6 @@ class RecordViewController: UIViewController {
         }), for: .valueChanged)
     }
     
-    
-    
     private func layout () {
         view.addSubview(vStackView)
         
@@ -76,14 +70,18 @@ class RecordViewController: UIViewController {
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().offset(-100)
         }
+        
     }
+    
 }
 
 
 
 // MARK: - Diffable DataSource 적용
 extension RecordViewController {
+    
     func configureDiffableDataSource () {
+        
         tableDiffableDatasoure = UITableViewDiffableDataSource(tableView: recordBodyView.tableView, cellProvider: { tableView, indexPath, model in
             
             let cell = tableView.dequeueReusableCell(withIdentifier: Constants.recordCell, for: indexPath) as! RecordTableViewCell
@@ -96,23 +94,28 @@ extension RecordViewController {
             
             return cell
         })
+        
     }
     
     func configureQuizSnapshot() {
+        
         quizSnapshot = NSDiffableDataSourceSnapshot<DiffableSectionModel, ReminderModel>()
         quizSnapshot?.deleteAllItems()
         quizSnapshot?.appendSections([.quiz])
         quizSnapshot?.appendItems(dataList.filter{ $0.index == 0}.map { $0 } )
 
         tableDiffableDatasoure?.apply(quizSnapshot!,animatingDifferences: true)
+        
     }
     
     func configureHangmanSnapshot() {
+        
         hangmanSnapshot = NSDiffableDataSourceSnapshot<DiffableSectionModel, ReminderModel>()
         hangmanSnapshot?.deleteAllItems()
         hangmanSnapshot?.appendSections([.hangman])
         hangmanSnapshot?.appendItems(dataList.filter{ $0.index == 1}.map { $0 })
 
         tableDiffableDatasoure?.apply(hangmanSnapshot!,animatingDifferences: true)
+        
     }
 }
