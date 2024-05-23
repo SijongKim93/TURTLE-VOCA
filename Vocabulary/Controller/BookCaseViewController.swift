@@ -33,11 +33,13 @@ class BookCaseViewController: UIViewController{
         
         bodyView.delagateEdit = self
         bodyView.delegate = self
+        bodyView.configureUI()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         bodyView.selectInitialCell()
+        bodyView.configureUI()
     }
     
     private func setupConstraints() {

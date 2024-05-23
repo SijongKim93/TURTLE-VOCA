@@ -26,51 +26,48 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabBarVC = UITabBarController()
         
         let addBookVC = BookCaseViewController()
-        addBookVC.tabBarItem = UITabBarItem(title: "단어장", image: UIImage(systemName: "book.pages")?.withTintColor(.white, renderingMode: .alwaysOriginal), selectedImage: UIImage(systemName: "book.pages.fill"))
+        addBookVC.tabBarItem = UITabBarItem(title: "단어장", image: UIImage(systemName: "book.pages"), selectedImage: UIImage(systemName: "book.pages.fill"))
         
         let gameMainPageVC = GameMainPageViewController()
-        gameMainPageVC.tabBarItem = UITabBarItem(title: "단어 퀴즈", image: UIImage(systemName: "gamecontroller")?.withTintColor(.white, renderingMode: .alwaysOriginal), selectedImage: UIImage(systemName: "gamecontroller.fill"))
+        gameMainPageVC.tabBarItem = UITabBarItem(title: "단어 퀴즈", image: UIImage(systemName: "gamecontroller"), selectedImage: UIImage(systemName: "gamecontroller.fill"))
         
         let calenderVC = CalenderViewController()
-        calenderVC.tabBarItem = UITabBarItem(title: "캘린더", image: UIImage(systemName: "calendar.circle")?.withTintColor(.white, renderingMode: .alwaysOriginal), selectedImage: UIImage(systemName: "calendar.circle.fill"))
+        calenderVC.tabBarItem = UITabBarItem(title: "캘린더", image: UIImage(named: "tcalendar"), selectedImage: UIImage(named: "tcalendar.fill"))
         
         let myPageVC = MyPageViewController()
-        myPageVC.tabBarItem = UITabBarItem(title: "마이페이지", image: UIImage(systemName: "person.crop.circle")?.withTintColor(.white, renderingMode: .alwaysOriginal), selectedImage: UIImage(systemName: "person.crop.circle.fill"))
+        myPageVC.tabBarItem = UITabBarItem(title: "마이페이지", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
         
         tabBarVC.viewControllers = [addBookVC, gameMainPageVC, calenderVC, myPageVC]
-        tabBarVC.tabBar.backgroundColor = ThemeColor.mainColor
-        tabBarVC.tabBar.itemPositioning = .centered
-        tabBarVC.tabBar.tintColor = .white
-        tabBarVC.tabBar.unselectedItemTintColor = .white
         
         let tabBar = tabBarVC.tabBar
-        tabBar.layer.masksToBounds = true
-        tabBar.layer.cornerRadius = 15
+        tabBar.barTintColor = ThemeColor.mainColor
+        tabBar.tintColor = .white
+        tabBar.unselectedItemTintColor = .white
+        tabBar.itemPositioning = .centered
+        tabBar.layer.masksToBounds = false
+        tabBar.layer.cornerRadius = 46
         tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
-        let backgroundView = UIView(frame: tabBar.bounds.insetBy(dx: -10, dy: -10))
+        let backgroundView = UIView()
         backgroundView.backgroundColor = ThemeColor.mainColor
-        backgroundView.layer.cornerRadius = 15
+        backgroundView.layer.cornerRadius = 46
         backgroundView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        backgroundView.layer.masksToBounds = true
-        backgroundView.translatesAutoresizingMaskIntoConstraints = false
         tabBar.insertSubview(backgroundView, at: 0)
         
         backgroundView.snp.makeConstraints {
-            $0.edges.equalTo(tabBarVC.view.safeAreaLayoutGuide)
+            $0.leading.trailing.equalToSuperview().inset(-10)
+            $0.bottom.equalTo(tabBar.snp.bottom)
+            $0.top.equalTo(tabBar.snp.top).inset(-10)
         }
         
-        let normalAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        let selectedAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        
-        UITabBarItem.appearance().setTitleTextAttributes(normalAttributes, for: .normal)
-        UITabBarItem.appearance().setTitleTextAttributes(selectedAttributes, for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
         
         self.window?.rootViewController = launchScreenViewController
         window?.makeKeyAndVisible()
         
-        // 2초 후 Main으로 전환
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        // 1초 후 Main으로 전환
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.window?.rootViewController = tabBarVC
         }
     }

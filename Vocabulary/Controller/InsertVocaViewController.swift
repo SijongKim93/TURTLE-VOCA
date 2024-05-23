@@ -36,7 +36,7 @@ class InsertVocaViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    var bookCaseLabel = LabelFactory().makeLabel(title: "선택한 단어장 이름", size: 20, textAlignment: .center, isBold: true)
+    var bookCaseLabel = LabelFactory().makeLabel(title: "", size: 20, textAlignment: .center, isBold: true)
     var saveVocaButton = UIButton()
     var wordLabel = LabelFactory().makeLabel(title: "기억할 단어", size: 15, textAlignment: .left, isBold: true)
     var wordTextField = TextFieldFactory().makeTextField(placeholder: "단어를 입력하세요.(필수)")
@@ -90,6 +90,7 @@ class InsertVocaViewController: UIViewController {
         if let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last {
             print("Documents Directory: \(documentsDirectoryURL)")
         }
+        self.setupBookCaseLabel()
         self.configureUI()
         self.configureDiffableDataSource()
         self.makeConstraints()
@@ -104,10 +105,13 @@ class InsertVocaViewController: UIViewController {
         bind()
     }
     
+    func setupBookCaseLabel() {
+        bookCaseLabel.text = selectedBookCaseName
+    }
+    
     func bind() {
         $result
             .receive(on: DispatchQueue.main)
-            .print()
             .sink { _ in
                 self.configureSnapshot()
             }.store(in: &cancellables)
@@ -238,11 +242,11 @@ class InsertVocaViewController: UIViewController {
             
             CoreDataManager.shared.saveWord(word: word, definition: definition, detail: detailTextField.text ?? "", pronunciation: pronunciationTextField.text ?? "", synonym: synonymTextField.text ?? "", antonym: antonymTextField.text ?? "", to: bookCaseData!, to: selectedBookCaseName!)
             
-            let alert = AlertController().makeNormalAlert(title: "저장 완료", message: "단어가 저장되었습니다.")
-            let confirmButton = UIAlertAction(title: "확인", style: .default) { [weak self] _ in self?.dismiss(animated: true)}
-            
+            let alert = AlertController().makeAlertWithCompletion(title: "저장 완료", message: "단어가 저장되었습니다.") { [weak self] _ in
+                self?.dismiss(animated: true)
+            }
+
             self.present(alert, animated: true)
-            alert.addAction(confirmButton)
             
         } else {
             
@@ -296,6 +300,7 @@ class InsertVocaViewController: UIViewController {
     }
 }
 
+// MARK: - Diffable DataSource 적용
 extension InsertVocaViewController {
     func configureDiffableDataSource () {
         tableDatasource = UITableViewDiffableDataSource(tableView: resultTable, cellProvider: { tableView, indexPath, model in

@@ -27,7 +27,7 @@ class AddVocaViewController: UIViewController {
     var bookCaseName: String?
     var bookCaseData: BookCase?
     
-    var bookCaseLabel = LabelFactory().makeLabel(title: "선택한 단어장 이름" , size: 20, textAlignment: .center, isBold: true)
+    var bookCaseLabel = LabelFactory().makeLabel(title: "" , size: 20, textAlignment: .center, isBold: true)
     var backButton = UIButton()
     var addVocaButton = UIButton()
     var searchBar = UISearchBar()
@@ -52,12 +52,18 @@ class AddVocaViewController: UIViewController {
         insertVocaView.modalPresentationStyle = .fullScreen
         self.present(insertVocaView, animated: true, completion: nil)
     }
+
     
     
+
+
+   
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         view.backgroundColor = .white
+
         
         //코어데이터 작동 확인용
         //
@@ -65,6 +71,9 @@ class AddVocaViewController: UIViewController {
         //            print("Documents Directory: \(documentsDirectoryURL)")
         //        }
         //
+
+              
+
         backButton.tintColor = .black
         backButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
@@ -75,7 +84,13 @@ class AddVocaViewController: UIViewController {
         addVocaButton.tintColor = .black
         addVocaButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
         addVocaButton.addTarget(self, action: #selector(presentInsertVocaPage), for: .touchUpInside)
+
         
+
+
+       
+        setupBookCaseLabel()
+
         updateCountLabel()
         
         vocaCollectionView.dataSource = self
@@ -111,6 +126,10 @@ class AddVocaViewController: UIViewController {
         filteredWordList = wordList
         vocaCollectionView.reloadData()
         updateCountLabel()
+    }
+    
+    func setupBookCaseLabel() {
+        bookCaseLabel.text = bookCaseName
     }
     
     func updateCountLabel() {
@@ -285,6 +304,7 @@ extension AddVocaViewController: UICollectionViewDelegate, UICollectionViewDataS
         } catch {
             print("코어데이터 Entity를 찾을 수 없습니다.")
         }
+
         
         //           detailVC.word.text = item.word
         //           detailVC.pronunciation.text = item.pronunciation
@@ -303,6 +323,10 @@ extension AddVocaViewController: UICollectionViewDelegate, UICollectionViewDataS
         //
         //        detailVC.wordEntity = wordEntity
         
+
+
+        detailVC.selectedBookCaseName = self.bookCaseName
+
         detailVC.modalPresentationStyle = .fullScreen
         
         self.present(detailVC, animated: true, completion: nil)
