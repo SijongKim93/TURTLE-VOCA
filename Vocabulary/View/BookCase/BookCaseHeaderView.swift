@@ -11,7 +11,7 @@ import SnapKit
 
 class BookCaseHeaderView: UIView {
     
-    weak var delegate: BookCaseHeaderViewDelegate?
+    // MARK: - Properties
     
     let logoImageView: UIImageView = {
         let imageView = UIImageView()
@@ -24,18 +24,26 @@ class BookCaseHeaderView: UIView {
     
     let plusButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "plus.circle"), for: .normal)
-        button.contentMode = .scaleAspectFit
+        let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
+        let image = UIImage(systemName: "plus.circle", withConfiguration: config)
+        let selectedImage = UIImage(systemName: "plus.circle", withConfiguration: config)
+        
+        button.setImage(image, for: .normal)
+        button.setImage(selectedImage, for: .selected)
         button.tintColor = ThemeColor.mainColor
+        
         return button
     }()
     
     lazy var headerStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [logoImageView, plusButton])
         stackView.axis = .horizontal
+        stackView.spacing = 30
         stackView.distribution = .fill
         return stackView
     }()
+    
+    // MARK: - Initialization
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -48,30 +56,34 @@ class BookCaseHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Setup
+    
     private func setupConstraints(){
         
         addSubview(headerStackView)
         
         logoImageView.snp.makeConstraints {
-            $0.width.equalTo(plusButton.snp.width).multipliedBy(2)
+            $0.centerX.equalToSuperview()
             $0.height.equalTo(20)
         }
         
+        plusButton.snp.makeConstraints {
+            $0.width.height.equalTo(20)
+        }
+        
         headerStackView.snp.makeConstraints{
-            $0.top.equalToSuperview().inset(30)
-            $0.bottom.equalToSuperview().inset(20)
-            $0.horizontalEdges.equalToSuperview().inset(30)
+            $0.top.equalToSuperview().inset(20)
+            $0.bottom.equalToSuperview().inset(10)
+            $0.leading.trailing.equalToSuperview().inset(30)
         }
         
     }
     
+    //MARK: - Button Action
+    
     @objc func plusButtonTapped() {
-        let addVocaBookVC = AddBookCaseViewController()
-        addVocaBookVC.modalPresentationStyle = .fullScreen
-        currentViewController?.present(addVocaBookVC, animated: true, completion: nil)
+        let addBookCaseVC = AddBookCaseViewController()
+        addBookCaseVC.modalPresentationStyle = .fullScreen
+        currentViewController?.present(addBookCaseVC, animated: true, completion: nil)
     }
-}
-
-protocol BookCaseHeaderViewDelegate: AnyObject {
-    func didTapPlusButton()
 }

@@ -11,19 +11,17 @@ import SnapKit
 class GameMainPageViewController: UIViewController {
     
     let gameMainHeaderView = GameMainHeaderView()
-    let gameMainBodyView = GameMainBodyView()
     let gameMainBottomView = GameMainBottomView()
     
     private lazy var vStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [
             UIView(),
             gameMainHeaderView,
-            gameMainBodyView,
             gameMainBottomView,
             UIView()
         ])
         stackView.axis = .vertical
-        stackView.spacing = 50
+        stackView.spacing = 0
         return stackView
     }()
     
@@ -66,21 +64,17 @@ class GameMainPageViewController: UIViewController {
         }
         
         gameMainHeaderView.snp.makeConstraints {
-            $0.top.equalTo(vStackView.snp.top).offset(50)
+            $0.top.equalTo(vStackView.snp.top)
             $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(100)
+            $0.height.equalTo(120)
         }
         
-        gameMainBodyView.snp.makeConstraints {
-            $0.top.equalTo(gameMainHeaderView.snp.bottom).offset(50)
-            $0.height.equalTo(150)
-        }
         
         gameMainBottomView.snp.makeConstraints {
-            $0.top.equalTo(gameMainBodyView.snp.bottom).offset(50)
+            $0.top.equalTo(gameMainHeaderView.snp.bottom).offset(30)
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview().offset(-100)
+            $0.bottom.equalToSuperview()
         }
     }
     

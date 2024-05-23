@@ -40,12 +40,27 @@ class AddVocaViewController: UIViewController {
         self.present(insertVocaView, animated: true, completion: nil)
     }
 
+    
+    
+
+
    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         view.backgroundColor = .white
+
+        
+        //코어데이터 작동 확인용
+        //
+        //        if let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last {
+        //            print("Documents Directory: \(documentsDirectoryURL)")
+        //        }
+        //
+
               
+
         backButton.tintColor = .black
         backButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
@@ -57,8 +72,12 @@ class AddVocaViewController: UIViewController {
         addVocaButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
         addVocaButton.addTarget(self, action: #selector(presentInsertVocaPage), for: .touchUpInside)
 
+        
+
+
        
         setupBookCaseLabel()
+
         updateCountLabel()
         
         vocaCollectionView.dataSource = self
@@ -68,8 +87,13 @@ class AddVocaViewController: UIViewController {
         
         self.configureUI()
         self.makeConstraints()
-
+        
         getData()
+    }
+    
+    // 여백 탭했을 때 키보드 내려가게
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,8 +110,8 @@ class AddVocaViewController: UIViewController {
             return
         }
         
-        wordList = CoreDataManager.shared.getSpecificData(query: bookCaseName) {error in 
-          let alert = AlertController().makeNormalAlert(title: "오류", message: "단어장을 가져오지 못했습니다. 다시 시도해주세요.")
+        wordList = CoreDataManager.shared.getSpecificData(query: bookCaseName) {error in
+            let alert = AlertController().makeNormalAlert(title: "오류", message: "단어장을 가져오지 못했습니다. 다시 시도해주세요.")
             self.present(alert, animated: true, completion: nil)
             print("Failed to fetch words: \(error)")
         }
@@ -119,7 +143,7 @@ class AddVocaViewController: UIViewController {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(4)
             $0.leading.equalToSuperview().offset(20)
         }
-
+        
         bookCaseLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(4)
             $0.centerX.equalToSuperview()
@@ -159,7 +183,7 @@ class AddVocaViewController: UIViewController {
         let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_:)))
         vocaCollectionView.addGestureRecognizer(swipeGesture)
     }
-   
+    
     @objc func handleSwipeGesture(_ gesture: UISwipeGestureRecognizer) {
         guard gesture.state == .ended else {
             return
@@ -172,7 +196,7 @@ class AddVocaViewController: UIViewController {
             if isFiltering {
                 filteredWordList.remove(at: indexPath.row)
             }
-                wordList.remove(at: indexPath.row)
+            wordList.remove(at: indexPath.row)
             
             CoreDataManager.shared.deleteWord(word: wordToDelete) { [weak self] error in
                 guard let self = self else { return }
@@ -184,7 +208,7 @@ class AddVocaViewController: UIViewController {
             updateCountLabel()
         }
     }
-
+    
     
 }
 
@@ -221,7 +245,7 @@ extension AddVocaViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VocaCollectionViewCell.identifier, for: indexPath) as? VocaCollectionViewCell else { fatalError("컬렉션 뷰 오류")}
         
-
+        
         let item = isFiltering ? filteredWordList[indexPath.row] : wordList[indexPath.row]
         
         cell.configure(with: item)
@@ -251,14 +275,16 @@ extension AddVocaViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-           let detailVC = VocaDetailViewController()
-           let item = isFiltering ? filteredWordList[indexPath.row] : wordList[indexPath.row]
+        let detailVC = VocaDetailViewController()
+        let item = isFiltering ? filteredWordList[indexPath.row] : wordList[indexPath.row]
         
+
         detailVC.selectedBookCaseName = item.bookCaseName
         detailVC.bookCaseData = item
+
         detailVC.modalPresentationStyle = .fullScreen
-           
+        
         self.present(detailVC, animated: true, completion: nil)
-       }
+    }
 }
 

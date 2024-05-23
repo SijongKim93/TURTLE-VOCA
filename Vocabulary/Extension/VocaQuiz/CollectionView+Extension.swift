@@ -29,7 +29,6 @@ extension GameMainPageViewController: UICollectionViewDelegate, UICollectionView
         
         cell.titleLabel.text = item
         
-        
         return cell
     }
     

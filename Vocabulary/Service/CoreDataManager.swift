@@ -81,12 +81,18 @@ final class CoreDataManager {
     }
     
     //단어장 수정
-    func updateBookCase(_ bookCase: NSManagedObject, name: String, explain: String, word: String, meaning: String, image: Data, errorHandler: @escaping (Error) -> Void) {
+    func updateBookCase(_ bookCase: BookCase, name: String, explain: String, word: String, meaning: String, image: Data, errorHandler: @escaping (Error) -> Void) {
         bookCase.setValue(name, forKey: "name")
         bookCase.setValue(explain, forKey: "explain")
         bookCase.setValue(word, forKey: "word")
         bookCase.setValue(meaning, forKey: "meaning")
         bookCase.setValue(image, forKey: "image")
+        
+        if let words = bookCase.words as? Set<WordEntity> {
+            for word in words {
+                word.bookCaseName = name
+            }
+        }
         
         do {
             try managedContext?.save()
@@ -187,7 +193,7 @@ final class CoreDataManager {
     }
     
     
-    
+    // 날짜에 맞는 데이터만 가져오기
     func getWordListFromCoreData(for date: Date) -> [WordEntity] {
         var wordList: [WordEntity] = []
         
@@ -213,6 +219,7 @@ final class CoreDataManager {
         return wordList
     }
     
+    // 선택한 날짜에 데이터 유무 확인
     func hasData(for date: Date) -> Bool {
         guard let context = managedContext else {
             print("Error: managedContext is nil")
@@ -237,6 +244,7 @@ final class CoreDataManager {
         }
     }
     
+    // 코어데이터 memory 상태 변경 저장
     func updateWordMemoryStatus(word: WordEntity, memory: Bool) {
         guard let context = managedContext else {
             print("Error: managedContext is nil")
@@ -252,6 +260,7 @@ final class CoreDataManager {
         }
     }
     
+    // 저장된 단어 갯수
     func getSavedWordCount() -> Int {
         guard let context = managedContext else {
             print("Error: managedContext is nil")
@@ -269,6 +278,7 @@ final class CoreDataManager {
         }
     }
     
+    // 저장된 외운 단어 갯수
     func getLearnedWordCount() -> Int {
         guard let context = managedContext else {
             print("Error: managedContext is nil")
@@ -287,6 +297,7 @@ final class CoreDataManager {
         }
     }
     
+    // 특정 단어 삭제
     func deleteWord(_ word: WordEntity) {
         guard let context = managedContext else {
             print("Error: managedContext is nil")
@@ -325,6 +336,7 @@ final class CoreDataManager {
 }
 
 // MARK: - Coredata to Cloud
+
 extension CoreDataManager {
     func syncData() {
         syncEntity(BookCase.self, recordType: "BookCase")
@@ -420,13 +432,47 @@ extension CoreDataManager {
 // MARK: - Cloud to Coredata
 
 extension CoreDataManager {
+    
+    func checkiCloudLoginStatus(completion: @escaping (Bool) -> Void) {
+        // CKContainer의 default() 메서드를 사용하여 기본 컨테이너에 접근
+        let container = CKContainer.default()
+
+        // 계정 상태를 체크하는 메서드 호출
+        container.accountStatus { status, error in
+            if let error = error {
+                print("Error checking iCloud account status: \(error)")
+                completion(false)
+                return
+            }
+
+            switch status {
+            case .available:
+                print("iCloud account is available and logged in.")
+                completion(true)
+            case .noAccount:
+                print("No iCloud account is logged in.")
+                completion(false)
+            case .restricted:
+                print("iCloud account access is restricted.")
+                completion(false)
+            case .couldNotDetermine:
+                print("Could not determine the iCloud account status.")
+                completion(false)
+            @unknown default:
+                print("Unknown iCloud account status.")
+                completion(false)
+            }
+        }
+    }
+    
     func syncDataFromCloudKit() {
         syncEntityFromCloudKit(recordType: "BookCase", entityType: BookCase.self)
         syncEntityFromCloudKit(recordType: "WordEntity", entityType: WordEntity.self)
     }
-
+    
     func syncEntityFromCloudKit<T: NSManagedObject>(recordType: String, entityType: T.Type) {
-        let database = CKContainer(identifier: "iCloud.com.teamproject.Vocabularytest").publicCloudDatabase
+        
+        let database = CKContainer(identifier: "iCloud.com.teamproject.Vocabularytest").privateCloudDatabase
         let query = CKQuery(recordType: recordType, predicate: NSPredicate(value: true))
         
         database.perform(query, inZoneWith: nil) { records, error in
@@ -452,9 +498,11 @@ extension CoreDataManager {
                 }
             }
         }
+        
     }
-
+    
     func updateOrInsertRecord<T: NSManagedObject>(_ record: CKRecord, entityType: T.Type, context: NSManagedObjectContext) {
+        
         let fetchRequest = T.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "uuid == %@", record.recordID.recordName)
         
@@ -470,17 +518,22 @@ extension CoreDataManager {
         } catch {
             print("Error fetching object: \(error)")
         }
+        
     }
-
+    
     func populateManagedObject(_ object: NSManagedObject, withRecord record: CKRecord) {
+        
         if let bookCase = object as? BookCase {
+            
             bookCase.uuid = record.recordID.recordName
             bookCase.name = record["name"] as? String
             bookCase.explain = record["explain"] as? String
             bookCase.meaning = record["meaning"] as? String
             bookCase.image = record["image"] as? Data
             bookCase.word = record["word"] as? String
+            
         } else if let wordEntity = object as? WordEntity {
+            
             wordEntity.uuid = record.recordID.recordName
             wordEntity.antonym = record["antonym"] as? String
             wordEntity.bookCaseName = record["bookCaseName"] as? String
@@ -491,6 +544,9 @@ extension CoreDataManager {
             wordEntity.pronunciation = record["pronunciation"] as? String
             wordEntity.synonym = record["synonym"] as? String
             wordEntity.word = record["word"] as? String
+            
         }
+        
     }
+    
 }
