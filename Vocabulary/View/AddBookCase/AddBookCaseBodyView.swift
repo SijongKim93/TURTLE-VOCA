@@ -10,10 +10,14 @@ import SnapKit
 
 class AddBookCaseBodyView: UIView {
     
+    //MARK: - Properties
+    
     let coreDataManager = CoreDataManager.shared
     
     weak var delegate: AddBookCaseBodyViewDelegate?
     
+    //MARK: - Views
+
     //imageStackView
     let backImgLabel = LabelFactory().makeLabel(title: "배경 이미지", size: 18, textAlignment: .left, isBold: true)
     
@@ -95,6 +99,8 @@ class AddBookCaseBodyView: UIView {
         return button
     }()
     
+    //MARK: - Initialization
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupConstraints()
@@ -113,6 +119,8 @@ class AddBookCaseBodyView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    //MARK: - Setup
     
     func setupConstraints() {
         [imageStackView, nameStackView, explainStackView, languageStackView, addButton].forEach{
@@ -227,35 +235,9 @@ class AddBookCaseBodyView: UIView {
         textField.layer.borderWidth = 2
         textField.layer.cornerRadius = 5
     }
-    
-    func setupKeyboardEvent() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillShow),
-                                               name: UIResponder.keyboardWillShowNotification,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillHide),
-                                               name: UIResponder.keyboardWillHideNotification,
-                                               object: nil)
-    }
-    
-    @objc func keyboardWillShow(_ sender: Notification) {
-        delegate?.keyboardWillShow(sender)
-    }
-
-    @objc func keyboardWillHide(_ sender: Notification) {
-        delegate?.keyboardWillHide(sender)
-    }
 }
 
-protocol AddBookCaseBodyViewDelegate: AnyObject {
-    func addButtonTapped()
-    func didSelectImage()
-    func errorAlert()
-    
-    func keyboardWillShow(_ sender: Notification)
-    func keyboardWillHide(_ sender: Notification)
-}
+// MARK: - UITextFieldDelegate 텍스트 입력 제한
 
 extension AddBookCaseBodyView: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -276,4 +258,12 @@ extension AddBookCaseBodyView: UITextFieldDelegate {
         if textField == meaningTextField { return prospectiveText.count <= 8 }
         return true
     }
+}
+
+// MARK: - AddBookCaseViewController에서 실행하게 할 protocol
+
+protocol AddBookCaseBodyViewDelegate: AnyObject {
+    func addButtonTapped()
+    func didSelectImage()
+    func errorAlert()
 }

@@ -10,7 +10,7 @@ import SnapKit
 import CoreData
 import PhotosUI
 
-class AddBookCaseViewController: UIViewController, AddBookCaseBodyViewDelegate {
+class AddBookCaseViewController: UIViewController {
     
     var bookCaseData: NSManagedObject?
     
@@ -32,7 +32,12 @@ class AddBookCaseViewController: UIViewController, AddBookCaseBodyViewDelegate {
         
         setupConstraints()
         bodyView.delegate = self
-        bodyView.setupKeyboardEvent()
+        
+        setupKeyboardEvent()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
     }
     
     private func setupConstraints(){
@@ -43,7 +48,27 @@ class AddBookCaseViewController: UIViewController, AddBookCaseBodyViewDelegate {
             $0.horizontalEdges.equalToSuperview()
         }
     }
+}
+
+//MARK: - AddBookCaseBodyView에서 프로토콜 호출
+
+extension AddBookCaseViewController: AddBookCaseBodyViewDelegate {
+    // 저장 완료 시 alert
+    func addButtonTapped() {
+        let alertController = AlertController().makeAlertWithCompletion(title: "저장 완료", message: "단어장이 저장되었습니다.") { _ in
+            NotificationCenter.default.post(name: NSNotification.Name("didBookCase"), object: nil)
+            self.dismiss(animated: true, completion: nil)
+        }
+        present(alertController, animated: true, completion: nil)
+    }
     
+    // 에러 시 alert
+    func errorAlert() {
+        let alertController = AlertController().makeNormalAlert(title: "에러", message: "단어장 저장에 실패했습니다.")
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    //이미지 선택시 PHPicker present
     func didSelectImage() {
         var configuration = PHPickerConfiguration()
         configuration.filter = .images
@@ -53,51 +78,9 @@ class AddBookCaseViewController: UIViewController, AddBookCaseBodyViewDelegate {
         picker.delegate = self
         present(picker, animated: true, completion: nil)
     }
-    
-    func addButtonTapped() {
-        let alertController = AlertController().makeAlertWithCompletion(title: "저장 완료", message: "단어장이 저장되었습니다.") { _ in
-            NotificationCenter.default.post(name: NSNotification.Name("didBookCase"), object: nil)
-            self.dismiss(animated: true, completion: nil)
-        }
-        present(alertController, animated: true, completion: nil)
-    }
-    
-    func errorAlert() {
-        let alertController = AlertController().makeNormalAlert(title: "에러", message: "단어장 저장에 실패했습니다.")
-        present(alertController, animated: true, completion: nil)
-    }
-    
-    //텍스트 필드 입력 시 키보드가 가리지 않게
-    func keyboardWillShow(_ sender: Notification) {
-        guard let userInfo = sender.userInfo,
-              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
-              let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else { return }
-        
-        let keyboardHeight = keyboardFrame.cgRectValue.height
-        let activeField = UIResponder.findFirstResponder() as? UIView
-        
-        guard let activeField = activeField else { return }
-        
-        let fieldFrame = activeField.convert(activeField.bounds, to: view)
-        let fieldBottom = fieldFrame.origin.y + fieldFrame.size.height
-        
-        let overlap = fieldBottom - (view.frame.height - keyboardHeight) + 20
-        if overlap > 0 {
-            UIView.animate(withDuration: animationDuration) {
-                self.view.frame.origin.y = -overlap
-            }
-        }
-    }
-    
-    func keyboardWillHide(_ sender: Notification) {
-        guard let userInfo = sender.userInfo,
-              let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else { return }
-        
-        UIView.animate(withDuration: animationDuration) {
-            self.view.frame.origin.y = 0
-        }
-    }
 }
+
+//MARK: - PHPicker extension
 
 extension AddBookCaseViewController: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
@@ -114,20 +97,5 @@ extension AddBookCaseViewController: PHPickerViewControllerDelegate {
                 }
             }
         }
-    }
-}
-
-//포커스 받고 있는 텍스트 필드 찾기
-extension UIResponder {
-    private static weak var currentResponder: UIResponder?
-    
-    public static func findFirstResponder() -> UIResponder? {
-        UIResponder.currentResponder = nil
-        UIApplication.shared.sendAction(#selector(UIResponder._trap), to: nil, from: nil, for: nil)
-        return UIResponder.currentResponder
-    }
-    
-    @objc private func _trap() {
-        UIResponder.currentResponder = self
     }
 }

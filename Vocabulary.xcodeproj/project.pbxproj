@@ -101,7 +101,7 @@
 		FBC59FC82BFB786C002B0113 /* BookCase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC59FC42BFB786C002B0113 /* BookCase+CoreDataProperties.swift */; };
 
 		FB04CC6D2BFB7F2E00FC0EEA /* GameMainBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB04CC6C2BFB7F2E00FC0EEA /* GameMainBodyView.swift */; };
-
+		FB76494F2BFEF66F001D9162 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB76494E2BFEF66F001D9162 /* UIViewController+Extension.swift */; };
 		FBE7EA412BF8778F00BE86E5 /* EditBookCaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7EA402BF8778F00BE86E5 /* EditBookCaseViewController.swift */; };
 		FBE7EA432BF877D200BE86E5 /* EditBookCaseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7EA422BF877D200BE86E5 /* EditBookCaseHeaderView.swift */; };
 		FBE7EA452BF8785700BE86E5 /* EditBookCaseBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7EA442BF8785700BE86E5 /* EditBookCaseBodyView.swift */; };
@@ -200,7 +200,7 @@
 		FBC59FC42BFB786C002B0113 /* BookCase+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookCase+CoreDataProperties.swift"; sourceTree = "<group>"; };
 
 		FB04CC6C2BFB7F2E00FC0EEA /* GameMainBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMainBodyView.swift; sourceTree = "<group>"; };
-
+		FB76494E2BFEF66F001D9162 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		FBE7EA402BF8778F00BE86E5 /* EditBookCaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookCaseViewController.swift; sourceTree = "<group>"; };
 		FBE7EA422BF877D200BE86E5 /* EditBookCaseHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookCaseHeaderView.swift; sourceTree = "<group>"; };
 		FBE7EA442BF8785700BE86E5 /* EditBookCaseBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookCaseBodyView.swift; sourceTree = "<group>"; };
@@ -456,6 +456,7 @@
 				61F75F5C2BF4ED2500FCC731 /* UIColor+Extension.swift */,
 				61B2FFBF2BFB8AF500CE039B /* Int+Extension.swift */,
 				611177AD2BFC7FF900A635B8 /* UITextField+Extension.swift */,
+				FB76494E2BFEF66F001D9162 /* UIViewController+Extension.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -616,6 +617,7 @@
 				61B2FFC82BFBAD2900CE039B /* GenQuizModel.swift in Sources */,
 				61B2FFBE2BFB8AD900CE039B /* SelectBodyView.swift in Sources */,
 				61EEE6982BF5EDD900803AA1 /* ButtonFactory.swift in Sources */,
+				FB76494F2BFEF66F001D9162 /* UIViewController+Extension.swift in Sources */,
 				61BCB0592BF3597C00CF73E4 /* UIResponder+Extension.swift in Sources */,
 				618E706F2BF25337007AEDFE /* QuizBodyView.swift in Sources */,
 				618E70682BF22A66007AEDFE /* CollectionView+Extension.swift in Sources */,
