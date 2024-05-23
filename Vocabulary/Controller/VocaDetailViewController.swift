@@ -10,9 +10,10 @@ import UIKit
 import SnapKit
 import CoreData
 
-class VocaDetailViewController: UIViewController {
+class VocaDetailViewController: UIViewController, UITextFieldDelegate {
     
-    var selectedBookCaseName: String?
+    
+    
     var bookCaseLabel = LabelFactory().makeLabel(title: "", size: 20, textAlignment: .center, isBold: true)
     var wordLabel = LabelFactory().makeLabel(title: "기억할 단어", size: 15, textAlignment: .left, isBold: true)
     var definitionLabel = LabelFactory().makeLabel(title: "단어의 뜻", size: 15, textAlignment: .left, isBold: true)
@@ -39,8 +40,11 @@ class VocaDetailViewController: UIViewController {
     var backButton = UIButton()
     var editSaveButton = UIButton()
     
+    var selectedBookCaseName: String?
+    var bookCaseData: WordEntity?
+    var isChange = false
     var isEditingMode = false
-    var wordEntity: WordEntity?
+    
     
     //단어추가 페이지로 돌아가기
     @objc func backButtonTapped() {
@@ -52,8 +56,6 @@ class VocaDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         view.backgroundColor = .white
         
-        print(wordEntity)
-
         backButton.tintColor = .black
         backButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
@@ -62,14 +64,33 @@ class VocaDetailViewController: UIViewController {
         editSaveButton.setTitleColor(.black, for: .normal)
         editSaveButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
         
+        self.setDelegate()
+        self.presentLabel()
         self.setupBookCaseLabel()
         self.configureUI()
         self.makeConstraints()
         
-        //수정버튼 클릭 후 변경사항이 있을 때만 수정내용 업데이트 하기
-        if let wordEntity = wordEntity {
-            setupWordEntity(wordEntity)
-        }
+        
+    }
+    
+    func setupWordEntity(_ editedWordEntity: WordEntity) {
+        word.text = editedWordEntity.word
+        definition.text = editedWordEntity.definition
+        pronunciation.text = editedWordEntity.pronunciation
+        detail.text = editedWordEntity.detail
+        synonym.text = editedWordEntity.synonym
+        antonym.text = editedWordEntity.antonym
+        
+    }
+    
+    func presentLabel() {
+        word.text = bookCaseData?.word
+        definition.text = bookCaseData?.definition
+        pronunciation.text = bookCaseData?.pronunciation
+        detail.text = bookCaseData?.detail
+        synonym.text = bookCaseData?.synonym
+        antonym.text = bookCaseData?.antonym
+        
     }
     
     // 여백 탭했을 때 키보드 내려가게
@@ -82,35 +103,12 @@ class VocaDetailViewController: UIViewController {
     }
     
     func configureUI() {
-        self.view.addSubview(bookCaseLabel)
-        self.view.addSubview(backButton)
-        self.view.addSubview(editSaveButton)
-        self.view.addSubview(wordLabel)
-        self.view.addSubview(word)
-        self.view.addSubview(definitionLabel)
-        self.view.addSubview(definition)
-        self.view.addSubview(pronunciationLabel)
-        self.view.addSubview(pronunciation)
-        self.view.addSubview(detailLabel)
-        self.view.addSubview(detail)
-        self.view.addSubview(synonymLabel)
-        self.view.addSubview(synonym)
-        self.view.addSubview(antonymLabel)
-        self.view.addSubview(antonym)
+        [bookCaseLabel, backButton, editSaveButton, wordLabel, word, definitionLabel, definition, pronunciationLabel, pronunciation, detailLabel, detail, synonymLabel, synonym, antonymLabel, antonym, wordTextField, definitionTextField, pronunciationTextField, detailTextField, synonymTextField, antonymTextField].forEach {
+            self.view.addSubview($0)
+        }
         
-        wordTextField.isHidden = true
-        definitionTextField.isHidden = true
-        pronunciationTextField.isHidden = true
-        detailTextField.isHidden = true
-        synonymTextField.isHidden = true
-        antonymTextField.isHidden = true
-        
-        view.addSubview(wordTextField)
-        view.addSubview(definitionTextField)
-        view.addSubview(pronunciationTextField)
-        view.addSubview(detailTextField)
-        view.addSubview(synonymTextField)
-        view.addSubview(antonymTextField)
+        [wordTextField, definitionTextField ,detailTextField, pronunciationTextField, synonymTextField, antonymTextField].forEach {
+            $0.isHidden = true}
     }
     
     func makeConstraints() {
@@ -229,6 +227,15 @@ class VocaDetailViewController: UIViewController {
         }
     }
     
+    func setDelegate() {
+        wordTextField.delegate = self
+        definitionTextField.delegate = self
+        pronunciationTextField.delegate = self
+        detailTextField.delegate = self
+        synonymTextField.delegate = self
+        antonymTextField.delegate = self
+    }
+    
     func showTextFields() {
         word.isHidden = true
         definition.isHidden = true
@@ -250,33 +257,31 @@ class VocaDetailViewController: UIViewController {
         detailTextField.text = detail.text
         synonymTextField.text = synonym.text
         antonymTextField.text = antonym.text
+        
+        isChange = false
+        setupTextFieldListeners()
     }
     
     func saveChanges() {
-        guard let wordEntity = wordEntity else { return }
-        
-        //코어데이터에 변경사항 저장하기
-        wordEntity.word = wordTextField.text
-        wordEntity.definition = definitionTextField.text
-        wordEntity.pronunciation = pronunciationTextField.text
-        wordEntity.detail = detailTextField.text
-        wordEntity.synonym = synonymTextField.text
-        wordEntity.antonym = antonymTextField.text
-        
-        do {
-            try wordEntity.managedObjectContext?.save()
+        if isChange == true {
+            
+            CoreDataManager.shared.updateVoca(editedWord: bookCaseData!, word: wordTextField.text!, definition: definitionTextField.text!, detail: detailTextField.text ?? "", pronunciation: pronunciationTextField.text ?? "", synonym: synonymTextField.text ?? "", antonym: antonymTextField.text ?? "", to: selectedBookCaseName!, errorHandler: { _ in
+                let alert = AlertController().makeNormalAlert(title: "저장 실패", message: "변경 내용이 저장되지 않았습니다. 다시 시도해주세요.")
+                self.present(alert, animated: true, completion: nil)
+            })
             
             let alert = AlertController().makeNormalAlert(title: "저장 완료", message: "수정된 내용이 저장되었습니다.")
             self.present(alert, animated: true, completion: nil)
             print("수정된 내용이 저장되었습니다.")
             
-        } catch {
-            let alert = AlertController().makeNormalAlert(title: "저장 실패", message: "변경 내용이 저장되지 않았습니다. 다시 시도해주세요.")
+        } else {
+            
+            let alert = AlertController().makeNormalAlert(title: "저장 불가", message: "수정된 내용이 없습니다.")
             self.present(alert, animated: true, completion: nil)
-            print("수정된 내용이 저장되지 않았습니다.")
+            
         }
         
-       //변경사항 레이블로 다시 보여주기
+        //변경사항 레이블로 다시 보여주기
         word.text = wordTextField.text
         definition.text = definitionTextField.text
         pronunciation.text = pronunciationTextField.text
@@ -302,13 +307,18 @@ class VocaDetailViewController: UIViewController {
         antonymTextField.isHidden = true
     }
     
-    func setupWordEntity(_ editedWordEntity: WordEntity) {
-        word.text = wordEntity?.word
-        definition.text = wordEntity?.definition
-        pronunciation.text = wordEntity?.pronunciation
-        detail.text = wordEntity?.detail
-        synonym.text = wordEntity?.synonym
-        antonym.text = wordEntity?.antonym
-
+    func setupTextFieldListeners() {
+        wordTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        definitionTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        pronunciationTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        detailTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        synonymTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        antonymTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        isChange = true
     }
 }
+
+

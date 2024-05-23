@@ -71,6 +71,7 @@ class LabelFactory {
         label.font = UIFont.systemFont(ofSize: 17)
         label.numberOfLines = 0
         
+        
         // 레이블 높이 설정
         let heightConstraint = NSLayoutConstraint(item: label, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 46)
         label.addConstraint(heightConstraint)

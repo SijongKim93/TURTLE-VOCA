@@ -11,19 +11,6 @@ import CoreData
 
 class AddVocaViewController: UIViewController {
     
-    // AppDelegate에 접근하기 위한 프로퍼티
-    private var appDelegate: AppDelegate {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            fatalError("AppDelegate is not accessible.")
-        }
-        return appDelegate
-    }
-    
-    // CoreData의 관리 객체 컨텍스트
-    private var context: NSManagedObjectContext? {
-        return appDelegate.persistentContainer.viewContext
-    }
-    
     var bookCaseName: String?
     var bookCaseData: BookCase?
     
@@ -211,7 +198,11 @@ class AddVocaViewController: UIViewController {
             }
             wordList.remove(at: indexPath.row)
             
-            CoreDataManager.shared.deleteWord(word: wordToDelete)
+            CoreDataManager.shared.deleteWord(word: wordToDelete) { [weak self] error in
+                guard let self = self else { return }
+                let alert = AlertController().makeNormalAlert(title: "삭제 불가", message: "단어가 삭제되지 않았습니다. 다시 시도해주세요.")
+                self.present(alert, animated: true)
+            }
             
             vocaCollectionView.deleteItems(at: [indexPath])
             updateCountLabel()
@@ -266,7 +257,10 @@ extension AddVocaViewController: UICollectionViewDelegate, UICollectionViewDataS
             } else {
                 self.wordList.remove(at: indexPath.row)
             }
-            CoreDataManager.shared.deleteWord(word: item)
+            CoreDataManager.shared.deleteWord(word: item, errorHandler: { _ in
+                let alert = AlertController().makeNormalAlert(title: "삭제 실패", message: "단어가 삭제되지 않았습니다. 다시 시도해주세요.")
+                self.present(alert, animated: true, completion: nil)
+            })
             collectionView.deleteItems(at: [indexPath])
             self.updateCountLabel()
         }
@@ -284,53 +278,9 @@ extension AddVocaViewController: UICollectionViewDelegate, UICollectionViewDataS
         let detailVC = VocaDetailViewController()
         let item = isFiltering ? filteredWordList[indexPath.row] : wordList[indexPath.row]
         
-        guard let context = context else {
-            print("Error: NSManagedObjectContext is nil")
-            return
-        }
-        
-        let fetchRequest: NSFetchRequest<WordEntity> = WordEntity.fetchRequest()
-        
-        if let word = item.word {
-            fetchRequest.predicate = NSPredicate(format: "word == %@", word)
-        } else {
-            print("Error: item.word is nil")
-        }
-        
-        
-        do {
-            let fetchedEntities = try context.fetch(fetchRequest)
-            if let existingEntity = fetchedEntities.first {
-                detailVC.wordEntity = existingEntity
-            } else {
-                print("코어데이터 Entity를 찾을 수 없습니다.")
-            }
-            
-        } catch {
-            print("코어데이터 Entity를 찾을 수 없습니다.")
-        }
 
-        
-        //           detailVC.word.text = item.word
-        //           detailVC.pronunciation.text = item.pronunciation
-        //           detailVC.definition.text = item.definition
-        //           detailVC.detail.text = item.detail
-        //           detailVC.synonym.text = item.synonym
-        //           detailVC.antonym.text = item.antonym
-        
-        //        var wordEntity = WordEntity(context: context!)
-        //        wordEntity.word = item.word
-        //        wordEntity.pronunciation = item.pronunciation
-        //        wordEntity.definition = item.definition
-        //        wordEntity.detail = item.detail
-        //        wordEntity.synonym = item.synonym
-        //        wordEntity.antonym = item.antonym
-        //
-        //        detailVC.wordEntity = wordEntity
-        
-
-
-        detailVC.selectedBookCaseName = self.bookCaseName
+        detailVC.selectedBookCaseName = item.bookCaseName
+        detailVC.bookCaseData = item
 
         detailVC.modalPresentationStyle = .fullScreen
         
