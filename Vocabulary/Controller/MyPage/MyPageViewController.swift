@@ -115,10 +115,14 @@ class MyPageViewController: UIViewController {
         return tableView
     }()
     
+    // GameCount
+    var gameCount: Int = 0
+    
     //MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
         
         coreDataManager = CoreDataManager.shared
         setupUI()
@@ -126,12 +130,14 @@ class MyPageViewController: UIViewController {
         updateSaveVocaCount()
         updateMemoryVocaCount()
         //getUserData()
+        NotificationCenter.default.addObserver(self, selector: #selector(countUp), name: .count, object: nil)
     }
     
     //MARK: - ViewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateWordCounts()
+        gamePlayCount.text = "\(gameCount)회"
         //getUserData()
     }
     
@@ -212,6 +218,11 @@ class MyPageViewController: UIViewController {
                 self?.memoryVocaCount.text = "\(learnedWordCount)개"
             }
         }
+    }
+    
+    @objc func countUp() {
+        gameCount += 1
+        print(gameCount)
     }
 }
 
