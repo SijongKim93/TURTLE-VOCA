@@ -224,29 +224,24 @@ Bean
 
 
 ## Developer
-*  **박중권** ([jungkweon93](https://github.com/jungkweon93))
+*  **김시종** ([jungkweon93](https://github.com/jungkweon93))
     - 애플 지도 생성
     - 현재 위치 이동 기능
     - Launch Screen 기능 구현
     - 쿠폰 페이지 구현
-*  **박미림** ([moremirim](https://github.com/moremirim))
+*  **금세미** ([moremirim](https://github.com/moremirim))
     - Project Merge 구현
     - 대여 기능 구현
     - 전체적인 UI Design
     - 결제 페이지 구현 
-*  **송동익** ([Haroldfromk](https://github.com/haroldfromk))
+*  **김한빛** ([Haroldfromk](https://github.com/haroldfromk))
     - 반납 기능 구현
     - Annotation Pin 구현
     - 거리 계산 로직 구현
     - 관리자 페이지 구현
     - Coredata를 사용한 킥보드 정보 저장
-*  **조희라** ([Heather-Cho](https://github.com/Heather-Cho))
+*  **송동익** ([Heather-Cho](https://github.com/Heather-Cho))
     - 로그인, 회원가입 페이지 구현
     - 회원정보 수정 페이지 구현
     - Userdefault를 사용한 회원 정보 저장
     - 친구초대 페이지 구현
-*  **채나연** ([Nayeon Chae](https://github.com/NY-Chae))
-    - 마이페이지 구현
-    - 주행가이드 페이지 구현
-    - 로그아웃 기능 구현
-    - 프로젝트내 필요한 이미지 구성
