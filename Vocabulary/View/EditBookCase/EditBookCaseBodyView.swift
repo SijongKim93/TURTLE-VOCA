@@ -13,8 +13,6 @@ class EditBookCaseBodyView: UIView {
     
     let coreDataManager = CoreDataManager.shared
     
-    var bookCase: BookCase?
-    
     var bookCaseData: NSManagedObject? {
         didSet {
             setupTextFieldData()
@@ -222,7 +220,8 @@ class EditBookCaseBodyView: UIView {
                   let data = bookCaseData else {
                 return
             }
-            coreDataManager.updateBookCase(data, name: name, explain: explain, word: word, meaning: meaning, image: image, errorHandler: { _ in
+            
+            coreDataManager.updateBookCase(data as! BookCase, name: name, explain: explain, word: word, meaning: meaning, image: image, errorHandler: { _ in
                 self.delegate?.editErrorAlert()
             })
             delegate?.editButtonTapped()

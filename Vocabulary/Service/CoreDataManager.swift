@@ -81,12 +81,18 @@ final class CoreDataManager {
     }
     
     //단어장 수정
-    func updateBookCase(_ bookCase: NSManagedObject, name: String, explain: String, word: String, meaning: String, image: Data, errorHandler: @escaping (Error) -> Void) {
+    func updateBookCase(_ bookCase: BookCase, name: String, explain: String, word: String, meaning: String, image: Data, errorHandler: @escaping (Error) -> Void) {
         bookCase.setValue(name, forKey: "name")
         bookCase.setValue(explain, forKey: "explain")
         bookCase.setValue(word, forKey: "word")
         bookCase.setValue(meaning, forKey: "meaning")
         bookCase.setValue(image, forKey: "image")
+        
+        if let words = bookCase.words as? Set<WordEntity> {
+            for word in words {
+                word.bookCaseName = name
+            }
+        }
         
         do {
             try managedContext?.save()
