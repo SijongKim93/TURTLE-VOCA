@@ -15,6 +15,7 @@ class CalenderViewController: UIViewController {
     var filteredWords: [WordEntity] = []
     let coreDataManager = CoreDataManager.shared
     
+    //MARK: - Component 호출
     let dateView: UICalendarView = {
         var view = UICalendarView()
         view.calendar = .current
@@ -71,13 +72,16 @@ class CalenderViewController: UIViewController {
         return view
     }()
     
+    //MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupUI()
         buttonAction()
         
         view.backgroundColor = .white
         
+        // 처음 캘린더 탭에 들어왔을때 현재 날짜가 활성화 되도록 설정
         let currentDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date())
         selectedDate = currentDateComponents
         let selectionBehavior = UICalendarSelectionSingleDate(delegate: self)
@@ -85,8 +89,10 @@ class CalenderViewController: UIViewController {
         dateView.selectionBehavior = selectionBehavior
         
         fetchWordListAndUpdateCollectionView()
+        dateView.reloadDecorations(forDateComponents: [selectedDate!], animated: true)
     }
     
+    //MARK: - ViewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if selectedDate == nil {
@@ -96,14 +102,15 @@ class CalenderViewController: UIViewController {
         
         fetchWordListAndUpdateCollectionView()
         didDismissFilterDetailModal()
+        dateView.reloadDecorations(forDateComponents: [selectedDate!], animated: true)
     }
     
+    //MARK: - Component Setup
     func setupUI() {
         view.addSubview(dateView)
         view.addSubview(buttonStackView)
         view.addSubview(viewLine)
         view.addSubview(dayCollectionView)
-        
         view.addSubview(emptyStateView)
         
         dateView.delegate = self
@@ -141,13 +148,14 @@ class CalenderViewController: UIViewController {
             $0.edges.equalTo(dayCollectionView)
         }
     }
-    
+    //MARK: - 버튼 액션
     func buttonAction() {
         upButton.addTarget(self, action: #selector(upButtonTapped), for: .touchUpInside)
         filterButton.addTarget(self, action: #selector(filterButtonTapped), for: .touchUpInside)
         menuButton.addTarget(self, action: #selector(menuButtonTapped), for: .touchUpInside)
     }
     
+    //MARK: - 업 버튼을 누르면 단어장이 넓게 보이고 다시 누르면 원래 사이즈로 돌아오는 메서드
     @objc func upButtonTapped() {
         UIView.animate(withDuration: 0.3) {
             if self.upButton.isSelected {
@@ -170,6 +178,7 @@ class CalenderViewController: UIViewController {
         }
     }
     
+    //MARK: - 필터 버튼 , 메뉴 버튼 클릭 시 커스텀 모달 호출
     @objc func filterButtonTapped() {
         let filterModalVC = FilterDetailModalViewController()
         filterModalVC.delegate = self
@@ -186,6 +195,7 @@ class CalenderViewController: UIViewController {
         present(menuModelVC, animated: true, completion: nil)
     }
     
+    //MARK: - CollectionView FlowLayout 설정
     func createCollectionViewFlowLayout(for collectionView: UICollectionView) -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
         collectionView.collectionViewLayout = layout
@@ -197,6 +207,7 @@ class CalenderViewController: UIViewController {
         return layout
     }
     
+    //MARK: - 캘린더에 선택 된 날짜에 저장된 단어데이터 호출 메서드
     func fetchWordListAndUpdateCollectionView() {
         let currentDate = Calendar.current.dateComponents([.year, .month, .day], from: Date())
         let dateToFetch = selectedDate?.date ?? Calendar.current.date(from: currentDate)!
@@ -212,16 +223,7 @@ class CalenderViewController: UIViewController {
         emptyStateView.isHidden = !filteredWords.isEmpty
     }
     
-    func filterWords(for date: Date, words: [WordEntity]) -> [WordEntity] {
-        let calendar = Calendar.current
-        return words.filter { word in
-            if let wordDate = word.date {
-                return calendar.isDate(wordDate, inSameDayAs: date)
-            }
-            return false
-        }
-    }
-    
+    //MARK: - 필터 내 선택한 인덱스를 저장하고 이전 선택 값이 없다면 0을 기본으로 가지는 메서드
     func fetchFilterIndex() -> Int {
         if UserDefaults.standard.object(forKey: "SelectedFilterIndex") == nil {
             UserDefaults.standard.set(0, forKey: "SelectedFilterIndex")
@@ -230,6 +232,7 @@ class CalenderViewController: UIViewController {
         return UserDefaults.standard.integer(forKey: "SelectedFilterIndex")
     }
     
+    //MARK: - UserDefaults를 통해 저장된 필터 인덱스 값마다 해당하는 필터 옵션을 적용하는 메서드
     func sortWords(_ words: [WordEntity], by filterIndex: Int) -> [WordEntity] {
         switch filterIndex {
         case 0:
@@ -256,7 +259,9 @@ class CalenderViewController: UIViewController {
     }
 }
 
+//MARK: - 메뉴 버튼을 누르면 호출되는 프로토콜 필수 메서드
 extension CalenderViewController: MenuDetailModalDelegate {
+    //MARK: - 캘린더에서 선택되어 있는 날짜를 바탕으로 해당 하는 날짜의 memory 여부를 모두 true로 변경하는 메서드
     func markWordsAsLearned() {
         let date: Date
         if let selectedDate = selectedDate {
@@ -270,10 +275,10 @@ extension CalenderViewController: MenuDetailModalDelegate {
         for word in wordsForDate {
             coreDataManager.updateWordMemoryStatus(word: word, memory: true)
         }
-        
         fetchWordListAndUpdateCollectionView()
     }
     
+    //MARK: - 캘린더에서 선택되어 있는 날짜를 바탕으로 해당하는 날짜의 모든 단어를 지우는 메서드
     func deleteAllWords() {
         let date: Date
         if let selectedDate = selectedDate {
@@ -292,6 +297,7 @@ extension CalenderViewController: MenuDetailModalDelegate {
     }
 }
 
+//MARK: - 단어를 표시하는 CollectionView Delegate, DateSource 설정
 extension CalenderViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return filteredWords.count
@@ -309,6 +315,7 @@ extension CalenderViewController: UICollectionViewDelegate, UICollectionViewData
         return cell
     }
     
+    //MARK: - 외웠음을 표시하는 버튼을 눌렀을 경우 해당하는 단어의 memory 상태를 변경하는 메서드
     @objc func learnedButtonTapped(_ sender: UIButton) {
         let index = sender.tag
         let word = filteredWords[index]
@@ -317,10 +324,11 @@ extension CalenderViewController: UICollectionViewDelegate, UICollectionViewData
         
         sender.isSelected = newLearnStatus
     }
-    
 }
 
+
 extension CalenderViewController: UICalendarViewDelegate, UICalendarSelectionSingleDateDelegate {
+    //MARK: -  캘린더 날짜가 선택되었을때 해당 날짜를 바탕으로 하단 CollectionView 내 단어 데이터 띄우기 , 데이터가 없다면 View를 띄워 없다는 내용 안내
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
         selectedDate = dateComponents
         
@@ -333,6 +341,7 @@ extension CalenderViewController: UICalendarViewDelegate, UICalendarSelectionSin
         }
     }
     
+    //MARK: -  특정 날짜 내 데이터가 있다면 DateComponent 데코레이션
     func calendarView(_ calendarView: UICalendarView, decorationFor dateComponents: DateComponents) -> UICalendarView.Decoration? {
         if let date = Calendar.current.date(from: dateComponents), coreDataManager.hasData(for: date) {
             let emojiLabel = UILabel()
@@ -345,25 +354,30 @@ extension CalenderViewController: UICalendarViewDelegate, UICalendarSelectionSin
                 $0.centerX.equalToSuperview()
                 $0.centerY.equalToSuperview()
             }
-            
             return .customView { containerView }
         }
         return nil
     }
     
+    //MARK: -  선택한 날짜 selectedDate 저장 및 해당하는 컬렉션 뷰 리로드
     func calendarView(_ calendarView: UICalendarView, didSelect dateComponents: DateComponents?) {
         selectedDate = dateComponents
         fetchWordListAndUpdateCollectionView()
     }
 }
 
+//MARK: - 필터 설정 후 필터창 내려간 뒤 변경된 데이터 정렬로 리로드
 extension CalenderViewController: FilterDetailModalDelegate {
     func didDismissFilterDetailModal() {
         fetchWordListAndUpdateCollectionView()
     }
 }
 
+protocol FilterDetailModalDelegate: AnyObject {
+    func didDismissFilterDetailModal()
+}
 
+//MARK: - 커스텀 뷰 특정 값을 가지고 띄워질 수 있도록 화면 전환 커스텀
 extension CalenderViewController: UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         if let filterModalViewController = presented as? FilterDetailModalViewController {
@@ -376,7 +390,6 @@ extension CalenderViewController: UIViewControllerTransitioningDelegate {
     }
 }
 
-protocol FilterDetailModalDelegate: AnyObject {
-    func didDismissFilterDetailModal()
-}
+
+
 

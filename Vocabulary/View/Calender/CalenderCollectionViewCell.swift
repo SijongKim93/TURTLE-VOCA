@@ -100,6 +100,7 @@ class CalenderCollectionViewCell: UICollectionViewCell {
         learnedButton.isSelected = word.memory
     }
     
+    //MARK: - TTS 구현 메서드
     @objc func speakEnglishLabel() {
         guard let text = englishLabel.text, !text.isEmpty else { return }
         let utterance = AVSpeechUtterance(string: text)
