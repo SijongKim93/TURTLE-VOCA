@@ -11,16 +11,20 @@ import CoreData
 
 class EditBookCaseBodyView: UIView {
     
+    //MARK: - Properties
+
     let coreDataManager = CoreDataManager.shared
     
     var bookCaseData: NSManagedObject? {
         didSet {
-            setupTextFieldData()
+            setupTextFieldData() // bookCaseData값으로 텍스트 필드 및 이미지 뷰에 데이터 표시
         }
     }
     
     weak var delegate: EditBookCaseBodyViewDelegate?
     
+    //MARK: - UIElements
+
     //imageStackView
     let backImgLabel = LabelFactory().makeLabel(title: "배경 이미지", size: 18, textAlignment: .left, isBold: true)
     
@@ -100,6 +104,8 @@ class EditBookCaseBodyView: UIView {
         return button
     }()
     
+    //MARK: - Initialization
+
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
@@ -115,6 +121,8 @@ class EditBookCaseBodyView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Setup
+
     func setupConstraints() {
         [imageStackView, nameStackView, explainStackView, languageStackView, editButton].forEach{
             addSubview($0)
@@ -174,10 +182,6 @@ class EditBookCaseBodyView: UIView {
         backImgView.contentMode = .scaleToFill
     }
     
-    @objc private func imageViewTapped(_ gestureRecognizer: UITapGestureRecognizer) {
-        delegate?.didSelectImage()
-    }
-    
     func setupTextFieldData() {
         guard let data = bookCaseData else {
             print("Error: No data")
@@ -194,6 +198,12 @@ class EditBookCaseBodyView: UIView {
         } else {
             print("Error: Failed to load image data")
         }
+    }
+    
+    //MARK: - Actions
+
+    @objc private func imageViewTapped(_ gestureRecognizer: UITapGestureRecognizer) {
+        delegate?.didSelectImage()
     }
     
     @objc func editButtonTapped(_ sender: UIButton) {
@@ -220,7 +230,8 @@ class EditBookCaseBodyView: UIView {
                   let data = bookCaseData else {
                 return
             }
-            coreDataManager.updateBookCase(data, name: name, explain: explain, word: word, meaning: meaning, image: image, errorHandler: { _ in
+            
+            coreDataManager.updateBookCase(data as! BookCase, name: name, explain: explain, word: word, meaning: meaning, image: image, errorHandler: { _ in
                 self.delegate?.editErrorAlert()
             })
             delegate?.editButtonTapped()
@@ -239,6 +250,8 @@ class EditBookCaseBodyView: UIView {
         textField.layer.cornerRadius = 5
     }
 }
+
+//MARK: - EditBookCaseViewController에 보내줄 protocol
 
 protocol EditBookCaseBodyViewDelegate: AnyObject {
     func editButtonTapped()
