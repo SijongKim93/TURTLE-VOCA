@@ -70,6 +70,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.window?.rootViewController = tabBarVC
         }
+        
+        // delegate 설정
+        
+        gameMainPageVC.delegate = myPageVC
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

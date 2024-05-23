@@ -143,6 +143,7 @@ extension HangManGameViewController {
                 self?.gameStart()
                 self?.isGameEnd = false
             }
+            NotificationCenter.default.post(name: .count, object: nil)
             self.present(alert, animated: true)
             isGameEnd = true
         }
@@ -164,7 +165,7 @@ extension HangManGameViewController {
                 self?.gameStart()
                 self?.isGameEnd = false
             }
-            NotificationCenter.default.post(name: .hangman, object: data)
+            NotificationCenter.default.post(name: .getData, object: data)
             NotificationCenter.default.post(name: .count, object: nil)
             self.present(alert, animated: true)
             isGameEnd = true
