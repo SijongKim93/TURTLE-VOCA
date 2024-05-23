@@ -86,6 +86,11 @@ class AddVocaViewController: UIViewController {
         getData()
     }
     
+    // 여백 탭했을 때 키보드 내려가게
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getData()

@@ -35,6 +35,10 @@ class AddBookCaseViewController: UIViewController, AddBookCaseBodyViewDelegate {
         bodyView.setupKeyboardEvent()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
+    }
+    
     private func setupConstraints(){
         view.addSubview(wholeStackView)
         
@@ -66,9 +70,41 @@ class AddBookCaseViewController: UIViewController, AddBookCaseBodyViewDelegate {
         let alertController = AlertController().makeNormalAlert(title: "에러", message: "단어장 저장에 실패했습니다.")
         present(alertController, animated: true, completion: nil)
     }
+}
+
+extension AddBookCaseViewController: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true, completion: nil)
+        
+        guard let result = results.first else { return }
+        
+        if result.itemProvider.canLoadObject(ofClass: UIImage.self) {
+            result.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] (object, error) in
+                DispatchQueue.main.async {
+                    if let image = object as? UIImage {
+                        self?.bodyView.setImage(image)
+                    }
+                }
+            }
+        }
+    }
+}
+
+extension UIViewController {
     
     //텍스트 필드 입력 시 키보드가 가리지 않게
-    func keyboardWillShow(_ sender: Notification) {
+    func setupKeyboardEvent() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ sender: Notification) {
         guard let userInfo = sender.userInfo,
               let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
               let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else { return }
@@ -89,30 +125,12 @@ class AddBookCaseViewController: UIViewController, AddBookCaseBodyViewDelegate {
         }
     }
     
-    func keyboardWillHide(_ sender: Notification) {
+    @objc func keyboardWillHide(_ sender: Notification) {
         guard let userInfo = sender.userInfo,
               let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else { return }
         
         UIView.animate(withDuration: animationDuration) {
             self.view.frame.origin.y = 0
-        }
-    }
-}
-
-extension AddBookCaseViewController: PHPickerViewControllerDelegate {
-    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-        picker.dismiss(animated: true, completion: nil)
-        
-        guard let result = results.first else { return }
-        
-        if result.itemProvider.canLoadObject(ofClass: UIImage.self) {
-            result.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] (object, error) in
-                DispatchQueue.main.async {
-                    if let image = object as? UIImage {
-                        self?.bodyView.setImage(image)
-                    }
-                }
-            }
         }
     }
 }
