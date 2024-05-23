@@ -10,7 +10,7 @@ import SnapKit
 
 class SelectBottomView: UIView {
     
-    lazy var startButton = ButtonFactory().makeButton(title: "설정하기") { [weak self] _ in
+    lazy var startButton = ButtonFactory().makeButton(title: "설정하기", size: 18) { [weak self] _ in
         self?.setUpGame()
     }
     
