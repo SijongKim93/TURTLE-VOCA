@@ -206,16 +206,16 @@ class HangManBottomView: UIView {
             if currentVC.isGameEnd == false {
                 currentVC.guessAnswer(alphabet: Character(text))
                 button.isEnabled = false
-                button.setTitle("", for: .normal)
-                button.backgroundColor = .blue
-                button.setImage(UIImage(systemName: "checkmark"), for: .normal)
+                button.backgroundColor = ThemeColor.mainColor
+                button.setTitleColor(.white, for: .normal)
             }
         } else {
             if currentVC.isGameEnd == false {
                 button.isEnabled = false
-                button.setTitle("", for: .normal)
-                button.backgroundColor = .red
-                button.setImage(UIImage(systemName: "xmark"), for: .normal)
+                button.setTitle("X", for: .normal)
+                button.backgroundColor = .white
+                button.setTitleColor(.red, for: .normal)
+                button.layer.borderColor = .init(red: 255, green: 0, blue: 0, alpha: 1)
                 currentVC.failCount += 1
                 currentVC.updateUI()
             }
