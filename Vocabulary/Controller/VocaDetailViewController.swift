@@ -106,9 +106,10 @@ class VocaDetailViewController: UIViewController, UITextFieldDelegate {
         [bookCaseLabel, backButton, editSaveButton, wordLabel, word, definitionLabel, definition, pronunciationLabel, pronunciation, detailLabel, detail, synonymLabel, synonym, antonymLabel, antonym, wordTextField, definitionTextField, pronunciationTextField, detailTextField, synonymTextField, antonymTextField].forEach {
             self.view.addSubview($0)
         }
-        
+
         [wordTextField, definitionTextField ,detailTextField, pronunciationTextField, synonymTextField, antonymTextField].forEach {
-            $0.isHidden = true}
+            $0.isHidden = true
+        }
     }
     
     func makeConstraints() {
