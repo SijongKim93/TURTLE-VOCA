@@ -21,6 +21,7 @@ class MyPageViewController: UIViewController {
     let logoImage: UIImageView = {
         var image = UIImageView()
         image.image = UIImage(named: "logoresize")
+        image.contentMode = .scaleAspectFit
         return image
     }()
     
@@ -33,27 +34,30 @@ class MyPageViewController: UIViewController {
     let saveVocaImage: UIImageView = {
         var image = UIImageView()
         image.image = UIImage(named: "savevoca")
+        image.contentMode = .scaleAspectFit
         return image
     }()
     
     let memoryVocaImage: UIImageView = {
         var image = UIImageView()
         image.image = UIImage(named: "memoryvoca")
+        image.contentMode = .scaleAspectFit
         return image
     }()
     
     let gamePlayImage: UIImageView = {
         var image = UIImageView()
         image.image = UIImage(named: "game")
+        image.contentMode = .scaleAspectFit
         return image
     }()
     
     let saveVocaLabel = LabelFactory().makeLabel(title: "저장 된 단어", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 17, textAlignment: .center, isBold: true)
-    let saveVocaCount = LabelFactory().makeLabel(title: "\(String(describing: updateSaveVocaCount))개", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 25, textAlignment: .center, isBold: true)
+    let saveVocaCount = LabelFactory().makeLabel(title: "\(String(describing: updateSaveVocaCount))개", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 23, textAlignment: .center, isBold: true)
     let memoryVocaLabel = LabelFactory().makeLabel(title: "외운 단어", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 17, textAlignment: .center, isBold: true)
-    let memoryVocaCount = LabelFactory().makeLabel(title: "\(String(describing: updateMemoryVocaCount))", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 25, textAlignment: .center, isBold: true)
+    let memoryVocaCount = LabelFactory().makeLabel(title: "\(String(describing: updateMemoryVocaCount))", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 23, textAlignment: .center, isBold: true)
     let gamePlayLabel = LabelFactory().makeLabel(title: "게임 진행 수", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 17, textAlignment: .center, isBold: true)
-    let gamePlayCount = LabelFactory().makeLabel(title: "0회", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 25, textAlignment: .center, isBold: true)
+    let gamePlayCount = LabelFactory().makeLabel(title: "0회", color: #colorLiteral(red: 0.9607844949, green: 0.9607841372, blue: 0.9521661401, alpha: 1), size: 23, textAlignment: .center, isBold: true)
     
     lazy var saveStackView: UIStackView = {
         let stackView = UIStackView()
