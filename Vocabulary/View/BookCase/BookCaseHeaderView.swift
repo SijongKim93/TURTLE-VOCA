@@ -11,7 +11,7 @@ import SnapKit
 
 class BookCaseHeaderView: UIView {
     
-    weak var delegate: BookCaseHeaderViewDelegate?
+    // MARK: - Properties
     
     let logoImageView: UIImageView = {
         let imageView = UIImageView()
@@ -37,6 +37,8 @@ class BookCaseHeaderView: UIView {
         return stackView
     }()
     
+    // MARK: - Initialization
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupConstraints()
@@ -47,6 +49,8 @@ class BookCaseHeaderView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Setup
     
     private func setupConstraints(){
         
@@ -65,13 +69,11 @@ class BookCaseHeaderView: UIView {
         
     }
     
+    //MARK: - Button Action
+    
     @objc func plusButtonTapped() {
-        let addVocaBookVC = AddBookCaseViewController()
-        addVocaBookVC.modalPresentationStyle = .fullScreen
-        currentViewController?.present(addVocaBookVC, animated: true, completion: nil)
+        let addBookCaseVC = AddBookCaseViewController()
+        addBookCaseVC.modalPresentationStyle = .fullScreen
+        currentViewController?.present(addBookCaseVC, animated: true, completion: nil)
     }
-}
-
-protocol BookCaseHeaderViewDelegate: AnyObject {
-    func didTapPlusButton()
 }

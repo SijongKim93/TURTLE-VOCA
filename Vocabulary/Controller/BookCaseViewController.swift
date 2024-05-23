@@ -23,6 +23,7 @@ class BookCaseViewController: UIViewController{
     }()
         
     let networkManager = NetworkManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,10 +35,6 @@ class BookCaseViewController: UIViewController{
         bodyView.delagateEdit = self
         bodyView.delegate = self
         bodyView.configureUI()
-        
-        if let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last {
-            print("Documents Directory: \(documentsDirectoryURL)")
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -56,11 +53,13 @@ class BookCaseViewController: UIViewController{
         }
     }
     
-    // 단어장 추가 시 컬렉션 뷰 reload
+    // 단어장 추가 시 relaod
     @objc func didBookCase() {
         bodyView.configureUI()
     }
 }
+
+//MARK: - BookCasaBodyCell에서 프로토콜 호출
 
 extension BookCaseViewController: EditBookCaseBodyCellDelegate {
     func didTapEditButton(on cell: BookCaseBodyCell, with bookCaseData: NSManagedObject) {
@@ -71,13 +70,15 @@ extension BookCaseViewController: EditBookCaseBodyCellDelegate {
     }
 }
 
+//MARK: - BookCaseBodyView에서 프로토콜 호출
+
 extension BookCaseViewController: BookCaseBodyViewDelegate {
+    //컬렉션 뷰 셀 선택 시 이동
     func didSelectBookCase(_ bookCase: NSManagedObject) {
         guard let bookCase = bookCase as? BookCase else {
             print("Error: Failed NSManagedObject to BookCase")
             return
         }
-        
         let addVocaVC = AddVocaViewController()
         addVocaVC.bookCaseData = bookCase
         addVocaVC.bookCaseName = bookCase.name
@@ -85,6 +86,7 @@ extension BookCaseViewController: BookCaseBodyViewDelegate {
         present(addVocaVC, animated: true)
     }
     
+    // 에러 Alert
     func deleteErrorAlert() {
         let alertController = AlertController().makeNormalAlert(title: "에러", message: "단어장 삭제에 실패했습니다.")
         present(alertController, animated: true)

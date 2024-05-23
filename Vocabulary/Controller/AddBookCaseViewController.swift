@@ -10,7 +10,7 @@ import SnapKit
 import CoreData
 import PhotosUI
 
-class AddBookCaseViewController: UIViewController, AddBookCaseBodyViewDelegate {
+class AddBookCaseViewController: UIViewController {
     
     var bookCaseData: NSManagedObject?
     
@@ -32,7 +32,8 @@ class AddBookCaseViewController: UIViewController, AddBookCaseBodyViewDelegate {
         
         setupConstraints()
         bodyView.delegate = self
-        bodyView.setupKeyboardEvent()
+        
+        setupKeyboardEvent()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
@@ -47,7 +48,27 @@ class AddBookCaseViewController: UIViewController, AddBookCaseBodyViewDelegate {
             $0.horizontalEdges.equalToSuperview()
         }
     }
+}
+
+//MARK: - AddBookCaseBodyView에서 프로토콜 호출
+
+extension AddBookCaseViewController: AddBookCaseBodyViewDelegate {
+    // 저장 완료 시 alert
+    func addButtonTapped() {
+        let alertController = AlertController().makeAlertWithCompletion(title: "저장 완료", message: "단어장이 저장되었습니다.") { _ in
+            NotificationCenter.default.post(name: NSNotification.Name("didBookCase"), object: nil)
+            self.dismiss(animated: true, completion: nil)
+        }
+        present(alertController, animated: true, completion: nil)
+    }
     
+    // 에러 시 alert
+    func errorAlert() {
+        let alertController = AlertController().makeNormalAlert(title: "에러", message: "단어장 저장에 실패했습니다.")
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    //이미지 선택시 PHPicker present
     func didSelectImage() {
         var configuration = PHPickerConfiguration()
         configuration.filter = .images
@@ -57,20 +78,9 @@ class AddBookCaseViewController: UIViewController, AddBookCaseBodyViewDelegate {
         picker.delegate = self
         present(picker, animated: true, completion: nil)
     }
-    
-    func addButtonTapped() {
-        let alertController = AlertController().makeAlertWithCompletion(title: "저장 완료", message: "단어장이 저장되었습니다.") { _ in
-            NotificationCenter.default.post(name: NSNotification.Name("didBookCase"), object: nil)
-            self.dismiss(animated: true, completion: nil)
-        }
-        present(alertController, animated: true, completion: nil)
-    }
-    
-    func errorAlert() {
-        let alertController = AlertController().makeNormalAlert(title: "에러", message: "단어장 저장에 실패했습니다.")
-        present(alertController, animated: true, completion: nil)
-    }
 }
+
+//MARK: - PHPicker extension
 
 extension AddBookCaseViewController: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {

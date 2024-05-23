@@ -321,6 +321,7 @@ final class CoreDataManager {
 }
 
 // MARK: - Coredata to Cloud
+
 extension CoreDataManager {
     func syncData() {
         syncEntity(BookCase.self, recordType: "BookCase")

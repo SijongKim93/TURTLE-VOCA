@@ -13,7 +13,8 @@ extension UIResponder {
     }
 }
 
-//포커스 받고 있는 텍스트 필드 찾기
+//MARK: - 포커스 받고 있는 텍스트 필드 찾기
+
 extension UIResponder {
     private static weak var currentResponder: UIResponder?
     

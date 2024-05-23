@@ -12,6 +12,8 @@ import CoreData
 
 class BookCaseBodyView: UIView {
     
+    //MARK: - Properties
+
     weak var delegate:BookCaseBodyViewDelegate?
     
     var itemWidth: CGFloat = 0.0
@@ -31,6 +33,8 @@ class BookCaseBodyView: UIView {
     
     weak var delagateEdit: EditBookCaseBodyCellDelegate?
     
+    //MARK: - UIElements
+
     //컬렉션 뷰
     let vocaBookCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -54,12 +58,14 @@ class BookCaseBodyView: UIView {
         return imageView
     }()
     
+    //MARK: - Initialization
+
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupConstraints()
         configureUI()
         
-        // AddVoca로 이동하기 위한 TapGestureRecognizer
+        // AddVoca로 이동하기 위한 TapGesture
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         self.addGestureRecognizer(tapGesture)
     }
@@ -74,6 +80,8 @@ class BookCaseBodyView: UIView {
         vocaBookCollectionView.reloadData()
     }
     
+    //MARK: - Setup
+
     private func setupConstraints(){
         [vocaBookCollectionView, motivationLabel, backgroundImage].forEach{
             addSubview($0)
@@ -99,7 +107,7 @@ class BookCaseBodyView: UIView {
     
     func configureUI(){
         bookCases = CoreDataManager.shared.fetchBookCase(errorHandler: { _ in
-            self.delegate?.fetchErrorAlert()
+            self.delegate?.fetchErrorAlert() //불러오기 실패 시 alert 창
         })
         vocaBookCollectionView.reloadData()
         
@@ -119,12 +127,14 @@ class BookCaseBodyView: UIView {
         vocaBookCollectionView.register(BookCaseBodyCell.self, forCellWithReuseIdentifier: BookCaseBodyCell.identifier)
     }
     
+    //컬렉션 뷰 동적으로 contentInset
     private func calculateItemWidth() -> CGFloat {
         let collectionViewWidth = vocaBookCollectionView.frame.width
         let availableWidth = collectionViewWidth - vocaBookCollectionView.contentInset.left - vocaBookCollectionView.contentInset.right - 80
         return availableWidth
     }
     
+    // 처음 화면에서 두번째 셀에 축소 animation
     func selectInitialCell() {
         guard bookCases.count > 1 else { return }
         let indexPath = IndexPath(item: 1, section: 0)
@@ -145,7 +155,8 @@ class BookCaseBodyView: UIView {
         targetContentOffset.pointee = offset
     }
     
-    //컬렉션 뷰 애니메이션 ( Carousel Effect )
+    //MARK: - Carousel Effect
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let cellWidthIncludeSpacing = itemWidth + minimumLineSpacing
@@ -176,6 +187,8 @@ class BookCaseBodyView: UIView {
     }
 }
 
+//MARK: - CollecionView 설정
+
 extension BookCaseBodyView: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return bookCases.count
@@ -199,6 +212,8 @@ extension BookCaseBodyView: UICollectionViewDataSource, UICollectionViewDelegate
     }
 }
 
+//MARK: - BookCaseBodyCell에서 protocol 호출
+
 extension BookCaseBodyView: DeleteBookCaseBodyCellDelegate {
     func didTapDeleteButton(on cell: BookCaseBodyCell) {
         guard let indexPath = vocaBookCollectionView.indexPath(for: cell) else { return }
@@ -216,7 +231,8 @@ extension BookCaseBodyView: EditBookCaseBodyCellDelegate {
     }
 }
 
-//애니메이션 메서드
+//MARK: - CollectionView Animation
+
 extension BookCaseBodyView {
     func animateZoomforCell(zoomCell: UICollectionViewCell) {
         UIView.animate(
@@ -241,9 +257,9 @@ extension BookCaseBodyView {
     }
 }
 
-//셀 선택 시
+//MARK: - BookCaseViewController으로 protocol
 protocol BookCaseBodyViewDelegate: AnyObject {
-    func didSelectBookCase(_ bookCase: NSManagedObject)
-    func deleteErrorAlert()
-    func fetchErrorAlert()
+    func didSelectBookCase(_ bookCase: NSManagedObject) // 셀 선택 시 이동
+    func deleteErrorAlert() // 단어장 삭제 실패 시 alert
+    func fetchErrorAlert() // 단어장 불러오기 실패 시 alert
 }

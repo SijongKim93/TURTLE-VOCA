@@ -11,11 +11,15 @@ import CoreData
 
 class BookCaseBodyCell: UICollectionViewCell {
     
+    //MARK: - Properties
+
     weak var delegateDelete: DeleteBookCaseBodyCellDelegate?
     weak var delagateEdit: EditBookCaseBodyCellDelegate?
     
     var bookCaseData: NSManagedObject?
     
+    //MARK: - UIElements
+
     static let identifier = String(describing: BookCaseBodyCell.self)
     
     private let cellView: UIView = {
@@ -55,6 +59,8 @@ class BookCaseBodyCell: UICollectionViewCell {
     
     private let languageLabel = LabelFactory().makeLabel(title: "", size: 15, textAlignment: .left, isBold: false)
     
+    //MARK: - Initialization
+
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupConstraints()
@@ -64,6 +70,8 @@ class BookCaseBodyCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Setup
+
     private func setupConstraints() {
         contentView.addSubview(cellView)
         
@@ -115,6 +123,8 @@ class BookCaseBodyCell: UICollectionViewCell {
         languageLabel.text = "\(word) / \(meaning)"
     }
     
+    //MARK: - UIMenu
+    
     private func createMenu() -> UIMenu {
         let editAction = UIAction(title: "수정", image: UIImage(systemName: "square.and.pencil")) { [self] _ in
             self.delagateEdit?.didTapEditButton(on: self, with: bookCaseData!)
@@ -128,6 +138,8 @@ class BookCaseBodyCell: UICollectionViewCell {
         return menu
     }
 }
+
+//MARK: - UIMenu 삭제/수정 클릭 시 BookCaseBodyView
 
 protocol DeleteBookCaseBodyCellDelegate: AnyObject {
     func didTapDeleteButton(on cell: BookCaseBodyCell)
