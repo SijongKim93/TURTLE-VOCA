@@ -12,7 +12,7 @@ class FilterDetailModalViewController: UIViewController {
     
     weak var delegate: FilterDetailModalDelegate?
     
-    let labels = ["최근 저장 순", "나중 저장 순", "외운 단어 순", "못 외운 단어 순", "랜덤"]
+    let labels = ["최근 저장 순", "오래된 저장 순", "외운 단어 순", "못 외운 단어 순", "랜덤"]
     var selectedButtonIndex: Int?
     
     let filterMainLabel = LabelFactory().makeLabel(title: "단어 정렬 설정", size: 23, textAlignment: .left, isBold: true)
