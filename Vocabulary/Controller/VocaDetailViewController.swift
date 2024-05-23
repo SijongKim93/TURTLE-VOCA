@@ -12,7 +12,8 @@ import CoreData
 
 class VocaDetailViewController: UIViewController {
     
-    var bookCaseLabel = LabelFactory().makeLabel(title: "선택한 단어장 이름", size: 20, textAlignment: .center, isBold: true)
+    var selectedBookCaseName: String?
+    var bookCaseLabel = LabelFactory().makeLabel(title: "", size: 20, textAlignment: .center, isBold: true)
     var wordLabel = LabelFactory().makeLabel(title: "기억할 단어", size: 15, textAlignment: .left, isBold: true)
     var definitionLabel = LabelFactory().makeLabel(title: "단어의 뜻", size: 15, textAlignment: .left, isBold: true)
     var pronunciationLabel = LabelFactory().makeLabel(title: "발음", size: 15, textAlignment: .left, isBold: true)
@@ -52,14 +53,7 @@ class VocaDetailViewController: UIViewController {
         view.backgroundColor = .white
         
         print(wordEntity)
-        //코어데이터 작동 확인용
 
-        if let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last {
-            print("Documents Directory: \(documentsDirectoryURL)")
-        }
-        
-        
-        
         backButton.tintColor = .black
         backButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
@@ -68,7 +62,7 @@ class VocaDetailViewController: UIViewController {
         editSaveButton.setTitleColor(.black, for: .normal)
         editSaveButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
         
-        
+        self.setupBookCaseLabel()
         self.configureUI()
         self.makeConstraints()
         
@@ -78,6 +72,9 @@ class VocaDetailViewController: UIViewController {
         }
     }
     
+    func setupBookCaseLabel() {
+        bookCaseLabel.text = selectedBookCaseName
+    }
     
     func configureUI() {
         self.view.addSubview(bookCaseLabel)
