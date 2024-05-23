@@ -9,14 +9,10 @@ import UIKit
 import SnapKit
 
 class RecordViewController: UIViewController {
-    
-    lazy var recordHeaderView = RecordHeaderView()
     lazy var recordBodyView = RecordBodyView()
     
     lazy var vStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [
-            UIView(),
-            recordHeaderView,
             recordBodyView,
             UIView()
         ])
@@ -75,18 +71,11 @@ class RecordViewController: UIViewController {
             $0.edges.equalToSuperview()
         }
         
-        recordHeaderView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(50)
-            $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(100)
-        }
-        
         recordBodyView.snp.makeConstraints {
-            $0.top.equalTo(recordHeaderView.snp.bottom).offset(30)
+            $0.top.equalToSuperview().offset(30)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().offset(-100)
         }
-        
     }
 }
 

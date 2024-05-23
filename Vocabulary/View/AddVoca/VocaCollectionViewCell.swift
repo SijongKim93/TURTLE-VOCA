@@ -41,7 +41,7 @@ class VocaCollectionViewCell: UICollectionViewCell {
     
     var checkToMemorizeButton: UIButton = {
         let button = UIButton()
-        let config = UIImage.SymbolConfiguration(pointSize: 30, weight: .light, scale: .large)
+        let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .light, scale: .large)
         let image = UIImage(systemName: "checkmark.circle", withConfiguration: config)
         let selectedImage = UIImage(systemName: "checkmark.circle.fill", withConfiguration: config)
         
@@ -54,7 +54,7 @@ class VocaCollectionViewCell: UICollectionViewCell {
     
     var speakButton: UIButton = {
         let button = UIButton()
-        let config = UIImage.SymbolConfiguration(pointSize: 30, weight: .light, scale: .large)
+        let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .light, scale: .large)
         let image = UIImage(systemName: "speaker.wave.2.fill", withConfiguration: config)
         
         button.setImage(image, for: .normal)
@@ -121,11 +121,11 @@ class VocaCollectionViewCell: UICollectionViewCell {
         }
         
         checkToMemorizeButton.snp.makeConstraints {
-            $0.width.height.equalTo(50)
+            $0.width.height.equalTo(30)
         }
         
         speakButton.snp.makeConstraints {
-            $0.width.height.equalTo(50)
+            $0.width.height.equalTo(30)
         }
         
         deleteButton.snp.makeConstraints {

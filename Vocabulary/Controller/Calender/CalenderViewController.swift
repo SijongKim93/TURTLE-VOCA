@@ -189,7 +189,7 @@ class CalenderViewController: UIViewController {
     func createCollectionViewFlowLayout(for collectionView: UICollectionView) -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
         collectionView.collectionViewLayout = layout
-        collectionView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+        collectionView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 20, right: 0)
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 5

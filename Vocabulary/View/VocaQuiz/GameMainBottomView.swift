@@ -14,8 +14,8 @@ class GameMainBottomView: UIView {
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 15
-        layout.itemSize = .init(width: 350, height: 50)
+        layout.minimumLineSpacing = 35
+        layout.itemSize = .init(width: 350, height: 80)
         var view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.register(VocaQuizMainCollectionViewCell.self, forCellWithReuseIdentifier: "VocaQuizMainCollectionViewCell")
         return view
@@ -35,7 +35,8 @@ class GameMainBottomView: UIView {
         self.addSubview(collectionView)
         
         collectionView.snp.makeConstraints {
-            $0.top.leading.equalToSuperview().offset(20)
+            $0.top.equalToSuperview().offset(40)
+            $0.leading.equalToSuperview().offset(20)
             $0.trailing.bottom.equalToSuperview().offset(-20)
         }
     }
