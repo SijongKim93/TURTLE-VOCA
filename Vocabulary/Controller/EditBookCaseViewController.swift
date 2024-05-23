@@ -46,6 +46,8 @@ class EditBookCaseViewController: UIViewController, EditBookCaseBodyViewDelegate
         setupConstraints()
         bodyView.delegate = self
         bodyView.bookCaseData = bookCaseData
+        
+        setupKeyboardEvent()
     }
     
     private func setupConstraints(){
@@ -68,7 +70,18 @@ class EditBookCaseViewController: UIViewController, EditBookCaseBodyViewDelegate
     }
     
     //텍스트 필드 입력 시 키보드가 가리지 않게
-    func keyboardWillShow(_ sender: Notification) {
+    func setupKeyboardEvent() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ sender: Notification) {
         guard let userInfo = sender.userInfo,
               let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
               let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else { return }
@@ -89,7 +102,7 @@ class EditBookCaseViewController: UIViewController, EditBookCaseBodyViewDelegate
         }
     }
     
-    func keyboardWillHide(_ sender: Notification) {
+    @objc func keyboardWillHide(_ sender: Notification) {
         guard let userInfo = sender.userInfo,
               let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else { return }
         

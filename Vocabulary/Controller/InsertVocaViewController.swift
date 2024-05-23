@@ -257,6 +257,7 @@ class InsertVocaViewController: UIViewController {
         }
     }
     
+    //텍스트 필드 입력 시 키보드가 가리지 않게
     func setupKeyboardEvent() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillShow),
@@ -267,8 +268,7 @@ class InsertVocaViewController: UIViewController {
                                                name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
     }
-    
-    //텍스트 필드 입력 시 키보드가 가리지 않게
+
     @objc func keyboardWillShow(_ sender: Notification) {
         guard let userInfo = sender.userInfo,
               let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,

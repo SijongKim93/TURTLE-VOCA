@@ -34,6 +34,10 @@ class BookCaseViewController: UIViewController{
         bodyView.delagateEdit = self
         bodyView.delegate = self
         bodyView.configureUI()
+        
+        if let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last {
+            print("Documents Directory: \(documentsDirectoryURL)")
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -62,6 +66,7 @@ extension BookCaseViewController: EditBookCaseBodyCellDelegate {
     func didTapEditButton(on cell: BookCaseBodyCell, with bookCaseData: NSManagedObject) {
         let editBookCaseVC = EditBookCaseViewController()
         editBookCaseVC.bookCaseData = bookCaseData
+        editBookCaseVC.modalPresentationStyle = .fullScreen
         present(editBookCaseVC, animated: true, completion: nil)
     }
 }

@@ -13,6 +13,8 @@ class EditBookCaseBodyView: UIView {
     
     let coreDataManager = CoreDataManager.shared
     
+    var bookCase: BookCase?
+    
     var bookCaseData: NSManagedObject? {
         didSet {
             setupTextFieldData()
