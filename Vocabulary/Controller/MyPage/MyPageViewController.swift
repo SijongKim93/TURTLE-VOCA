@@ -10,6 +10,7 @@ import SnapKit
 import PhotosUI
 import AuthenticationServices
 import CloudKit
+import ProgressHUD
 
 class MyPageViewController: UIViewController {
     
@@ -268,10 +269,16 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
                 present(loginModelVC, animated: true, completion: nil)
             }
         case 4:
+            ProgressHUD.animate("데이터를 저장하는 중 입니다.")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             CoreDataManager.shared.syncData()
+                ProgressHUD.succeed("데이터 저장에 성공했습니다.")
+            }
         case 5:
-            DispatchQueue.main.async {
+            ProgressHUD.animate("데이터를 가져오는 중 입니다.")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 CoreDataManager.shared.syncDataFromCloudKit()
+                ProgressHUD.succeed("데이터를 불러오는데 성공했습니다.")
             }
         default :
             return
