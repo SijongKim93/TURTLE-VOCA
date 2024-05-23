@@ -39,18 +39,20 @@ class GameMainPageViewController: UIViewController {
         
         setUp()
         layout()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(getSetting), name: .sender, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(getData), name: .quiz, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(getData), name: .hangman, object: nil)
     }
 
-    
+    // 게임 설정을 했는지 안했는지 확인.
     func checkSetting() {
         if receivedData == nil {
             let alert = alertController.makeNormalAlert(title: "설정값이 없습니다.", message: "게임 설정이 필요합니다.")
             self.present(alert, animated: true)
         }
     }
+    
     
     func checkData() {
         data = CoreDataManager.shared.getWordList()
@@ -81,7 +83,6 @@ class GameMainPageViewController: UIViewController {
     @objc func getSetting (_ notification: Notification) {
         if let data = notification.object as? GenQuizModel {
             receivedData = data
-            print(receivedData)
         }
     }
     

@@ -39,7 +39,7 @@ class InsertVocaViewController: UIViewController {
     var bookCaseLabel = LabelFactory().makeLabel(title: "", size: 20, textAlignment: .center, isBold: true)
     var saveVocaButton = UIButton()
     var wordLabel = LabelFactory().makeLabel(title: "기억할 단어", size: 15, textAlignment: .left, isBold: true)
-    var wordTextField = TextFieldFactory().makeTextField(placeholder: "단어를 입력하세요.(필수)")
+    var wordTextField = TextFieldFactory().makeTextField(placeholder: "단어를 입력하세요.(필수)", action: #selector(doneButtonTapped), dictAction: #selector(showDict))
     
     lazy var resultTable: UITableView = {
         let table = UITableView()
@@ -52,19 +52,19 @@ class InsertVocaViewController: UIViewController {
     
     var definitionLabel = LabelFactory().makeLabel(title: "단어의 뜻", size: 15, textAlignment: .left, isBold: true)
     
-    var definitionTextField = TextFieldFactory().makeTextField(placeholder: "단어의 의미를 입력하세요.(필수)")
+    var definitionTextField = TextFieldFactory().makeTextField(placeholder: "단어의 의미를 입력하세요.(필수)", action: #selector(doneButtonTapped), dictAction: #selector(showDict))
     var detailLabel = LabelFactory().makeLabel(title: "상세 설명", size: 15, textAlignment: .left, isBold: true)
     
-    var detailTextField = TextFieldFactory().makeTextField(placeholder: "나만의 암기 팁을 입력하세요.")
+    var detailTextField = TextFieldFactory().makeTextField(placeholder: "나만의 암기 팁을 입력하세요.", action: #selector(doneButtonTapped), dictAction: #selector(showDict))
     var pronunciationLabel = LabelFactory().makeLabel(title: "발음", size: 15, textAlignment: .left, isBold: true)
     
-    var pronunciationTextField = TextFieldFactory().makeTextField(placeholder: "발음을 입력하세요.")
+    var pronunciationTextField = TextFieldFactory().makeTextField(placeholder: "발음을 입력하세요.", action: #selector(doneButtonTapped), dictAction: #selector(showDict))
     var synonymLabel = LabelFactory().makeLabel(title: "유의어", size: 15, textAlignment: .left, isBold: true)
     
-    var synonymTextField = TextFieldFactory().makeTextField(placeholder: "비슷한 의미를 가진 단어를 입력하세요.")
+    var synonymTextField = TextFieldFactory().makeTextField(placeholder: "비슷한 의미를 가진 단어를 입력하세요.", action: #selector(doneButtonTapped), dictAction: #selector(showDict))
     var antonymLabel = LabelFactory().makeLabel(title: "반의어", size: 15, textAlignment: .left, isBold: true)
     
-    var antonymTextField = TextFieldFactory().makeTextField(placeholder: "상반된 의미를 가진 단어를 입력하세요.")
+    var antonymTextField = TextFieldFactory().makeTextField(placeholder: "상반된 의미를 가진 단어를 입력하세요.", action: #selector(doneButtonTapped), dictAction: #selector(showDict))
     
     
     let networkManager = NetworkManager()
@@ -260,6 +260,16 @@ class InsertVocaViewController: UIViewController {
             
         }
     }
+    
+    @objc func doneButtonTapped() {
+        self.view.endEditing(true)
+    }
+    
+    @objc func showDict() {
+        let url = URL(string: "https://dict.naver.com/")
+        UIApplication.shared.open(url!)
+    }
+    
 }
 
 // MARK: - Diffable DataSource 적용

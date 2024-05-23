@@ -10,7 +10,6 @@ import SnapKit
 
 class HangManGameViewController: UIViewController {
     
-    
     lazy var hangManHeaderView = HangManHeaderView()
     lazy var hangManBodyView = HangManBodyView()
     var hangManBottomView: HangManBottomView?
@@ -77,7 +76,6 @@ class HangManGameViewController: UIViewController {
 
 // MARK: - Game Logic
 extension HangManGameViewController {
-    
     
     func checkException () {
         if receivedData!.quizCount > quizArray.count {

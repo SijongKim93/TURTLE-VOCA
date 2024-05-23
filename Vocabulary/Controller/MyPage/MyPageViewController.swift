@@ -273,17 +273,31 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
                 present(loginModelVC, animated: true, completion: nil)
             }
         case 4:
-            ProgressHUD.animate("데이터를 저장하는 중 입니다.")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            CoreDataManager.shared.syncData()
-                ProgressHUD.succeed("데이터 저장에 성공했습니다.")
+            CoreDataManager.shared.checkiCloudLoginStatus { loginStatus in
+                if loginStatus {
+                    ProgressHUD.animate("데이터를 저장하는 중 입니다.")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        CoreDataManager.shared.syncData()
+                        ProgressHUD.succeed("데이터 저장에 성공했습니다.")
+                    }
+                } else {
+                    ProgressHUD.failed("로그인 상태를 확인해 주세요.")
+                }
             }
+            
         case 5:
-            ProgressHUD.animate("데이터를 가져오는 중 입니다.")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                CoreDataManager.shared.syncDataFromCloudKit()
-                ProgressHUD.succeed("데이터를 불러오는데 성공했습니다.")
+            CoreDataManager.shared.checkiCloudLoginStatus { loginStatus in
+                if loginStatus {
+                    ProgressHUD.animate("데이터를 가져오는 중 입니다.")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        CoreDataManager.shared.syncDataFromCloudKit()
+                        ProgressHUD.succeed("데이터를 불러오는데 성공했습니다.")
+                    }
+                } else {
+                    ProgressHUD.failed("로그인 상태를 확인해 주세요.")
+                }
             }
+            
         default :
             return
         }
