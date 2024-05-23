@@ -30,7 +30,7 @@ class AddVocaViewController: UIViewController {
     }
     
     // 단어 추가 버튼 눌렸을 때 단어입력페이지로 이동
-    
+
     @objc func presentInsertVocaPage() {
         let scrollView = UIScrollView()
         let insertVocaView = InsertVocaViewController(scrollView: scrollView)
@@ -66,6 +66,9 @@ class AddVocaViewController: UIViewController {
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         
         self.searchBar.delegate = self
+        searchBar.backgroundImage = UIImage()
+        searchBar.barTintColor = .white
+        
         filteredWordList = wordList
         
         addVocaButton.tintColor = .black
@@ -155,8 +158,8 @@ class AddVocaViewController: UIViewController {
         }
         
         searchBar.snp.makeConstraints {
-            $0.top.equalTo(addVocaButton.snp.bottom).offset(10)
-            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalTo(addVocaButton.snp.bottom).offset(15)
+            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(10)
         }
         
         countLabel.snp.makeConstraints {

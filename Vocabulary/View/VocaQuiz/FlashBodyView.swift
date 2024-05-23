@@ -16,8 +16,8 @@ class FlashBodyView: UIView {
         view.addSubview(hline)
         view.addSubview(answerLabel)
         view.layer.borderColor = CGColor(red: 48/255, green: 140/255, blue: 74/255, alpha: 1.0)
-        view.layer.borderWidth = 5
-        view.layer.cornerRadius = 10
+        view.layer.borderWidth = 2
+        view.layer.cornerRadius = 20
         return view
     }()
     
@@ -42,22 +42,21 @@ class FlashBodyView: UIView {
         addSubview(frameView)
         
         frameView.snp.makeConstraints {
-            $0.top.leading.equalToSuperview().offset(20)
+            $0.top.leading.equalToSuperview().offset(30)
             $0.bottom.trailing.equalToSuperview().inset(20)
         }
         
-        
         wordLabel.snp.makeConstraints {
-            $0.top.equalTo(frameView.snp.top).offset(20)
+            $0.top.equalTo(frameView.snp.top).offset(30)
             $0.leading.equalTo(frameView.snp.leading).offset(20)
             $0.trailing.trailing.equalTo(frameView.snp.trailing).inset(20)
         }
         
         hline.snp.makeConstraints {
             $0.top.equalTo(wordLabel.snp.bottom).offset(50)
-            $0.leading.equalTo(frameView.snp.leading).offset(20)
-            $0.trailing.equalTo(frameView.snp.trailing).inset(20)
-            $0.height.equalTo(2)
+            $0.leading.equalTo(frameView.snp.leading).inset(30)
+            $0.trailing.equalTo(frameView.snp.trailing).inset(30)
+            $0.height.equalTo(1)
         }
         
         answerLabel.snp.makeConstraints {
