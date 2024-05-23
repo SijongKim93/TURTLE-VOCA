@@ -75,7 +75,7 @@ class QuizBottomView: UIView {
         } else {
             let currentData = currentVC.quizData[currentVC.currentNumber]
             let data = ReminderModel(index: 0, word: currentData.question, meaning: currentData.answer, category: currentVC.receivedData!.category)
-            NotificationCenter.default.post(name: .quiz, object: data)
+            NotificationCenter.default.post(name: .getData, object: data)
             currentVC.currentNumber += 1
             currentVC.gameStart()
         }
