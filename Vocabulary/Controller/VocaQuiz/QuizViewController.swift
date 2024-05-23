@@ -130,6 +130,7 @@ extension QuizViewController {
         if currentNumber > quizData.count - 1 {
             quizBodyView.gameTitle.text = "게임이 종료 되었습니다."
             quizHeaderView.scoreLabel.text = "Score: \(score) 점"
+            NotificationCenter.default.post(name: .count, object: nil)
             [quizBottomView.firstButton, quizBottomView.secondButton, quizBottomView.thirdButton, quizBottomView.forthButton].forEach { button in
                 button.isEnabled = false
             }
