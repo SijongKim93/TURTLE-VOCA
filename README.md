@@ -125,6 +125,7 @@ TURTLE VOCA
    <summary>24.05.22</summary>
    <pre>● 로그인, 로그아웃 기능 구현
 ● Tabbar 디자인 수정
+● 단어 상세페이지 편집 기능 구현
 ● quiz, 게임 설정 예외 처리
 ● iCloud 저장 기능 구현
    </pre>
