@@ -111,6 +111,7 @@ class LoginModalViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    //MARK: - 카카오톡 소셜 로그인 구현
     @objc func handleKakaoLogin() {
         if UserApi.isKakaoTalkLoginAvailable() {
             UserApi.shared.loginWithKakaoTalk { (oauthToken, error) in
