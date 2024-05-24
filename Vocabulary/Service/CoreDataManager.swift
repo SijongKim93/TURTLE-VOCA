@@ -556,3 +556,40 @@ extension CoreDataManager {
     }
     
 }
+
+// MARK: - Delete iCloud Data
+extension CoreDataManager {
+    
+    func deleteAllRecordsFromCloudKit(recordType: String) {
+        let database = CKContainer(identifier: "iCloud.com.teamproject.Vocabularytest").privateCloudDatabase
+        let query = CKQuery(recordType: recordType, predicate: NSPredicate(value: true))
+        
+        database.perform(query, inZoneWith: nil) { records, error in
+            if let error = error {
+                print("Error fetching records from CloudKit: \(error)")
+                return
+            }
+            
+            guard let records = records else { return }
+            
+            let recordIDs = records.map { $0.recordID }
+            let operation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: recordIDs)
+            
+            operation.modifyRecordsCompletionBlock = { savedRecords, deletedRecordIDs, operationError in
+                if let operationError = operationError {
+                    print("Error deleting records: \(operationError)")
+                } else {
+                    print("\(deletedRecordIDs?.count ?? 0) records deleted from CloudKit")
+                }
+            }
+            
+            database.add(operation)
+        }
+    }
+
+    func deleteAllCloudKitData() {
+        deleteAllRecordsFromCloudKit(recordType: "BookCase")
+        deleteAllRecordsFromCloudKit(recordType: "WordEntity")
+    }
+    
+}
