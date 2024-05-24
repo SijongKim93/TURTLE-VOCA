@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         KakaoSDK.initSDK(appKey: "02184344d16344a9447d579560191fa8")
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         return true
     }
     
