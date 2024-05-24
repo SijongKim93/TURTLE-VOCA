@@ -10,9 +10,9 @@ import SnapKit
 
 class RecordTableViewCell: UITableViewCell {
 
-    lazy var categoryLabel = LabelFactory().makeLabel(title: "Category", size: 20, isBold: true)
-    lazy var wordLabel = LabelFactory().makeLabel(title: "score", size: 20, isBold: false)
-    lazy var defLabel = LabelFactory().makeLabel(title: "GameCount", size: 20, isBold: false)
+    lazy var categoryLabel = LabelFactory().makeLabel(title: "Category", size: 15, isBold: false)
+    lazy var wordLabel = LabelFactory().makeLabel(title: "score", size: 15, isBold: false)
+    lazy var defLabel = LabelFactory().makeLabel(title: "GameCount", size: 15, isBold: false)
     
     private lazy var hStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [
@@ -21,7 +21,7 @@ class RecordTableViewCell: UITableViewCell {
         defLabel
         ])
         stackView.axis = .horizontal
-        stackView.spacing = 30
+        stackView.spacing = 20
         return stackView
     }()
     
@@ -49,21 +49,22 @@ class RecordTableViewCell: UITableViewCell {
         self.addSubview(hStackView)
         
         hStackView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(30)
+            $0.top.bottom.equalToSuperview()
         }
         
         categoryLabel.snp.makeConstraints {
             $0.leading.equalToSuperview()
             $0.top.equalToSuperview()
             $0.bottom.equalToSuperview()
-            $0.width.equalTo(50)
+            $0.width.equalTo(65)
         }
         
         wordLabel.snp.makeConstraints {
             $0.leading.equalTo(categoryLabel.snp.trailing).offset(30)
             $0.top.equalToSuperview()
             $0.bottom.equalToSuperview()
-            $0.width.equalTo(150)
+            $0.width.equalTo(120)
         }
         
         defLabel.snp.makeConstraints {

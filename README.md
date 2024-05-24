@@ -12,11 +12,25 @@
 
 <img src="https://img.shields.io/badge/Apple-%23000000.svg?style=for-the-badge&logo=apple&logoColor=white" height="20"> <img src="https://img.shields.io/badge/iOS-16.0%2B-green"> <img src="https://img.shields.io/badge/Library-Combine-308C4A "> <img src="https://img.shields.io/badge/Library-Firebase-308C4A "> <img src="https://img.shields.io/badge/Library-KakaoOpenSDK-308C4A "> <img src="https://img.shields.io/badge/Library-ProgressHUD-308C4A "> <img src="https://img.shields.io/badge/Library-SnapKit-308C4A ">
 
-나만의 단어장 Turtle App
+영단어든, 코드용어든 관계 없다!!
+내가 기억하고 싶은 단어만, 스스로 만드는 나만의 단어장!
+TURTLE VOCA
 
 ## Description
 
-필력이 좋으신분 부탁드립니다.
+거북이의 단어장(TURTLE VOCA)은 사용자가 원하는 단어장과 외우고 싶은 단어를 직접 입력하고 수정하여 사용할 수 있는 편리한 단어 학습 어플리케이션입니다.
+이 어플리케이션은 다음과 같은 주요 기능을 제공합니다:
+
+단어장 생성 및 수정: 사용자가 자신만의 단어장을 만들고 자유롭게 수정할 수 있습니다. 개인 학습에 최적화된 단어장 관리 기능을 제공합니다.
+단어 생성 및 수정: 사용자가 학습을 원하는 단어를 생성하고, 단어에 대한 다양한 정보를 자유롭게 입력할 수 있습니다.
+캘린더 기능: 학습한 단어를 캘린더에 저장하여 관리할 수 있습니다. 매일 학습한 단어를 기록하고 확인할 수 있습니다.
+게임을 통한 리마인더: 간단한 퀴즈 형식의 게임을 통해 외운 단어들을 복습할 수 있는 기능을 제공합니다. 게임을 통해 재미있게 단어를 기억하고 학습 효율을 높일 수 있습니다.
+카카오 및 애플 연동: 카카오톡과 애플 계정을 통한 간편 로그인 기능을 제공합니다. 사용자는 자신이 선호하는 플랫폼을 통해 쉽게 어플에 접근할 수 있습니다.
+iCloud 연동: iCloud와 연동되어, 사용자가 저장한 단어장을 안전하게 백업하고 여러 기기에서 동기화하여 사용할 수 있습니다.
+DeepL API 통합: DeepL API를 통해 번역 서비스를 제공합니다. 단어를 번역해주는 기술을 단어 저장에 활용할 수 있습니다.
+카카오 클라우드 Translation : 카카오의 음성 합성 기술을 이용해 단어를 소리 내어 읽어주는 기능을 제공합니다. 청각적 학습을 통해 단어의 발음을 익히고 기억할 수 있습니다.
+
+거북이의 단어장은 여러분의 언어 학습을 더 즐겁고 체계적으로 만들어줄 것입니다. 조금 느리더라도 꾸준히 학습할 수 있는 나만의 단어장을 만들어 보세요!
 
 ## Timeline
 
@@ -110,7 +124,6 @@
 <details>
    <summary>24.05.21</summary>
    <pre>● KakaoTalk 소셜 로그인 기능 구현
-● 서치바 기능 구현
 ● 로고 및 런치스크린 구현
 ● Hangman에서 Turtle game으로 UIDesign 변경
 ● NetworkManager 구현
@@ -124,6 +137,7 @@
    <summary>24.05.22</summary>
    <pre>● 로그인, 로그아웃 기능 구현
 ● Tabbar 디자인 수정
+● 단어 상세페이지 편집 기능 구현
 ● quiz, 게임 설정 예외 처리
 ● iCloud 저장 기능 구현
    </pre>
