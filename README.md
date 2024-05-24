@@ -175,35 +175,35 @@ TURTLE VOCA
 <img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/a79b70e9-8d98-415c-8336-7717d02383e9" width="200" height="430">
 <img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/eaebd6ea-5c81-4095-a51f-72cc2860ecd9" width="200" height="430">
 <img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/d66f2ebd-81ea-4895-a10c-150e9ec00919" width="200" height="430">
-<img width="314" alt="10" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/b0fc62ff-97f4-418d-a87f-cc339662d197">
-<img width="316" alt="11" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/1419fe13-e6d6-4de8-ab91-239ec0b25bac">
-<img width="318" alt="12" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/e2fadea3-9cb7-4246-985b-1afeb9744b7d">
-<img width="316" alt="13" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/dfc57ce0-cf22-43df-a2df-191818209f57">
-<img width="314" alt="14" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/632cdc31-2f29-48b7-87cb-aa1f45cb77d4">
-<img width="315" alt="15" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/81cc656e-8de2-4596-b05f-0a986ff8897d">
-<img width="315" alt="16" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/60f804b1-8567-4c94-be5f-edea98653732">
-<img width="313" alt="17" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/ce0ce32d-cd72-45b4-b7e1-7acbecf46994">
-<img width="313" alt="18" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/1db217ba-b73a-4007-9e0e-65983fd7bd8d">
-<img width="313" alt="19" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/42e434c3-9117-4259-8c9f-d8001647177b">
-<img width="313" alt="20" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/34a99c1e-ea8e-44d0-b9a8-1f28ebf0859a">
-<img width="313" alt="21" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/52f5dda8-5db0-40c9-b619-389c51707440">
-<img width="313" alt="22" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/5b2da9e3-75dd-46c8-9ba6-59d9d54c76b5">
-<img width="313" alt="23" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/13312216-b356-466f-97b8-07d6d94ca536">
-<img width="313" alt="24" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/d79a7bd2-e919-4df4-bfd5-5d7deecb49aa">
-<img width="313" alt="25" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/3d056b6c-df24-4c13-8899-b43744942b62">
-<img width="313" alt="26" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/b0430e62-14a4-452f-b47b-935ea54087f4">
-<img width="315" alt="27" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/6e34159d-a48a-4ada-bb95-7a79ecc10618">
-<img width="313" alt="28" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/48774a74-7de9-41a4-bc54-d4381c655e91">
-<img width="313" alt="29" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/2ee323f3-caf3-45aa-8cfc-ea867ba12fdb">
-<img width="313" alt="30" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/fa4ff6c2-f3b4-4713-a371-b583d0b31aa7">
-<img width="313" alt="31" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/672fdc76-efd8-479c-8f51-c79cfb9d03bc">
-<img width="313" alt="32" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/8565f39f-657f-4fa4-a4d7-e93f1273088c">
-<img width="313" alt="33" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/150047d4-2dc0-4695-a17b-2faacad20cc2">
-<img width="313" alt="34" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/eee029ba-6758-417c-9068-77494715c508">
-<img width="313" alt="35" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/187dd251-7fcf-4a40-b899-051fe300b4f7">
-<img width="313" alt="36" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/c8e46132-cd0f-4926-9f56-9cfd807f0377">
-<img width="313" alt="37" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/bb12a7ac-f9f0-408b-afac-b38484592d06">
-<img width="313" alt="38" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/98eb1650-4dee-401e-9ce8-cf537465fe0c">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/b0fc62ff-97f4-418d-a87f-cc339662d197">
+<img width="316" alt="11" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/1419fe13-e6d6-4de8-ab91-239ec0b25bac" width="200" height="430">
+<img width="318" alt="12" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/e2fadea3-9cb7-4246-985b-1afeb9744b7d" width="200" height="430">
+<img width="316" alt="13" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/dfc57ce0-cf22-43df-a2df-191818209f57" width="200" height="430">
+<img width="314" alt="14" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/632cdc31-2f29-48b7-87cb-aa1f45cb77d4" width="200" height="430">
+<img width="315" alt="15" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/81cc656e-8de2-4596-b05f-0a986ff8897d" width="200" height="430">
+<img width="315" alt="16" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/60f804b1-8567-4c94-be5f-edea98653732" width="200" height="430">
+<img width="313" alt="17" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/ce0ce32d-cd72-45b4-b7e1-7acbecf46994" width="200" height="430">
+<img width="313" alt="18" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/1db217ba-b73a-4007-9e0e-65983fd7bd8d" width="200" height="430">
+<img width="313" alt="19" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/42e434c3-9117-4259-8c9f-d8001647177b" width="200" height="430">
+<img width="313" alt="20" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/34a99c1e-ea8e-44d0-b9a8-1f28ebf0859a" width="200" height="430">
+<img width="313" alt="21" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/52f5dda8-5db0-40c9-b619-389c51707440" width="200" height="430">
+<img width="313" alt="22" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/5b2da9e3-75dd-46c8-9ba6-59d9d54c76b5" width="200" height="430">
+<img width="313" alt="23" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/13312216-b356-466f-97b8-07d6d94ca536" width="200" height="430">
+<img width="313" alt="24" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/d79a7bd2-e919-4df4-bfd5-5d7deecb49aa" width="200" height="430">
+<img width="313" alt="25" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/3d056b6c-df24-4c13-8899-b43744942b62" width="200" height="430">
+<img width="313" alt="26" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/b0430e62-14a4-452f-b47b-935ea54087f4" width="200" height="430">
+<img width="315" alt="27" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/6e34159d-a48a-4ada-bb95-7a79ecc10618" width="200" height="430">
+<img width="313" alt="28" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/48774a74-7de9-41a4-bc54-d4381c655e91" width="200" height="430">
+<img width="313" alt="29" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/2ee323f3-caf3-45aa-8cfc-ea867ba12fdb" width="200" height="430">
+<img width="313" alt="30" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/fa4ff6c2-f3b4-4713-a371-b583d0b31aa7" width="200" height="430">
+<img width="313" alt="31" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/672fdc76-efd8-479c-8f51-c79cfb9d03bc" width="200" height="430">
+<img width="313" alt="32" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/8565f39f-657f-4fa4-a4d7-e93f1273088c" width="200" height="430">
+<img width="313" alt="33" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/150047d4-2dc0-4695-a17b-2faacad20cc2" width="200" height="430">
+<img width="313" alt="34" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/eee029ba-6758-417c-9068-77494715c508" width="200" height="430">
+<img width="313" alt="35" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/187dd251-7fcf-4a40-b899-051fe300b4f7" width="200" height="430">
+<img width="313" alt="36" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/c8e46132-cd0f-4926-9f56-9cfd807f0377" width="200" height="430">
+<img width="313" alt="37" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/bb12a7ac-f9f0-408b-afac-b38484592d06" width="200" height="430">
+<img width="313" alt="38" src="https://github.com/SijongKim93/Vocabulary/assets/156878943/98eb1650-4dee-401e-9ce8-cf537465fe0c" width="200" height="430">
 </p>
 
 ## Features
