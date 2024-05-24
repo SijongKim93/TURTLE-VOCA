@@ -112,7 +112,6 @@ TURTLE VOCA
 <details>
    <summary>24.05.21</summary>
    <pre>● KakaoTalk 소셜 로그인 기능 구현
-● 서치바 기능 구현
 ● 로고 및 런치스크린 구현
 ● Hangman에서 Turtle game으로 UIDesign 변경
 ● NetworkManager 구현
