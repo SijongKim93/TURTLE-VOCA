@@ -122,7 +122,7 @@ class MyPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-    
+        
         
         coreDataManager = CoreDataManager.shared
         setupUI()
@@ -130,7 +130,7 @@ class MyPageViewController: UIViewController {
         updateSaveVocaCount()
         updateMemoryVocaCount()
         //getUserData()
-       
+        
     }
     
     //MARK: - ViewWillAppear
@@ -220,7 +220,7 @@ class MyPageViewController: UIViewController {
         }
     }
     
-   
+    
 }
 
 //MARK: - TableView delegate, dataSource
@@ -230,7 +230,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        70
+        60
     }
     
     //MARK: - 로그인 여부에 따라 로그인 , 로그아웃 값 저장
@@ -306,6 +306,23 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
             
+        case 6:
+            CoreDataManager.shared.checkiCloudLoginStatus { loginStatus in
+                if loginStatus {
+                    DispatchQueue.main.async{
+                        let alert = AlertController().makeAlertWithCompletion(title: "삭제하시겠습니까?", message: "삭제하시면 복구 하실 수 없습니다.") { _ in
+                            ProgressHUD.animate("데이터를 삭제합니다.")
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                CoreDataManager.shared.deleteAllCloudKitData()
+                                ProgressHUD.succeed("Cloud 초기화가 완료되었습니다.")
+                            }
+                        }
+                        self.present(alert, animated: true)
+                    }
+                } else {
+                    ProgressHUD.failed("로그인 상태를 확인해 주세요.")
+                }
+            }
         default :
             return
         }
