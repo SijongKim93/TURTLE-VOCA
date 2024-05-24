@@ -117,7 +117,6 @@ class MyPageViewController: UIViewController {
     
     // GameCount
     var gameCount: Int = 0
-    let gameMainVC = GameMainPageViewController()
     
     //MARK: - ViewDidLoad
     override func viewDidLoad() {
