@@ -72,6 +72,7 @@ class FlashCardViewController: UIViewController {
                 self?.currentNumber = 0
                 self?.flashBodyView.wordLabel.text = self?.quizArray[self!.currentNumber].word
                 self?.flashBodyView.answerLabel.isHidden = true
+                self?.flashBodyView.answerLabel.text = self?.quizArray[self!.currentNumber].definition
             }
             self.present(alert, animated: true)
         } else {
