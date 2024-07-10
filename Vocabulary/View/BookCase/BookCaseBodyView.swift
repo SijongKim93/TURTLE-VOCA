@@ -205,10 +205,8 @@ extension BookCaseBodyView: UICollectionViewDataSource, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let availableWidth = collectionView.frame.width - collectionView.contentInset.left - collectionView.contentInset.right - 80
-        let aspectRatio: CGFloat = 5.0 / 3.0
-        let itemWidth = availableWidth
-        let itemHeight = itemWidth * aspectRatio
-        return CGSize(width: itemWidth, height: itemHeight)
+        let itemHeight = collectionView.frame.height * 0.95
+        return CGSize(width: availableWidth, height: itemHeight)
     }
 }
 

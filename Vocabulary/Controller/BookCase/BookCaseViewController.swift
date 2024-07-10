@@ -14,6 +14,8 @@ class BookCaseViewController: UIViewController{
     let headerView = BookCaseHeaderView()
     let bodyView = BookCaseBodyView()
     
+    let networkManager = NetworkManager()
+    
     lazy var wholeStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [headerView, bodyView])
         stackView.axis = .vertical
@@ -22,8 +24,6 @@ class BookCaseViewController: UIViewController{
         return stackView
     }()
         
-    let networkManager = NetworkManager()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

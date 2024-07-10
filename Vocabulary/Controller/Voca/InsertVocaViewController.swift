@@ -38,6 +38,15 @@ class InsertVocaViewController: UIViewController {
     
     var bookCaseLabel = LabelFactory().makeLabel(title: "", size: 20, textAlignment: .center, isBold: true)
     var saveVocaButton = UIButton()
+    
+    lazy var headerStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [backButton, bookCaseLabel, saveVocaButton])
+        stackView.axis = .horizontal
+        stackView.spacing = 10
+        stackView.distribution = .equalCentering
+        return stackView
+    }()
+    
     var wordLabel = LabelFactory().makeLabel(title: "기억할 단어", size: 15, textAlignment: .left, isBold: true)
     var wordTextField = TextFieldFactory().makeTextField(placeholder: "단어를 입력하세요.(필수)", action: #selector(doneButtonTapped), dictAction: #selector(showDict))
     
@@ -85,8 +94,9 @@ class InsertVocaViewController: UIViewController {
         
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         
-        saveVocaButton.tintColor = .black
-        saveVocaButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
+        saveVocaButton.setTitle("저장", for: .normal)
+        saveVocaButton.setTitleColor(.black, for: .normal)
+        saveVocaButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         saveVocaButton.addTarget(self, action: #selector(saveVocaButtonPressed), for: .touchUpInside)
         
         self.setupBookCaseLabel()
@@ -142,7 +152,7 @@ class InsertVocaViewController: UIViewController {
     
     //MARK: - 화면 구성
     func configureUI() {
-        [backButton, bookCaseLabel, saveVocaButton, wordLabel, wordTextField, resultTable, definitionLabel, definitionTextField, detailLabel, detailTextField, pronunciationLabel, pronunciationTextField, synonymLabel, synonymTextField, antonymLabel, antonymTextField].forEach {
+        [headerStackView, wordLabel, wordTextField, resultTable, definitionLabel, definitionTextField, detailLabel, detailTextField, pronunciationLabel, pronunciationTextField, synonymLabel, synonymTextField, antonymLabel, antonymTextField].forEach {
             self.view.addSubview( $0 )
         }
     }
@@ -150,23 +160,14 @@ class InsertVocaViewController: UIViewController {
     //MARK: - Layout
     func makeConstraints() {
         
-        backButton.snp.makeConstraints {
+        headerStackView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
             $0.leading.equalToSuperview().offset(20)
-        }
-        
-        bookCaseLabel.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
-            $0.centerX.equalToSuperview()
-        }
-        
-        saveVocaButton.snp.makeConstraints {
-            $0.top.equalTo(bookCaseLabel.snp.top)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-20)
+            $0.trailing.equalToSuperview().offset(-20)
         }
         
         wordLabel.snp.makeConstraints {
-            $0.top.equalTo(saveVocaButton.snp.bottom).offset(20)
+            $0.top.equalTo(headerStackView.snp.bottom).offset(12)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(20)
         }
         
@@ -177,14 +178,14 @@ class InsertVocaViewController: UIViewController {
         }
         
         resultTable.snp.makeConstraints {
-            $0.top.equalTo(wordTextField.snp.bottom).offset(20)
+            $0.top.equalTo(wordTextField.snp.bottom).offset(12)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(20)
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-20)
             $0.height.equalTo(60)
         }
         
         definitionLabel.snp.makeConstraints {
-            $0.top.equalTo(resultTable.snp.bottom).offset(20)
+            $0.top.equalTo(resultTable.snp.bottom).offset(12)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(20)
         }
         
@@ -195,7 +196,7 @@ class InsertVocaViewController: UIViewController {
         }
         
         detailLabel.snp.makeConstraints {
-            $0.top.equalTo(definitionTextField.snp.bottom).offset(20)
+            $0.top.equalTo(definitionTextField.snp.bottom).offset(12)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(20)
         }
         
@@ -206,7 +207,7 @@ class InsertVocaViewController: UIViewController {
         }
         
         pronunciationLabel.snp.makeConstraints {
-            $0.top.equalTo(detailTextField.snp.bottom).offset(20)
+            $0.top.equalTo(detailTextField.snp.bottom).offset(12)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(20)
         }
         
@@ -217,7 +218,7 @@ class InsertVocaViewController: UIViewController {
         }
         
         synonymLabel.snp.makeConstraints {
-            $0.top.equalTo(pronunciationTextField.snp.bottom).offset(20)
+            $0.top.equalTo(pronunciationTextField.snp.bottom).offset(12)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(20)
         }
         
@@ -228,7 +229,7 @@ class InsertVocaViewController: UIViewController {
         }
         
         antonymLabel.snp.makeConstraints {
-            $0.top.equalTo(synonymTextField.snp.bottom).offset(20)
+            $0.top.equalTo(synonymTextField.snp.bottom).offset(12)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(20)
         }
         

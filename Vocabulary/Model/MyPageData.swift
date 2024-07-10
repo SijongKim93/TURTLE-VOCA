@@ -10,10 +10,10 @@ import Foundation
 
 class MyPageData {
     var items: [(title: String, imageName: String)] = [
-        ("리뷰 작성", "square.and.pencil"),
-        ("앱 추천하기", "square.and.arrow.up"),
-        ("문의하기", "bubble"),
-        ("로그인", "lock"),
+//        ("리뷰 작성", "square.and.pencil"),
+//        ("앱 추천하기", "square.and.arrow.up"),
+//        ("문의하기", "bubble"),
+//        ("로그인", "lock"),
         ("iCloud에 단어 저장하기", "externaldrive.badge.icloud"),
         ("iCloud에서 불러오기", "externaldrive.fill.badge.icloud"),
         ("iCloud 데이터 삭제", "externaldrive.badge.minus")

@@ -17,7 +17,6 @@ class AddBookCaseBodyView: UIView {
     weak var delegate: AddBookCaseBodyViewDelegate?
     
     //MARK: - Views
-
     //imageStackView
     let backImgLabel = LabelFactory().makeLabel(title: "배경 이미지", size: 18, textAlignment: .left, isBold: true)
     
@@ -133,17 +132,17 @@ class AddBookCaseBodyView: UIView {
         }
         
         nameStackView.snp.makeConstraints{
-            $0.top.equalTo(imageStackView.snp.bottom).offset(25)
+            $0.top.equalTo(imageStackView.snp.bottom).offset(8)
             $0.horizontalEdges.equalToSuperview().inset(30)
         }
         
         explainStackView.snp.makeConstraints{
-            $0.top.equalTo(nameStackView.snp.bottom).offset(16)
+            $0.top.equalTo(nameStackView.snp.bottom).offset(8)
             $0.horizontalEdges.equalToSuperview().inset(30)
         }
         
         languageStackView.snp.makeConstraints{
-            $0.top.equalTo(explainStackView.snp.bottom).offset(16)
+            $0.top.equalTo(explainStackView.snp.bottom).offset(8)
             $0.horizontalEdges.equalToSuperview().inset(30)
         }
         

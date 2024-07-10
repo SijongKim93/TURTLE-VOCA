@@ -52,7 +52,8 @@ class BookCaseBodyCell: UICollectionViewCell {
     private lazy var nameStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [nameLabel, detailLabel])
         stackView.axis = .vertical
-        stackView.distribution = .fillEqually
+        stackView.alignment = .leading
+        stackView.distribution = .equalSpacing
         stackView.spacing = 5
         return stackView
     }()
@@ -84,24 +85,24 @@ class BookCaseBodyCell: UICollectionViewCell {
         }
         
         menuButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(13)
+            $0.top.equalTo(cellView).offset(16)
             $0.trailing.equalToSuperview().inset(32)
         }
         
         imageView.snp.makeConstraints {
-            $0.top.equalTo(menuButton.snp.bottom).offset(5)
+            $0.top.equalTo(menuButton.snp.bottom).offset(10)
             $0.horizontalEdges.equalToSuperview().inset(25)
-            $0.height.equalTo(imageView.snp.width).multipliedBy(1.4)
+            $0.bottom.equalTo(nameStackView.snp.top).offset(-15)
+            $0.height.lessThanOrEqualTo(cellView.snp.height).multipliedBy(0.65)
         }
         
         nameStackView.snp.makeConstraints {
-            $0.top.equalTo(imageView.snp.bottom).offset(15)
             $0.leading.equalToSuperview().inset(32)
             $0.trailing.equalToSuperview().inset(25)
+            $0.bottom.equalTo(languageLabel.snp.top)
         }
         
         languageLabel.snp.makeConstraints {
-            $0.top.equalTo(nameStackView.snp.bottom).offset(15)
             $0.leading.equalToSuperview().inset(32)
             $0.trailing.equalToSuperview().inset(25)
             $0.bottom.equalToSuperview().inset(15)
