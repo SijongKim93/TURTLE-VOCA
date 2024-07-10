@@ -801,7 +801,7 @@
 				DEVELOPMENT_TEAM = U68CWSQ94X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Vocabulary/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "거북이의 단어장";
+				INFOPLIST_KEY_CFBundleDisplayName = "TURTLE VOCA";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -834,7 +834,7 @@
 				DEVELOPMENT_TEAM = U68CWSQ94X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Vocabulary/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "거북이의 단어장";
+				INFOPLIST_KEY_CFBundleDisplayName = "TURTLE VOCA";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";

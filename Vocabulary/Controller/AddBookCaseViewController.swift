@@ -34,6 +34,8 @@ class AddBookCaseViewController: UIViewController {
         bodyView.delegate = self
         
         setupKeyboardEvent()
+        
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
@@ -70,6 +72,23 @@ extension AddBookCaseViewController: AddBookCaseBodyViewDelegate {
     
     //이미지 선택시 PHPicker present
     func didSelectImage() {
+        PHPhotoLibrary.requestAuthorization(for: .readWrite) { [weak self] status in
+            DispatchQueue.main.async {
+                switch status {
+                case .authorized, .limited:
+                    self?.presentPHPicker()
+                case .denied, .restricted:
+                    self?.showPhotoLibraryAccessDeniedAlert()
+                case .notDetermined:
+                    self?.didSelectImage()
+                @unknown default:
+                    break
+                }
+            }
+        }
+    }
+
+    private func presentPHPicker() {
         var configuration = PHPickerConfiguration()
         configuration.filter = .images
         configuration.selectionLimit = 1
@@ -77,6 +96,22 @@ extension AddBookCaseViewController: AddBookCaseBodyViewDelegate {
         let picker = PHPickerViewController(configuration: configuration)
         picker.delegate = self
         present(picker, animated: true, completion: nil)
+    }
+
+    private func showPhotoLibraryAccessDeniedAlert() {
+        let alert = UIAlertController(title: "사진 접근 권한이 없습니다",
+                                      message: "설정에서 사진 접근 권한을 허용해주세요.",
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "설정으로 이동", style: .default) { _ in
+            if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(settingsURL)
+            }
+        })
+        
+        alert.addAction(UIAlertAction(title: "취소", style: .cancel))
+        
+        present(alert, animated: true)
     }
 }
 

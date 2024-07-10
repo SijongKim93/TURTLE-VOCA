@@ -92,10 +92,9 @@ class InsertVocaViewController: UIViewController {
         
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         
-        saveVocaButton.tintColor = .black
-        let config = UIImage.SymbolConfiguration(pointSize: 30, weight: .regular, scale: .default)
-        let image = UIImage(systemName: "plus.circle", withConfiguration: config)
-        saveVocaButton.setImage(image, for: .normal)
+        saveVocaButton.setTitle("저장", for: .normal)
+        saveVocaButton.setTitleColor(.black, for: .normal)
+        saveVocaButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         saveVocaButton.addTarget(self, action: #selector(saveVocaButtonPressed), for: .touchUpInside)
    
         self.setupBookCaseLabel()

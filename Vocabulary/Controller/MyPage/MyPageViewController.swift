@@ -281,7 +281,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
                         ProgressHUD.succeed("데이터 저장에 성공했습니다.")
                     }
                 } else {
-                    ProgressHUD.failed("로그인 상태를 확인해 주세요.")
+                    ProgressHUD.failed("데이터 저장에 실패했습니다.")
                 }
             }
             
@@ -294,7 +294,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
                         ProgressHUD.succeed("데이터를 불러오는데 성공했습니다.")
                     }
                 } else {
-                    ProgressHUD.failed("로그인 상태를 확인해 주세요.")
+                    ProgressHUD.failed("데이터 불러오기에 실패했습니다.")
                 }
             }
             
@@ -312,7 +312,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
                         self.present(alert, animated: true)
                     }
                 } else {
-                    ProgressHUD.failed("로그인 상태를 확인해 주세요.")
+                    ProgressHUD.failed("데이터 삭제에 실패했습니다.")
                 }
             }
         default :
