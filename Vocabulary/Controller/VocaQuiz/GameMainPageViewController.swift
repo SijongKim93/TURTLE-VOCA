@@ -8,6 +8,10 @@
 import UIKit
 import SnapKit
 
+protocol SendCount: AnyObject {
+    func sendData(count: Int)
+}
+
 class GameMainPageViewController: UIViewController {
     
     let gameMainHeaderView = GameMainHeaderView()
@@ -26,11 +30,13 @@ class GameMainPageViewController: UIViewController {
     }()
     
     let selectVC = SelectVocaViewController()
-    let buttonList = ["FlashCard", "Quiz", "Turtle Game", "기록보기", "설정하기"]
+    let buttonList = ["FlashCard", "Quiz", "Turtle Game", "오답 기록보기", "설정하기"]
     let alertController = AlertController()
     var receivedData: GenQuizModel?
     var dataList = [ReminderModel]()
     var data = [WordEntity]()
+    var gameCount: Int = 0
+    weak var delegate: SendCount?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,10 +47,11 @@ class GameMainPageViewController: UIViewController {
         layout()
         
         NotificationCenter.default.addObserver(self, selector: #selector(getSetting), name: .sender, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(getData), name: .quiz, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(getData), name: .hangman, object: nil)
-    }
+        NotificationCenter.default.addObserver(self, selector: #selector(getData), name: .getData, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(countUp), name: .count, object: nil)
+        }
 
+    
     // 게임 설정을 했는지 안했는지 확인.
     func checkSetting() {
         if receivedData == nil {
@@ -90,6 +97,11 @@ class GameMainPageViewController: UIViewController {
         if let data = notification.object as? ReminderModel {
             dataList.append(data)
         }
+    }
+    
+    @objc func countUp() {
+        gameCount += 1
+        self.delegate?.sendData(count: gameCount)
     }
 }
 

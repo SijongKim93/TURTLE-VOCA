@@ -16,7 +16,7 @@ class MyPageData {
 //        ("로그인", "lock"),
         ("iCloud에 단어 저장하기", "externaldrive.badge.icloud"),
         ("iCloud에서 불러오기", "externaldrive.fill.badge.icloud"),
-        ("iCloud 데이터 삭제하기", "icloud.slash")
+        ("iCloud 데이터 삭제", "externaldrive.badge.minus")
     ]
     
     func updateLoginStatus() {

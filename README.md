@@ -12,11 +12,32 @@
 
 <img src="https://img.shields.io/badge/Apple-%23000000.svg?style=for-the-badge&logo=apple&logoColor=white" height="20"> <img src="https://img.shields.io/badge/iOS-16.0%2B-green"> <img src="https://img.shields.io/badge/Library-Combine-308C4A "> <img src="https://img.shields.io/badge/Library-Firebase-308C4A "> <img src="https://img.shields.io/badge/Library-KakaoOpenSDK-308C4A "> <img src="https://img.shields.io/badge/Library-ProgressHUD-308C4A "> <img src="https://img.shields.io/badge/Library-SnapKit-308C4A ">
 
-나만의 단어장 Turtle App
+영단어든, 코드용어든 관계 없다!!
+내가 기억하고 싶은 단어만, 스스로 만드는 나만의 단어장!
+TURTLE VOCA
 
 ## Description
 
-필력이 좋으신분 부탁드립니다.
+거북이의 단어장(TURTLE VOCA)은 사용자가 원하는 단어장과 외우고 싶은 단어를 직접 입력하고 수정하여 사용할 수 있는 편리한 단어 학습 어플리케이션입니다.
+이 어플리케이션은 다음과 같은 주요 기능을 제공합니다.
+
+● 단어장 생성 및 수정: 사용자가 자신만의 단어장을 만들고 자유롭게 수정할 수 있습니다. 개인 학습에 최적화된 단어장 관리 기능을 제공합니다.
+
+● 단어 생성 및 수정: 사용자가 학습을 원하는 단어를 생성하고, 단어에 대한 다양한 정보를 자유롭게 입력할 수 있습니다.
+
+● 캘린더 기능: 학습한 단어를 캘린더에 저장하여 관리할 수 있습니다. 매일 학습한 단어를 기록하고 확인할 수 있습니다.
+
+● 게임을 통한 리마인더: 간단한 퀴즈 형식의 게임을 통해 외운 단어들을 복습할 수 있는 기능을 제공합니다. 게임을 통해 재미있게 단어를 기억하고 학습 효율을 높일 수 있습니다.
+
+● 카카오 및 애플 연동: 카카오톡과 애플 계정을 통한 간편 로그인 기능을 제공합니다. 사용자는 자신이 선호하는 플랫폼을 통해 쉽게 어플에 접근할 수 있습니다.
+
+● iCloud 연동: iCloud와 연동되어, 사용자가 저장한 단어장을 안전하게 백업하고 여러 기기에서 동기화하여 사용할 수 있습니다.
+
+● DeepL API 통합: DeepL API를 통해 번역 서비스를 제공합니다. 단어를 번역해주는 기술을 단어 저장에 활용할 수 있습니다.
+
+● 카카오 클라우드 Translation : 카카오의 음성 합성 기술을 이용해 단어를 소리 내어 읽어주는 기능을 제공합니다. 청각적 학습을 통해 단어의 발음을 익히고 기억할 수 있습니다.
+
+거북이의 단어장은 여러분의 언어 학습을 더 즐겁고 체계적으로 만들어줄 것입니다. 조금 느리더라도 꾸준히 학습할 수 있는 나만의 단어장을 만들어 보세요!
 
 ## Timeline
 
@@ -25,134 +46,212 @@
     <pre>● Project 아이디어 회의
     ○ 컨셉, 역할 분담, 와이어프레임
 ● UIDesign
-    ○ Calender, BookCase, GameMain page 구현
+    ○ Calender, BookCase, GameMain 페이지 구현
     </pre>
 </details>
 
 <details>
    <summary>24.05.14</summary>
-        <pre>● 회원가입 페이지 구현
-●  지도 생성
-    ○ SearchBar 생성 및 기능 구현
+        <pre>● UIDesign
+   ○ 단어 추가 페이지 구현
+● Filter 기능 구현 
+● Quiz 기능 구현
+   ○ Dummy Data를 통한 기능 테스트
         </pre>
 </details>
 
 <details>
    <summary>24.05.15</summary>
-    <pre>● 계정정보 저장 기능 구현
-● 마이페이지 생성
-● 킥보드 거리 계산 로직 구현
-● 킥보드 데이터 구성
+    <pre>● UIDesign
+   ○ MyPage, 단어장 추가, FlashCard 페이지 구현
+● FlashCard 기능 구현
+   ○ Dummy Data를 통한 기능 테스트
     </pre>
 </details>
 
 <details>
    <summary>24.05.16</summary>
-   <pre>● 내 정보 수정 페이지 생성
-● 로그아웃 기능 구현
-● Annotation 생성
-● 결제 페이지 생성
+   <pre>● UIDesign
+   ○ 단어입력 페이지 구현
+● MyPage, 단어장 이미지 추가 기능 구현
+● 단어 저장시 Coredata와 연결
+
    </pre>
 </details>
 
 <details>
    <summary>24.05.17</summary>
-   <pre>● 친구 초대 페이지 생성
-● 주행 가이드 페이지 생성
-● 앱 런치 애니메이션 생성
-● 쿠폰 페이지 생성
-● 유저 주행 기록 관리 로직 구현
-● 킥보드 관련 DummyData 생성
+   <pre>● UIDesign
+   ○ 단어상세 페이지 구현
+● 단어 정렬 Userdefault에 값 저장 
+● 단어 저장시, 저장한 날짜 활성화 효과 추가
+● 단어 삭제기능 구현 (Swipe Action)
+   ○ Coredata와 연동
+● 서치바 기능 구현
+● Coredate에 저장된 단어장 UI 출력
+● Hangman 게임 구현
    </pre>
 </details>
 
 <details>
    <summary>24.05.18</summary>
-   <pre>● 관리자 계정 페이지 구현
+   <pre>● UIDesign
+   ○ 게임기록 페이지 구현
+● Calender와 Coredata 연결
+   ○ 날짜별 단어 확인
+● UIMenu를 사용한 단어장 삭제, 수정 기능 구현
+● 응원 문구 랜덤 출력
+● Apple 로그인 기능 구현
    </pre>
 </details>    
 
 <details>
    <summary>24.05.19</summary>
-   <pre>● 최종 점검
-● ReadMe 작성
+   <pre>● 단어 필터링을 통한 정렬 기능 구현
+● 단어장 추가에 대한 예외 처리
+   ○ 버튼 비활성화 및 Animation을 통해 유져에게 인지
+● 단어장의 이미지가 없는 경우에 대한 예외 처리
+● 단어장을 보여주는 CollectionViewCell Animation 구현
    </pre>
 </details> 
 
 <details>
    <summary>24.05.20</summary>
-   <pre>● 최종 점검
-● ReadMe 작성
+   <pre>● UIDesign
+   ○ 단어상세 페이지 구현
+● 단어 상세 페이지 기능 구현   
+● 선택한 날짜에 대한 단어 필터링 기능 구현
+   ○ 필터링 된 단어의 외우기 기능 및 전체 삭제 기능 추가   
+● TTS를 사용한 단어 스피치 기능 구현
+● 단어장과 단어 간 Coredata RelationShip 연결
+● 게임 설정 기능 구현
    </pre>
 </details> 
 
 <details>
    <summary>24.05.21</summary>
-   <pre>● 최종 점검
-● ReadMe 작성
+   <pre>● KakaoTalk 소셜 로그인 기능 구현
+● 로고 및 런치스크린 구현
+● Hangman에서 Turtle game으로 UIDesign 변경
+● NetworkManager 구현
+   ○ DeepL API를 사용한 단어 자동 번역
+● 게임 기록(틀린단어) 저장 구현
+● Turtle game 예외 처리
    </pre>
 </details> 
 
 <details>
    <summary>24.05.22</summary>
-   <pre>● 최종 점검
-● ReadMe 작성
+   <pre>● 로그인, 로그아웃 기능 구현
+● Tabbar 디자인 수정
+● 단어 상세페이지 편집 기능 구현
+● quiz, 게임 설정 예외 처리
+● iCloud 저장 기능 구현
    </pre>
 </details> 
 
 <details>
    <summary>24.05.23</summary>
-   <pre>● 기능 최종 점검
-    ○ 예외 상황 확인 및 처리
+   <pre>● iCloud로부터 데이터 불러오기 기능 구현
+● Keyboard Toolbar 추가
+● 키보드 내려가지 않는 문제 수정
+● 기능 및 UI 최종 점검
+● 예외 처리
 ● ReadMe 작성
    </pre>
 </details> 
 
 ## Demo
 <p float="left">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/186b5367-f829-408c-b35e-826be7e5fec3" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/2bbbe11f-c57f-400b-be38-75c3b3639a64" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/804e714d-7f27-4684-89cd-1ce20104da27" width="200" height="430">
 <img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/bed9bdc5-1647-4e86-8bcb-ced3aa731c2f" width="200" height="430">
-<img src="https://github.com/moremirim/bean-scooter-pjt/assets/160707647/04ccb255-e4c1-421a-9f63-ae2c97625602" width="200" height="430">
-<img src="https://github.com/moremirim/bean-scooter-pjt/assets/160707647/d83aa43d-ee09-46ac-b334-893e54f77bce" width="200" height="430">
-<img src="https://github.com/moremirim/bean-scooter-pjt/assets/160707647/1a253df5-752a-4ee1-8235-81f2a2d3b2f4" width="200" height="430">
-<img src="https://github.com/moremirim/bean-scooter-pjt/assets/160707647/d8a00b9d-3c8d-4f8e-ac0d-396728440321" width="200" height="430">
-<img src="https://github.com/moremirim/bean-scooter-pjt/assets/160707647/30b3d22e-438f-47dd-afcf-2747f44e3540" width="200" height="430">
-<img src="https://github.com/moremirim/bean-scooter-pjt/assets/160707647/75054b95-e74b-44d8-917f-a1c51bee3ef1" width="200" height="430">
-<img src="https://github.com/moremirim/bean-scooter-pjt/assets/160707647/d7a86600-13e5-475d-b0e1-ad79b0c86880" width="200" height="430">
-<img src="https://github.com/moremirim/bean-scooter-pjt/assets/160707647/cd26f2d3-1c85-4de5-8af2-2ebf15f44701" width="200" height="430">
-<img src="https://github.com/moremirim/bean-scooter-pjt/assets/160707647/22fda91e-76f3-449e-b54c-09f77ce2a9b4" width="200" height="430">
-<img src="https://github.com/moremirim/bean-scooter-pjt/assets/160707647/42eee60f-fde2-48d7-aa5e-ba55094ec40c" width="200" height="430">
-<img src="https://github.com/moremirim/bean-scooter-pjt/assets/160707647/9b0063e2-2dba-4280-9ac8-e5b3bbdde1c3" width="200" height="430">
-<img src="https://github.com/moremirim/bean-scooter-pjt/assets/160707647/79cbf6a3-10bf-4350-9244-fbf7dfddcbc9" width="200" height="430">
-<img src="https://github.com/moremirim/bean-scooter-pjt/assets/160707647/01fd8e86-79bd-4bf1-9243-cfac5c930419" width="200" height="430">
-<img src="https://github.com/moremirim/bean-scooter-pjt/assets/160707647/ba6ece38-ef79-4b76-b668-f4a03e596cae" width="200" height="430">
-<img src="https://github.com/moremirim/bean-scooter-pjt/assets/160707647/5ed6ee28-732b-4fc8-980f-b99511352d81" width="200" height="430">
-<img src="https://github.com/moremirim/bean-scooter-pjt/assets/160707647/987eafa9-b99a-4b75-96de-af06ef8d0108" width="200" height="430">
-<img src="https://github.com/moremirim/bean-scooter-pjt/assets/160707647/36af0180-e963-4c4a-b4bd-ee12e99bd4d3" width="200" height="430">
-<img src="https://github.com/moremirim/bean-scooter-pjt/assets/160707647/a5293592-0476-4868-81c0-c2ea4f64363a" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/dd4fb27a-a1c9-4cb5-9828-0266998764b4" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/8f8f4484-1f23-4f1f-acc0-6b912cb03338" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/01760a0e-76da-4b78-a3c1-4d8b2fa2941d" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/6bcd7d3d-dc11-4fae-b9ff-d61c93866d02" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/8b163606-912b-4cc1-88e6-ef5b2d7ce49a" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/e69c6ebe-3b99-4323-a922-c373fdf0d30b" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/a79b70e9-8d98-415c-8336-7717d02383e9" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/eaebd6ea-5c81-4095-a51f-72cc2860ecd9" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/d66f2ebd-81ea-4895-a10c-150e9ec00919" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/b0fc62ff-97f4-418d-a87f-cc339662d197" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/1419fe13-e6d6-4de8-ab91-239ec0b25bac" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/e2fadea3-9cb7-4246-985b-1afeb9744b7d" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/dfc57ce0-cf22-43df-a2df-191818209f57" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/632cdc31-2f29-48b7-87cb-aa1f45cb77d4" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/81cc656e-8de2-4596-b05f-0a986ff8897d" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/60f804b1-8567-4c94-be5f-edea98653732" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/ce0ce32d-cd72-45b4-b7e1-7acbecf46994" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/1db217ba-b73a-4007-9e0e-65983fd7bd8d" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/42e434c3-9117-4259-8c9f-d8001647177b" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/34a99c1e-ea8e-44d0-b9a8-1f28ebf0859a" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/52f5dda8-5db0-40c9-b619-389c51707440" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/5b2da9e3-75dd-46c8-9ba6-59d9d54c76b5" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/13312216-b356-466f-97b8-07d6d94ca536" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/d79a7bd2-e919-4df4-bfd5-5d7deecb49aa" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/3d056b6c-df24-4c13-8899-b43744942b62" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/b0430e62-14a4-452f-b47b-935ea54087f4" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/6e34159d-a48a-4ada-bb95-7a79ecc10618" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/48774a74-7de9-41a4-bc54-d4381c655e91" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/2ee323f3-caf3-45aa-8cfc-ea867ba12fdb" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/fa4ff6c2-f3b4-4713-a371-b583d0b31aa7" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/672fdc76-efd8-479c-8f51-c79cfb9d03bc" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/8565f39f-657f-4fa4-a4d7-e93f1273088c" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/150047d4-2dc0-4695-a17b-2faacad20cc2" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/eee029ba-6758-417c-9068-77494715c508" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/187dd251-7fcf-4a40-b899-051fe300b4f7" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/c8e46132-cd0f-4926-9f56-9cfd807f0377" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/bb12a7ac-f9f0-408b-afac-b38484592d06" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/98eb1650-4dee-401e-9ce8-cf537465fe0c" width="200" height="430">
 </p>
 
 ## Features
 
 ### 단어
+- 단어 추가 기능
+- 단어 수정 기능
+- 단어 삭제 기능
+- 저장된 단어 검색 기능
+- 사전 검색 기능
+- 단어 추가시 단어 자동 번역 기능
+- 단어 발음 들려주는 기능
+- 단어 암기 여부 표시 기능
+- 단어 추가시 필수 입력 부분이 빠질 경우 Alert 표시
 
 ### 단어장
-- 회원 정보 가입을 통해 로그인
+- 단어장 추가 기능
+- 단어장 수정 기능
+- 단어장 삭제 기능
+- 단어장 이미지 저장 기능
+- 단어장 추가 시 빈 공간에 대한 Animation 구현
+- 단어장 스크롤시 Animation 구현
 
 ### 단어외우기
-- 유저의 현재 위치와 주변 킥보드 확인
+- FlashCard 기능
+- 단어 Quiz 기능
+- Turtle Game
+- 오답 기록 기능
+- 게임 설정 기능
 
 ### 캘린더
-- 대여 가능한 거리(150m)에 위치한 킥보드 대여
+- 날짜별 추가된 단어 표시
+- 다섯가지의 필터링 기능
+- 단어 외우기 체크 기능
+- 단어 전체 삭제 기능
+- Calendar Up&Down을 통한 더 많은 단어 표시
 
 ### 마이페이지
-- 회원 정보 수정
+- 저장된 단어, 외운 단어, 게임 횟수 확인
+- iCloud 단어장 저장 및 복구 기능
+- 로그인 시, 로그아웃으로 바뀌는 기능 구현
 
 ### 소셜로그인
-- 
+- Apple Login 구현
+- KakaoTalk Login 구현
 
 ## Requirements
-- App requires **iOS 17.4 or above**
+- App requires **iOS 16.0 or above**
 
 ## Stacks
 - **Environment**
@@ -173,75 +272,78 @@
 
 ## Project Structure
 
+파일이 많아서 디렉토리 구조로 대체합니다.
+
 ```markdown
-Bean
-├── Singleton
-│   ├── RecordSingleton
-│   └── SavedPinSingleton
+Vocabulary
+├── Config  
 │
 ├── Service
-│   ├── CoordGenerator
-│   └── MapManager
 │
-├── Model
-│   ├── AccountInfo
-│   ├── AcountModel
-│   ├── CouponModel
-│   ├── GuideModel
-│   ├── MapModel
-│   ├── ProfileModel
-│   ├── RecordModel
-│   └── PinModel.xcdatamodeld
+├── Extension
+│   ├── General
+│   └── VocaQuiz
+│
+├── Factory
+│   └── Model
 │
 ├── View
-│   ├── CouponCollectionViewCell
-│   ├── GuideTableViewCell
-│   ├── ProfileTableViewCell
-│   ├── RecordTableViewCell
-│   ├── ScooterManagerTableViewCell
-│   ├── LaunchScreen.storyboard
-│   └── Main.storyboard
+│   ├── EditBookCase
+│   ├── BookCase
+│   ├── AddBookCase
+│   ├── AddVoca
+│   ├── VocaQuiz
+│   ├── Calender
+│   └── MyPage
 │
 ├── Controller
-│   ├── CouponViewController
-│   ├── EditProfileViewController
-│   ├── GuideViewController
-│   ├── InviteFriendsViewController
-│   ├── LaunchViewController
-│   ├── MapViewController
-│   ├── ModalViewController
-│   ├── ProfileViewController
-│   ├── RecordTableViewController
-│   ├── ScooterManageViewController
-│   ├── SignInViewController
-│   ├── SignupViewController
-│   ├── TabbarViewController
-│   └── PayViewController
+│   ├── BookCase
+│   ├── Voca
+│   ├── VocaQuiz
+│   ├── Calender
+│   └── MyPage
 │
-├── Assets
-└ 
+└── Assets
 ```
 
-
 ## Developer
-*  **김시종** ([jungkweon93](https://github.com/jungkweon93))
-    - 애플 지도 생성
-    - 현재 위치 이동 기능
-    - Launch Screen 기능 구현
-    - 쿠폰 페이지 구현
-*  **금세미** ([moremirim](https://github.com/moremirim))
-    - Project Merge 구현
-    - 대여 기능 구현
-    - 전체적인 UI Design
-    - 결제 페이지 구현 
-*  **김한빛** ([Haroldfromk](https://github.com/haroldfromk))
-    - 반납 기능 구현
-    - Annotation Pin 구현
-    - 거리 계산 로직 구현
-    - 관리자 페이지 구현
-    - Coredata를 사용한 킥보드 정보 저장
-*  **송동익** ([Heather-Cho](https://github.com/Heather-Cho))
-    - 로그인, 회원가입 페이지 구현
-    - 회원정보 수정 페이지 구현
-    - Userdefault를 사용한 회원 정보 저장
-    - 친구초대 페이지 구현
+*  **김시종** ([SijongKim93](https://github.com/SijongKim93))
+   - Calendar 기능 구현
+   - 단어 필터링 기능 구현
+   - 마이페이지 기능 구현
+   - TTS(Text To Speech) 기능 구현
+   - Kakao Talk 소셜 로그인 구현
+   - UserDefault를 사용한 유져 데이터 저장 구현
+   - 단어 외우기 기능 구현
+   - 예외 상황 처리
+
+*  **금세미** ([pond1225](https://github.com/pond1225))
+   - 단어 추가 기능 구현
+   - 단어 수정 기능 구현
+   - 단어 삭제 기능 구현
+   - 단어 상세페이지 기능 구현
+   - SearchBar 기능 구현
+   - 예외 상황 처리
+
+*  **김한빛** ([gksqlc7386](https://github.com/gksqlc7386))
+   - UI 디자인
+   - 단어장 추가 기능 구현
+   - 단어장 수정 기능 구현
+   - 단어장 삭제 기능 구현
+   - Alert 디자인
+   - 응원 문구 기능 구현
+   - 로고, 런치스크린 구현
+   - 키보드 숨김 및 키보드의 UI가림 방지 구현
+   - 예외 상황 처리
+
+*  **송동익** ([Haroldfomk](https://github.com/Haroldfromk))
+   - 게임(Quiz, Turtle game) 구현
+   - FlashCard 기능 구현
+   - Api 호출을 통한 단어 뜻 표시 구현
+   - Apple 소셜 로그인 기능 구현
+   - iCloud 연동 기능 구현
+   - Firebase를 통한 유져 데이터 등록 (암호화처리)
+   - Keyboard ToolBar 구현
+   - 예외 상황 처리
+   - Git 문제 해결
+    

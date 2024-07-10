@@ -267,12 +267,8 @@
 		4D1791BF2BF1E15C00E645C9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				6B02ADEC2BF6E88F006E0964 /* InsertVocaViewController.swift */,
-				612D10DF2BF719D20097EDBA /* BookCaseViewController.swift */,
-				4D1791C02BF1E1F700E645C9 /* AddBookCaseViewController.swift */,
-				FBE7EA402BF8778F00BE86E5 /* EditBookCaseViewController.swift */,
-				4D1791AA2BF1D5BE00E645C9 /* AddVocaViewController.swift */,
-				6BBB36212BFAF6050088A8CB /* VocaDetailViewController.swift */,
+				6164009F2BFFB62E00C7DC56 /* BookCase */,
+				616400A02BFFB63B00C7DC56 /* Voca */,
 				610130D62BF3D9E400CE8183 /* VocaQuiz */,
 				4D1791D52BF3422900E645C9 /* Calender */,
 				4D1791EF2BF7550000E645C9 /* MyPage */,
@@ -393,6 +389,26 @@
 				4D9E8FAA2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift */,
 			);
 			path = MyPage;
+			sourceTree = "<group>";
+		};
+		6164009F2BFFB62E00C7DC56 /* BookCase */ = {
+			isa = PBXGroup;
+			children = (
+				612D10DF2BF719D20097EDBA /* BookCaseViewController.swift */,
+				4D1791C02BF1E1F700E645C9 /* AddBookCaseViewController.swift */,
+				FBE7EA402BF8778F00BE86E5 /* EditBookCaseViewController.swift */,
+			);
+			path = BookCase;
+			sourceTree = "<group>";
+		};
+		616400A02BFFB63B00C7DC56 /* Voca */ = {
+			isa = PBXGroup;
+			children = (
+				6B02ADEC2BF6E88F006E0964 /* InsertVocaViewController.swift */,
+				4D1791AA2BF1D5BE00E645C9 /* AddVocaViewController.swift */,
+				6BBB36212BFAF6050088A8CB /* VocaDetailViewController.swift */,
+			);
+			path = Voca;
 			sourceTree = "<group>";
 		};
 		618E70552BF20387007AEDFE /* Factory */ = {

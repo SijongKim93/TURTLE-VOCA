@@ -13,7 +13,8 @@ class AddVocaViewController: UIViewController {
     
     var bookCaseName: String?
     var bookCaseData: BookCase?
-    
+   
+    //MARK: - Component 호출
     var bookCaseLabel = LabelFactory().makeLabel(title: "" , size: 20, textAlignment: .center, isBold: true)
     var backButton = UIButton()
     var addVocaButton = UIButton()
@@ -47,26 +48,11 @@ class AddVocaViewController: UIViewController {
         self.present(insertVocaView, animated: true, completion: nil)
     }
 
-    
-    
-
-
-   
-
+    //MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         view.backgroundColor = .white
-
-        
-        //코어데이터 작동 확인용
-        //
-        //        if let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last {
-        //            print("Documents Directory: \(documentsDirectoryURL)")
-        //        }
-        //
-
-              
 
         backButton.tintColor = .black
         backButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
@@ -84,12 +70,7 @@ class AddVocaViewController: UIViewController {
         addVocaButton.setImage(image, for: .normal)
         addVocaButton.addTarget(self, action: #selector(presentInsertVocaPage), for: .touchUpInside)
 
-        
-
-
-       
         setupBookCaseLabel()
-
         updateCountLabel()
         
         vocaCollectionView.dataSource = self
@@ -113,6 +94,7 @@ class AddVocaViewController: UIViewController {
         getData()
     }
     
+    //코어데이터 불러오기
     func getData() {
         guard let bookCaseName = bookCaseName else {
             wordList = []
@@ -140,6 +122,7 @@ class AddVocaViewController: UIViewController {
         countLabel.text = "총 \(wordList.count)단어"
     }
     
+    //MARK: - 화면 구성
     func configureUI() {
         self.view.addSubview(headerStackView)
         self.view.addSubview(searchBar)
@@ -147,6 +130,7 @@ class AddVocaViewController: UIViewController {
         self.view.addSubview(vocaCollectionView)
     }
     
+    //MARK: - Layout
     func makeConstraints() {
         headerStackView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(10)
@@ -177,6 +161,7 @@ class AddVocaViewController: UIViewController {
         }
     }
     
+    //MARK: - WordList CollectionView FlowLayout
     func createCollectionViewFlowLayout(for collectionView: UICollectionView) -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -186,6 +171,7 @@ class AddVocaViewController: UIViewController {
         return layout
     }
     
+    //MARK: - CollectionView Cell SwipeGesture
     func configureCollectionView() {
         let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_:)))
         vocaCollectionView.addGestureRecognizer(swipeGesture)
@@ -219,6 +205,7 @@ class AddVocaViewController: UIViewController {
     
 }
 
+//MARK: - SearchBar Delegate
 extension AddVocaViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
@@ -243,7 +230,7 @@ extension AddVocaViewController: UISearchBarDelegate {
     }
 }
 
-
+//MARK: - CollectionView Delegate, DataSource
 extension AddVocaViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return isFiltering ? filteredWordList.count : wordList.count

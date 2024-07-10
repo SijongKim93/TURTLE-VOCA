@@ -115,10 +115,14 @@ class MyPageViewController: UIViewController {
         return tableView
     }()
     
+    // GameCount
+    var gameCount: Int = 0
+    
     //MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
         
         coreDataManager = CoreDataManager.shared
         setupUI()
@@ -126,12 +130,14 @@ class MyPageViewController: UIViewController {
         updateSaveVocaCount()
         updateMemoryVocaCount()
         //getUserData()
+        
     }
     
     //MARK: - ViewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateWordCounts()
+        
         //getUserData()
     }
     
@@ -213,6 +219,8 @@ class MyPageViewController: UIViewController {
             }
         }
     }
+    
+    
 }
 
 //MARK: - TableView delegate, dataSource
@@ -222,7 +230,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        70
+        60
     }
     
     //MARK: - 로그인 여부에 따라 로그인 , 로그아웃 값 저장
@@ -297,7 +305,6 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
                     ProgressHUD.failed("데이터 불러오기에 실패했습니다.")
                 }
             }
-            
         case 2:
             CoreDataManager.shared.checkiCloudLoginStatus { loginStatus in
                 if loginStatus {
@@ -340,6 +347,18 @@ extension MyPageViewController: LoginModalViewControllerDelegate {
     func loginStatusDidChange() {
         reloadTableView()
     }
+}
+
+extension MyPageViewController: SendCount {
+    func sendData(count: Int) {
+        gameCount = count
+        print(gameCount)
+        DispatchQueue.main.async {
+            self.gamePlayCount.text = "\(self.gameCount)회"
+        }
+    }
+    
+    
 }
 
 //extension MyPageViewController {

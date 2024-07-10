@@ -216,6 +216,8 @@ extension BookCaseBodyView: DeleteBookCaseBodyCellDelegate {
     func didTapDeleteButton(on cell: BookCaseBodyCell) {
         guard let indexPath = vocaBookCollectionView.indexPath(for: cell) else { return }
         let bookCaseToDelete = bookCases[indexPath.item]
+        print("====================================")
+        print(bookCaseToDelete)
         CoreDataManager.shared.deleteBookCase(bookCase: bookCaseToDelete, errorHandler: { _ in
             self.delegate?.deleteErrorAlert()
         })
