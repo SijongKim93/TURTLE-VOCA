@@ -40,7 +40,7 @@ class GameMainHeaderView: UIView {
         addSubview(stackView)
         
         stackView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).offset(40)
+            $0.top.equalTo(safeAreaLayoutGuide).offset(20)
             $0.centerX.equalTo(safeAreaLayoutGuide)
         }
         

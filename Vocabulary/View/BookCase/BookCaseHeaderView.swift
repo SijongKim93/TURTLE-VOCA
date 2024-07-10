@@ -12,7 +12,6 @@ import SnapKit
 class BookCaseHeaderView: UIView {
     
     // MARK: - Properties
-    
     let logoImageView: UIImageView = {
         let imageView = UIImageView()
         if let logoImage = UIImage(named: "turtlevoca") {
@@ -24,7 +23,7 @@ class BookCaseHeaderView: UIView {
     
     let plusButton: UIButton = {
         let button = UIButton()
-        let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
+        let config = UIImage.SymbolConfiguration(pointSize: 30, weight: .bold, scale: .default)
         let image = UIImage(systemName: "plus.circle", withConfiguration: config)
         let selectedImage = UIImage(systemName: "plus.circle", withConfiguration: config)
         
@@ -35,11 +34,11 @@ class BookCaseHeaderView: UIView {
         return button
     }()
     
-    lazy var headerStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [logoImageView, plusButton])
+    let headerStackView: UIStackView = {
+        let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.spacing = 30
-        stackView.distribution = .fill
+        stackView.spacing = 10
+        stackView.alignment = .center
         return stackView
     }()
     
@@ -47,6 +46,7 @@ class BookCaseHeaderView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
+        setupView()
         setupConstraints()
         
         plusButton.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
@@ -57,10 +57,18 @@ class BookCaseHeaderView: UIView {
     }
     
     // MARK: - Setup
+    private func setupView() {
+        addSubview(headerStackView)
+        headerStackView.addArrangedSubview(logoImageView)
+        headerStackView.addArrangedSubview(plusButton)
+    }
     
     private func setupConstraints(){
-        
-        addSubview(headerStackView)
+        headerStackView.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(20)
+            $0.bottom.equalToSuperview().inset(20)
+            $0.leading.trailing.equalToSuperview().inset(30)
+        }
         
         logoImageView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
@@ -68,15 +76,8 @@ class BookCaseHeaderView: UIView {
         }
         
         plusButton.snp.makeConstraints {
-            $0.width.height.equalTo(20)
+            $0.width.height.equalTo(30)
         }
-        
-        headerStackView.snp.makeConstraints{
-            $0.top.equalToSuperview().inset(20)
-            $0.bottom.equalToSuperview().inset(10)
-            $0.leading.trailing.equalToSuperview().inset(30)
-        }
-        
     }
     
     //MARK: - Button Action

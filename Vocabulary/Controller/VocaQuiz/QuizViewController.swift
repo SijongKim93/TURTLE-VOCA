@@ -83,7 +83,7 @@ class QuizViewController: UIViewController {
         }
         
         quizBottomView.snp.makeConstraints {
-            $0.top.equalTo(quizBodyView.snp.bottom).offset(50)
+            $0.top.equalTo(quizBodyView.snp.bottom).offset(20)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().offset(-100)
         }

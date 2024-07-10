@@ -249,30 +249,30 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
         let index = indexPath.row
         
         switch index {
+//        case 0:
+//            print(index)
+//        case 1:
+//            print(index)
+//        case 2:
+//            print(index)
+//        case 3:
+//            let isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
+//            let alertController = AlertController()
+//            
+//            if isLoggedIn {
+//                let alert = alertController.makeAlertWithCompletion(title: "로그아웃", message: "로그아웃 하시겠습니까?") { [weak self] _ in
+//                    UserDefaults.standard.set(false, forKey: "isLoggedIn")
+//                    self?.reloadTableView()
+//                }
+//                present(alert, animated: true, completion: nil)
+//            } else {
+//                let loginModelVC = LoginModalViewController()
+//                loginModelVC.modalPresentationStyle = .custom
+//                loginModelVC.transitioningDelegate = self
+//                loginModelVC.delegate = self
+//                present(loginModelVC, animated: true, completion: nil)
+//            }
         case 0:
-            print(index)
-        case 1:
-            print(index)
-        case 2:
-            print(index)
-        case 3:
-            let isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
-            let alertController = AlertController()
-            
-            if isLoggedIn {
-                let alert = alertController.makeAlertWithCompletion(title: "로그아웃", message: "로그아웃 하시겠습니까?") { [weak self] _ in
-                    UserDefaults.standard.set(false, forKey: "isLoggedIn")
-                    self?.reloadTableView()
-                }
-                present(alert, animated: true, completion: nil)
-            } else {
-                let loginModelVC = LoginModalViewController()
-                loginModelVC.modalPresentationStyle = .custom
-                loginModelVC.transitioningDelegate = self
-                loginModelVC.delegate = self
-                present(loginModelVC, animated: true, completion: nil)
-            }
-        case 4:
             CoreDataManager.shared.checkiCloudLoginStatus { loginStatus in
                 if loginStatus {
                     ProgressHUD.animate("데이터를 저장하는 중 입니다.")
@@ -285,7 +285,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
             
-        case 5:
+        case 1:
             CoreDataManager.shared.checkiCloudLoginStatus { loginStatus in
                 if loginStatus {
                     ProgressHUD.animate("데이터를 가져오는 중 입니다.")
@@ -298,6 +298,23 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
             
+        case 2:
+            CoreDataManager.shared.checkiCloudLoginStatus { loginStatus in
+                if loginStatus {
+                    DispatchQueue.main.async{
+                        let alert = AlertController().makeAlertWithCompletion(title: "삭제하시겠습니까?", message: "삭제하시면 복구 하실 수 없습니다.") { _ in
+                            ProgressHUD.animate("데이터를 삭제합니다.")
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                CoreDataManager.shared.deleteAllCloudKitData()
+                                ProgressHUD.succeed("Cloud 초기화가 완료되었습니다.")
+                            }
+                        }
+                        self.present(alert, animated: true)
+                    }
+                } else {
+                    ProgressHUD.failed("로그인 상태를 확인해 주세요.")
+                }
+            }
         default :
             return
         }

@@ -40,6 +40,7 @@ final class CoreDataManager {
         let entity = NSEntityDescription.entity(forEntityName: "BookCase", in: context)!
         let bookCase = NSManagedObject(entity: entity, insertInto: context)
         
+        bookCase.setValue(UUID().uuidString, forKey: "uuid")
         bookCase.setValue(name, forKey: "name")
         bookCase.setValue(explain, forKey: "explain")
         bookCase.setValue(word, forKey: "word")
@@ -72,8 +73,24 @@ final class CoreDataManager {
     
     //단어장 삭제
     func deleteBookCase(bookCase: NSManagedObject, errorHandler: @escaping (Error) -> Void) {
+        // 단어장 삭제
         managedContext?.delete(bookCase)
+        
+        // 해당 단어장과 관련된 단어 삭제
+        guard let bookname = bookCase as? BookCase else {
+            return
+        }
+        
+        let request: NSFetchRequest<WordEntity> = WordEntity.fetchRequest()
+        let predicate = NSPredicate(format: "bookCaseName == %@", bookname.name!)
+        request.predicate = predicate
+        
         do {
+            
+            let words = try managedContext!.fetch(request)
+            for word in words {
+                managedContext!.delete(word)
+            }
             try managedContext?.save()
         } catch let error as NSError {
             errorHandler(error)
@@ -110,6 +127,7 @@ final class CoreDataManager {
         }
         
         let newWord = WordEntity(context: context)
+        newWord.uuid = UUID().uuidString
         newWord.word = word
         newWord.definition = definition
         newWord.detail = detail
@@ -136,8 +154,8 @@ final class CoreDataManager {
             print("Error: managedContext is nil")
             return
         }
-
-
+        
+        
         editedWord.setValue(word, forKey: "word")
         editedWord.setValue(definition, forKey: "definition")
         editedWord.setValue(detail, forKey: "detail")
@@ -146,7 +164,7 @@ final class CoreDataManager {
         editedWord.setValue(antonym, forKey: "antonym")
         editedWord.setValue(Date(), forKey: "date")
         editedWord.setValue(bookCaseName, forKey: "bookCaseName")
-
+        
         do {
             try context.save()
             print("코어데이터가 수정되었습니다.")
@@ -173,7 +191,7 @@ final class CoreDataManager {
     
     //단어 불러오기
     func getWordList() -> [WordEntity] {
-    
+        
         var wordList: [WordEntity] = []
         
         guard let context = managedContext else {
@@ -186,7 +204,7 @@ final class CoreDataManager {
         do {
             wordList = try context.fetch(request)
         } catch let error as NSError {
-
+            
         }
         return wordList
         
@@ -347,7 +365,7 @@ extension CoreDataManager {
                 completion(false)
                 return
             }
-
+            
             if status == .available {
                 print("iCloud account is available and logged in.")
                 completion(true)
@@ -459,34 +477,34 @@ extension CoreDataManager {
     }
     
     func syncEntityFromCloudKit<T: NSManagedObject>(recordType: String, entityType: T.Type) {
-        
         let database = CKContainer(identifier: "iCloud.com.teamproject.Vocabularytest").privateCloudDatabase
         let query = CKQuery(recordType: recordType, predicate: NSPredicate(value: true))
         
         database.perform(query, inZoneWith: nil) { records, error in
-            if let error = error {
-                print("Error fetching records from CloudKit: \(error)")
-                return
-            }
-            
-            guard let records = records else { return }
-            
-            let context = self.managedContext!
-            
-            context.perform {
-                for record in records {
-                    self.updateOrInsertRecord(record, entityType: entityType, context: context)
+            DispatchQueue.main.async {
+                if let error = error {
+                    print("Error fetching records from CloudKit: \(error)")
+                    return
                 }
                 
-                do {
-                    try context.save()
-                    print("\(recordType) records synced to Core Data successfully")
-                } catch {
-                    print("Error saving context: \(error)")
+                guard let records = records else { return }
+                
+                let context = self.managedContext!
+                
+                context.perform {
+                    for record in records {
+                        self.updateOrInsertRecord(record, entityType: entityType, context: context)
+                    }
+                    
+                    do {
+                        try context.save()
+                        print("\(recordType) records synced to Core Data successfully")
+                    } catch {
+                        print("Error saving context: \(error)")
+                    }
                 }
             }
         }
-        
     }
     
     func updateOrInsertRecord<T: NSManagedObject>(_ record: CKRecord, entityType: T.Type, context: NSManagedObjectContext) {
@@ -535,6 +553,43 @@ extension CoreDataManager {
             
         }
         
+    }
+    
+}
+
+// MARK: - Delete iCloud Data
+extension CoreDataManager {
+    
+    func deleteAllRecordsFromCloudKit(recordType: String) {
+        let database = CKContainer(identifier: "iCloud.com.teamproject.Vocabularytest").privateCloudDatabase
+        let query = CKQuery(recordType: recordType, predicate: NSPredicate(value: true))
+        
+        database.perform(query, inZoneWith: nil) { records, error in
+            if let error = error {
+                print("Error fetching records from CloudKit: \(error)")
+                return
+            }
+            
+            guard let records = records else { return }
+            
+            let recordIDs = records.map { $0.recordID }
+            let operation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: recordIDs)
+            
+            operation.modifyRecordsCompletionBlock = { savedRecords, deletedRecordIDs, operationError in
+                if let operationError = operationError {
+                    print("Error deleting records: \(operationError)")
+                } else {
+                    print("\(deletedRecordIDs?.count ?? 0) records deleted from CloudKit")
+                }
+            }
+            
+            database.add(operation)
+        }
+    }
+
+    func deleteAllCloudKitData() {
+        deleteAllRecordsFromCloudKit(recordType: "BookCase")
+        deleteAllRecordsFromCloudKit(recordType: "WordEntity")
     }
     
 }

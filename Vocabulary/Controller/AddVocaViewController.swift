@@ -24,18 +24,25 @@ class AddVocaViewController: UIViewController {
     var isFiltering: Bool = false
     var vocaCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
+    lazy var headerStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [backButton, bookCaseLabel, addVocaButton])
+        stackView.axis = .horizontal
+        stackView.spacing = 10
+        stackView.alignment = .center
+        return stackView
+    }()
+    
     //단어장 페이지로 돌아가기
     @objc func backButtonTapped() {
         self.dismiss(animated: true, completion: nil)
     }
     
     // 단어 추가 버튼 눌렸을 때 단어입력페이지로 이동
-
     @objc func presentInsertVocaPage() {
         let scrollView = UIScrollView()
         let insertVocaView = InsertVocaViewController(scrollView: scrollView)
         insertVocaView.bookCaseData = self.bookCaseData
-        insertVocaView.selectedBookCaseName = self.bookCaseName // 단어장 데이터 전달
+        insertVocaView.selectedBookCaseName = self.bookCaseName
         insertVocaView.modalPresentationStyle = .fullScreen
         self.present(insertVocaView, animated: true, completion: nil)
     }
@@ -72,7 +79,9 @@ class AddVocaViewController: UIViewController {
         filteredWordList = wordList
         
         addVocaButton.tintColor = .black
-        addVocaButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
+        let config = UIImage.SymbolConfiguration(pointSize: 30, weight: .regular, scale: .default)
+        let image = UIImage(systemName: "plus.circle", withConfiguration: config)
+        addVocaButton.setImage(image, for: .normal)
         addVocaButton.addTarget(self, action: #selector(presentInsertVocaPage), for: .touchUpInside)
 
         
@@ -132,33 +141,28 @@ class AddVocaViewController: UIViewController {
     }
     
     func configureUI() {
-        self.view.addSubview(backButton)
-        self.view.addSubview(bookCaseLabel)
-        self.view.addSubview(addVocaButton)
+        self.view.addSubview(headerStackView)
         self.view.addSubview(searchBar)
         self.view.addSubview(countLabel)
         self.view.addSubview(vocaCollectionView)
     }
     
     func makeConstraints() {
-        
-        backButton.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(4)
-            $0.leading.equalToSuperview().offset(20)
+        headerStackView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(10)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(20)
         }
         
-        bookCaseLabel.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(4)
-            $0.centerX.equalToSuperview()
+        backButton.snp.makeConstraints {
+            $0.width.height.equalTo(30)
         }
         
         addVocaButton.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-20)
+            $0.width.height.equalTo(30)
         }
         
         searchBar.snp.makeConstraints {
-            $0.top.equalTo(addVocaButton.snp.bottom).offset(15)
+            $0.top.equalTo(headerStackView.snp.bottom).offset(15)
             $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(10)
         }
         
