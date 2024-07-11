@@ -102,7 +102,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4D1791A32BF1D5BE00E645C9 /* Vocabulary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vocabulary.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D1791A32BF1D5BE00E645C9 /* TURTLEVOCA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TURTLEVOCA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D1791A62BF1D5BE00E645C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D1791A82BF1D5BE00E645C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4D1791AA2BF1D5BE00E645C9 /* AddVocaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVocaViewController.swift; sourceTree = "<group>"; };
@@ -222,7 +222,7 @@
 		4D1791A42BF1D5BE00E645C9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4D1791A32BF1D5BE00E645C9 /* Vocabulary.app */,
+				4D1791A32BF1D5BE00E645C9 /* TURTLEVOCA.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -500,9 +500,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4D1791A22BF1D5BE00E645C9 /* Vocabulary */ = {
+		4D1791A22BF1D5BE00E645C9 /* TURTLEVOCA */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4D1791BA2BF1D5BF00E645C9 /* Build configuration list for PBXNativeTarget "Vocabulary" */;
+			buildConfigurationList = 4D1791BA2BF1D5BF00E645C9 /* Build configuration list for PBXNativeTarget "TURTLEVOCA" */;
 			buildPhases = (
 				4D17919F2BF1D5BE00E645C9 /* Sources */,
 				4D1791A02BF1D5BE00E645C9 /* Frameworks */,
@@ -512,7 +512,7 @@
 			);
 			dependencies = (
 			);
-			name = Vocabulary;
+			name = TURTLEVOCA;
 			packageProductDependencies = (
 				61AAEBC82BF724AE0032961C /* SnapKit */,
 				61EE0BFC2BF9C0E000FD2F32 /* FirebaseAuth */,
@@ -521,7 +521,7 @@
 				611177B02BFC808F00A635B8 /* CombineCocoa */,
 			);
 			productName = Vocabulary;
-			productReference = 4D1791A32BF1D5BE00E645C9 /* Vocabulary.app */;
+			productReference = 4D1791A32BF1D5BE00E645C9 /* TURTLEVOCA.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -539,7 +539,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4D17919E2BF1D5BE00E645C9 /* Build configuration list for PBXProject "Vocabulary" */;
+			buildConfigurationList = 4D17919E2BF1D5BE00E645C9 /* Build configuration list for PBXProject "TURTLEVOCA" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = ko;
 			hasScannedForEncodings = 0;
@@ -559,7 +559,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4D1791A22BF1D5BE00E645C9 /* Vocabulary */,
+				4D1791A22BF1D5BE00E645C9 /* TURTLEVOCA */,
 			);
 		};
 /* End PBXProject section */
@@ -817,7 +817,7 @@
 				DEVELOPMENT_TEAM = U68CWSQ94X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Vocabulary/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "TURTLE VOCA";
+				INFOPLIST_KEY_CFBundleDisplayName = TURTLEVOCA;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -828,7 +828,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.TurtleVOCA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -850,7 +850,7 @@
 				DEVELOPMENT_TEAM = U68CWSQ94X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Vocabulary/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "TURTLE VOCA";
+				INFOPLIST_KEY_CFBundleDisplayName = TURTLEVOCA;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -861,7 +861,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.TurtleVOCA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -874,7 +874,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4D17919E2BF1D5BE00E645C9 /* Build configuration list for PBXProject "Vocabulary" */ = {
+		4D17919E2BF1D5BE00E645C9 /* Build configuration list for PBXProject "TURTLEVOCA" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4D1791B82BF1D5BF00E645C9 /* Debug */,
@@ -883,7 +883,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4D1791BA2BF1D5BF00E645C9 /* Build configuration list for PBXNativeTarget "Vocabulary" */ = {
+		4D1791BA2BF1D5BF00E645C9 /* Build configuration list for PBXNativeTarget "TURTLEVOCA" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4D1791BB2BF1D5BF00E645C9 /* Debug */,

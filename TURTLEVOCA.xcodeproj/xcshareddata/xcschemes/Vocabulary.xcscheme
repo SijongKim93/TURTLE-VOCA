@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4D1791A22BF1D5BE00E645C9"
-               BuildableName = "Vocabulary.app"
-               BlueprintName = "Vocabulary"
-               ReferencedContainer = "container:Vocabulary.xcodeproj">
+               BuildableName = "TURTLEVOCA.app"
+               BlueprintName = "TURTLEVOCA"
+               ReferencedContainer = "container:TURTLEVOCA.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -44,9 +44,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4D1791A22BF1D5BE00E645C9"
-            BuildableName = "Vocabulary.app"
-            BlueprintName = "Vocabulary"
-            ReferencedContainer = "container:Vocabulary.xcodeproj">
+            BuildableName = "TURTLEVOCA.app"
+            BlueprintName = "TURTLEVOCA"
+            ReferencedContainer = "container:TURTLEVOCA.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -61,9 +61,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4D1791A22BF1D5BE00E645C9"
-            BuildableName = "Vocabulary.app"
-            BlueprintName = "Vocabulary"
-            ReferencedContainer = "container:Vocabulary.xcodeproj">
+            BuildableName = "TURTLEVOCA.app"
+            BlueprintName = "TURTLEVOCA"
+            ReferencedContainer = "container:TURTLEVOCA.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
