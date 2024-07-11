@@ -17,6 +17,7 @@ class VocaQuizMainCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         layout()
         addShadow()
+
     }
     
     required init?(coder: NSCoder) {
