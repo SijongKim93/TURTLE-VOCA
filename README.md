@@ -1,12 +1,11 @@
 # Table of Contents
 1. [Description](#description)
 2. [Timeline](#timeline)
-3. [Demo](#demo)
-4. [Features](#features)
-5. [Requirements](#requirements)
-6. [Stacks](#stacks)
-7. [ProjectStructure](#projectStructure)
-8. [Developer](#developer)
+3. [Features](#features)
+4. [Requirements](#requirements)
+5. [Stacks](#stacks)
+6. [ProjectStructure](#projectStructure)
+7. [Developer](#developer)
 
 # TURTLE VOCA
 
@@ -23,15 +22,42 @@ TURTLE VOCA
 
 ● 단어장 생성 및 수정: 사용자가 자신만의 단어장을 만들고 자유롭게 수정할 수 있습니다. 개인 학습에 최적화된 단어장 관리 기능을 제공합니다.
 
+<img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/804e714d-7f27-4684-89cd-1ce20104da27" width="200" height="430"> 
+<img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/bed9bdc5-1647-4e86-8bcb-ced3aa731c2f" width="200" height="430"> 
+<img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/dd4fb27a-a1c9-4cb5-9828-0266998764b4" width="200" height="430"> 
+<img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/01760a0e-76da-4b78-a3c1-4d8b2fa2941d" width="200" height="430">
+
 ● 단어 생성 및 수정: 사용자가 학습을 원하는 단어를 생성하고, 단어에 대한 다양한 정보를 자유롭게 입력할 수 있습니다.
+
+<img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/6bcd7d3d-dc11-4fae-b9ff-d61c93866d02" width="200" height="430"> 
+<img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/a79b70e9-8d98-415c-8336-7717d02383e9" width="200" height="430"> 
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/632cdc31-2f29-48b7-87cb-aa1f45cb77d4" width="200" height="430"> 
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/dfc57ce0-cf22-43df-a2df-191818209f57" width="200" height="430">
 
 ● 캘린더 기능: 학습한 단어를 캘린더에 저장하여 관리할 수 있습니다. 매일 학습한 단어를 기록하고 확인할 수 있습니다.
 
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/48774a74-7de9-41a4-bc54-d4381c655e91" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/2ee323f3-caf3-45aa-8cfc-ea867ba12fdb" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/fa4ff6c2-f3b4-4713-a371-b583d0b31aa7" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/672fdc76-efd8-479c-8f51-c79cfb9d03bc" width="200" height="430">
+
 ● 게임을 통한 리마인더: 간단한 퀴즈 형식의 게임을 통해 외운 단어들을 복습할 수 있는 기능을 제공합니다. 게임을 통해 재미있게 단어를 기억하고 학습 효율을 높일 수 있습니다.
+
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/ce0ce32d-cd72-45b4-b7e1-7acbecf46994" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/d79a7bd2-e919-4df4-bfd5-5d7deecb49aa" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/1db217ba-b73a-4007-9e0e-65983fd7bd8d" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/52f5dda8-5db0-40c9-b619-389c51707440" width="200" height="430">
+
 
 ● 카카오 및 애플 연동: 카카오톡과 애플 계정을 통한 간편 로그인 기능을 제공합니다. 사용자는 자신이 선호하는 플랫폼을 통해 쉽게 어플에 접근할 수 있습니다.
 
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/eee029ba-6758-417c-9068-77494715c508" width="200" height="430">
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/187dd251-7fcf-4a40-b899-051fe300b4f7" width="200" height="430">
+
 ● iCloud 연동: iCloud와 연동되어, 사용자가 저장한 단어장을 안전하게 백업하고 여러 기기에서 동기화하여 사용할 수 있습니다.
+
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/c8e46132-cd0f-4926-9f56-9cfd807f0377" width="200" height="430"> 
+<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/bb12a7ac-f9f0-408b-afac-b38484592d06" width="200" height="430">
 
 ● DeepL API 통합: DeepL API를 통해 번역 서비스를 제공합니다. 단어를 번역해주는 기술을 단어 저장에 활용할 수 있습니다.
 
@@ -161,51 +187,6 @@ TURTLE VOCA
    </pre>
 </details> 
 
-## Demo
-<p float="left">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/2bbbe11f-c57f-400b-be38-75c3b3639a64" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/804e714d-7f27-4684-89cd-1ce20104da27" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/bed9bdc5-1647-4e86-8bcb-ced3aa731c2f" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/dd4fb27a-a1c9-4cb5-9828-0266998764b4" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/8f8f4484-1f23-4f1f-acc0-6b912cb03338" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/01760a0e-76da-4b78-a3c1-4d8b2fa2941d" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/6bcd7d3d-dc11-4fae-b9ff-d61c93866d02" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/8b163606-912b-4cc1-88e6-ef5b2d7ce49a" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/e69c6ebe-3b99-4323-a922-c373fdf0d30b" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/a79b70e9-8d98-415c-8336-7717d02383e9" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/eaebd6ea-5c81-4095-a51f-72cc2860ecd9" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/97341336/d66f2ebd-81ea-4895-a10c-150e9ec00919" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/b0fc62ff-97f4-418d-a87f-cc339662d197" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/1419fe13-e6d6-4de8-ab91-239ec0b25bac" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/e2fadea3-9cb7-4246-985b-1afeb9744b7d" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/dfc57ce0-cf22-43df-a2df-191818209f57" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/632cdc31-2f29-48b7-87cb-aa1f45cb77d4" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/81cc656e-8de2-4596-b05f-0a986ff8897d" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/60f804b1-8567-4c94-be5f-edea98653732" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/ce0ce32d-cd72-45b4-b7e1-7acbecf46994" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/1db217ba-b73a-4007-9e0e-65983fd7bd8d" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/42e434c3-9117-4259-8c9f-d8001647177b" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/34a99c1e-ea8e-44d0-b9a8-1f28ebf0859a" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/52f5dda8-5db0-40c9-b619-389c51707440" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/5b2da9e3-75dd-46c8-9ba6-59d9d54c76b5" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/13312216-b356-466f-97b8-07d6d94ca536" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/d79a7bd2-e919-4df4-bfd5-5d7deecb49aa" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/3d056b6c-df24-4c13-8899-b43744942b62" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/b0430e62-14a4-452f-b47b-935ea54087f4" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/6e34159d-a48a-4ada-bb95-7a79ecc10618" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/48774a74-7de9-41a4-bc54-d4381c655e91" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/2ee323f3-caf3-45aa-8cfc-ea867ba12fdb" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/fa4ff6c2-f3b4-4713-a371-b583d0b31aa7" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/672fdc76-efd8-479c-8f51-c79cfb9d03bc" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/8565f39f-657f-4fa4-a4d7-e93f1273088c" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/150047d4-2dc0-4695-a17b-2faacad20cc2" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/eee029ba-6758-417c-9068-77494715c508" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/187dd251-7fcf-4a40-b899-051fe300b4f7" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/c8e46132-cd0f-4926-9f56-9cfd807f0377" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/bb12a7ac-f9f0-408b-afac-b38484592d06" width="200" height="430">
-<img src="https://github.com/SijongKim93/Vocabulary/assets/156878943/98eb1650-4dee-401e-9ce8-cf537465fe0c" width="200" height="430">
-</p>
-
 ## Features
 
 ### 단어
@@ -270,7 +251,7 @@ TURTLE VOCA
 
     <img src="https://img.shields.io/badge/-Slack-4A154B?style=flat&logo=Slack&logoColor=white"/> <img src="https://img.shields.io/badge/-Notion-000000?style=flat&logo=Notion&logoColor=white"/> <img src="https://img.shields.io/badge/-Figma-F24E1E?style=flat&logo=Figma&logoColor=white"/> <img src="https://img.shields.io/badge/-GitHub-181717?style=flat&logo=Github&logoColor=white"/>
 
-## Project Structure
+## ProjectStructure
 
 파일이 많아서 디렉토리 구조로 대체합니다.
 
