@@ -14,6 +14,8 @@
 영단어든, 코드용어든 관계 없다!!
 내가 기억하고 싶은 단어만, 스스로 만드는 나만의 단어장!
 
+🍎 AppStore : [TURTLE VOCA🐢](https://apps.apple.com/kr/app/turtle-voca/id6532595814)
+
 ## Description
 
 거북이의 단어장(TURTLE VOCA)은 사용자가 원하는 단어장과 외우고 싶은 단어를 직접 입력하고 수정하여 사용할 수 있는 편리한 단어 학습 어플리케이션입니다.
