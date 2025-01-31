@@ -231,6 +231,7 @@
 ### 소셜로그인
 - Apple Login 구현
 - KakaoTalk Login 구현
+- 추후 타 소셜로그인 구현 예정
 
 ## Requirements
 - App requires **iOS 16.0 or above**
