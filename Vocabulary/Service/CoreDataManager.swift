@@ -24,7 +24,7 @@ final class CoreDataManager {
     }
     
     // CoreData의 관리 객체 컨텍스트
-    private var managedContext: NSManagedObjectContext? {
+    var managedContext: NSManagedObjectContext? {
         return appDelegate.persistentContainer.viewContext
     }
     
