@@ -20,7 +20,6 @@ class LoginPresentationController: UIPresentationController {
         return CGRect(x: 0, y: presentedY, width: containerView.bounds.width, height: presentedHeight)
     }
     
-    
     override func presentationTransitionWillBegin() {
         guard let containerView = containerView, let presentedView = presentedView else { return }
         
