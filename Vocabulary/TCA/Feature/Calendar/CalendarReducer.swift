@@ -7,6 +7,8 @@
 
 import ComposableArchitecture
 import SwiftUI
+import Foundation
+import AVFoundation
 
 // MARK: - CalendarFeature
 @Reducer
@@ -54,6 +56,11 @@ struct CalendarReducer {
         
         // UI 관련
         case upButtonTapped
+        case wordSpeakButtonTapped(String)
+        
+        // 필터 저장/로드
+        case loadFilterIndex
+        case saveFilterIndex(Int)
         
         // 내부 액션
         case _wordMemoryUpdateResult(Result<Void, Error>)
@@ -64,7 +71,6 @@ struct CalendarReducer {
     
     // MARK: - Dependencies
     @Dependency(\.coreDataDependency) var coreDataDependency
-    @Dependency(\.dateDependency) var dateDependency
     
     // MARK: - Reducer
     var body: some ReducerOf<Self> {
@@ -136,7 +142,7 @@ struct CalendarReducer {
                 
             case .filterModalDismissed:
                 state.isShowingFilterModal = false
-                return .send(.fetchWordsForSelectedDate) // 필터 변경 후 데이터 새로고침
+                return .send(.fetchWordsForSelectedDate)
                 
             // MARK: - 메뉴 관련 액션
             case .menuButtonTapped:
@@ -179,6 +185,38 @@ struct CalendarReducer {
             case .upButtonTapped:
                 state.isCalendarExpanded.toggle()
                 return .none
+                
+            case let .wordSpeakButtonTapped(text):
+                return .run { send in
+                    await MainActor.run {
+                        let synthesizer = AVSpeechSynthesizer()
+                        let utterance = AVSpeechUtterance(string: text)
+                        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+                        utterance.rate = 0.5
+                        synthesizer.speak(utterance)
+                    }
+                }
+                
+            // MARK: - 필터 관련 액션
+            case .loadFilterIndex:
+                return .run { send in
+                    let filterIndex = await MainActor.run {
+                        if UserDefaults.standard.object(forKey: "SelectedFilterIndex") == nil {
+                            UserDefaults.standard.set(0, forKey: "SelectedFilterIndex")
+                            UserDefaults.standard.synchronize()
+                        }
+                        return UserDefaults.standard.integer(forKey: "SelectedFilterIndex")
+                    }
+                    await send(.filterChanged(filterIndex))
+                }
+                
+            case let .saveFilterIndex(index):
+                return .run { send in
+                    await MainActor.run {
+                        UserDefaults.standard.set(index, forKey: "SelectedFilterIndex")
+                        UserDefaults.standard.synchronize()
+                    }
+                }
                 
             // MARK: - 내부 결과 액션
             case ._wordMemoryUpdateResult(.success):
