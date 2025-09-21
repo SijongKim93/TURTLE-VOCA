@@ -13,6 +13,8 @@ import AVFoundation
 // MARK: - CalendarFeature
 @Reducer
 struct CalendarReducer {
+    // MARK: - Dependencies
+    @Dependency(\.coreDataDependency) var coreDataDependency
     
     // MARK: - State
     @ObservableState
@@ -68,9 +70,6 @@ struct CalendarReducer {
         case _markAllWordsResult(Result<Void, Error>)
         case _deleteAllWordsResult(Result<Void, Error>)
     }
-    
-    // MARK: - Dependencies
-    @Dependency(\.coreDataDependency) var coreDataDependency
     
     // MARK: - Reducer
     var body: some ReducerOf<Self> {
