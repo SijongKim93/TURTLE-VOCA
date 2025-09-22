@@ -249,7 +249,6 @@ struct CalendarReducer {
                 )
                 
             case ._deleteAllWordsResult(.failure):
-                // TODO: 에러 알림 처리
                 return .none
             }
         }
@@ -260,11 +259,11 @@ struct CalendarReducer {
 extension CalendarReducer {
     private func filterWords(_ words: [WordEntity], by filterIndex: Int) -> [WordEntity] {
         switch filterIndex {
-        case 0: // 전체
+        case 0:
             return words
-        case 1: // 안외운것만
+        case 1:
             return words.filter { !$0.memory }
-        case 2: // 외운것만
+        case 2:
             return words.filter { $0.memory }
         default:
             return words
