@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D138D122E819D64003005D7 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 4D138D112E819D64003005D7 /* ComposableArchitecture */; };
 		4D1791A72BF1D5BE00E645C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791A62BF1D5BE00E645C9 /* AppDelegate.swift */; };
 		4D1791A92BF1D5BE00E645C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791A82BF1D5BE00E645C9 /* SceneDelegate.swift */; };
 		4D1791AB2BF1D5BE00E645C9 /* AddVocaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791AA2BF1D5BE00E645C9 /* AddVocaViewController.swift */; };
@@ -19,13 +20,13 @@
 		4D1791C72BF1E27F00E645C9 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */; };
 		4D1791D12BF23F0300E645C9 /* CalenderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791D02BF23F0300E645C9 /* CalenderCollectionViewCell.swift */; };
 		4D1791DD2BF45AD500E645C9 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791DC2BF45AD500E645C9 /* FilterTableViewCell.swift */; };
-		4D5B97AC2E7B085B00BA80F0 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 4D5B97AB2E7B085B00BA80F0 /* ComposableArchitecture */; };
 		4D7C9F9F2BFC32AC00E41A65 /* VocaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C9F9E2BFC32AC00E41A65 /* VocaCollectionViewCell.swift */; };
 		4D7C9FA62BFC958700E41A65 /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 4D7C9FA52BFC958700E41A65 /* KakaoSDK */; };
 		4D7C9FB32BFCB99100E41A65 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C9FB22BFCB99100E41A65 /* EmptyStateView.swift */; };
 		4D9E8FA72BF8CCB2003F05D3 /* LoginModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E8FA62BF8CCB2003F05D3 /* LoginModalViewController.swift */; };
 		4D9E8FA92BF8CCE3003F05D3 /* LoginPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E8FA82BF8CCE3003F05D3 /* LoginPresentationController.swift */; };
 		4D9E8FAB2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E8FAA2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift */; };
+		4DA2ECE72E81826900194848 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4DA2ECE62E81826900194848 /* SnapKit */; };
 		611177AE2BFC7FF900A635B8 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611177AD2BFC7FF900A635B8 /* UITextField+Extension.swift */; };
 		611177B12BFC808F00A635B8 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 611177B02BFC808F00A635B8 /* CombineCocoa */; };
 		611177B32BFC8F5300A635B8 /* DiffableSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611177B22BFC8F5300A635B8 /* DiffableSectionModel.swift */; };
@@ -64,7 +65,6 @@
 		618E706D2BF25328007AEDFE /* QuizHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E706C2BF25328007AEDFE /* QuizHeaderView.swift */; };
 		618E706F2BF25337007AEDFE /* QuizBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E706E2BF25337007AEDFE /* QuizBodyView.swift */; };
 		618E70712BF25354007AEDFE /* QuizBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E70702BF25354007AEDFE /* QuizBottomView.swift */; };
-		61AAEBC92BF724AE0032961C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 61AAEBC82BF724AE0032961C /* SnapKit */; };
 		61B2FFB92BFB8A9A00CE039B /* ManageModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B2FFB72BFB8A9A00CE039B /* ManageModalPresentationController.swift */; };
 		61B2FFBA2BFB8A9A00CE039B /* SelectVocaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B2FFB82BFB8A9A00CE039B /* SelectVocaViewController.swift */; };
 		61B2FFBD2BFB8AD900CE039B /* SelectHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B2FFBB2BFB8AD900CE039B /* SelectHeaderView.swift */; };
@@ -205,8 +205,8 @@
 			files = (
 				61B2FFCB2BFBBC7B00CE039B /* ProgressHUD in Frameworks */,
 				4D7C9FA62BFC958700E41A65 /* KakaoSDK in Frameworks */,
-				4D5B97AC2E7B085B00BA80F0 /* ComposableArchitecture in Frameworks */,
-				61AAEBC92BF724AE0032961C /* SnapKit in Frameworks */,
+				4D138D122E819D64003005D7 /* ComposableArchitecture in Frameworks */,
+				4DA2ECE72E81826900194848 /* SnapKit in Frameworks */,
 				611177B12BFC808F00A635B8 /* CombineCocoa in Frameworks */,
 				61EE0BFD2BF9C0E000FD2F32 /* FirebaseAuth in Frameworks */,
 			);
@@ -524,12 +524,12 @@
 			);
 			name = TURTLEVOCA;
 			packageProductDependencies = (
-				61AAEBC82BF724AE0032961C /* SnapKit */,
 				61EE0BFC2BF9C0E000FD2F32 /* FirebaseAuth */,
 				61B2FFCA2BFBBC7B00CE039B /* ProgressHUD */,
 				4D7C9FA52BFC958700E41A65 /* KakaoSDK */,
 				611177B02BFC808F00A635B8 /* CombineCocoa */,
-				4D5B97AB2E7B085B00BA80F0 /* ComposableArchitecture */,
+				4DA2ECE62E81826900194848 /* SnapKit */,
+				4D138D112E819D64003005D7 /* ComposableArchitecture */,
 			);
 			productName = Vocabulary;
 			productReference = 4D1791A32BF1D5BE00E645C9 /* TURTLEVOCA.app */;
@@ -560,12 +560,12 @@
 			);
 			mainGroup = 4D17919A2BF1D5BE00E645C9;
 			packageReferences = (
-				61AAEBC72BF724AE0032961C /* XCRemoteSwiftPackageReference "SnapKit" */,
 				61EE0BFB2BF9C0E000FD2F32 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				61B2FFC92BFBBC7B00CE039B /* XCRemoteSwiftPackageReference "ProgressHUD" */,
 				4D7C9FA42BFC958700E41A65 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				611177AF2BFC808F00A635B8 /* XCRemoteSwiftPackageReference "CombineCocoa" */,
-				4D5B97AA2E7B085B00BA80F0 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				4DA2ECE52E81826900194848 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				4D138D102E819D64003005D7 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 			);
 			productRefGroup = 4D1791A42BF1D5BE00E645C9 /* Products */;
 			projectDirPath = "";
@@ -827,7 +827,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				EXCLUDED_ARCHS = arm64;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Vocabulary/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TURTLEVOCA;
@@ -860,7 +860,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				EXCLUDED_ARCHS = arm64;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Vocabulary/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TURTLEVOCA;
@@ -908,7 +908,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4D5B97AA2E7B085B00BA80F0 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+		4D138D102E819D64003005D7 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
 			requirement = {
@@ -924,20 +924,20 @@
 				minimumVersion = 2.22.2;
 			};
 		};
+		4DA2ECE52E81826900194848 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
 		611177AF2BFC808F00A635B8 /* XCRemoteSwiftPackageReference "CombineCocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/CombineCommunity/CombineCocoa";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.4.1;
-			};
-		};
-		61AAEBC72BF724AE0032961C /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.7.1;
 			};
 		};
 		61B2FFC92BFBBC7B00CE039B /* XCRemoteSwiftPackageReference "ProgressHUD" */ = {
@@ -959,9 +959,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4D5B97AB2E7B085B00BA80F0 /* ComposableArchitecture */ = {
+		4D138D112E819D64003005D7 /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4D5B97AA2E7B085B00BA80F0 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			package = 4D138D102E819D64003005D7 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
 			productName = ComposableArchitecture;
 		};
 		4D7C9FA52BFC958700E41A65 /* KakaoSDK */ = {
@@ -969,15 +969,15 @@
 			package = 4D7C9FA42BFC958700E41A65 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
 			productName = KakaoSDK;
 		};
+		4DA2ECE62E81826900194848 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4DA2ECE52E81826900194848 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
 		611177B02BFC808F00A635B8 /* CombineCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 611177AF2BFC808F00A635B8 /* XCRemoteSwiftPackageReference "CombineCocoa" */;
 			productName = CombineCocoa;
-		};
-		61AAEBC82BF724AE0032961C /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 61AAEBC72BF724AE0032961C /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
 		};
 		61B2FFCA2BFBBC7B00CE039B /* ProgressHUD */ = {
 			isa = XCSwiftPackageProductDependency;

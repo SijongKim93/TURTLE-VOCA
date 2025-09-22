@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 
-struct UICalenarViewRepresentable: UIViewRepresentable {
+struct UICalendarViewRepresentable: UIViewRepresentable {
     @Binding var selectedDate: DateComponents?
     let isExpanded: Bool
     let onDateSelected: (DateComponents?) -> Void
@@ -44,9 +44,9 @@ struct UICalenarViewRepresentable: UIViewRepresentable {
     }
     
     class Coordinator: NSObject, UICalendarViewDelegate, UICalendarSelectionSingleDateDelegate {
-        let parent: UICalenarViewRepresentable
+        let parent: UICalendarViewRepresentable
         
-        init(_ parent: UICalenarViewRepresentable) {
+        init(_ parent: UICalendarViewRepresentable) {
             self.parent = parent
         }
         
