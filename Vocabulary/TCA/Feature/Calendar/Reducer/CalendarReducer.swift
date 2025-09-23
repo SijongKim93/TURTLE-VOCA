@@ -27,6 +27,8 @@ struct CalendarReducer {
         var isShowingMenuModal: Bool = false
         var isEmpty: Bool { filteredWords.isEmpty }
         
+        var datesWithData: Set<String> = []
+        
         init() {
             let currentDate = Calendar.current.dateComponents([.year, .month, .day], from: Date())
             self.selectedDate = currentDate
@@ -44,6 +46,10 @@ struct CalendarReducer {
         case wordsLoaded([WordEntity])
         case wordMemoryStatusToggled(WordEntity, Bool)
         case wordDeleted(WordEntity)
+        
+        // 날짜별 데이터 로드
+        case loadDatesWithData
+        case datesWithDataLoaded(Set<String>)
         
         // 필터 관련
         case filterButtonTapped
@@ -75,8 +81,8 @@ struct CalendarReducer {
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
-            
-            // MARK: - 캘린더 액션
+                
+                // MARK: - 캘린더 액션
             case let .dateSelected(dateComponents):
                 state.selectedDate = dateComponents
                 return .send(.fetchWordsForSelectedDate)
@@ -88,7 +94,7 @@ struct CalendarReducer {
             case .loadDecorations:
                 return .none
                 
-            // MARK: - 데이터 관련 액션
+                // MARK: - 데이터 관련 액션
             case .fetchWordsForSelectedDate:
                 guard let selectedDate = state.selectedDate,
                       let date = Calendar.current.date(from: selectedDate) else {
@@ -127,7 +133,7 @@ struct CalendarReducer {
                     ))
                 }
                 
-            // MARK: - 필터 관련 액션
+                // MARK: - 필터 관련 액션
             case .filterButtonTapped:
                 state.isShowingFilterModal = true
                 return .none
@@ -143,7 +149,7 @@ struct CalendarReducer {
                 state.isShowingFilterModal = false
                 return .send(.fetchWordsForSelectedDate)
                 
-            // MARK: - 메뉴 관련 액션
+                // MARK: - 메뉴 관련 액션
             case .menuButtonTapped:
                 state.isShowingMenuModal = true
                 return .none
@@ -180,7 +186,7 @@ struct CalendarReducer {
                 state.isShowingMenuModal = false
                 return .none
                 
-            // MARK: - UI 액션
+                // MARK: - UI 액션
             case .upButtonTapped:
                 state.isCalendarExpanded.toggle()
                 return .none
@@ -196,7 +202,7 @@ struct CalendarReducer {
                     }
                 }
                 
-            // MARK: - 필터 관련 액션
+                // MARK: - 필터 관련 액션
             case .loadFilterIndex:
                 return .run { send in
                     let filterIndex = await MainActor.run {
@@ -217,7 +223,7 @@ struct CalendarReducer {
                     }
                 }
                 
-            // MARK: - 내부 결과 액션
+                // MARK: - 내부 결과 액션
             case ._wordMemoryUpdateResult(.success):
                 return .send(.fetchWordsForSelectedDate)
                 
@@ -228,7 +234,8 @@ struct CalendarReducer {
             case ._wordDeleteResult(.success):
                 return .concatenate(
                     .send(.fetchWordsForSelectedDate),
-                    .send(.loadDecorations)
+                    .send(.loadDecorations),
+                    .send(.loadDatesWithData)
                 )
                 
             case ._wordDeleteResult(.failure):
@@ -245,10 +252,41 @@ struct CalendarReducer {
             case ._deleteAllWordsResult(.success):
                 return .concatenate(
                     .send(.fetchWordsForSelectedDate),
-                    .send(.loadDecorations)
+                    .send(.loadDecorations),
+                    .send(.loadDatesWithData)
                 )
                 
             case ._deleteAllWordsResult(.failure):
+                return .none
+                
+                // MARK: - 날짜별 데이터 로드
+            case .loadDatesWithData:
+                return .run { send in
+                    let calendar = Calendar.current
+                    let now = Date()
+                    let startOfMonth = calendar.dateInterval(of: .month, for: now)?.start ?? now
+                    let endOfMonth = calendar.dateInterval(of: .month, for: now)?.end ?? now
+                    
+                    var datesWithData: Set<String> = []
+                    
+                    var currentDate = startOfMonth
+                    while currentDate < endOfMonth {
+                        do {
+                            let hasData = try await coreDataDependency.hasData(currentDate)
+                            if hasData {
+                                let dateString = DateFormatter.yyyyMMdd.string(from: currentDate)
+                                datesWithData.insert(dateString)
+                            }
+                        } catch {
+                            print("Error checking data for date \(currentDate): \(error)")
+                        }
+                        currentDate = calendar.date(byAdding: .day, value: 1, to: currentDate) ?? currentDate
+                    }
+                    await send(.datesWithDataLoaded(datesWithData))
+                }
+                
+            case let .datesWithDataLoaded(dates):
+                state.datesWithData = dates
                 return .none
             }
         }
@@ -259,12 +297,24 @@ struct CalendarReducer {
 extension CalendarReducer {
     private func filterWords(_ words: [WordEntity], by filterIndex: Int) -> [WordEntity] {
         switch filterIndex {
-        case 0:
-            return words
-        case 1:
-            return words.filter { !$0.memory }
-        case 2:
-            return words.filter { $0.memory }
+        case 0: // 최근 저장 순
+            return words.sorted { (word1: WordEntity, word2: WordEntity) -> Bool in
+                return word1.date ?? Date() > word2.date ?? Date()
+            }
+        case 1: // 오래된 저장 순
+            return words.sorted { (word1: WordEntity, word2: WordEntity) -> Bool in
+                return word1.date ?? Date() < word2.date ?? Date()
+            }
+        case 2: // 외운 단어 순
+            return words.sorted { (word1: WordEntity, word2: WordEntity) -> Bool in
+                return word1.memory && !word2.memory
+            }
+        case 3: // 못 외운 단어 순
+            return words.sorted { (word1: WordEntity, word2: WordEntity) -> Bool in
+                return !word1.memory && word2.memory
+            }
+        case 4: // 랜덤
+            return words.shuffled()
         default:
             return words
         }

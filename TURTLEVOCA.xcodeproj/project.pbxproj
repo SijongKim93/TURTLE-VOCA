@@ -18,11 +18,8 @@
 		4D1791C32BF1E20F00E645C9 /* GameMainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791C22BF1E20F00E645C9 /* GameMainPageViewController.swift */; };
 		4D1791C52BF1E27300E645C9 /* CalenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791C42BF1E27300E645C9 /* CalenderViewController.swift */; };
 		4D1791C72BF1E27F00E645C9 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */; };
-		4D1791D12BF23F0300E645C9 /* CalenderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791D02BF23F0300E645C9 /* CalenderCollectionViewCell.swift */; };
-		4D1791DD2BF45AD500E645C9 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791DC2BF45AD500E645C9 /* FilterTableViewCell.swift */; };
 		4D7C9F9F2BFC32AC00E41A65 /* VocaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C9F9E2BFC32AC00E41A65 /* VocaCollectionViewCell.swift */; };
 		4D7C9FA62BFC958700E41A65 /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 4D7C9FA52BFC958700E41A65 /* KakaoSDK */; };
-		4D7C9FB32BFCB99100E41A65 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C9FB22BFCB99100E41A65 /* EmptyStateView.swift */; };
 		4D9E8FA72BF8CCB2003F05D3 /* LoginModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E8FA62BF8CCB2003F05D3 /* LoginModalViewController.swift */; };
 		4D9E8FA92BF8CCE3003F05D3 /* LoginPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E8FA82BF8CCE3003F05D3 /* LoginPresentationController.swift */; };
 		4D9E8FAB2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E8FAA2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift */; };
@@ -36,12 +33,7 @@
 		611186F42BF4DE09009C2FE9 /* FlashBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611186F32BF4DE09009C2FE9 /* FlashBodyView.swift */; };
 		612ABC8F2BF200370056F127 /* GameMainHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC8E2BF200370056F127 /* GameMainHeaderView.swift */; };
 		612ABC912BF2003E0056F127 /* GameMainBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC902BF2003E0056F127 /* GameMainBottomView.swift */; };
-		612D10CD2BF718DD0097EDBA /* FilterPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D10C92BF718DD0097EDBA /* FilterPresentationController.swift */; };
-		612D10CE2BF718DD0097EDBA /* MenuDetailModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D10CA2BF718DD0097EDBA /* MenuDetailModalViewController.swift */; };
-		612D10CF2BF718DD0097EDBA /* FilterDetailModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D10CB2BF718DD0097EDBA /* FilterDetailModalViewController.swift */; };
-		612D10D02BF718DD0097EDBA /* MenuDetailPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D10CC2BF718DD0097EDBA /* MenuDetailPresentationController.swift */; };
 		612D10D22BF719030097EDBA /* MyPageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D10D12BF719030097EDBA /* MyPageData.swift */; };
-		612D10D82BF719610097EDBA /* MenuDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D10D72BF719610097EDBA /* MenuDetailTableViewCell.swift */; };
 		612D10E02BF719D20097EDBA /* BookCaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D10DF2BF719D20097EDBA /* BookCaseViewController.swift */; };
 		612D10E82BF71B130097EDBA /* AddBookCaseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D10E62BF71B130097EDBA /* AddBookCaseHeaderView.swift */; };
 		612D10E92BF71B130097EDBA /* AddBookCaseBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D10E72BF71B130097EDBA /* AddBookCaseBodyView.swift */; };
@@ -114,11 +106,8 @@
 		4D1791C22BF1E20F00E645C9 /* GameMainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMainPageViewController.swift; sourceTree = "<group>"; };
 		4D1791C42BF1E27300E645C9 /* CalenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewController.swift; sourceTree = "<group>"; };
 		4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
-		4D1791D02BF23F0300E645C9 /* CalenderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderCollectionViewCell.swift; sourceTree = "<group>"; };
-		4D1791DC2BF45AD500E645C9 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		4D31DF932C3E6008009150C8 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		4D7C9F9E2BFC32AC00E41A65 /* VocaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaCollectionViewCell.swift; sourceTree = "<group>"; };
-		4D7C9FB22BFCB99100E41A65 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		4D9E8FA62BF8CCB2003F05D3 /* LoginModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModalViewController.swift; sourceTree = "<group>"; };
 		4D9E8FA82BF8CCE3003F05D3 /* LoginPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresentationController.swift; sourceTree = "<group>"; };
 		4D9E8FAA2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDetailTableViewCell.swift; sourceTree = "<group>"; };
@@ -130,12 +119,7 @@
 		611186F32BF4DE09009C2FE9 /* FlashBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashBodyView.swift; sourceTree = "<group>"; };
 		612ABC8E2BF200370056F127 /* GameMainHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMainHeaderView.swift; sourceTree = "<group>"; };
 		612ABC902BF2003E0056F127 /* GameMainBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMainBottomView.swift; sourceTree = "<group>"; };
-		612D10C92BF718DD0097EDBA /* FilterPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterPresentationController.swift; sourceTree = "<group>"; };
-		612D10CA2BF718DD0097EDBA /* MenuDetailModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDetailModalViewController.swift; sourceTree = "<group>"; };
-		612D10CB2BF718DD0097EDBA /* FilterDetailModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterDetailModalViewController.swift; sourceTree = "<group>"; };
-		612D10CC2BF718DD0097EDBA /* MenuDetailPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDetailPresentationController.swift; sourceTree = "<group>"; };
 		612D10D12BF719030097EDBA /* MyPageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageData.swift; sourceTree = "<group>"; };
-		612D10D72BF719610097EDBA /* MenuDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDetailTableViewCell.swift; sourceTree = "<group>"; };
 		612D10DF2BF719D20097EDBA /* BookCaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCaseViewController.swift; sourceTree = "<group>"; };
 		612D10E62BF71B130097EDBA /* AddBookCaseHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBookCaseHeaderView.swift; sourceTree = "<group>"; };
 		612D10E72BF71B130097EDBA /* AddBookCaseBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBookCaseBodyView.swift; sourceTree = "<group>"; };
@@ -196,6 +180,7 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		4D5B97AD2E7BAEB200BA80F0 /* TCA */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TCA; sourceTree = "<group>"; };
 		4D5B97C32E7BE6AB00BA80F0 /* Error */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Error; sourceTree = "<group>"; };
+		4DE2544A2E82CFFD0019B39D /* DataFormatter */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = DataFormatter; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,7 +250,6 @@
 				612D10E52BF71AE30097EDBA /* AddBookCase */,
 				6BBB361F2BFAF54B0088A8CB /* AddVoca */,
 				612ABC8A2BF1FCF80056F127 /* VocaQuiz */,
-				4D1791D22BF2F70700E645C9 /* Calender */,
 				612D10F62BF71BAA0097EDBA /* MyPage */,
 			);
 			path = View;
@@ -283,25 +267,10 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		4D1791D22BF2F70700E645C9 /* Calender */ = {
-			isa = PBXGroup;
-			children = (
-				4D1791D02BF23F0300E645C9 /* CalenderCollectionViewCell.swift */,
-				4D1791DC2BF45AD500E645C9 /* FilterTableViewCell.swift */,
-				612D10D72BF719610097EDBA /* MenuDetailTableViewCell.swift */,
-				4D7C9FB22BFCB99100E41A65 /* EmptyStateView.swift */,
-			);
-			path = Calender;
-			sourceTree = "<group>";
-		};
 		4D1791D52BF3422900E645C9 /* Calender */ = {
 			isa = PBXGroup;
 			children = (
 				4D1791C42BF1E27300E645C9 /* CalenderViewController.swift */,
-				612D10CB2BF718DD0097EDBA /* FilterDetailModalViewController.swift */,
-				612D10C92BF718DD0097EDBA /* FilterPresentationController.swift */,
-				612D10CA2BF718DD0097EDBA /* MenuDetailModalViewController.swift */,
-				612D10CC2BF718DD0097EDBA /* MenuDetailPresentationController.swift */,
 			);
 			path = Calender;
 			sourceTree = "<group>";
@@ -431,6 +400,7 @@
 		618E70612BF21E5A007AEDFE /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				4DE2544A2E82CFFD0019B39D /* DataFormatter */,
 				61BCB0572BF3597000CF73E4 /* General */,
 				618E70622BF21E61007AEDFE /* VocaQuiz */,
 			);
@@ -521,6 +491,7 @@
 			fileSystemSynchronizedGroups = (
 				4D5B97AD2E7BAEB200BA80F0 /* TCA */,
 				4D5B97C32E7BE6AB00BA80F0 /* Error */,
+				4DE2544A2E82CFFD0019B39D /* DataFormatter */,
 			);
 			name = TURTLEVOCA;
 			packageProductDependencies = (
@@ -599,16 +570,13 @@
 				4D1791AB2BF1D5BE00E645C9 /* AddVocaViewController.swift in Sources */,
 				4D1791A72BF1D5BE00E645C9 /* AppDelegate.swift in Sources */,
 				61EE0BF72BF9777600FD2F32 /* RecordTableViewCell.swift in Sources */,
-				4D7C9FB32BFCB99100E41A65 /* EmptyStateView.swift in Sources */,
 				611177AE2BFC7FF900A635B8 /* UITextField+Extension.swift in Sources */,
-				612D10CE2BF718DD0097EDBA /* MenuDetailModalViewController.swift in Sources */,
 				612D10F82BF71BC40097EDBA /* MyPageTableViewCell.swift in Sources */,
 				612D10F32BF71B9B0097EDBA /* BookCaseBodyCell.swift in Sources */,
 				618E706D2BF25328007AEDFE /* QuizHeaderView.swift in Sources */,
 				61EEE6942BF5E70300803AA1 /* HangManBodyView.swift in Sources */,
 				611186EF2BF4DCB6009C2FE9 /* FlashCardViewController.swift in Sources */,
 				612ABC912BF2003E0056F127 /* GameMainBottomView.swift in Sources */,
-				612D10D02BF718DD0097EDBA /* MenuDetailPresentationController.swift in Sources */,
 				611177B52BFC911000A635B8 /* ResultTableViewCell.swift in Sources */,
 				61B2FFC62BFBA44C00CE039B /* SelectBottomView.swift in Sources */,
 				61EEE6922BF5E69C00803AA1 /* HangManHeaderView.swift in Sources */,
@@ -625,7 +593,6 @@
 				612D10EE2BF71B630097EDBA /* CoreDataManager.swift in Sources */,
 				611186F22BF4DD5E009C2FE9 /* FlashHeaderView.swift in Sources */,
 				61EEE6902BF5E66E00803AA1 /* HangManGameViewController.swift in Sources */,
-				4D1791D12BF23F0300E645C9 /* CalenderCollectionViewCell.swift in Sources */,
 				612D10F52BF71B9B0097EDBA /* BookCaseHeaderView.swift in Sources */,
 				61D051762BFC42470056294A /* TranslatedModel.swift in Sources */,
 				618E70662BF229D1007AEDFE /* VocaQuizMainCollectionViewCell.swift in Sources */,
@@ -636,20 +603,16 @@
 				61BCB0592BF3597C00CF73E4 /* UIResponder+Extension.swift in Sources */,
 				618E706F2BF25337007AEDFE /* QuizBodyView.swift in Sources */,
 				618E70682BF22A66007AEDFE /* CollectionView+Extension.swift in Sources */,
-				612D10CD2BF718DD0097EDBA /* FilterPresentationController.swift in Sources */,
 				4D1791C52BF1E27300E645C9 /* CalenderViewController.swift in Sources */,
 				6B02ADEF2BF6E8B6006E0964 /* TextFieldFactory.swift in Sources */,
 				4D9E8FA92BF8CCE3003F05D3 /* LoginPresentationController.swift in Sources */,
-				612D10D82BF719610097EDBA /* MenuDetailTableViewCell.swift in Sources */,
 				618E70712BF25354007AEDFE /* QuizBottomView.swift in Sources */,
 				FBE7EA412BF8778F00BE86E5 /* EditBookCaseViewController.swift in Sources */,
 				FBE7EA432BF877D200BE86E5 /* EditBookCaseHeaderView.swift in Sources */,
-				612D10CF2BF718DD0097EDBA /* FilterDetailModalViewController.swift in Sources */,
 				611177B32BFC8F5300A635B8 /* DiffableSectionModel.swift in Sources */,
 				61B2FFC42BFBA0E300CE039B /* Picker+Extension.swift in Sources */,
 				4D9E8FAB2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift in Sources */,
 				612ABC8F2BF200370056F127 /* GameMainHeaderView.swift in Sources */,
-				4D1791DD2BF45AD500E645C9 /* FilterTableViewCell.swift in Sources */,
 				61BCB0562BF337B100CF73E4 /* VocaQuizModel.swift in Sources */,
 				4D9E8FA72BF8CCB2003F05D3 /* LoginModalViewController.swift in Sources */,
 				618C71B22BFE5A5A009AC33B /* BookCase+CoreDataClass.swift in Sources */,

@@ -15,8 +15,6 @@ struct FilterModeView: View {
     
     var body: some View {
         WithPerceptionTracking {
-            let currentFilterIndex = store.currentFilterIndex
-            
             VStack(spacing: 0) {
                 HStack {
                     Text("단어 정렬 설정")
@@ -43,14 +41,16 @@ struct FilterModeView: View {
                 
                 VStack(spacing: 0) {
                     ForEach(0..<filterOptions.count, id: \.self) { index in
-                        FilterOptionRow(
-                            title: filterOptions[index],
-                            isSelected: currentFilterIndex == index,
-                            onTap: {
-                                store.send(.filterChanged(index))
-                                store.send(.saveFilterIndex(index))
-                            }
-                        )
+                        WithPerceptionTracking {
+                            FilterOptionRow(
+                                title: filterOptions[index],
+                                isSelected: store.currentFilterIndex == index,
+                                onTap: {
+                                    store.send(.filterChanged(index))
+                                    store.send(.saveFilterIndex(index))
+                                }
+                            )
+                        }
                         
                         if index < filterOptions.count - 1 {
                             Divider()
