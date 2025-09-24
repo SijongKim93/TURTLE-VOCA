@@ -17,19 +17,25 @@ struct CalendarView: View {
         WithPerceptionTracking {
             let isShowingFilterModal = store.isShowingFilterModal
             let isShowingMenuModal = store.isShowingMenuModal
+            let isExpanded = store.isCalendarExpanded
             
-            VStack(spacing: 0) {
-                calendarSection
-                buttonSection
+            ZStack(alignment: .top) {
+                Color.white
+                    .ignoresSafeArea()
                 
-                Divider()
-                    .foregroundColor(.black)
-                    .padding(.vertical, 10)
-                
-                wordListSection
+                VStack(spacing: 0) {
+                    calendarSection
+                    buttonSection
+                    
+                    Divider()
+                        .foregroundColor(.black)
+                        .padding(.vertical, 10)
+                        .offset(y: isExpanded ? 0 : -450)
+                        .animation(.easeInOut(duration: 0.3), value: isExpanded)
+                    
+                    wordListSection
+                }
             }
-            .background(Color.white)
-            .ignoresSafeArea(.all, edges: .top)
             .onAppear {
                 store.send(.fetchWordsForSelectedDate)
                 store.send(.loadFilterIndex)
@@ -40,7 +46,7 @@ struct CalendarView: View {
                 set: { _ in store.send(.filterModalDismissed) }
             )) {
                 FilterModeView(store: store)
-                    .presentationDetents([.fraction(0.4)])
+                    .presentationDetents([.fraction(0.5)])
             }
             .sheet(isPresented: Binding(
                 get: { isShowingMenuModal },
@@ -72,11 +78,13 @@ struct CalendarView: View {
                     return datesWithData.contains(dateString)
                 }
             )
-            .frame(height: isExpanded ? 435 : 0)
+            .id(datesWithData)
+            .frame(height: 450)
             .clipped()
-            .animation(.easeInOut(duration: 0.3), value: isExpanded)
             .padding(.horizontal, 10)
-            .padding(.top, 44)
+            .padding(.top, 10)
+            .opacity(isExpanded ? 1.0 : 0.0)
+            .animation(.easeInOut(duration: 0.3), value: isExpanded)
         }
     }
     
@@ -94,22 +102,29 @@ struct CalendarView: View {
                         Image(systemName: isExpanded ? "arrow.up" : "arrow.down")
                             .foregroundColor(.black)
                     }
+                    .buttonStyle(PlainButtonStyle())
                     
                     Button {
                         store.send(.filterButtonTapped)
                     } label: {
                         Image("filter")
                     }
+                    .buttonStyle(PlainButtonStyle())
 
                     Button {
                         store.send(.menuButtonTapped)
                     } label: {
                         Image("menu")
                     }
+                    .buttonStyle(PlainButtonStyle())
                 }
                 .padding(.trailing, 10)
             }
             .padding(.vertical, 5)
+            .background(Color.white)
+            .offset(y: isExpanded ? 0 : -450)
+            .animation(.easeInOut(duration: 0.3), value: isExpanded)
+            .zIndex(1)
         }
     }
     
@@ -117,6 +132,7 @@ struct CalendarView: View {
         WithPerceptionTracking {
             let isEmpty = store.isEmpty
             let filteredWords = store.filteredWords
+            let isExpanded = store.isCalendarExpanded
             
             return ZStack {
                 if isEmpty {
@@ -134,6 +150,9 @@ struct CalendarView: View {
                     }
                 }
             }
+            .background(Color.white)
+            .offset(y: isExpanded ? 0 : -450)
+            .animation(.easeInOut(duration: 0.3), value: isExpanded)
         }
     }
 }

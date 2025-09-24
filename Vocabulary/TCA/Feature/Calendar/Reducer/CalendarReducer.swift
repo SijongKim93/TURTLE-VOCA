@@ -16,6 +16,9 @@ struct CalendarReducer {
     // MARK: - Dependencies
     @Dependency(\.coreDataDependency) var coreDataDependency
     
+    // MARK: - Static Properties
+    private static let speechSynthesizer = AVSpeechSynthesizer()
+    
     // MARK: - State
     @ObservableState
     struct State: Equatable {
@@ -92,6 +95,7 @@ struct CalendarReducer {
                 return .none
                 
             case .loadDecorations:
+                // 캘린더 뷰를 새로고침하여 datesWithData 변경사항을 반영
                 return .none
                 
                 // MARK: - 데이터 관련 액션
@@ -194,11 +198,10 @@ struct CalendarReducer {
             case let .wordSpeakButtonTapped(text):
                 return .run { send in
                     await MainActor.run {
-                        let synthesizer = AVSpeechSynthesizer()
                         let utterance = AVSpeechUtterance(string: text)
                         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
                         utterance.rate = 0.5
-                        synthesizer.speak(utterance)
+                        Self.speechSynthesizer.speak(utterance)
                     }
                 }
                 
@@ -287,7 +290,7 @@ struct CalendarReducer {
                 
             case let .datesWithDataLoaded(dates):
                 state.datesWithData = dates
-                return .none
+                return .send(.loadDecorations)
             }
         }
     }

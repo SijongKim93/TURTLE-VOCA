@@ -11,7 +11,6 @@ import CoreData
 
 
 extension WordEntity {
-
     @nonobjc public class func fetchRequest() -> NSFetchRequest<WordEntity> {
         return NSFetchRequest<WordEntity>(entityName: "WordEntity")
     }
