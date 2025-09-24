@@ -23,7 +23,6 @@ class CalenderViewController: UIViewController {
     
     //MARK: - SwiftUI + TCA 뷰 설정
     func setupSwiftUIView() {
-        // TCA Store 생성
         let store = Store(initialState: CalendarReducer.State()) {
             CalendarReducer()
         } withDependencies: {
