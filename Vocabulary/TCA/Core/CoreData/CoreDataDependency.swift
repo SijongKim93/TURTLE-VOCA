@@ -18,6 +18,9 @@ struct CoreDataDependency {
     var deleteWord: @Sendable (WordEntity) async throws -> Void
     var markAllWordsAsLearned: @Sendable (Date) async throws -> Void
     var deleteAllWords: @Sendable (Date) async throws -> Void
+    
+    var getSavedWordCount: @Sendable () async throws -> Int = { 0 }
+    var getLearnedWordCount: @Sendable () async throws -> Int = { 0 }
 }
 
 extension CoreDataDependency: DependencyKey {
@@ -175,6 +178,41 @@ extension CoreDataDependency: DependencyKey {
                     throw CoreDataError.batchDeleteFailed(error)
                 }
             }
+        },
+        
+        getSavedWordCount: {
+            return try await MainActor.run {
+                guard let context = getContext() else {
+                    throw CoreDataError.contextNotAvailable
+                }
+                
+                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "WordEntity")
+                
+                do {
+                    let savedWordCount = try context.count(for: fetchRequest)
+                    return savedWordCount
+                } catch {
+                    throw CoreDataError.fetchFailed(error)
+                }
+            }
+        },
+        
+        getLearnedWordCount: {
+            return try await MainActor.run {
+                guard let context = getContext() else {
+                    throw CoreDataError.contextNotAvailable
+                }
+                
+                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "WordEntity")
+                fetchRequest.predicate = NSPredicate(format: "memory == true")
+                
+                do {
+                    let learnedWordCount = try context.count(for: fetchRequest)
+                    return learnedWordCount
+                } catch {
+                    throw CoreDataError.fetchFailed(error)
+                }
+            }
         }
     )
     
@@ -204,6 +242,14 @@ extension CoreDataDependency: DependencyKey {
         
         deleteAllWords: { date in
             print("Preview: Deleted all words for \(date)")
+        },
+        
+        getSavedWordCount: {
+            return 15
+        },
+        
+        getLearnedWordCount: {
+            return 8
         }
     )
 }

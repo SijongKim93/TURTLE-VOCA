@@ -19,9 +19,6 @@
 		4D1791C52BF1E27300E645C9 /* CalenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791C42BF1E27300E645C9 /* CalenderViewController.swift */; };
 		4D1791C72BF1E27F00E645C9 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */; };
 		4D7C9F9F2BFC32AC00E41A65 /* VocaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C9F9E2BFC32AC00E41A65 /* VocaCollectionViewCell.swift */; };
-		4D7C9FA62BFC958700E41A65 /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 4D7C9FA52BFC958700E41A65 /* KakaoSDK */; };
-		4D9E8FA72BF8CCB2003F05D3 /* LoginModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E8FA62BF8CCB2003F05D3 /* LoginModalViewController.swift */; };
-		4D9E8FA92BF8CCE3003F05D3 /* LoginPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E8FA82BF8CCE3003F05D3 /* LoginPresentationController.swift */; };
 		4D9E8FAB2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E8FAA2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift */; };
 		4DA2ECE72E81826900194848 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4DA2ECE62E81826900194848 /* SnapKit */; };
 		611177AE2BFC7FF900A635B8 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611177AD2BFC7FF900A635B8 /* UITextField+Extension.swift */; };
@@ -108,8 +105,6 @@
 		4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		4D31DF932C3E6008009150C8 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		4D7C9F9E2BFC32AC00E41A65 /* VocaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaCollectionViewCell.swift; sourceTree = "<group>"; };
-		4D9E8FA62BF8CCB2003F05D3 /* LoginModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModalViewController.swift; sourceTree = "<group>"; };
-		4D9E8FA82BF8CCE3003F05D3 /* LoginPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresentationController.swift; sourceTree = "<group>"; };
 		4D9E8FAA2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDetailTableViewCell.swift; sourceTree = "<group>"; };
 		611177AD2BFC7FF900A635B8 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		611177B22BFC8F5300A635B8 /* DiffableSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableSectionModel.swift; sourceTree = "<group>"; };
@@ -189,7 +184,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				61B2FFCB2BFBBC7B00CE039B /* ProgressHUD in Frameworks */,
-				4D7C9FA62BFC958700E41A65 /* KakaoSDK in Frameworks */,
 				4D138D122E819D64003005D7 /* ComposableArchitecture in Frameworks */,
 				4DA2ECE72E81826900194848 /* SnapKit in Frameworks */,
 				611177B12BFC808F00A635B8 /* CombineCocoa in Frameworks */,
@@ -279,8 +273,6 @@
 			isa = PBXGroup;
 			children = (
 				4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */,
-				4D9E8FA62BF8CCB2003F05D3 /* LoginModalViewController.swift */,
-				4D9E8FA82BF8CCE3003F05D3 /* LoginPresentationController.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -497,7 +489,6 @@
 			packageProductDependencies = (
 				61EE0BFC2BF9C0E000FD2F32 /* FirebaseAuth */,
 				61B2FFCA2BFBBC7B00CE039B /* ProgressHUD */,
-				4D7C9FA52BFC958700E41A65 /* KakaoSDK */,
 				611177B02BFC808F00A635B8 /* CombineCocoa */,
 				4DA2ECE62E81826900194848 /* SnapKit */,
 				4D138D112E819D64003005D7 /* ComposableArchitecture */,
@@ -533,7 +524,6 @@
 			packageReferences = (
 				61EE0BFB2BF9C0E000FD2F32 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				61B2FFC92BFBBC7B00CE039B /* XCRemoteSwiftPackageReference "ProgressHUD" */,
-				4D7C9FA42BFC958700E41A65 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				611177AF2BFC808F00A635B8 /* XCRemoteSwiftPackageReference "CombineCocoa" */,
 				4DA2ECE52E81826900194848 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				4D138D102E819D64003005D7 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
@@ -605,7 +595,6 @@
 				618E70682BF22A66007AEDFE /* CollectionView+Extension.swift in Sources */,
 				4D1791C52BF1E27300E645C9 /* CalenderViewController.swift in Sources */,
 				6B02ADEF2BF6E8B6006E0964 /* TextFieldFactory.swift in Sources */,
-				4D9E8FA92BF8CCE3003F05D3 /* LoginPresentationController.swift in Sources */,
 				618E70712BF25354007AEDFE /* QuizBottomView.swift in Sources */,
 				FBE7EA412BF8778F00BE86E5 /* EditBookCaseViewController.swift in Sources */,
 				FBE7EA432BF877D200BE86E5 /* EditBookCaseHeaderView.swift in Sources */,
@@ -614,7 +603,6 @@
 				4D9E8FAB2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift in Sources */,
 				612ABC8F2BF200370056F127 /* GameMainHeaderView.swift in Sources */,
 				61BCB0562BF337B100CF73E4 /* VocaQuizModel.swift in Sources */,
-				4D9E8FA72BF8CCB2003F05D3 /* LoginModalViewController.swift in Sources */,
 				618C71B22BFE5A5A009AC33B /* BookCase+CoreDataClass.swift in Sources */,
 				618C71B32BFE5A5A009AC33B /* BookCase+CoreDataProperties.swift in Sources */,
 				618C71B42BFE5A5A009AC33B /* WordEntity+CoreDataClass.swift in Sources */,
@@ -808,6 +796,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.TurtleVOCA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -841,6 +833,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.TurtleVOCA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -877,14 +873,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.19.1;
-			};
-		};
-		4D7C9FA42BFC958700E41A65 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.22.2;
 			};
 		};
 		4DA2ECE52E81826900194848 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
@@ -926,11 +914,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4D138D102E819D64003005D7 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
 			productName = ComposableArchitecture;
-		};
-		4D7C9FA52BFC958700E41A65 /* KakaoSDK */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4D7C9FA42BFC958700E41A65 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
-			productName = KakaoSDK;
 		};
 		4DA2ECE62E81826900194848 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
