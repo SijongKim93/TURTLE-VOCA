@@ -10,10 +10,12 @@ import ComposableArchitecture
 
 struct WordRowView: View {
     let store: StoreOf<CalendarReducer>
-    let word: WordEntity
+    @ObservedObject var word: WordEntity
     
     var body: some View {
         WithPerceptionTracking {
+            let wordMemory = word.memory
+            
             VStack(spacing: 0) {
                 HStack {
                     VStack(alignment: .leading, spacing: 4) {
@@ -23,21 +25,29 @@ struct WordRowView: View {
                                 .foregroundColor(.gray)
                             
                             Spacer()
+                            
+                            HStack(spacing: 20) {
+                                Button {
+                                    store.send(.wordSpeakButtonTapped(word.word ?? ""))
+                                } label: {
+                                    Image(systemName: "speaker.wave.2.fill")
+                                        .foregroundColor(Color(ThemeColor.mainColor))
+                                }
+                                
+                                Button {
+                                    store.send(.wordMemoryStatusToggled(word, !wordMemory))
+                                } label: {
+                                    Image(systemName: wordMemory ? "checkmark.square" : "square")
+                                        .foregroundColor(Color(ThemeColor.mainColor))
+                                }
+                            }
                         }
-                        
-                        Spacer()
                         
                         HStack {
                             Text(word.word ?? "")
                                 .font(.system(size: 25, weight: .bold))
                                 .foregroundColor(.black)
-                                .padding(.leading, 20)
-                            Spacer()
-                        }
-                        
-                        Spacer()
-                        
-                        HStack {
+                            
                             Spacer()
                             
                             Text(word.definition ?? "")
@@ -45,24 +55,9 @@ struct WordRowView: View {
                                 .foregroundColor(.black)
                                 .multilineTextAlignment(.trailing)
                         }
-                    }
-                    
-                    VStack(spacing: 10) {
-                        HStack(spacing: 10) {
-                            Button {
-                                store.send(.wordSpeakButtonTapped(word.word ?? ""))
-                            } label: {
-                                Image(systemName: "speaker.wave.2.fill")
-                                    .foregroundColor(Color(ThemeColor.mainColor))
-                            }
-                            
-                            Button {
-                                store.send(.wordMemoryStatusToggled(word, !word.memory))
-                            } label: {
-                                Image(systemName: word.memory ? "checkmark.square" : "square")
-                                    .foregroundColor(Color(ThemeColor.mainColor))
-                            }
-                        }
+                        .padding(.horizontal, 20)
+                        .padding(.top, 5)
+                        
                         Spacer()
                     }
                 }
@@ -82,4 +77,25 @@ struct WordRowView: View {
             }
         }
     }
+}
+
+#Preview {
+    WordRowView(
+        store: Store(initialState: CalendarReducer.State()) {
+            CalendarReducer()
+        } withDependencies: {
+            $0.coreDataDependency = CoreDataDependency.previewValue
+        },
+        word: {
+            let word = WordEntity()
+            word.word = "Apple"
+            word.definition = "사과"
+            word.bookCaseName = "과일"
+            word.memory = false
+            word.date = Date()
+            word.uuid = UUID().uuidString
+            return word
+        }()
+    )
+    .padding()
 }
