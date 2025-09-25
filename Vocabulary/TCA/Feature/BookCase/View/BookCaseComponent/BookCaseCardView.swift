@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 struct BookCaseCardView: View {
-    let bookCase: BookCase
+    @ObservedObject var bookCase: BookCase
     let onTap: () -> Void
     let onEdit: () -> Void
     let onDelete: () -> Void
@@ -67,7 +67,7 @@ struct BookCaseCardView: View {
                 Image(uiImage: uiImage)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(height: 80)
+                    .frame(height: 200)
                     .clipped()
                     .cornerRadius(8)
             } else {
@@ -97,6 +97,7 @@ struct BookCaseCardView: View {
                 Image(systemName: "pencil")
                     .font(.caption)
                     .foregroundColor(.blue)
+                    .frame(width: 32, height: 32)
             }
             .buttonStyle(PlainButtonStyle())
             
@@ -108,6 +109,7 @@ struct BookCaseCardView: View {
                 Image(systemName: "trash")
                     .font(.caption)
                     .foregroundColor(.red)
+                    .frame(width: 32, height: 32)
             }
             .buttonStyle(PlainButtonStyle())
         }
