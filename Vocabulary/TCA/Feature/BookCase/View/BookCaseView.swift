@@ -17,9 +17,14 @@ struct BookCaseView: View {
             let isShowingEditBookCase = store.isShowingEditBookCase
             let selectedBookCase = store.selectedBookCase
             
-            VStack(spacing: 0) {
-                headerSection
-                bodySection
+            ZStack(alignment: .top) {
+                Color.white
+                    .ignoresSafeArea()
+                
+                VStack(spacing: 0) {
+                    headerSection
+                    bodySection
+                }
             }
             .onAppear {
                 store.send(.onAppear)
@@ -47,26 +52,19 @@ struct BookCaseView: View {
     private var headerSection: some View {
         VStack(spacing: 16) {
             HStack {
-                Image("logo")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 40, height: 40)
-                
-                Text("TurtleVoca")
-                    .font(.title2)
+                Text("TURTLE VOCA")
+                    .font(.title)
                     .fontWeight(.bold)
-                    .foregroundColor(.primary)
-                
-                Spacer()
+                    .foregroundColor(Color(ThemeColor.mainCgColor))
             }
-            .padding(.horizontal, 20)
-            .padding(.top, 10)
+            .frame(maxWidth: .infinity, alignment: .center)
+            .padding()
             
             HStack {
                 Text("단어장")
                     .font(.title)
                     .fontWeight(.bold)
-                    .foregroundColor(.primary)
+                    .foregroundColor(.black)
                 
                 Spacer()
                 
@@ -75,7 +73,7 @@ struct BookCaseView: View {
                 }) {
                     Image(systemName: "plus.circle.fill")
                         .font(.title2)
-                        .foregroundColor(.blue)
+                        .foregroundColor(Color(ThemeColor.mainCgColor))
                 }
             }
             .padding(.horizontal, 20)
@@ -87,12 +85,11 @@ struct BookCaseView: View {
     // MARK: - Body Section
     private var bodySection: some View {
         WithPerceptionTracking {
-            if store.isLoading {
-                loadingView
-            } else if store.bookCases.isEmpty {
-                emptyView
-            } else {
-                bookCaseGridView
+            VStack(spacing: 0) {
+                bookCaseCardSection
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                
+                motivationSection
             }
         }
     }
@@ -137,7 +134,7 @@ struct BookCaseView: View {
                     .foregroundColor(.white)
                     .padding(.horizontal, 24)
                     .padding(.vertical, 12)
-                    .background(Color.blue)
+                    .background(Color(ThemeColor.mainCgColor))
                     .cornerRadius(8)
             }
             
@@ -147,30 +144,75 @@ struct BookCaseView: View {
     }
     
     // MARK: - BookCase Grid View
-    private var bookCaseGridView: some View {
-        ScrollView {
-            LazyVGrid(columns: [
-                GridItem(.flexible(), spacing: 16),
-                GridItem(.flexible(), spacing: 16)
-            ], spacing: 16) {
-                ForEach(store.bookCases, id: \.objectID) { bookCase in
-                    BookCaseCardView(
-                        bookCase: bookCase,
-                        onTap: {
-                            store.send(.bookCaseSelected(bookCase))
-                        },
-                        onEdit: {
-                            store.send(.editBookCaseButtonTapped(bookCase))
-                        },
-                        onDelete: {
-                            store.send(.deleteBookCase(bookCase))
+    private var bookCaseCardSection: some View {
+        WithPerceptionTracking {
+            if store.bookCases.isEmpty {
+                emptyView
+            } else {
+                bookCaseScrollView
+            }
+        }
+    }
+    
+    private var bookCaseScrollView: some View {
+        GeometryReader { geometry in
+            WithPerceptionTracking {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 16) {
+                        ForEach(Array(store.bookCases.enumerated()), id: \.element.objectID) { index, bookCase in
+                            BookCaseCardView(
+                                bookCase: bookCase,
+                                onTap: {
+                                    store.send(.bookCaseSelected(bookCase))
+                                },
+                                onEdit: {
+                                    store.send(.editBookCaseButtonTapped(bookCase))
+                                },
+                                onDelete: {
+                                    store.send(.deleteBookCase(bookCase))
+                                }
+                            )
+                            .frame(width: calculateCardWidth(geometry: geometry))
                         }
-                    )
+                    }
+                    .padding(.horizontal, 36)
                 }
             }
-            .padding(.horizontal, 20)
-            .padding(.bottom, 20)
         }
+    }
+    
+    private var motivationSection: some View {
+        WithPerceptionTracking {
+            if !store.bookCases.isEmpty {
+                VStack {
+                    Text(getRandomMotivation())
+                        .font(.system(size: 16))
+                        .foregroundColor(.gray)
+                        .multilineTextAlignment(.center)
+                        .lineLimit(nil)
+                        .padding(.horizontal, 20)
+                        .padding(.bottom, 30)
+                }
+            }
+        }
+    }
+    
+    private func calculateCardWidth(geometry: GeometryProxy) -> CGFloat {
+        let screenWidth = geometry.size.width
+        let padding: CGFloat = 72
+        let spacing: CGFloat = 16
+        let availableWidth = screenWidth - padding - spacing
+        return availableWidth
+    }
+    
+    private func getRandomMotivation() -> String {
+        let motivations = [
+            "성적이나 결과는 행동이 아니라 습관입니다. \n – 아리스토텔레스",
+            "끝날 때까진 항상 불가능해 보입니다. \n – 넬슨 만델라",
+            "열심히 하면 할수록 행운도 더 많이 옵니다. \n – 토마스 제퍼슨",
+            "산을 옮기는 사람은 작은 돌부터 옮기기 시작한다. \n – 공자"
+        ]
+        return motivations.randomElement() ?? motivations[0]
     }
 }
 
