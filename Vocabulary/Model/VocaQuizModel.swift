@@ -8,11 +8,9 @@
 import Foundation
 
 struct VocaQuizModel {
-    
     let question: String
     let answer: String
     let incorrectFirst: String
     let incorrectSecond: String
     let incorrectThird: String
-    
 }
