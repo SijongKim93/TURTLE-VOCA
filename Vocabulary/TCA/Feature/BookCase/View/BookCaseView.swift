@@ -87,8 +87,7 @@ struct BookCaseView: View {
         WithPerceptionTracking {
             VStack(spacing: 0) {
                 bookCaseCardSection
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                
+                    .frame(maxHeight: .infinity)
                 motivationSection
             }
         }
@@ -172,10 +171,14 @@ struct BookCaseView: View {
                                     store.send(.deleteBookCase(bookCase))
                                 }
                             )
-                            .frame(width: calculateCardWidth(geometry: geometry))
+                            .frame(
+                                width: geometry.size.width - 72,
+                                height: geometry.size.height
+                            )
                         }
                     }
                     .padding(.horizontal, 36)
+                    .frame(height: geometry.size.height)
                 }
             }
         }
@@ -190,19 +193,10 @@ struct BookCaseView: View {
                         .foregroundColor(.gray)
                         .multilineTextAlignment(.center)
                         .lineLimit(nil)
-                        .padding(.horizontal, 20)
-                        .padding(.bottom, 30)
+                        .padding(.vertical, 30)
                 }
             }
         }
-    }
-    
-    private func calculateCardWidth(geometry: GeometryProxy) -> CGFloat {
-        let screenWidth = geometry.size.width
-        let padding: CGFloat = 72
-        let spacing: CGFloat = 16
-        let availableWidth = screenWidth - padding - spacing
-        return availableWidth
     }
     
     private func getRandomMotivation() -> String {
