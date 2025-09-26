@@ -26,8 +26,10 @@ struct CoreDataDependency {
     
     // BookCase
     var getBookCases: @Sendable () async throws -> [BookCase] = { [] }
-    var createBookCase: @Sendable (String, Data?) async throws -> BookCase
-    var updateBookCase: @Sendable (BookCase, String, Data?) async throws -> Void
+    var createBookCase: @Sendable (String, Data?, String?, String, String) async throws -> BookCase = { _, _, _, _, _ in
+        throw NetworkError.unknown
+    }
+    var updateBookCase: @Sendable (BookCase, String, Data?, String?, String, String) async throws -> Void
     var deleteBookCase: @Sendable (BookCase) async throws -> Void
     
     // AddVoca
@@ -246,7 +248,7 @@ extension CoreDataDependency: DependencyKey {
             }
         },
         
-        createBookCase: { name, imageData in
+        createBookCase: { name, imageData, explain, word, meaning in
             return try await MainActor.run {
                 guard let context = getContext() else {
                     throw CoreDataError.contextNotAvailable
@@ -255,6 +257,9 @@ extension CoreDataDependency: DependencyKey {
                 let bookCase = BookCase(context: context)
                 bookCase.name = name
                 bookCase.image = imageData
+                bookCase.explain = explain
+                bookCase.word = word
+                bookCase.meaning = meaning
                 bookCase.uuid = UUID().uuidString
                 
                 do {
@@ -266,7 +271,7 @@ extension CoreDataDependency: DependencyKey {
             }
         },
         
-        updateBookCase: { bookCase, name, imageData in
+        updateBookCase: { bookCase, name, imageData, explain, word, meaning in
             try await MainActor.run {
                 guard let context = getContext() else {
                     throw CoreDataError.contextNotAvailable
@@ -274,6 +279,9 @@ extension CoreDataDependency: DependencyKey {
                 
                 bookCase.name = name
                 bookCase.image = imageData
+                bookCase.explain = explain
+                bookCase.word = word
+                bookCase.meaning = meaning
                 
                 do {
                     try context.save()
@@ -423,7 +431,7 @@ extension CoreDataDependency: DependencyKey {
             return await generatePreviewBookCases()
         },
         
-        createBookCase: { name, imageData in
+        createBookCase: { name, imageData, explain, word, meaning in
             let bookCase = BookCase()
             bookCase.name = name
             bookCase.image = imageData
@@ -434,9 +442,12 @@ extension CoreDataDependency: DependencyKey {
             return bookCase
         },
         
-        updateBookCase: { bookCase, name, imageData in
+        updateBookCase: { bookCase, name, imageData, explain, word, meaning in
             bookCase.name = name
             bookCase.image = imageData
+            bookCase.explain = explain
+            bookCase.word = word
+            bookCase.meaning = meaning
         },
         
         deleteBookCase: { bookCase in

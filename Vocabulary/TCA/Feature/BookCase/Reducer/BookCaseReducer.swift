@@ -36,8 +36,8 @@ struct BookCaseReducer {
         case dismissEditBookCase
         case refreshBookCases
         
-        case createBookCase(String, Data?)
-        case updateBookCase(BookCase, String, Data?)
+        case createBookCase(String, Data?, String?, String, String)
+        case updateBookCase(BookCase, String, Data?, String?, String, String)
         case bookCaseCreated(BookCase)
         case bookCaseUpdated
     }
@@ -100,20 +100,20 @@ struct BookCaseReducer {
             case .refreshBookCases:
                 return .send(.loadBookCases)
                 
-            case let .createBookCase(name, imageData):
+            case let .createBookCase(name, imageData, explain, word, meaning):
                 return .run { send in
                     do {
-                        let bookCase = try await coreDataDependency.createBookCase(name, imageData)
+                        let bookCase = try await coreDataDependency.createBookCase(name, imageData, explain, word, meaning)
                         await send(.bookCaseCreated(bookCase))
                     } catch {
                         print("단어장 생성 실패")
                     }
                 }
                 
-            case let .updateBookCase(bookCase, name, imageData):
+            case let .updateBookCase(bookCase, name, imageData, explain, word, meaning):
                 return .run { send in
                     do {
-                        try await coreDataDependency.updateBookCase(bookCase, name, imageData)
+                        try await coreDataDependency.updateBookCase(bookCase, name, imageData, explain, word, meaning)
                         await send(.bookCaseUpdated)
                     } catch {
                         print("단어장 수정 실패")

@@ -1,5 +1,5 @@
 //
-//  AddBookCaseView.swift
+//  BookCaseFormView.swift
 //  TURTLEVOCA
 //
 //  Created by 김시종 on 9/24/25.
@@ -8,32 +8,51 @@
 import SwiftUI
 import ComposableArchitecture
 import PhotosUI
+import CoreData
 
-struct AddBookCaseView: View {
+struct BookCaseEditView: View {
     let store: StoreOf<BookCaseReducer>
+    let isEditing: Bool
+    let existingBookCase: BookCase?
     @Environment(\.dismiss) private var dismiss
     
     @State private var bookCaseName = ""
+    @State private var bookCaseDescription = ""
+    @State private var wordText = ""
+    @State private var meaningText = ""
     @State private var selectedImage: UIImage?
     @State private var showingImagePicker = false
+    
+    init(store: StoreOf<BookCaseReducer>, isEditing: Bool = false, existingBookCase: BookCase? = nil) {
+        self.store = store
+        self.isEditing = isEditing
+        self.existingBookCase = existingBookCase
+        
+        if isEditing, let bookCase = existingBookCase {
+            self._bookCaseName = State(initialValue: bookCase.name ?? "")
+            self._bookCaseDescription = State(initialValue: bookCase.explain ?? "")
+            self._wordText = State(initialValue: bookCase.word ?? "")
+            self._meaningText = State(initialValue: bookCase.meaning ?? "")
+            
+            if let imageData = bookCase.image {
+                self._selectedImage = State(initialValue: UIImage(data: imageData))
+            }
+        }
+    }
     
     var body: some View {
         NavigationView {
             VStack(spacing: 24) {
-                // 이미지 선택 섹션
                 imageSelectionSection
-                
-                // 이름 입력 섹션
-                nameInputSection
+                inputSection
                 
                 Spacer()
                 
-                // 저장 버튼
                 saveButton
             }
             .padding(.horizontal, 20)
-            .padding(.top, 20)
-            .navigationTitle("새 단어장")
+            .padding(.vertical, 20)
+            .navigationTitle(isEditing ? "단어장 편집" : "새 단어장")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true)
             .toolbar {
@@ -62,13 +81,13 @@ struct AddBookCaseView: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: 12)
                         .fill(Color.gray.opacity(0.1))
-                        .frame(height: 120)
+                        .frame(height: 300)
                     
                     if let selectedImage = selectedImage {
                         Image(uiImage: selectedImage)
                             .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(height: 120)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height: 300)
                             .clipped()
                             .cornerRadius(12)
                     } else {
@@ -88,16 +107,44 @@ struct AddBookCaseView: View {
         }
     }
     
-    // MARK: - Name Input Section
-    private var nameInputSection: some View {
+    // MARK: - Input Section
+    private var inputSection: some View {
         VStack(spacing: 16) {
-            Text("단어장 이름")
-                .font(.headline)
-                .frame(maxWidth: .infinity, alignment: .leading)
+            VStack(spacing: 5) {
+                Text("단어장 이름")
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                TextField("단어장 이름을 입력하세요", text: $bookCaseName)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .font(.body)
+            }
             
-            TextField("단어장 이름을 입력하세요", text: $bookCaseName)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .font(.body)
+            VStack(spacing: 5) {
+                Text("단어장 간단 설명")
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                TextField("단어장에 대한 간단한 설명을 작성해주세요.", text: $bookCaseDescription)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .font(.body)
+            }
+            
+            VStack(spacing: 5) {
+                Text("영어 (단어 & 의미)")
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                HStack(spacing: 5) {
+                    TextField("언어", text: $wordText)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .font(.body)
+                    
+                    TextField("의미", text: $meaningText)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .font(.body)
+                }
+            }
         }
     }
     
@@ -111,16 +158,31 @@ struct AddBookCaseView: View {
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 16)
-                .background(bookCaseName.isEmpty ? Color.gray : Color.blue)
+                .background(isFormValid ? Color(ThemeColor.mainCgColor) : Color.gray)
                 .cornerRadius(8)
         }
-        .disabled(bookCaseName.isEmpty)
+        .disabled(!isFormValid)
     }
     
     // MARK: - Helper Methods
+    private var isFormValid: Bool {
+        return !bookCaseName.isEmpty && !wordText.isEmpty && !meaningText.isEmpty
+    }
+    
     private func saveBookCase() {
         let imageData = selectedImage?.jpegData(compressionQuality: 0.8)
-        store.send(.createBookCase(bookCaseName, imageData))
+        
+        if isEditing, let bookCase = existingBookCase {
+            store.send(.updateBookCase(bookCase, bookCaseName, imageData, bookCaseDescription.isEmpty ? nil : bookCaseDescription, wordText, meaningText))
+        } else {
+            store.send(.createBookCase(
+                bookCaseName,
+                imageData,
+                bookCaseDescription.isEmpty ? nil : bookCaseDescription,
+                wordText,
+                meaningText
+            ))
+        }
     }
 }
 
@@ -168,7 +230,7 @@ struct ImagePicker: UIViewControllerRepresentable {
 }
 
 #Preview {
-    AddBookCaseView(
+    BookCaseEditView(
         store: Store(initialState: BookCaseReducer.State()) {
             BookCaseReducer()
         }
