@@ -20,5 +20,6 @@ struct EmptyCalendarStateView: View {
                 .foregroundColor(Color(ThemeColor.mainColor))
                 .multilineTextAlignment(.center)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }

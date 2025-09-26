@@ -17,20 +17,23 @@ struct BookCaseCardView: View {
     @State private var showingDeleteAlert = false
     
     var body: some View {
-        VStack(spacing: 12) {
-            // 이미지 섹션
+        VStack(spacing: 0) {
             imageSection
             
-            // 텍스트 섹션
             textSection
             
-            // 버튼 섹션
+            Spacer()
+            
             buttonSection
         }
         .padding(16)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(.systemBackground))
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(Color(ThemeColor.mainColor), lineWidth: 1)
+        )
         .cornerRadius(12)
-        .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
         .onTapGesture {
             onTap()
         }
@@ -60,34 +63,44 @@ struct BookCaseCardView: View {
         ZStack {
             RoundedRectangle(cornerRadius: 8)
                 .fill(Color.gray.opacity(0.1))
-                .frame(height: 80)
+                .frame(height: 300)
             
             if let imageData = bookCase.image,
                let uiImage = UIImage(data: imageData) {
                 Image(uiImage: uiImage)
                     .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(height: 200)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 300)
                     .clipped()
                     .cornerRadius(8)
             } else {
                 Image(systemName: "book.closed")
                     .font(.system(size: 30))
                     .foregroundColor(.gray)
+                    .frame(height: 300)
             }
         }
+        .frame(maxWidth: .infinity)
+        .layoutPriority(1)
     }
     
     // MARK: - Text Section
     private var textSection: some View {
-        VStack(spacing: 4) {
+        VStack(alignment: .leading, spacing: 5) {
             Text(bookCase.name ?? "이름 없음")
                 .font(.headline)
                 .fontWeight(.semibold)
-                .foregroundColor(.primary)
+                .foregroundColor(.black)
                 .lineLimit(2)
-                .multilineTextAlignment(.center)
+            
+            Text(bookCase.explain ?? "")
+                .font(.caption)
+                .fontWeight(.medium)
+                .foregroundColor(.black)
+                .lineLimit(2)
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.vertical, 8)
     }
     
     // MARK: - Button Section
@@ -113,6 +126,8 @@ struct BookCaseCardView: View {
             }
             .buttonStyle(PlainButtonStyle())
         }
+        .frame(maxWidth: .infinity)
+        .padding(.top, 8)
     }
     
     // MARK: - Helper Methods
