@@ -15,6 +15,7 @@ struct BookCaseView: View {
         WithPerceptionTracking {
             let isShowingaddBookCase = store.isShowingAddBookCase
             let isShowingEditBookCase = store.isShowingEditBookCase
+            let isShowingAddVoca = store.isShowingAddVoca
             let selectedBookCase = store.selectedBookCase
             
             ZStack(alignment: .top) {
@@ -41,6 +42,22 @@ struct BookCaseView: View {
             )) {
                 if let selectedBookCase = selectedBookCase {
                     EditBookCaseView(store: store, bookCase: selectedBookCase)
+                } else {
+                    EmptyView()
+                }
+            }
+            .fullScreenCover(isPresented: Binding(
+                get: { isShowingAddVoca },
+                set: { _ in store.send(.dismissAddVoca) }
+            )) {
+                if let selectedBookCase = selectedBookCase {
+                    AddVocaView(
+                        store: Store(
+                            initialState: AddVocaReducer.State(bookCase: selectedBookCase)
+                        ) {
+                            AddVocaReducer()
+                        }
+                    )
                 } else {
                     EmptyView()
                 }

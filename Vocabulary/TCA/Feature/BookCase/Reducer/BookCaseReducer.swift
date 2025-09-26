@@ -20,6 +20,7 @@ struct BookCaseReducer {
         var selectedBookCase: BookCase?
         var isShowingAddBookCase: Bool = false
         var isShowingEditBookCase: Bool = false
+        var isShowingAddVoca: Bool = false
         
         init() {}
     }
@@ -40,6 +41,8 @@ struct BookCaseReducer {
         case updateBookCase(BookCase, String, Data?, String?, String, String)
         case bookCaseCreated(BookCase)
         case bookCaseUpdated
+        case showAddVoca(BookCase)
+        case dismissAddVoca
     }
     
     var body: some ReducerOf<Self> {
@@ -67,7 +70,7 @@ struct BookCaseReducer {
                 
             case let .bookCaseSelected(bookCase):
                 state.selectedBookCase = bookCase
-                return .none
+                return .send(.showAddVoca(bookCase))
                 
             case .addBookCaseButtonTapped:
                 state.isShowingAddBookCase = true
@@ -125,6 +128,16 @@ struct BookCaseReducer {
                 
             case .bookCaseUpdated:
                 return .send(.dismissEditBookCase)
+                
+            case let .showAddVoca(bookCase):
+                state.selectedBookCase = bookCase
+                state.isShowingAddVoca = true
+                return .none
+                
+            case .dismissAddVoca:
+                state.isShowingAddVoca = false
+                state.selectedBookCase = nil
+                return .none
             }
         }
     }

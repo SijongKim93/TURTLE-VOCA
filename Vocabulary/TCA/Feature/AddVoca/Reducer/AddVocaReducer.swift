@@ -90,7 +90,7 @@ struct AddVocaReducer {
                 }
                 return .none
                 
-            case let .wordSelected(word):
+            case .wordSelected:
                 return .none
                 
             case .addWordButtonTapped:
@@ -137,7 +137,7 @@ struct AddVocaReducer {
                 state.translationResult = translations.first?.text ?? ""
                 return .none
                 
-            case let .translationFailed(error):
+            case .translationFailed:
                 state.isTranslating = false
                 state.translationResult = "번역 실패"
                 return .none
