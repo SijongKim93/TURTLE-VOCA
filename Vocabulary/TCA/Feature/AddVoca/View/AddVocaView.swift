@@ -14,6 +14,10 @@ struct AddVocaView: View {
     
     var body: some View {
         WithPerceptionTracking {
+            let bookCaseName = store.bookCaseName
+            let isShowingInsertVoca = store.isShowingInsertVoca
+            let isShowingWordDetail = store.isShowingWordDetail
+            
             NavigationView {
                 VStack(spacing: 0) {
                     headerSection
@@ -22,6 +26,25 @@ struct AddVocaView: View {
             }
             .onAppear {
                 store.send(.onAppear)
+            }
+            .sheet(isPresented: Binding(
+                get: { isShowingInsertVoca },
+                set: { _ in store.send(.dismissInsertVoca) }
+            )) {
+                InsertVocaView(store: store.scope(
+                    state: \.wordForm,
+                    action: \.wordForm
+                ))
+            }
+            .sheet(isPresented: Binding(
+                get: { isShowingWordDetail },
+                set: { _ in store.send(.dismissWordDetail) }
+            )) {
+                IfLetStore(
+                    store.scope(state: \.wordDetail, action: \.wordDetail)
+                ) { wordDetailStore in
+                    WordDetailView(store: wordDetailStore)
+                }
             }
         }
     }
@@ -67,7 +90,7 @@ struct AddVocaView: View {
     // MARK: - Search Section
     private var searchSection: some View {
         WithPerceptionTracking {
-            let searchText = store.searchText
+            let searchText = store.wordList.searchText
             
             HStack {
                 Image(systemName: "magnifyingglass")
@@ -75,13 +98,13 @@ struct AddVocaView: View {
                 
                 TextField("단어 검색", text: Binding(
                     get: { searchText },
-                    set: { store.send(.searchTextChanged($0)) }
+                    set: { store.send(.wordList(.searchTextChanged($0))) }
                 ))
                 .textFieldStyle(PlainTextFieldStyle())
                 
                 if !searchText.isEmpty {
                     Button(action: {
-                        store.send(.searchTextChanged(""))
+                        store.send(.wordList(.searchTextChanged("")))
                     }) {
                         Image(systemName: "xmark.circle.fill")
                             .foregroundColor(.gray)
@@ -99,9 +122,9 @@ struct AddVocaView: View {
     // MARK: - Body Section
     private var bodySection: some View {
         WithPerceptionTracking {
-            let isLoading = store.isLoading
-            let filteredWords = store.filteredWords
-            let isFiltering = store.isFiltering
+            let isLoading = store.wordList.isLoading
+            let filteredWords = store.wordList.filteredWords
+            let isFiltering = store.wordList.isFiltering
             
             if isLoading {
                 loadingView
@@ -130,7 +153,7 @@ struct AddVocaView: View {
     // MARK: - Empty View
     private var emptyView: some View {
         WithPerceptionTracking {
-            let isFiltering = store.isFiltering
+            let isFiltering = store.wordList.isFiltering
             
             VStack(spacing: 20) {
                 Spacer()
@@ -171,7 +194,7 @@ struct AddVocaView: View {
     // MARK: - Words List Section
     private var wordsListSection: some View {
         WithPerceptionTracking {
-            let filteredWords = store.filteredWords
+            let filteredWords = store.wordList.filteredWords
             
             ScrollView {
                 LazyVStack(spacing: 12) {
@@ -179,10 +202,10 @@ struct AddVocaView: View {
                         WordCardView(
                             word: word,
                             onTap: {
-                                store.send(.wordSelected(word))
+                                store.send(.wordList(.wordSelected(word)))
                             },
                             onDelete: {
-                                store.send(.deleteWord(word))
+                                store.send(.wordList(.deleteWord(word)))
                             }
                         )
                     }
