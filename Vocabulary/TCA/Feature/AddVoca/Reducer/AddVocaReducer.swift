@@ -2,7 +2,7 @@
 //  AddVocaReducer.swift
 //  TURTLEVOCA
 //
-//  Created by 김시종 on 9/25/25.
+//  Created by 김시종 on 9/26/25.
 //
 
 import ComposableArchitecture
@@ -11,137 +11,119 @@ import CoreData
 
 @Reducer
 struct AddVocaReducer {
-    @Dependency(\.coreDataDependency) var coreDataDependency
-    @Dependency(\.networkDependency) var networkDependency
-    
     @ObservableState
     struct State {
         var bookCase: BookCase?
         var bookCaseName: String = ""
-        var words: [WordEntity] = []
-        var filteredWords: [WordEntity] = []
-        var searchText: String = ""
-        var isFiltering: Bool = false
-        var isLoading: Bool = false
-        var isShowingInsertVoca: Bool = false
         
-        //번역
-        var isTranslating: Bool = false
-        var translationResult: String = ""
+        var wordList = WordListReducer.State()
+        var wordForm = WordFormReducer.State()
+        var translation = TranslationReducer.State()
+        var wordDetail: WordDetailReducer.State? = nil
+        
+        var isShowingInsertVoca: Bool = false
+        var isShowingWordDetail: Bool = false
         
         init(bookCase: BookCase? = nil) {
             self.bookCase = bookCase
             self.bookCaseName = bookCase?.name ?? ""
+            self.wordList = WordListReducer.State(bookCase: bookCase)
+            self.wordForm = WordFormReducer.State(bookCase: bookCase)
         }
     }
     
     enum Action {
         case onAppear
-        case loadWords
-        case wordsLoaded([WordEntity])
-        case searchTextChanged(String)
-        case wordSelected(WordEntity)
+        case setBookCase(BookCase?)
+        case wordList(WordListReducer.Action)
+        case wordForm(WordFormReducer.Action)
+        case translation(TranslationReducer.Action)
+        case wordDetail(WordDetailReducer.Action)
         case addWordButtonTapped
         case dismissInsertVoca
-        case refreshWords
-        case deleteWord(WordEntity)
-        case wordDeleted
-        case backButtonTapped
-        
-        case translateText(String)
-        case translationReceived([Translation])
-        case translationFailed(Error)
+        case showWordDetail(WordEntity)
+        case dismissWordDetail
+        case wordSaved
+        case wordUpdated
     }
     
     var body: some ReducerOf<Self> {
+        Scope(state: \.wordList, action: \.wordList) {
+            WordListReducer()
+        }
+        
+        Scope(state: \.wordForm, action: \.wordForm) {
+            WordFormReducer()
+        }
+        
+        Scope(state: \.translation, action: \.translation) {
+            TranslationReducer()
+        }
+        
         Reduce { state, action in
             switch action {
             case .onAppear:
-                return .send(.loadWords)
+                state.wordList = WordListReducer.State(bookCase: state.bookCase)
+                state.wordForm = WordFormReducer.State(bookCase: state.bookCase)
+                return .send(.wordList(.loadWords))
                 
-            case .loadWords:
-                state.isLoading = true
-                return .run { [bookCase = state.bookCase] send in
-                    do {
-                        let words = try await coreDataDependency.getWordsFromBookCase(bookCase)
-                        await send(.wordsLoaded(words))
-                    } catch {
-                        await send(.wordsLoaded([]))
-                    }
-                }
-                
-            case let .wordsLoaded(words):
-                state.words = words
-                state.filteredWords = words
-                state.isLoading = false
-                return .none
-                
-            case let .searchTextChanged(text):
-                state.searchText = text
-                state.isFiltering = !text.isEmpty
-                
-                if text.isEmpty {
-                    state.filteredWords = state.words
-                } else {
-                    state.filteredWords = state.words.filter { word in
-                        (word.word?.localizedCaseInsensitiveContains(text) ?? false) ||
-                        (word.definition?.localizedCaseInsensitiveContains(text) ?? false)
-                    }
-                }
-                return .none
-                
-            case .wordSelected:
-                return .none
+            case let .setBookCase(bookCase):
+                state.bookCase = bookCase
+                state.bookCaseName = bookCase?.name ?? ""
+                return .send(.wordList(.setBookCase(bookCase)))
                 
             case .addWordButtonTapped:
                 state.isShowingInsertVoca = true
-                return .none
+                state.wordForm = WordFormReducer.State(bookCase: state.bookCase)
+                return .send(.translation(.clearResults))
                 
             case .dismissInsertVoca:
                 state.isShowingInsertVoca = false
-                return .send(.refreshWords)
+                return .send(.wordList(.refreshWords))
                 
-            case .refreshWords:
-                return .send(.loadWords)
-                
-            case let .deleteWord(word):
-                return .run { send in
-                    do {
-                        try await coreDataDependency.deleteWord(word)
-                        await send(.wordDeleted)
-                    } catch {
-                        print("단어 삭제 실패")
-                    }
-                }
-                
-            case .wordDeleted:
-                return .send(.refreshWords)
-                
-            case .backButtonTapped:
+            case let .showWordDetail(word):
+                state.isShowingWordDetail = true
+                state.wordDetail = WordDetailReducer.State(word: word)
                 return .none
                 
-            case let .translateText(text):
-                state.isTranslating = true
-                state.translationResult = ""
-                return .run { send in
-                    do {
-                        let translations = try await networkDependency.translateText(text)
-                        await send(.translationReceived(translations))
-                    } catch {
-                        await send(.translationFailed(error))
-                    }
-                }
+            case .dismissWordDetail:
+                state.isShowingWordDetail = false
+                state.wordDetail = nil
+                return .send(.wordList(.refreshWords))
                 
-            case let .translationReceived(translations):
-                state.isTranslating = false
-                state.translationResult = translations.first?.text ?? ""
+            case .wordForm(.wordSaved):
+                state.isShowingInsertVoca = false
+                return .send(.wordList(.refreshWords))
+                
+            case .wordDetail(.wordUpdated):
+                state.isShowingWordDetail = false
+                state.wordDetail = nil
+                return .send(.wordList(.refreshWords))
+                
+            case let .wordList(.wordSelected(word)):
+                return .send(.showWordDetail(word))
+                
+            case let .translation(.setResults(translations)):
+                if let firstTranslation = translations.first {
+                    return .send(.wordForm(.translationSelected(firstTranslation.text)))
+                }
                 return .none
                 
-            case .translationFailed:
-                state.isTranslating = false
-                state.translationResult = "번역 실패"
+            case let .wordForm(.wordInputChanged(text)):
+                if !text.isEmpty {
+                    return .send(.translation(.translateText(text)))
+                }
+                return .send(.translation(.clearResults))
+                
+            case .wordList, .wordForm, .translation, .wordDetail:
+                return .none
+                
+            case .wordSaved, .wordUpdated:
                 return .none
             }
+        }
+        .ifLet(\.wordDetail, action: \.wordDetail) {
+            WordDetailReducer()
         }
     }
 }

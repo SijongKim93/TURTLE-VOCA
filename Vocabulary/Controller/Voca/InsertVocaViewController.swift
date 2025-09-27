@@ -2,7 +2,7 @@
 //  InsertVocaView.swift
 //  Vocabulary
 //
-//  Created by t2023-m0049 on 5/16/24.
+//
 //
 
 import Foundation
