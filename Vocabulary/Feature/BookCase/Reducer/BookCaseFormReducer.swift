@@ -14,7 +14,7 @@ struct BookCaseFormReducer {
     @Dependency(\.coreDataDependency) var coreDataDependency
     
     @ObservableState
-    struct State {
+    struct State: Equatable {
         var name: String = ""
         var imageData: Data?
         var explain: String = ""
@@ -28,7 +28,7 @@ struct BookCaseFormReducer {
         init() {}
     }
     
-    enum Action {
+    enum Action: Equatable {
         case nameChanged(String)
         case imageDataChanged(Data?)
         case explainChanged(String)

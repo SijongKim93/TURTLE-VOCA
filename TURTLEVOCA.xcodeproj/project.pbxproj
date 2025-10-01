@@ -62,7 +62,18 @@
 		FB76494F2BFEF66F001D9162 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB76494E2BFEF66F001D9162 /* UIViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4D11FFE52E8D870900347372 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4D17919B2BF1D5BE00E645C9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D1791A22BF1D5BE00E645C9;
+			remoteInfo = TURTLEVOCA;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		4D11FFE12E8D870900347372 /* TURTLEVOCATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TURTLEVOCATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D1791A32BF1D5BE00E645C9 /* TURTLEVOCA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TURTLEVOCA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D1791A62BF1D5BE00E645C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D1791A82BF1D5BE00E645C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -119,11 +130,19 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		4D11FF7B2E8D4B9800347372 /* Core */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Core; sourceTree = "<group>"; };
 		4D11FFAA2E8D4B9C00347372 /* Feature */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Feature; sourceTree = "<group>"; };
+		4D11FFE22E8D870900347372 /* TURTLEVOCATests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TURTLEVOCATests; sourceTree = "<group>"; };
 		4D5B97C32E7BE6AB00BA80F0 /* Error */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Error; sourceTree = "<group>"; };
 		4DE2544A2E82CFFD0019B39D /* DataFormatter */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = DataFormatter; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4D11FFDE2E8D870900347372 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4D1791A02BF1D5BE00E645C9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -143,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				4D1791A52BF1D5BE00E645C9 /* Vocabulary */,
+				4D11FFE22E8D870900347372 /* TURTLEVOCATests */,
 				4D1791A42BF1D5BE00E645C9 /* Products */,
 				6BD307252BFCB2B9006009BA /* Recovered References */,
 			);
@@ -152,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				4D1791A32BF1D5BE00E645C9 /* TURTLEVOCA.app */,
+				4D11FFE12E8D870900347372 /* TURTLEVOCATests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -298,6 +319,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4D11FFE02E8D870900347372 /* TURTLEVOCATests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D11FFE72E8D870900347372 /* Build configuration list for PBXNativeTarget "TURTLEVOCATests" */;
+			buildPhases = (
+				4D11FFDD2E8D870900347372 /* Sources */,
+				4D11FFDE2E8D870900347372 /* Frameworks */,
+				4D11FFDF2E8D870900347372 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4D11FFE62E8D870900347372 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				4D11FFE22E8D870900347372 /* TURTLEVOCATests */,
+			);
+			name = TURTLEVOCATests;
+			packageProductDependencies = (
+			);
+			productName = TURTLEVOCATests;
+			productReference = 4D11FFE12E8D870900347372 /* TURTLEVOCATests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		4D1791A22BF1D5BE00E645C9 /* TURTLEVOCA */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4D1791BA2BF1D5BF00E645C9 /* Build configuration list for PBXNativeTarget "TURTLEVOCA" */;
@@ -335,9 +379,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1530;
+				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
+					4D11FFE02E8D870900347372 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 4D1791A22BF1D5BE00E645C9;
+					};
 					4D1791A22BF1D5BE00E645C9 = {
 						CreatedOnToolsVersion = 15.3;
 					};
@@ -364,11 +412,19 @@
 			projectRoot = "";
 			targets = (
 				4D1791A22BF1D5BE00E645C9 /* TURTLEVOCA */,
+				4D11FFE02E8D870900347372 /* TURTLEVOCATests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4D11FFDF2E8D870900347372 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4D1791A12BF1D5BE00E645C9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -382,6 +438,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4D11FFDD2E8D870900347372 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4D17919F2BF1D5BE00E645C9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -436,6 +499,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		4D11FFE62E8D870900347372 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4D1791A22BF1D5BE00E645C9 /* TURTLEVOCA */;
+			targetProxy = 4D11FFE52E8D870900347372 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		4D1791B42BF1D5BF00E645C9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -449,6 +520,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4D11FFE82E8D870900347372 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U68CWSQ94X;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sijongKim.TURTLEVOCATests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TURTLEVOCA.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TURTLEVOCA";
+			};
+			name = Debug;
+		};
+		4D11FFE92E8D870900347372 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U68CWSQ94X;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sijongKim.TURTLEVOCATests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TURTLEVOCA.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TURTLEVOCA";
+			};
+			name = Release;
+		};
 		4D1791B82BF1D5BF00E645C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -649,6 +758,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4D11FFE72E8D870900347372 /* Build configuration list for PBXNativeTarget "TURTLEVOCATests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D11FFE82E8D870900347372 /* Debug */,
+				4D11FFE92E8D870900347372 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4D17919E2BF1D5BE00E645C9 /* Build configuration list for PBXProject "TURTLEVOCA" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
