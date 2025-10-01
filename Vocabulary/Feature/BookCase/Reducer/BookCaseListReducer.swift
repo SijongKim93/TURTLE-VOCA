@@ -14,7 +14,7 @@ struct BookCaseListReducer {
     @Dependency(\.coreDataDependency) var coreDataDependency
     
     @ObservableState
-    struct State {
+    struct State: Equatable {
         var bookCases: [BookCase] = []
         var isLoading: Bool = false
         var selectedBookCase: BookCase?
@@ -22,7 +22,7 @@ struct BookCaseListReducer {
         init() {}
     }
     
-    enum Action {
+    enum Action: Equatable {
         case onAppear
         case loadBookCases
         case bookCasesLoaded([BookCase])
