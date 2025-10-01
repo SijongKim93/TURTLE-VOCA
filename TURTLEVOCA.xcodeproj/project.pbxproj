@@ -10,35 +10,19 @@
 		4D138D122E819D64003005D7 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 4D138D112E819D64003005D7 /* ComposableArchitecture */; };
 		4D1791A72BF1D5BE00E645C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791A62BF1D5BE00E645C9 /* AppDelegate.swift */; };
 		4D1791A92BF1D5BE00E645C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791A82BF1D5BE00E645C9 /* SceneDelegate.swift */; };
-		4D1791AB2BF1D5BE00E645C9 /* AddVocaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791AA2BF1D5BE00E645C9 /* AddVocaViewController.swift */; };
 		4D1791B12BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791AF2BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld */; };
 		4D1791B32BF1D5BF00E645C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D1791B22BF1D5BF00E645C9 /* Assets.xcassets */; };
 		4D1791B62BF1D5BF00E645C9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4D1791B52BF1D5BF00E645C9 /* Base */; };
-		4D1791C12BF1E1F700E645C9 /* AddBookCaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791C02BF1E1F700E645C9 /* AddBookCaseViewController.swift */; };
-		4D1791C32BF1E20F00E645C9 /* GameMainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791C22BF1E20F00E645C9 /* GameMainPageViewController.swift */; };
-		4D1791C52BF1E27300E645C9 /* CalenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791C42BF1E27300E645C9 /* CalenderViewController.swift */; };
-		4D1791C72BF1E27F00E645C9 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */; };
-		4D7C9F9F2BFC32AC00E41A65 /* VocaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C9F9E2BFC32AC00E41A65 /* VocaCollectionViewCell.swift */; };
-		4D9E8FAB2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E8FAA2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift */; };
 		4DA2ECE72E81826900194848 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4DA2ECE62E81826900194848 /* SnapKit */; };
 		611177AE2BFC7FF900A635B8 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611177AD2BFC7FF900A635B8 /* UITextField+Extension.swift */; };
 		611177B12BFC808F00A635B8 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 611177B02BFC808F00A635B8 /* CombineCocoa */; };
 		611177B32BFC8F5300A635B8 /* DiffableSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611177B22BFC8F5300A635B8 /* DiffableSectionModel.swift */; };
-		611177B52BFC911000A635B8 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611177B42BFC911000A635B8 /* ResultTableViewCell.swift */; };
-		611186EF2BF4DCB6009C2FE9 /* FlashCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611186EE2BF4DCB6009C2FE9 /* FlashCardViewController.swift */; };
 		611186F22BF4DD5E009C2FE9 /* FlashHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611186F12BF4DD5E009C2FE9 /* FlashHeaderView.swift */; };
 		611186F42BF4DE09009C2FE9 /* FlashBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611186F32BF4DE09009C2FE9 /* FlashBodyView.swift */; };
 		612ABC8F2BF200370056F127 /* GameMainHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC8E2BF200370056F127 /* GameMainHeaderView.swift */; };
 		612ABC912BF2003E0056F127 /* GameMainBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612ABC902BF2003E0056F127 /* GameMainBottomView.swift */; };
 		612D10D22BF719030097EDBA /* MyPageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D10D12BF719030097EDBA /* MyPageData.swift */; };
-		612D10E02BF719D20097EDBA /* BookCaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D10DF2BF719D20097EDBA /* BookCaseViewController.swift */; };
-		612D10E82BF71B130097EDBA /* AddBookCaseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D10E62BF71B130097EDBA /* AddBookCaseHeaderView.swift */; };
-		612D10E92BF71B130097EDBA /* AddBookCaseBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D10E72BF71B130097EDBA /* AddBookCaseBodyView.swift */; };
 		612D10EE2BF71B630097EDBA /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D10ED2BF71B630097EDBA /* CoreDataManager.swift */; };
-		612D10F32BF71B9B0097EDBA /* BookCaseBodyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D10F02BF71B9B0097EDBA /* BookCaseBodyCell.swift */; };
-		612D10F42BF71B9B0097EDBA /* BookCaseBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D10F12BF71B9B0097EDBA /* BookCaseBodyView.swift */; };
-		612D10F52BF71B9B0097EDBA /* BookCaseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D10F22BF71B9B0097EDBA /* BookCaseHeaderView.swift */; };
-		612D10F82BF71BC40097EDBA /* MyPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D10F72BF71BC40097EDBA /* MyPageTableViewCell.swift */; };
 		613F52F72BFCA1E000829DC6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 613F52F52BFCA1E000829DC6 /* GoogleService-Info.plist */; };
 		613F52F82BFCA1E000829DC6 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613F52F62BFCA1E000829DC6 /* Secret.swift */; };
 		613F52FA2BFCB05800829DC6 /* ReminderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613F52F92BFCB05800829DC6 /* ReminderModel.swift */; };
@@ -50,12 +34,9 @@
 		618E70602BF21970007AEDFE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E705F2BF21970007AEDFE /* Constants.swift */; };
 		618E70662BF229D1007AEDFE /* VocaQuizMainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E70652BF229D1007AEDFE /* VocaQuizMainCollectionViewCell.swift */; };
 		618E70682BF22A66007AEDFE /* CollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E70672BF22A66007AEDFE /* CollectionView+Extension.swift */; };
-		618E706A2BF24F2F007AEDFE /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E70692BF24F2F007AEDFE /* QuizViewController.swift */; };
 		618E706D2BF25328007AEDFE /* QuizHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E706C2BF25328007AEDFE /* QuizHeaderView.swift */; };
 		618E706F2BF25337007AEDFE /* QuizBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E706E2BF25337007AEDFE /* QuizBodyView.swift */; };
 		618E70712BF25354007AEDFE /* QuizBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E70702BF25354007AEDFE /* QuizBottomView.swift */; };
-		61B2FFB92BFB8A9A00CE039B /* ManageModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B2FFB72BFB8A9A00CE039B /* ManageModalPresentationController.swift */; };
-		61B2FFBA2BFB8A9A00CE039B /* SelectVocaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B2FFB82BFB8A9A00CE039B /* SelectVocaViewController.swift */; };
 		61B2FFBD2BFB8AD900CE039B /* SelectHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B2FFBB2BFB8AD900CE039B /* SelectHeaderView.swift */; };
 		61B2FFBE2BFB8AD900CE039B /* SelectBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B2FFBC2BFB8AD900CE039B /* SelectBodyView.swift */; };
 		61B2FFC02BFB8AF500CE039B /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B2FFBF2BFB8AF500CE039B /* Int+Extension.swift */; };
@@ -68,61 +49,36 @@
 		61BCB0562BF337B100CF73E4 /* VocaQuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0552BF337B100CF73E4 /* VocaQuizModel.swift */; };
 		61BCB0592BF3597C00CF73E4 /* UIResponder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BCB0582BF3597C00CF73E4 /* UIResponder+Extension.swift */; };
 		61CB7FCA2BFB29F400DFA96F /* ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CB7FC92BFB29F400DFA96F /* ThemeColor.swift */; };
-		61D051742BFC3FB70056294A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D051732BFC3FB70056294A /* NetworkManager.swift */; };
 		61D051762BFC42470056294A /* TranslatedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D051752BFC42470056294A /* TranslatedModel.swift */; };
-		61EE0BF22BF9775100FD2F32 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EE0BF12BF9775100FD2F32 /* RecordViewController.swift */; };
 		61EE0BF72BF9777600FD2F32 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EE0BF42BF9777600FD2F32 /* RecordTableViewCell.swift */; };
 		61EE0BF82BF9777600FD2F32 /* RecordBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EE0BF52BF9777600FD2F32 /* RecordBodyView.swift */; };
 		61EE0BFD2BF9C0E000FD2F32 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 61EE0BFC2BF9C0E000FD2F32 /* FirebaseAuth */; };
-		61EEE6902BF5E66E00803AA1 /* HangManGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EEE68F2BF5E66E00803AA1 /* HangManGameViewController.swift */; };
 		61EEE6922BF5E69C00803AA1 /* HangManHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EEE6912BF5E69C00803AA1 /* HangManHeaderView.swift */; };
 		61EEE6942BF5E70300803AA1 /* HangManBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EEE6932BF5E70300803AA1 /* HangManBodyView.swift */; };
 		61EEE6962BF5E74700803AA1 /* HangManBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EEE6952BF5E74700803AA1 /* HangManBottomView.swift */; };
 		61EEE6982BF5EDD900803AA1 /* ButtonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EEE6972BF5EDD900803AA1 /* ButtonFactory.swift */; };
 		61F75F5D2BF4ED2500FCC731 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F75F5C2BF4ED2500FCC731 /* UIColor+Extension.swift */; };
 		61F75F5F2BF4F9E800FCC731 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F75F5E2BF4F9E800FCC731 /* AlertController.swift */; };
-		6B02ADED2BF6E88F006E0964 /* InsertVocaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02ADEC2BF6E88F006E0964 /* InsertVocaViewController.swift */; };
-		6B02ADEF2BF6E8B6006E0964 /* TextFieldFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02ADEE2BF6E8B6006E0964 /* TextFieldFactory.swift */; };
-		6BBB36222BFAF6050088A8CB /* VocaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBB36212BFAF6050088A8CB /* VocaDetailViewController.swift */; };
 		FB76494F2BFEF66F001D9162 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB76494E2BFEF66F001D9162 /* UIViewController+Extension.swift */; };
-		FBE7EA412BF8778F00BE86E5 /* EditBookCaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7EA402BF8778F00BE86E5 /* EditBookCaseViewController.swift */; };
-		FBE7EA432BF877D200BE86E5 /* EditBookCaseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7EA422BF877D200BE86E5 /* EditBookCaseHeaderView.swift */; };
-		FBE7EA452BF8785700BE86E5 /* EditBookCaseBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7EA442BF8785700BE86E5 /* EditBookCaseBodyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4D1791A32BF1D5BE00E645C9 /* TURTLEVOCA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TURTLEVOCA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D1791A62BF1D5BE00E645C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D1791A82BF1D5BE00E645C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4D1791AA2BF1D5BE00E645C9 /* AddVocaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVocaViewController.swift; sourceTree = "<group>"; };
 		4D1791B02BF1D5BE00E645C9 /* Vocabulary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Vocabulary.xcdatamodel; sourceTree = "<group>"; };
 		4D1791B22BF1D5BF00E645C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D1791B52BF1D5BF00E645C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D1791B72BF1D5BF00E645C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4D1791C02BF1E1F700E645C9 /* AddBookCaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookCaseViewController.swift; sourceTree = "<group>"; };
-		4D1791C22BF1E20F00E645C9 /* GameMainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMainPageViewController.swift; sourceTree = "<group>"; };
-		4D1791C42BF1E27300E645C9 /* CalenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewController.swift; sourceTree = "<group>"; };
-		4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		4D31DF932C3E6008009150C8 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		4D7C9F9E2BFC32AC00E41A65 /* VocaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaCollectionViewCell.swift; sourceTree = "<group>"; };
-		4D9E8FAA2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDetailTableViewCell.swift; sourceTree = "<group>"; };
 		611177AD2BFC7FF900A635B8 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		611177B22BFC8F5300A635B8 /* DiffableSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableSectionModel.swift; sourceTree = "<group>"; };
-		611177B42BFC911000A635B8 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
-		611186EE2BF4DCB6009C2FE9 /* FlashCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardViewController.swift; sourceTree = "<group>"; };
 		611186F12BF4DD5E009C2FE9 /* FlashHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashHeaderView.swift; sourceTree = "<group>"; };
 		611186F32BF4DE09009C2FE9 /* FlashBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashBodyView.swift; sourceTree = "<group>"; };
 		612ABC8E2BF200370056F127 /* GameMainHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMainHeaderView.swift; sourceTree = "<group>"; };
 		612ABC902BF2003E0056F127 /* GameMainBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMainBottomView.swift; sourceTree = "<group>"; };
 		612D10D12BF719030097EDBA /* MyPageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageData.swift; sourceTree = "<group>"; };
-		612D10DF2BF719D20097EDBA /* BookCaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCaseViewController.swift; sourceTree = "<group>"; };
-		612D10E62BF71B130097EDBA /* AddBookCaseHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBookCaseHeaderView.swift; sourceTree = "<group>"; };
-		612D10E72BF71B130097EDBA /* AddBookCaseBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBookCaseBodyView.swift; sourceTree = "<group>"; };
 		612D10ED2BF71B630097EDBA /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		612D10F02BF71B9B0097EDBA /* BookCaseBodyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCaseBodyCell.swift; sourceTree = "<group>"; };
-		612D10F12BF71B9B0097EDBA /* BookCaseBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCaseBodyView.swift; sourceTree = "<group>"; };
-		612D10F22BF71B9B0097EDBA /* BookCaseHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCaseHeaderView.swift; sourceTree = "<group>"; };
-		612D10F72BF71BC40097EDBA /* MyPageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageTableViewCell.swift; sourceTree = "<group>"; };
 		613F52F52BFCA1E000829DC6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		613F52F62BFCA1E000829DC6 /* Secret.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		613F52F92BFCB05800829DC6 /* ReminderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderModel.swift; sourceTree = "<group>"; };
@@ -134,12 +90,9 @@
 		618E705F2BF21970007AEDFE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		618E70652BF229D1007AEDFE /* VocaQuizMainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaQuizMainCollectionViewCell.swift; sourceTree = "<group>"; };
 		618E70672BF22A66007AEDFE /* CollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionView+Extension.swift"; sourceTree = "<group>"; };
-		618E70692BF24F2F007AEDFE /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		618E706C2BF25328007AEDFE /* QuizHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizHeaderView.swift; sourceTree = "<group>"; };
 		618E706E2BF25337007AEDFE /* QuizBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBodyView.swift; sourceTree = "<group>"; };
 		618E70702BF25354007AEDFE /* QuizBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBottomView.swift; sourceTree = "<group>"; };
-		61B2FFB72BFB8A9A00CE039B /* ManageModalPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageModalPresentationController.swift; sourceTree = "<group>"; };
-		61B2FFB82BFB8A9A00CE039B /* SelectVocaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectVocaViewController.swift; sourceTree = "<group>"; };
 		61B2FFBB2BFB8AD900CE039B /* SelectHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectHeaderView.swift; sourceTree = "<group>"; };
 		61B2FFBC2BFB8AD900CE039B /* SelectBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectBodyView.swift; sourceTree = "<group>"; };
 		61B2FFBF2BFB8AF500CE039B /* Int+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
@@ -151,29 +104,21 @@
 		61BCB0552BF337B100CF73E4 /* VocaQuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaQuizModel.swift; sourceTree = "<group>"; };
 		61BCB0582BF3597C00CF73E4 /* UIResponder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Extension.swift"; sourceTree = "<group>"; };
 		61CB7FC92BFB29F400DFA96F /* ThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColor.swift; sourceTree = "<group>"; };
-		61D051732BFC3FB70056294A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		61D051752BFC42470056294A /* TranslatedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatedModel.swift; sourceTree = "<group>"; };
-		61EE0BF12BF9775100FD2F32 /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		61EE0BF42BF9777600FD2F32 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
 		61EE0BF52BF9777600FD2F32 /* RecordBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordBodyView.swift; sourceTree = "<group>"; };
-		61EEE68F2BF5E66E00803AA1 /* HangManGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangManGameViewController.swift; sourceTree = "<group>"; };
 		61EEE6912BF5E69C00803AA1 /* HangManHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangManHeaderView.swift; sourceTree = "<group>"; };
 		61EEE6932BF5E70300803AA1 /* HangManBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangManBodyView.swift; sourceTree = "<group>"; };
 		61EEE6952BF5E74700803AA1 /* HangManBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangManBottomView.swift; sourceTree = "<group>"; };
 		61EEE6972BF5EDD900803AA1 /* ButtonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFactory.swift; sourceTree = "<group>"; };
 		61F75F5C2BF4ED2500FCC731 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		61F75F5E2BF4F9E800FCC731 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
-		6B02ADEC2BF6E88F006E0964 /* InsertVocaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertVocaViewController.swift; sourceTree = "<group>"; };
-		6B02ADEE2BF6E8B6006E0964 /* TextFieldFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldFactory.swift; sourceTree = "<group>"; };
-		6BBB36212BFAF6050088A8CB /* VocaDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocaDetailViewController.swift; sourceTree = "<group>"; };
 		FB76494E2BFEF66F001D9162 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		FBE7EA402BF8778F00BE86E5 /* EditBookCaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookCaseViewController.swift; sourceTree = "<group>"; };
-		FBE7EA422BF877D200BE86E5 /* EditBookCaseHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookCaseHeaderView.swift; sourceTree = "<group>"; };
-		FBE7EA442BF8785700BE86E5 /* EditBookCaseBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookCaseBodyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		4D5B97AD2E7BAEB200BA80F0 /* TCA */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TCA; sourceTree = "<group>"; };
+		4D11FF7B2E8D4B9800347372 /* Core */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Core; sourceTree = "<group>"; };
+		4D11FFAA2E8D4B9C00347372 /* Feature */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Feature; sourceTree = "<group>"; };
 		4D5B97C32E7BE6AB00BA80F0 /* Error */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Error; sourceTree = "<group>"; };
 		4DE2544A2E82CFFD0019B39D /* DataFormatter */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = DataFormatter; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -214,15 +159,15 @@
 		4D1791A52BF1D5BE00E645C9 /* Vocabulary */ = {
 			isa = PBXGroup;
 			children = (
-				4D5B97C32E7BE6AB00BA80F0 /* Error */,
-				4D5B97AD2E7BAEB200BA80F0 /* TCA */,
 				61CB7FC82BFB29E700DFA96F /* Config */,
 				61BCB0522BF2F4A900CF73E4 /* Service */,
 				618E70612BF21E5A007AEDFE /* Extension */,
+				4D5B97C32E7BE6AB00BA80F0 /* Error */,
+				4D11FF7B2E8D4B9800347372 /* Core */,
+				4D11FFAA2E8D4B9C00347372 /* Feature */,
 				618E70552BF20387007AEDFE /* Factory */,
-				612ABC852BF1E9B70056F127 /* Model */,
-				4D1791BE2BF1E15700E645C9 /* View */,
-				4D1791BF2BF1E15C00E645C9 /* Controller */,
+				612ABC852BF1E9B70056F127 /* Entity */,
+				4D1791BE2BF1E15700E645C9 /* UIKitView */,
 				4D1791A62BF1D5BE00E645C9 /* AppDelegate.swift */,
 				4D1791A82BF1D5BE00E645C9 /* SceneDelegate.swift */,
 				4D1791B22BF1D5BF00E645C9 /* Assets.xcassets */,
@@ -236,62 +181,15 @@
 			path = Vocabulary;
 			sourceTree = "<group>";
 		};
-		4D1791BE2BF1E15700E645C9 /* View */ = {
+		4D1791BE2BF1E15700E645C9 /* UIKitView */ = {
 			isa = PBXGroup;
 			children = (
-				FBE7EA3F2BF8776100BE86E5 /* EditBookCase */,
-				612D10EF2BF71B6D0097EDBA /* BookCase */,
-				612D10E52BF71AE30097EDBA /* AddBookCase */,
-				6BBB361F2BFAF54B0088A8CB /* AddVoca */,
 				612ABC8A2BF1FCF80056F127 /* VocaQuiz */,
-				612D10F62BF71BAA0097EDBA /* MyPage */,
 			);
-			path = View;
+			path = UIKitView;
 			sourceTree = "<group>";
 		};
-		4D1791BF2BF1E15C00E645C9 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				6164009F2BFFB62E00C7DC56 /* BookCase */,
-				616400A02BFFB63B00C7DC56 /* Voca */,
-				610130D62BF3D9E400CE8183 /* VocaQuiz */,
-				4D1791D52BF3422900E645C9 /* Calender */,
-				4D1791EF2BF7550000E645C9 /* MyPage */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		4D1791D52BF3422900E645C9 /* Calender */ = {
-			isa = PBXGroup;
-			children = (
-				4D1791C42BF1E27300E645C9 /* CalenderViewController.swift */,
-			);
-			path = Calender;
-			sourceTree = "<group>";
-		};
-		4D1791EF2BF7550000E645C9 /* MyPage */ = {
-			isa = PBXGroup;
-			children = (
-				4D1791C62BF1E27F00E645C9 /* MyPageViewController.swift */,
-			);
-			path = MyPage;
-			sourceTree = "<group>";
-		};
-		610130D62BF3D9E400CE8183 /* VocaQuiz */ = {
-			isa = PBXGroup;
-			children = (
-				4D1791C22BF1E20F00E645C9 /* GameMainPageViewController.swift */,
-				618E70692BF24F2F007AEDFE /* QuizViewController.swift */,
-				611186EE2BF4DCB6009C2FE9 /* FlashCardViewController.swift */,
-				61EEE68F2BF5E66E00803AA1 /* HangManGameViewController.swift */,
-				61EE0BF12BF9775100FD2F32 /* RecordViewController.swift */,
-				61B2FFB72BFB8A9A00CE039B /* ManageModalPresentationController.swift */,
-				61B2FFB82BFB8A9A00CE039B /* SelectVocaViewController.swift */,
-			);
-			path = VocaQuiz;
-			sourceTree = "<group>";
-		};
-		612ABC852BF1E9B70056F127 /* Model */ = {
+		612ABC852BF1E9B70056F127 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
 				618C71AE2BFE5A5A009AC33B /* BookCase+CoreDataClass.swift */,
@@ -305,7 +203,7 @@
 				611177B22BFC8F5300A635B8 /* DiffableSectionModel.swift */,
 				613F52F92BFCB05800829DC6 /* ReminderModel.swift */,
 			);
-			path = Model;
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		612ABC8A2BF1FCF80056F127 /* VocaQuiz */ = {
@@ -331,60 +229,11 @@
 			path = VocaQuiz;
 			sourceTree = "<group>";
 		};
-		612D10E52BF71AE30097EDBA /* AddBookCase */ = {
-			isa = PBXGroup;
-			children = (
-				612D10E62BF71B130097EDBA /* AddBookCaseHeaderView.swift */,
-				612D10E72BF71B130097EDBA /* AddBookCaseBodyView.swift */,
-			);
-			path = AddBookCase;
-			sourceTree = "<group>";
-		};
-		612D10EF2BF71B6D0097EDBA /* BookCase */ = {
-			isa = PBXGroup;
-			children = (
-				612D10F02BF71B9B0097EDBA /* BookCaseBodyCell.swift */,
-				612D10F12BF71B9B0097EDBA /* BookCaseBodyView.swift */,
-				612D10F22BF71B9B0097EDBA /* BookCaseHeaderView.swift */,
-			);
-			path = BookCase;
-			sourceTree = "<group>";
-		};
-		612D10F62BF71BAA0097EDBA /* MyPage */ = {
-			isa = PBXGroup;
-			children = (
-				612D10F72BF71BC40097EDBA /* MyPageTableViewCell.swift */,
-				4D9E8FAA2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift */,
-			);
-			path = MyPage;
-			sourceTree = "<group>";
-		};
-		6164009F2BFFB62E00C7DC56 /* BookCase */ = {
-			isa = PBXGroup;
-			children = (
-				612D10DF2BF719D20097EDBA /* BookCaseViewController.swift */,
-				4D1791C02BF1E1F700E645C9 /* AddBookCaseViewController.swift */,
-				FBE7EA402BF8778F00BE86E5 /* EditBookCaseViewController.swift */,
-			);
-			path = BookCase;
-			sourceTree = "<group>";
-		};
-		616400A02BFFB63B00C7DC56 /* Voca */ = {
-			isa = PBXGroup;
-			children = (
-				6B02ADEC2BF6E88F006E0964 /* InsertVocaViewController.swift */,
-				4D1791AA2BF1D5BE00E645C9 /* AddVocaViewController.swift */,
-				6BBB36212BFAF6050088A8CB /* VocaDetailViewController.swift */,
-			);
-			path = Voca;
-			sourceTree = "<group>";
-		};
 		618E70552BF20387007AEDFE /* Factory */ = {
 			isa = PBXGroup;
 			children = (
 				618E70562BF2039E007AEDFE /* LabelFactory.swift */,
 				61EEE6972BF5EDD900803AA1 /* ButtonFactory.swift */,
-				6B02ADEE2BF6E8B6006E0964 /* TextFieldFactory.swift */,
 			);
 			path = Factory;
 			sourceTree = "<group>";
@@ -415,7 +264,6 @@
 			children = (
 				61F75F5E2BF4F9E800FCC731 /* AlertController.swift */,
 				612D10ED2BF71B630097EDBA /* CoreDataManager.swift */,
-				61D051732BFC3FB70056294A /* NetworkManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -440,29 +288,11 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
-		6BBB361F2BFAF54B0088A8CB /* AddVoca */ = {
-			isa = PBXGroup;
-			children = (
-				611177B42BFC911000A635B8 /* ResultTableViewCell.swift */,
-				4D7C9F9E2BFC32AC00E41A65 /* VocaCollectionViewCell.swift */,
-			);
-			path = AddVoca;
-			sourceTree = "<group>";
-		};
 		6BD307252BFCB2B9006009BA /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = "Recovered References";
-			sourceTree = "<group>";
-		};
-		FBE7EA3F2BF8776100BE86E5 /* EditBookCase */ = {
-			isa = PBXGroup;
-			children = (
-				FBE7EA422BF877D200BE86E5 /* EditBookCaseHeaderView.swift */,
-				FBE7EA442BF8785700BE86E5 /* EditBookCaseBodyView.swift */,
-			);
-			path = EditBookCase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -481,7 +311,8 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				4D5B97AD2E7BAEB200BA80F0 /* TCA */,
+				4D11FF7B2E8D4B9800347372 /* Core */,
+				4D11FFAA2E8D4B9C00347372 /* Feature */,
 				4D5B97C32E7BE6AB00BA80F0 /* Error */,
 				4DE2544A2E82CFFD0019B39D /* DataFormatter */,
 			);
@@ -557,33 +388,23 @@
 			files = (
 				61B2FFBD2BFB8AD900CE039B /* SelectHeaderView.swift in Sources */,
 				613F52F82BFCA1E000829DC6 /* Secret.swift in Sources */,
-				4D1791AB2BF1D5BE00E645C9 /* AddVocaViewController.swift in Sources */,
 				4D1791A72BF1D5BE00E645C9 /* AppDelegate.swift in Sources */,
 				61EE0BF72BF9777600FD2F32 /* RecordTableViewCell.swift in Sources */,
 				611177AE2BFC7FF900A635B8 /* UITextField+Extension.swift in Sources */,
-				612D10F82BF71BC40097EDBA /* MyPageTableViewCell.swift in Sources */,
-				612D10F32BF71B9B0097EDBA /* BookCaseBodyCell.swift in Sources */,
 				618E706D2BF25328007AEDFE /* QuizHeaderView.swift in Sources */,
 				61EEE6942BF5E70300803AA1 /* HangManBodyView.swift in Sources */,
-				611186EF2BF4DCB6009C2FE9 /* FlashCardViewController.swift in Sources */,
 				612ABC912BF2003E0056F127 /* GameMainBottomView.swift in Sources */,
-				611177B52BFC911000A635B8 /* ResultTableViewCell.swift in Sources */,
 				61B2FFC62BFBA44C00CE039B /* SelectBottomView.swift in Sources */,
 				61EEE6922BF5E69C00803AA1 /* HangManHeaderView.swift in Sources */,
 				612D10D22BF719030097EDBA /* MyPageData.swift in Sources */,
 				61B2FFC22BFB8B0A00CE039B /* UIViewControllerTransitioningDelegate.swift in Sources */,
 				618E70602BF21970007AEDFE /* Constants.swift in Sources */,
-				4D1791C32BF1E20F00E645C9 /* GameMainPageViewController.swift in Sources */,
 				61CB7FCA2BFB29F400DFA96F /* ThemeColor.swift in Sources */,
 				61F75F5F2BF4F9E800FCC731 /* AlertController.swift in Sources */,
 				61F75F5D2BF4ED2500FCC731 /* UIColor+Extension.swift in Sources */,
-				61B2FFBA2BFB8A9A00CE039B /* SelectVocaViewController.swift in Sources */,
 				4D1791A92BF1D5BE00E645C9 /* SceneDelegate.swift in Sources */,
-				6B02ADED2BF6E88F006E0964 /* InsertVocaViewController.swift in Sources */,
 				612D10EE2BF71B630097EDBA /* CoreDataManager.swift in Sources */,
 				611186F22BF4DD5E009C2FE9 /* FlashHeaderView.swift in Sources */,
-				61EEE6902BF5E66E00803AA1 /* HangManGameViewController.swift in Sources */,
-				612D10F52BF71B9B0097EDBA /* BookCaseHeaderView.swift in Sources */,
 				61D051762BFC42470056294A /* TranslatedModel.swift in Sources */,
 				618E70662BF229D1007AEDFE /* VocaQuizMainCollectionViewCell.swift in Sources */,
 				61B2FFC82BFBAD2900CE039B /* GenQuizModel.swift in Sources */,
@@ -593,14 +414,9 @@
 				61BCB0592BF3597C00CF73E4 /* UIResponder+Extension.swift in Sources */,
 				618E706F2BF25337007AEDFE /* QuizBodyView.swift in Sources */,
 				618E70682BF22A66007AEDFE /* CollectionView+Extension.swift in Sources */,
-				4D1791C52BF1E27300E645C9 /* CalenderViewController.swift in Sources */,
-				6B02ADEF2BF6E8B6006E0964 /* TextFieldFactory.swift in Sources */,
 				618E70712BF25354007AEDFE /* QuizBottomView.swift in Sources */,
-				FBE7EA412BF8778F00BE86E5 /* EditBookCaseViewController.swift in Sources */,
-				FBE7EA432BF877D200BE86E5 /* EditBookCaseHeaderView.swift in Sources */,
 				611177B32BFC8F5300A635B8 /* DiffableSectionModel.swift in Sources */,
 				61B2FFC42BFBA0E300CE039B /* Picker+Extension.swift in Sources */,
-				4D9E8FAB2BF8CDB0003F05D3 /* LoginDetailTableViewCell.swift in Sources */,
 				612ABC8F2BF200370056F127 /* GameMainHeaderView.swift in Sources */,
 				61BCB0562BF337B100CF73E4 /* VocaQuizModel.swift in Sources */,
 				618C71B22BFE5A5A009AC33B /* BookCase+CoreDataClass.swift in Sources */,
@@ -609,24 +425,11 @@
 				618C71B52BFE5A5A009AC33B /* WordEntity+CoreDataProperties.swift in Sources */,
 				61EEE6962BF5E74700803AA1 /* HangManBottomView.swift in Sources */,
 				61B2FFC02BFB8AF500CE039B /* Int+Extension.swift in Sources */,
-				61D051742BFC3FB70056294A /* NetworkManager.swift in Sources */,
 				61B2FFCD2BFBD66F00CE039B /* NotificationCenter.swift in Sources */,
-				612D10F42BF71B9B0097EDBA /* BookCaseBodyView.swift in Sources */,
-				4D1791C12BF1E1F700E645C9 /* AddBookCaseViewController.swift in Sources */,
-				61B2FFB92BFB8A9A00CE039B /* ManageModalPresentationController.swift in Sources */,
-				61EE0BF22BF9775100FD2F32 /* RecordViewController.swift in Sources */,
 				4D1791B12BF1D5BE00E645C9 /* Vocabulary.xcdatamodeld in Sources */,
-				6BBB36222BFAF6050088A8CB /* VocaDetailViewController.swift in Sources */,
 				61EE0BF82BF9777600FD2F32 /* RecordBodyView.swift in Sources */,
 				611186F42BF4DE09009C2FE9 /* FlashBodyView.swift in Sources */,
-				612D10E82BF71B130097EDBA /* AddBookCaseHeaderView.swift in Sources */,
-				618E706A2BF24F2F007AEDFE /* QuizViewController.swift in Sources */,
 				618E70572BF2039E007AEDFE /* LabelFactory.swift in Sources */,
-				FBE7EA452BF8785700BE86E5 /* EditBookCaseBodyView.swift in Sources */,
-				612D10E92BF71B130097EDBA /* AddBookCaseBodyView.swift in Sources */,
-				4D7C9F9F2BFC32AC00E41A65 /* VocaCollectionViewCell.swift in Sources */,
-				4D1791C72BF1E27F00E645C9 /* MyPageViewController.swift in Sources */,
-				612D10E02BF719D20097EDBA /* BookCaseViewController.swift in Sources */,
 				613F52FA2BFCB05800829DC6 /* ReminderModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

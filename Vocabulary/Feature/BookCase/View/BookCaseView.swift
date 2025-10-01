@@ -13,10 +13,10 @@ struct BookCaseView: View {
     
     var body: some View {
         WithPerceptionTracking {
-            let isShowingaddBookCase = store.isShowingAddBookCase
-            let isShowingEditBookCase = store.isShowingEditBookCase
-            let isShowingAddVoca = store.isShowingAddVoca
-            let selectedBookCase = store.selectedBookCase
+            let isShowingAddBookCase = store.navigation.isShowingAddBookCase
+            let isShowingEditBookCase = store.navigation.isShowingEditBookCase
+            let isShowingAddVoca = store.navigation.isShowingAddVoca
+            let selectedBookCase = store.navigation.selectedBookCase
             
             ZStack(alignment: .top) {
                 Color.white
@@ -31,14 +31,14 @@ struct BookCaseView: View {
                 store.send(.onAppear)
             }
             .sheet(isPresented: Binding(
-                get: { isShowingaddBookCase },
-                set: { _ in store.send(.dismissAddBookCase) }
+                get: { isShowingAddBookCase },
+                set: { _ in store.send(.navigation(.dismissAddBookCase)) }
             )) {
                 AddBookCaseView(store: store)
             }
             .sheet(isPresented: Binding(
                 get: { isShowingEditBookCase },
-                set: { _ in store.send(.dismissEditBookCase) }
+                set: { _ in store.send(.navigation(.dismissEditBookCase)) }
             )) {
                 if let selectedBookCase = selectedBookCase {
                     EditBookCaseView(store: store, bookCase: selectedBookCase)
@@ -48,7 +48,7 @@ struct BookCaseView: View {
             }
             .fullScreenCover(isPresented: Binding(
                 get: { isShowingAddVoca },
-                set: { _ in store.send(.dismissAddVoca) }
+                set: { _ in store.send(.navigation(.dismissAddVoca)) }
             )) {
                 if let selectedBookCase = selectedBookCase {
                     AddVocaView(
@@ -162,7 +162,9 @@ struct BookCaseView: View {
     // MARK: - BookCase Grid View
     private var bookCaseCardSection: some View {
         WithPerceptionTracking {
-            if store.bookCases.isEmpty {
+            if store.bookCaseList.isLoading {
+                loadingView
+            } else if store.bookCaseList.bookCases.isEmpty {
                 emptyView
             } else {
                 bookCaseScrollView
@@ -175,7 +177,7 @@ struct BookCaseView: View {
             WithPerceptionTracking {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 16) {
-                        ForEach(Array(store.bookCases.enumerated()), id: \.element.objectID) { index, bookCase in
+                        ForEach(Array(store.bookCaseList.bookCases.enumerated()), id: \.element.objectID) { index, bookCase in
                             BookCaseCardView(
                                 bookCase: bookCase,
                                 onTap: {
@@ -185,7 +187,7 @@ struct BookCaseView: View {
                                     store.send(.editBookCaseButtonTapped(bookCase))
                                 },
                                 onDelete: {
-                                    store.send(.deleteBookCase(bookCase))
+                                    store.send(.bookCaseList(.deleteBookCase(bookCase)))
                                 }
                             )
                             .frame(
@@ -203,7 +205,7 @@ struct BookCaseView: View {
     
     private var motivationSection: some View {
         WithPerceptionTracking {
-            if !store.bookCases.isEmpty {
+            if !store.bookCaseList.bookCases.isEmpty {
                 VStack {
                     Text(getRandomMotivation())
                         .font(.system(size: 16))
