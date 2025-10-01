@@ -12,6 +12,49 @@ struct WordDetailView: View {
     let store: StoreOf<WordDetailReducer>
     @Environment(\.dismiss) private var dismiss
     
+    // Binding을 WithPerceptionTracking 밖에서 생성
+    private var editingWordBinding: Binding<String> {
+        Binding(
+            get: { store.editingWord },
+            set: { store.send(.updateEditingWord($0)) }
+        )
+    }
+    
+    private var editingDefinitionBinding: Binding<String> {
+        Binding(
+            get: { store.editingDefinition },
+            set: { store.send(.updateEditingDefinition($0)) }
+        )
+    }
+    
+    private var editingDetailBinding: Binding<String> {
+        Binding(
+            get: { store.editingDetail },
+            set: { store.send(.updateEditingDetail($0)) }
+        )
+    }
+    
+    private var editingPronunciationBinding: Binding<String> {
+        Binding(
+            get: { store.editingPronunciation },
+            set: { store.send(.updateEditingPronunciation($0)) }
+        )
+    }
+    
+    private var editingSynonymBinding: Binding<String> {
+        Binding(
+            get: { store.editingSynonym },
+            set: { store.send(.updateEditingSynonym($0)) }
+        )
+    }
+    
+    private var editingAntonymBinding: Binding<String> {
+        Binding(
+            get: { store.editingAntonym },
+            set: { store.send(.updateEditingAntonym($0)) }
+        )
+    }
+    
     var body: some View {
         WithPerceptionTracking {
             let word = store.word
@@ -133,38 +176,18 @@ struct WordDetailView: View {
     // MARK: - Editing View
     private var editingView: some View {
         WithPerceptionTracking {
-            let word = store.word
-            
             VStack(spacing: 24) {
-                editingField(title: "단어", text: Binding(
-                    get: { word.word ?? "" },
-                    set: { word.word = $0 }
-                ))
+                editingField(title: "단어", text: editingWordBinding)
                 
-                editingField(title: "의미", text: Binding(
-                    get: { word.definition ?? "" },
-                    set: { word.definition = $0 }
-                ))
+                editingField(title: "의미", text: editingDefinitionBinding)
                 
-                editingField(title: "상세 설명", text: Binding(
-                    get: { word.detail ?? "" },
-                    set: { word.detail = $0 }
-                ))
+                editingField(title: "상세 설명", text: editingDetailBinding)
                 
-                editingField(title: "발음", text: Binding(
-                    get: { word.pronunciation ?? "" },
-                    set: { word.pronunciation = $0 }
-                ))
+                editingField(title: "발음", text: editingPronunciationBinding)
                 
-                editingField(title: "유의어", text: Binding(
-                    get: { word.synonym ?? "" },
-                    set: { word.synonym = $0 }
-                ))
+                editingField(title: "유의어", text: editingSynonymBinding)
                 
-                editingField(title: "반의어", text: Binding(
-                    get: { word.antonym ?? "" },
-                    set: { word.antonym = $0 }
-                ))
+                editingField(title: "반의어", text: editingAntonymBinding)
                 
                 // 편집 취소 버튼
                 Button(action: {
