@@ -15,7 +15,6 @@ final class BookCaseListReducerTests: XCTestCase {
     // MARK: - 북케이스 목록 로딩 테스트
     
     func testOnAppearLoadsBookCasesSuccess() async throws {
-        // Given: Mock 북케이스 데이터
         let mockBookCases = createMockBookCases()
         let mockCoreData = createSuccessMockCoreData(bookCases: mockBookCases)
         
@@ -45,7 +44,6 @@ final class BookCaseListReducerTests: XCTestCase {
     }
     
     func testOnAppearLoadsBookCasesFailure() async throws {
-        // Given: 실패하는 Mock CoreData
         let mockCoreData = createFailureMockCoreData()
         
         let store = TestStore(
