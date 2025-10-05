@@ -103,17 +103,26 @@ struct AddVocaReducer {
             case let .wordList(.wordSelected(word)):
                 return .send(.showWordDetail(word))
                 
-            case let .translation(.setResults(translations)):
+            case let .translation(.translationReceived(translations)):
+                // 번역 결과를 받았을 때 첫 번째 번역을 자동으로 선택
                 if let firstTranslation = translations.first {
                     return .send(.wordForm(.translationSelected(firstTranslation.text)))
                 }
                 return .none
                 
+            case let .translation(.translationFailed(message)):
+                // 번역 실패 시 에러 처리 (필요시)
+                return .none
+                
             case let .wordForm(.wordInputChanged(text)):
                 if !text.isEmpty {
-                    return .send(.translation(.translateText(text)))
+                    return .run { send in
+                        try? await Task.sleep(nanoseconds: 500_000_000)
+                        await send(.translation(.translateText(text)))
+                    }
+                } else {
+                    return .send(.translation(.clearResults))
                 }
-                return .send(.translation(.clearResults))
                 
             case .wordList, .wordForm, .translation, .wordDetail:
                 return .none

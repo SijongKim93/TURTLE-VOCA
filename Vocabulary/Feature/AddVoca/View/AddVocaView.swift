@@ -31,10 +31,7 @@ struct AddVocaView: View {
                 get: { isShowingInsertVoca },
                 set: { _ in store.send(.dismissInsertVoca) }
             )) {
-                InsertVocaView(store: store.scope(
-                    state: \.wordForm,
-                    action: \.wordForm
-                ))
+                InsertVocaView(store: store)
             }
             .sheet(isPresented: Binding(
                 get: { isShowingWordDetail },

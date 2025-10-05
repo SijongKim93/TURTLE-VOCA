@@ -12,52 +12,9 @@ struct WordDetailView: View {
     let store: StoreOf<WordDetailReducer>
     @Environment(\.dismiss) private var dismiss
     
-    // Binding을 WithPerceptionTracking 밖에서 생성
-    private var editingWordBinding: Binding<String> {
-        Binding(
-            get: { store.editingWord },
-            set: { store.send(.updateEditingWord($0)) }
-        )
-    }
-    
-    private var editingDefinitionBinding: Binding<String> {
-        Binding(
-            get: { store.editingDefinition },
-            set: { store.send(.updateEditingDefinition($0)) }
-        )
-    }
-    
-    private var editingDetailBinding: Binding<String> {
-        Binding(
-            get: { store.editingDetail },
-            set: { store.send(.updateEditingDetail($0)) }
-        )
-    }
-    
-    private var editingPronunciationBinding: Binding<String> {
-        Binding(
-            get: { store.editingPronunciation },
-            set: { store.send(.updateEditingPronunciation($0)) }
-        )
-    }
-    
-    private var editingSynonymBinding: Binding<String> {
-        Binding(
-            get: { store.editingSynonym },
-            set: { store.send(.updateEditingSynonym($0)) }
-        )
-    }
-    
-    private var editingAntonymBinding: Binding<String> {
-        Binding(
-            get: { store.editingAntonym },
-            set: { store.send(.updateEditingAntonym($0)) }
-        )
-    }
     
     var body: some View {
         WithPerceptionTracking {
-            let word = store.word
             let isEditing = store.isEditing
             let isLoading = store.isLoading
             let errorMessage = store.errorMessage
@@ -111,97 +68,190 @@ struct WordDetailView: View {
     
     // MARK: - Read Only View
     private var readOnlyView: some View {
+        VStack(spacing: 24) {
+            wordInfoSection
+            definitionSection
+            detailSection
+            pronunciationSection
+            synonymSection
+            antonymSection
+            memoryStatusSection
+        }
+    }
+    
+    // MARK: - Word Info Section
+    private var wordInfoSection: some View {
         WithPerceptionTracking {
             let word = store.word
             
-            VStack(spacing: 24) {
-                // 단어 정보 카드
-                VStack(spacing: 16) {
-                    HStack {
-                        Text("단어")
-                            .font(.headline)
-                            .foregroundColor(.primary)
-                        Spacer()
-                        
-                        Button(action: {
-                            store.send(.toggleMemoryStatus)
-                        }) {
-                            Image(systemName: word.memory ? "checkmark.circle.fill" : "circle")
-                                .foregroundColor(word.memory ? .green : .gray)
-                                .font(.title2)
-                        }
-                    }
-                    
-                    Text(word.word ?? "")
-                        .font(.title)
-                        .fontWeight(.bold)
+            VStack(spacing: 16) {
+                HStack {
+                    Text("단어")
+                        .font(.headline)
                         .foregroundColor(.primary)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
-                .padding()
-                .background(Color(.systemGray6))
-                .cornerRadius(12)
-                
-                // 단어 의미
-                if !(word.definition?.isEmpty ?? true) {
-                    detailRow(title: "의미", content: word.definition ?? "")
-                }
-                
-                // 상세 설명
-                if !(word.detail?.isEmpty ?? true) {
-                    detailRow(title: "상세 설명", content: word.detail ?? "")
+                    Spacer()
+                    
+                    Button(action: {
+                        store.send(.toggleMemoryStatus)
+                    }) {
+                        Image(systemName: word.memory ? "checkmark.circle.fill" : "circle")
+                            .foregroundColor(word.memory ? .green : .gray)
+                            .font(.title2)
+                    }
                 }
                 
-                // 발음
-                if !(word.pronunciation?.isEmpty ?? true) {
-                    detailRow(title: "발음", content: word.pronunciation ?? "")
-                }
-                
-                // 유의어
-                if !(word.synonym?.isEmpty ?? true) {
-                    detailRow(title: "유의어", content: word.synonym ?? "")
-                }
-                
-                // 반의어
-                if !(word.antonym?.isEmpty ?? true) {
-                    detailRow(title: "반의어", content: word.antonym ?? "")
-                }
-                
-                // 암기 상태 정보
-                memoryStatusSection
+                Text(word.word ?? "")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundColor(.primary)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            .padding()
+            .background(Color(.systemGray6))
+            .cornerRadius(12)
+        }
+    }
+    
+    // MARK: - Definition Section
+    private var definitionSection: some View {
+        WithPerceptionTracking {
+            let word = store.word
+            
+            if !(word.definition?.isEmpty ?? true) {
+                detailRow(title: "의미", content: word.definition ?? "")
+            }
+        }
+    }
+    
+    // MARK: - Detail Section
+    private var detailSection: some View {
+        WithPerceptionTracking {
+            let word = store.word
+            
+            if !(word.detail?.isEmpty ?? true) {
+                detailRow(title: "상세 설명", content: word.detail ?? "")
+            }
+        }
+    }
+    
+    // MARK: - Pronunciation Section
+    private var pronunciationSection: some View {
+        WithPerceptionTracking {
+            let word = store.word
+            
+            if !(word.pronunciation?.isEmpty ?? true) {
+                detailRow(title: "발음", content: word.pronunciation ?? "")
+            }
+        }
+    }
+    
+    // MARK: - Synonym Section
+    private var synonymSection: some View {
+        WithPerceptionTracking {
+            let word = store.word
+            
+            if !(word.synonym?.isEmpty ?? true) {
+                detailRow(title: "유의어", content: word.synonym ?? "")
+            }
+        }
+    }
+    
+    // MARK: - Antonym Section
+    private var antonymSection: some View {
+        WithPerceptionTracking {
+            let word = store.word
+            
+            if !(word.antonym?.isEmpty ?? true) {
+                detailRow(title: "반의어", content: word.antonym ?? "")
             }
         }
     }
     
     // MARK: - Editing View
     private var editingView: some View {
+        VStack(spacing: 24) {
+            editingWordSection
+            editingDefinitionSection
+            editingDetailSection
+            editingPronunciationSection
+            editingSynonymSection
+            editingAntonymSection
+            cancelEditSection
+        }
+    }
+    
+    // MARK: - Editing Word Section
+    private var editingWordSection: some View {
         WithPerceptionTracking {
-            VStack(spacing: 24) {
-                editingField(title: "단어", text: editingWordBinding)
-                
-                editingField(title: "의미", text: editingDefinitionBinding)
-                
-                editingField(title: "상세 설명", text: editingDetailBinding)
-                
-                editingField(title: "발음", text: editingPronunciationBinding)
-                
-                editingField(title: "유의어", text: editingSynonymBinding)
-                
-                editingField(title: "반의어", text: editingAntonymBinding)
-                
-                // 편집 취소 버튼
-                Button(action: {
-                    store.send(.cancelEdit)
-                }) {
-                    Text("편집 취소")
-                        .font(.headline)
-                        .foregroundColor(.red)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 12)
-                        .background(Color(.systemGray6))
-                        .cornerRadius(8)
-                }
-            }
+            editingField(title: "단어", text: Binding(
+                get: { store.editingWord },
+                set: { store.send(.updateEditingWord($0)) }
+            ))
+        }
+    }
+    
+    // MARK: - Editing Definition Section
+    private var editingDefinitionSection: some View {
+        WithPerceptionTracking {
+            editingField(title: "의미", text: Binding(
+                get: { store.editingDefinition },
+                set: { store.send(.updateEditingDefinition($0)) }
+            ))
+        }
+    }
+    
+    // MARK: - Editing Detail Section
+    private var editingDetailSection: some View {
+        WithPerceptionTracking {
+            editingField(title: "상세 설명", text: Binding(
+                get: { store.editingDetail },
+                set: { store.send(.updateEditingDetail($0)) }
+            ))
+        }
+    }
+    
+    // MARK: - Editing Pronunciation Section
+    private var editingPronunciationSection: some View {
+        WithPerceptionTracking {
+            editingField(title: "발음", text: Binding(
+                get: { store.editingPronunciation },
+                set: { store.send(.updateEditingPronunciation($0)) }
+            ))
+        }
+    }
+    
+    // MARK: - Editing Synonym Section
+    private var editingSynonymSection: some View {
+        WithPerceptionTracking {
+            editingField(title: "유의어", text: Binding(
+                get: { store.editingSynonym },
+                set: { store.send(.updateEditingSynonym($0)) }
+            ))
+        }
+    }
+    
+    // MARK: - Editing Antonym Section
+    private var editingAntonymSection: some View {
+        WithPerceptionTracking {
+            editingField(title: "반의어", text: Binding(
+                get: { store.editingAntonym },
+                set: { store.send(.updateEditingAntonym($0)) }
+            ))
+        }
+    }
+    
+    // MARK: - Cancel Edit Section
+    private var cancelEditSection: some View {
+        Button(action: {
+            store.send(.cancelEdit)
+        }) {
+            Text("편집 취소")
+                .font(.headline)
+                .foregroundColor(.red)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 12)
+                .background(Color(.systemGray6))
+                .cornerRadius(8)
         }
     }
     
