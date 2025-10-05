@@ -11,7 +11,6 @@ import CoreData
 
 
 extension BookCase {
-
     @nonobjc public class func fetchRequest() -> NSFetchRequest<BookCase> {
         return NSFetchRequest<BookCase>(entityName: "BookCase")
     }

@@ -9,14 +9,14 @@ import SwiftUI
 import ComposableArchitecture
 
 struct InsertVocaView: View {
-    let store: StoreOf<WordFormReducer>
+    let store: StoreOf<AddVocaReducer>
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         WithPerceptionTracking {
-            let isEditing = store.isEditing
-            let isLoading = store.isLoading
-            let errorMessage = store.errorMessage
+            let isEditing = store.wordForm.isEditing
+            let isLoading = store.wordForm.isLoading
+            let errorMessage = store.wordForm.errorMessage
             
             NavigationView {
                 ScrollView {
@@ -46,14 +46,14 @@ struct InsertVocaView: View {
                     
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button("저장") {
-                            store.send(.saveWord)
+                            store.send(.wordForm(.saveWord))
                         }
                         .disabled(!isFormValid() || isLoading)
                     }
                 }
             }
             .onAppear {
-                store.send(.resetForm)
+                store.send(.wordForm(.resetForm))
             }
             .alert("에러", isPresented: Binding(
                 get: { errorMessage != nil },
@@ -69,7 +69,7 @@ struct InsertVocaView: View {
     // MARK: - Word Input Section
     private var wordInputSection: some View {
         WithPerceptionTracking {
-            let wordInput = store.wordInput
+            let wordInput = store.wordForm.wordInput
             
             VStack(spacing: 8) {
                 Text("기억할 단어")
@@ -78,7 +78,7 @@ struct InsertVocaView: View {
                 
                 TextField("단어를 입력하세요.(필수)", text: Binding(
                     get: { wordInput },
-                    set: { store.send(.wordInputChanged($0)) }
+                    set: { store.send(.wordForm(.wordInputChanged($0))) }
                 ))
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .font(.body)
@@ -94,7 +94,10 @@ struct InsertVocaView: View {
     // MARK: - Translation Results Section
     private var translationResultsSection: some View {
         WithPerceptionTracking {
-            let wordInput = store.wordInput
+            let wordInput = store.wordForm.wordInput
+            let isTranslating = store.translation.isTranslating
+            let translationResults = store.translation.translationResults
+            let translationErrorMessage = store.translation.errorMessage
             
             if !wordInput.isEmpty {
                 VStack(spacing: 8) {
@@ -102,17 +105,53 @@ struct InsertVocaView: View {
                         .font(.headline)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
-                    HStack {
-                        ProgressView()
-                            .scaleEffect(0.8)
-                        Text("번역 중...")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
+                    if isTranslating {
+                        HStack {
+                            ProgressView()
+                                .scaleEffect(0.8)
+                            Text("번역 중...")
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 16)
+                        .background(Color(.systemGray6))
+                        .cornerRadius(8)
+                    } else if let errorMessage = translationErrorMessage {
+                        VStack(spacing: 8) {
+                            Text("번역 실패")
+                                .font(.subheadline)
+                                .foregroundColor(.red)
+                            Text(errorMessage)
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 16)
+                        .background(Color(.systemGray6))
+                        .cornerRadius(8)
+                    } else if !translationResults.isEmpty {
+                        VStack(spacing: 8) {
+                            ForEach(translationResults, id: \.text) { translation in
+                                Button(action: {
+                                    store.send(.wordForm(.translationSelected(translation.text)))
+                                }) {
+                                    HStack {
+                                        Text(translation.text)
+                                            .font(.body)
+                                            .foregroundColor(.primary)
+                                        Spacer()
+                                        Image(systemName: "arrow.down.circle")
+                                            .foregroundColor(.blue)
+                                    }
+                                    .padding(.vertical, 8)
+                                    .padding(.horizontal, 12)
+                                    .background(Color(.systemGray5))
+                                    .cornerRadius(6)
+                                }
+                            }
+                        }
                     }
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 16)
-                    .background(Color(.systemGray6))
-                    .cornerRadius(8)
                 }
             }
         }
@@ -121,7 +160,7 @@ struct InsertVocaView: View {
     // MARK: - Definition Input Section
     private var definitionInputSection: some View {
         WithPerceptionTracking {
-            let definitionInput = store.definitionInput
+            let definitionInput = store.wordForm.definitionInput
             
             VStack(spacing: 8) {
                 Text("단어의 뜻")
@@ -130,7 +169,7 @@ struct InsertVocaView: View {
                 
                 TextField("단어의 의미를 입력하세요.(필수)", text: Binding(
                     get: { definitionInput },
-                    set: { store.send(.definitionInputChanged($0)) }
+                    set: { store.send(.wordForm(.definitionInputChanged($0))) }
                 ))
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .font(.body)
@@ -141,7 +180,7 @@ struct InsertVocaView: View {
     // MARK: - Detail Input Section
     private var detailInputSection: some View {
         WithPerceptionTracking {
-            let detailInput = store.detailInput
+            let detailInput = store.wordForm.detailInput
             
             VStack(spacing: 8) {
                 Text("상세 설명")
@@ -150,7 +189,7 @@ struct InsertVocaView: View {
                 
                 TextField("나만의 암기 팁을 입력하세요.", text: Binding(
                     get: { detailInput },
-                    set: { store.send(.detailInputChanged($0)) }
+                    set: { store.send(.wordForm(.detailInputChanged($0))) }
                 ))
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .font(.body)
@@ -161,7 +200,7 @@ struct InsertVocaView: View {
     // MARK: - Pronunciation Input Section
     private var pronunciationInputSection: some View {
         WithPerceptionTracking {
-            let pronunciationInput = store.pronunciationInput
+            let pronunciationInput = store.wordForm.pronunciationInput
             
             VStack(spacing: 8) {
                 Text("발음")
@@ -170,7 +209,7 @@ struct InsertVocaView: View {
                 
                 TextField("발음을 입력하세요.", text: Binding(
                     get: { pronunciationInput },
-                    set: { store.send(.pronunciationInputChanged($0)) }
+                    set: { store.send(.wordForm(.pronunciationInputChanged($0))) }
                 ))
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .font(.body)
@@ -181,7 +220,7 @@ struct InsertVocaView: View {
     // MARK: - Synonym Input Section
     private var synonymInputSection: some View {
         WithPerceptionTracking {
-            let synonymInput = store.synonymInput
+            let synonymInput = store.wordForm.synonymInput
             
             VStack(spacing: 8) {
                 Text("유의어")
@@ -190,7 +229,7 @@ struct InsertVocaView: View {
                 
                 TextField("비슷한 의미를 가진 단어를 입력하세요.", text: Binding(
                     get: { synonymInput },
-                    set: { store.send(.synonymInputChanged($0)) }
+                    set: { store.send(.wordForm(.synonymInputChanged($0))) }
                 ))
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .font(.body)
@@ -201,7 +240,7 @@ struct InsertVocaView: View {
     // MARK: - Antonym Input Section
     private var antonymInputSection: some View {
         WithPerceptionTracking {
-            let antonymInput = store.antonymInput
+            let antonymInput = store.wordForm.antonymInput
             
             VStack(spacing: 8) {
                 Text("반의어")
@@ -210,7 +249,7 @@ struct InsertVocaView: View {
                 
                 TextField("상반된 의미를 가진 단어를 입력하세요.", text: Binding(
                     get: { antonymInput },
-                    set: { store.send(.antonymInputChanged($0)) }
+                    set: { store.send(.wordForm(.antonymInputChanged($0))) }
                 ))
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .font(.body)
@@ -220,16 +259,8 @@ struct InsertVocaView: View {
     
     // MARK: - Helper Methods
     private func isFormValid() -> Bool {
-        let wordInput = store.wordInput
-        let definitionInput = store.definitionInput
+        let wordInput = store.wordForm.wordInput
+        let definitionInput = store.wordForm.definitionInput
         return !wordInput.isEmpty && !definitionInput.isEmpty
     }
-}
-
-#Preview {
-    InsertVocaView(
-        store: Store(initialState: WordFormReducer.State()) {
-            WordFormReducer()
-        }
-    )
 }

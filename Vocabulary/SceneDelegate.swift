@@ -72,7 +72,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         // delegate 설정
-        
         gameMainPageVC.delegate = myPageVC
     }
     

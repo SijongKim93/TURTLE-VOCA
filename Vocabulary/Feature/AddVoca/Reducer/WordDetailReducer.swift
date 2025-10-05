@@ -20,7 +20,6 @@ struct WordDetailReducer {
         var isLoading: Bool = false
         var errorMessage: String?
         
-        // 편집 중인 임시 데이터
         var editingWord: String = ""
         var editingDefinition: String = ""
         var editingDetail: String = ""
@@ -48,7 +47,6 @@ struct WordDetailReducer {
         case toggleMemoryStatus
         case memoryStatusUpdated
         
-        // 편집 필드 업데이트 액션
         case updateEditingWord(String)
         case updateEditingDefinition(String)
         case updateEditingDetail(String)
@@ -62,7 +60,6 @@ struct WordDetailReducer {
             switch action {
             case .editButtonTapped:
                 state.isEditing = true
-                // 편집 시작 시 현재 값으로 초기화
                 state.editingWord = state.word.word ?? ""
                 state.editingDefinition = state.word.definition ?? ""
                 state.editingDetail = state.word.detail ?? ""
@@ -74,7 +71,6 @@ struct WordDetailReducer {
             case .cancelEdit:
                 state.isEditing = false
                 state.errorMessage = nil
-                // 편집 취소 시 원래 값으로 복원
                 state.editingWord = state.word.word ?? ""
                 state.editingDefinition = state.word.definition ?? ""
                 state.editingDetail = state.word.detail ?? ""
@@ -87,7 +83,6 @@ struct WordDetailReducer {
                 state.isLoading = true
                 state.errorMessage = nil
                 
-                // 편집된 값들을 word에 반영
                 state.word.word = state.editingWord
                 state.word.definition = state.editingDefinition
                 state.word.detail = state.editingDetail
@@ -134,7 +129,6 @@ struct WordDetailReducer {
             case .memoryStatusUpdated:
                 return .none
                 
-            // 편집 필드 업데이트 처리
             case let .updateEditingWord(value):
                 state.editingWord = value
                 return .none
