@@ -19,6 +19,7 @@ struct WordDetailReducer {
         var isEditing: Bool = false
         var isLoading: Bool = false
         var errorMessage: String?
+        var memoryStatus: Bool = false
         
         var editingWord: String = ""
         var editingDefinition: String = ""
@@ -29,6 +30,7 @@ struct WordDetailReducer {
         
         init(word: WordEntity) {
             self.word = word
+            self.memoryStatus = word.memory
             self.editingWord = word.word ?? ""
             self.editingDefinition = word.definition ?? ""
             self.editingDetail = word.detail ?? ""
@@ -114,7 +116,8 @@ struct WordDetailReducer {
                 return .none
                 
             case .toggleMemoryStatus:
-                let newMemoryStatus = !state.word.memory
+                let newMemoryStatus = !state.memoryStatus
+                state.memoryStatus = newMemoryStatus
                 state.word.memory = newMemoryStatus
                 
                 return .run { [word = state.word] send in
@@ -122,7 +125,7 @@ struct WordDetailReducer {
                         try await coreDataDependency.updateWordMemoryStatus(word, newMemoryStatus)
                         await send(.memoryStatusUpdated)
                     } catch {
-                        print("암기 상태 업데이트 실패: \(error)")
+                        await send(.updateFailed("암기 상태 업데이트에 실패했습니다."))
                     }
                 }
                 
