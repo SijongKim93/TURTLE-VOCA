@@ -83,6 +83,7 @@ struct WordDetailView: View {
     private var wordInfoSection: some View {
         WithPerceptionTracking {
             let word = store.word
+            let memoryStatus = store.memoryStatus
             
             VStack(spacing: 16) {
                 HStack {
@@ -94,8 +95,8 @@ struct WordDetailView: View {
                     Button(action: {
                         store.send(.toggleMemoryStatus)
                     }) {
-                        Image(systemName: word.memory ? "checkmark.circle.fill" : "circle")
-                            .foregroundColor(word.memory ? .green : .gray)
+                        Image(systemName: memoryStatus ? "checkmark.circle.fill" : "circle")
+                            .foregroundColor(memoryStatus ? .green : .gray)
                             .font(.title2)
                     }
                 }
@@ -258,7 +259,7 @@ struct WordDetailView: View {
     // MARK: - Memory Status Section
     private var memoryStatusSection: some View {
         WithPerceptionTracking {
-            let word = store.word
+            let memoryStatus = store.memoryStatus
             
             VStack(spacing: 12) {
                 HStack {
@@ -269,20 +270,20 @@ struct WordDetailView: View {
                 }
                 
                 HStack {
-                    Image(systemName: word.memory ? "checkmark.circle.fill" : "circle")
-                        .foregroundColor(word.memory ? .green : .gray)
+                    Image(systemName: memoryStatus ? "checkmark.circle.fill" : "circle")
+                        .foregroundColor(memoryStatus ? .green : .gray)
                         .font(.title2)
                     
-                    Text(word.memory ? "암기 완료" : "암기 중")
+                    Text(memoryStatus ? "암기 완료" : "암기 중")
                         .font(.body)
-                        .foregroundColor(word.memory ? .green : .orange)
+                        .foregroundColor(memoryStatus ? .green : .orange)
                     
                     Spacer()
                     
                     Button(action: {
                         store.send(.toggleMemoryStatus)
                     }) {
-                        Text(word.memory ? "암기 취소" : "암기 완료")
+                        Text(memoryStatus ? "암기 취소" : "암기 완료")
                             .font(.subheadline)
                             .foregroundColor(.blue)
                     }
