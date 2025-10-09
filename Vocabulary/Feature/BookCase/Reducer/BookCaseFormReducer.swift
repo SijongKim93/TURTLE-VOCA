@@ -69,7 +69,7 @@ struct BookCaseFormReducer {
                 
             case .saveBookCase:
                 guard !state.name.isEmpty else {
-                    state.errorMessage = "단어장 이름을 입력해주세요."
+                    state.errorMessage = "단어장의 명칭을 적어주세요."
                     return .none
                 }
                 
