@@ -21,7 +21,7 @@ struct AddVocaView: View {
             NavigationView {
                 VStack(spacing: 0) {
                     headerSection
-                    bodySection
+                    wordsListSection
                 }
             }
             .onAppear {
@@ -116,78 +116,6 @@ struct AddVocaView: View {
         }
     }
     
-    // MARK: - Body Section
-    private var bodySection: some View {
-        WithPerceptionTracking {
-            let isLoading = store.wordList.isLoading
-            let filteredWords = store.wordList.filteredWords
-            let isFiltering = store.wordList.isFiltering
-            
-            if isLoading {
-                loadingView
-            } else if filteredWords.isEmpty {
-                emptyView
-            } else {
-                wordsListSection
-            }
-        }
-    }
-    
-    // MARK: - Loading View
-    private var loadingView: some View {
-        VStack {
-            Spacer()
-            ProgressView()
-                .scaleEffect(1.5)
-            Text("단어를 불러오는 중...")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-                .padding(.top, 8)
-            Spacer()
-        }
-    }
-    
-    // MARK: - Empty View
-    private var emptyView: some View {
-        WithPerceptionTracking {
-            let isFiltering = store.wordList.isFiltering
-            
-            VStack(spacing: 20) {
-                Spacer()
-                
-                Image(systemName: isFiltering ? "magnifyingglass" : "book.closed")
-                    .font(.system(size: 60))
-                    .foregroundColor(.gray)
-                
-                Text(isFiltering ? "검색 결과가 없습니다" : "단어가 없습니다")
-                    .font(.title2)
-                    .fontWeight(.medium)
-                    .foregroundColor(.primary)
-                
-                Text(isFiltering ? "다른 검색어를 시도해보세요" : "새로운 단어를 추가해보세요")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                
-                if !isFiltering {
-                    Button(action: {
-                        store.send(.addWordButtonTapped)
-                    }) {
-                        Text("단어 추가하기")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 24)
-                            .padding(.vertical, 12)
-                            .background(Color(ThemeColor.mainCgColor))
-                            .cornerRadius(8)
-                    }
-                }
-                
-                Spacer()
-            }
-            .padding(.horizontal, 40)
-        }
-    }
-    
     // MARK: - Words List Section
     private var wordsListSection: some View {
         WithPerceptionTracking {
@@ -259,6 +187,7 @@ struct WordCardView: View {
         .buttonStyle(PlainButtonStyle())
     }
 }
+
 
 #Preview {
     AddVocaView(
