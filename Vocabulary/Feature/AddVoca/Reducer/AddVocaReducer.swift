@@ -12,7 +12,7 @@ import CoreData
 @Reducer
 struct AddVocaReducer {
     @ObservableState
-    struct State {
+    struct State: Equatable {
         var bookCase: BookCase?
         var bookCaseName: String = ""
         

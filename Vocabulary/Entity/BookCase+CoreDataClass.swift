@@ -13,3 +13,10 @@ import CoreData
 public class BookCase: NSManagedObject {
 
 }
+
+// MARK: - Equatable
+extension BookCase {
+    public static func == (lhs: BookCase, rhs: BookCase) -> Bool {
+        return lhs.objectID == rhs.objectID
+    }
+}
