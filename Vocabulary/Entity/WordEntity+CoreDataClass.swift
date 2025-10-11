@@ -13,3 +13,10 @@ import CoreData
 public class WordEntity: NSManagedObject {
 
 }
+
+// MARK: - Equatable
+extension WordEntity {
+    public static func == (lhs: WordEntity, rhs: WordEntity) -> Bool {
+        return lhs.objectID == rhs.objectID
+    }
+}
