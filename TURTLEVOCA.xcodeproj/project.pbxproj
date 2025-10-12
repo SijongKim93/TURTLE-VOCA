@@ -14,6 +14,7 @@
 		4D1791B32BF1D5BF00E645C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D1791B22BF1D5BF00E645C9 /* Assets.xcassets */; };
 		4D1791B62BF1D5BF00E645C9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4D1791B52BF1D5BF00E645C9 /* Base */; };
 		4DA2ECE72E81826900194848 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4DA2ECE62E81826900194848 /* SnapKit */; };
+		4DB675712E9B6015007CE7E4 /* ProfileRecorder in Frameworks */ = {isa = PBXBuildFile; productRef = 4DB675702E9B6015007CE7E4 /* ProfileRecorder */; };
 		611177AE2BFC7FF900A635B8 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611177AD2BFC7FF900A635B8 /* UITextField+Extension.swift */; };
 		611177B12BFC808F00A635B8 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 611177B02BFC808F00A635B8 /* CombineCocoa */; };
 		611177B32BFC8F5300A635B8 /* DiffableSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611177B22BFC8F5300A635B8 /* DiffableSectionModel.swift */; };
@@ -147,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DB675712E9B6015007CE7E4 /* ProfileRecorder in Frameworks */,
 				61B2FFCB2BFBBC7B00CE039B /* ProgressHUD in Frameworks */,
 				4D138D122E819D64003005D7 /* ComposableArchitecture in Frameworks */,
 				4DA2ECE72E81826900194848 /* SnapKit in Frameworks */,
@@ -367,6 +369,7 @@
 				611177B02BFC808F00A635B8 /* CombineCocoa */,
 				4DA2ECE62E81826900194848 /* SnapKit */,
 				4D138D112E819D64003005D7 /* ComposableArchitecture */,
+				4DB675702E9B6015007CE7E4 /* ProfileRecorder */,
 			);
 			productName = Vocabulary;
 			productReference = 4D1791A32BF1D5BE00E645C9 /* TURTLEVOCA.app */;
@@ -406,6 +409,7 @@
 				611177AF2BFC808F00A635B8 /* XCRemoteSwiftPackageReference "CombineCocoa" */,
 				4DA2ECE52E81826900194848 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				4D138D102E819D64003005D7 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				4DB6756F2E9B6015007CE7E4 /* XCRemoteSwiftPackageReference "swift-profile-recorder" */,
 			);
 			productRefGroup = 4D1791A42BF1D5BE00E645C9 /* Products */;
 			projectDirPath = "";
@@ -690,6 +694,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U68CWSQ94X;
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Vocabulary/Info.plist;
@@ -727,6 +732,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U68CWSQ94X;
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Vocabulary/Info.plist;
@@ -804,6 +810,14 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		4DB6756F2E9B6015007CE7E4 /* XCRemoteSwiftPackageReference "swift-profile-recorder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-profile-recorder.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.7;
+			};
+		};
 		611177AF2BFC808F00A635B8 /* XCRemoteSwiftPackageReference "CombineCocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/CombineCommunity/CombineCocoa";
@@ -840,6 +854,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4DA2ECE52E81826900194848 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		4DB675702E9B6015007CE7E4 /* ProfileRecorder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4DB6756F2E9B6015007CE7E4 /* XCRemoteSwiftPackageReference "swift-profile-recorder" */;
+			productName = ProfileRecorder;
 		};
 		611177B02BFC808F00A635B8 /* CombineCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
