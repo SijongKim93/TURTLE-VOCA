@@ -291,6 +291,7 @@ Vocabulary
 
 ## Developer
 *  **김시종** ([SijongKim93](https://github.com/SijongKim93))
+   - TCA 마이그레이션 진행
    - Calendar 기능 구현
    - 단어 필터링 기능 구현
    - 마이페이지 기능 구현
