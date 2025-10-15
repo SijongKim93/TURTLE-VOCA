@@ -11,7 +11,6 @@
 
 <img src="https://img.shields.io/badge/Apple-%23000000.svg?style=for-the-badge&logo=apple&logoColor=white" height="20"> <img src="https://img.shields.io/badge/iOS-16.0%2B-green"> <img src="https://img.shields.io/badge/Library-Combine-308C4A "> <img src="https://img.shields.io/badge/Library-Firebase-308C4A "> <img src="https://img.shields.io/badge/Library-KakaoOpenSDK-308C4A "> <img src="https://img.shields.io/badge/Library-ProgressHUD-308C4A "> <img src="https://img.shields.io/badge/Library-SnapKit-308C4A ">
 
-영단어든, 코드용어든 관계 없다!!
 내가 기억하고 싶은 단어만, 스스로 만드는 나만의 단어장!
 
 🍎 AppStore : [TURTLE VOCA🐢](https://apps.apple.com/kr/app/turtle-voca/id6532595814)
